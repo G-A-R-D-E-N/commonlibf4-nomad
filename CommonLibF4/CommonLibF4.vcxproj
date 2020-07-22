@@ -119,8 +119,8 @@
       <ForcedIncludeFiles>F4SE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <UseFullPaths>false</UseFullPaths>
       <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <TreatSpecificWarningsAsErrors>4715;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <DisableSpecificWarnings>4686;4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
@@ -152,8 +152,8 @@
       <ForcedIncludeFiles>F4SE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <UseFullPaths>false</UseFullPaths>
       <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <TreatSpecificWarningsAsErrors>4715;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <DisableSpecificWarnings>4686;4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
@@ -186,8 +186,8 @@
       <ForcedIncludeFiles>F4SE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <UseFullPaths>false</UseFullPaths>
       <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <TreatSpecificWarningsAsErrors>4715;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <DisableSpecificWarnings>4686;4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
@@ -219,8 +219,8 @@
       <ForcedIncludeFiles>F4SE/Impl/PCH.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <UseFullPaths>false</UseFullPaths>
       <AdditionalOptions>/experimental:external /external:anglebrackets /external:W0 /Zc:externConstexpr /Zc:ternary /Zc:throwingNew /Zc:noexceptTypes /Zc:preprocessor /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
-      <DisableSpecificWarnings>4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <TreatSpecificWarningsAsErrors>4715;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <DisableSpecificWarnings>4686;4514;4710;4711;4820;5045;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatSpecificWarningsAsErrors>%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
@@ -263,6 +263,11 @@
     <ClInclude Include="include\F4SE\Trampoline.h" />
     <ClInclude Include="include\F4SE\Version.h" />
     <ClInclude Include="include\REL\Relocation.h" />
+    <ClInclude Include="include\RE\Bethesda\MemoryManager.h" />
+    <ClInclude Include="include\RE\NetImmerse\NiRTTI.h" />
+    <ClInclude Include="include\RE\NiRTTI_IDs.h" />
+    <ClInclude Include="include\RE\RTTI.h" />
+    <ClInclude Include="include\RE\RTTI_IDs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,0 +1,17 @@
+{
+  "name": "rttidump",
+  "version-string": "1.0.0",
+  "description": "A utility project used to create the RTTI dumps for CommonLibF4",
+  "homepage": "https://github.com/Ryan-rsm-McKenzie/CommonLibF4",
+  "license": "MIT",
+  "dependencies": [
+    "boost-algorithm",
+    "boost-atomic",
+    "boost-iostreams",
+    "boost-iterator",
+    "boost-regex",
+    "robin-hood-hashing",
+    "span-lite",
+    "spdlog"
+  ]
+}

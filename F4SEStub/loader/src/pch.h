@@ -70,7 +70,6 @@
 #include <boost/nowide/iostream.hpp>
 #include <fmt/format.h>
 #include <frozen/map.h>
-#include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
 
 #include <Windows.h>

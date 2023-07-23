@@ -2,4 +2,6 @@
 /.vscode
 /cmake-build*
 /build*
-/.vs
+CMakeUserPresets.json
+/out*
+/.vs*

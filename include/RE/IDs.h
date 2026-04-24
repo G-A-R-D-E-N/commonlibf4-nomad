@@ -2208,7 +2208,7 @@ namespace Scaleform::ID
 		inline constexpr REL::ID ObjectRelease{ 856221, 2286229 };
 		inline constexpr REL::ID HasMember{ 788691, 2286078 };
 		inline constexpr REL::ID GetArraySize{ 254218, 2285791 };
-		inline constexpr REL::ID GetMember{ 0, 2285936, 4494126 };
+		inline constexpr REL::ID GetMember{ 1517430, 2285936, 4494126 };
 		inline constexpr REL::ID GetElement{ 827659, 2285881 };
 		inline constexpr REL::ID SetElement{ 433707, 2286575 };
 		inline constexpr REL::ID SetMember{ 1360149, 2286589 };

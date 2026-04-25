@@ -18,9 +18,9 @@ namespace RE
 			return func();
 		}
 
-		inline void EnablePlayerRadion(bool a_enable, bool a_playOnOffSound)
+		inline void EnablePlayerRadio(bool a_enable, bool a_playOnOffSound)
 		{
-			using func_t = decltype(&RadioManager::EnablePlayerRadion);
+			using func_t = decltype(&RadioManager::EnablePlayerRadio);
 			static REL::Relocation<func_t> func{ ID::RadioManager::EnablePlayerRadio };
 			return func(a_enable, a_playOnOffSound);
 		}

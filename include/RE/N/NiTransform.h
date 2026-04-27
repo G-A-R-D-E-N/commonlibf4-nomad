@@ -11,17 +11,17 @@ namespace RE
 		static const NiTransform ZERO;
 		static const NiTransform IDENTITY;
 
-		NiTransform() noexcept = default;
-		NiTransform(const NiMatrix3& a_rotate, const NiPoint3& a_translate, const float a_scale) noexcept;
+		constexpr NiTransform() noexcept = default;
+		constexpr NiTransform(const NiMatrix3& a_rotation, const NiPoint3& a_translation, const float a_scale = 1.0F) noexcept;
 
-		bool        operator==(const NiTransform& a_rhs) const noexcept;
-		bool        operator!=(const NiTransform& a_rhs) const noexcept;
-		NiTransform operator*(const NiTransform& a_rhs) const noexcept;
-		NiPoint3    operator*(const NiPoint3& a_rhs) const noexcept;
+		constexpr bool        operator==(const NiTransform& a_rhs) const noexcept;
+		constexpr bool        operator!=(const NiTransform& a_rhs) const noexcept;
+		constexpr NiTransform operator*(const NiTransform& a_rhs) const noexcept;
+		constexpr NiPoint3    operator*(const NiPoint3& a_rhs) const noexcept;
 
-		NiTransform  Invert() const noexcept;
-		NiTransform& MakeIdentity() noexcept;
-		NiTransform& MakeInvert() noexcept;
+		constexpr NiTransform  Invert() const noexcept;
+		constexpr NiTransform& MakeIdentity() noexcept;
+		constexpr NiTransform& MakeInvert() noexcept;
 
 		// members
 		NiMatrix3 rotate;         // 00

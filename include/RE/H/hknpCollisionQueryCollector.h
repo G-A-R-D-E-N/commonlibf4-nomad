@@ -22,8 +22,8 @@ namespace RE
 		virtual const hknpCollisionResult* GetHits() const = 0;                           // 05
 
 		// members
-		std::int32_t  hints;              // 08
-		hkSimdFloat32 earlyOutThreshold;  // 10
+		std::int32_t  hints;              // 0x08
+		hkSimdFloat32 earlyOutThreshold;  // 0x10
 	};
 	static_assert(sizeof(hknpCollisionQueryCollector) == 0x20);
 }

@@ -5,7 +5,7 @@
 #include "RE/B/bhkCharProxyManager.h"
 #include "RE/B/bhkCharRigidBodyManager.h"
 #include "RE/H/hkRefPtr.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 #include "RE/H/hknpWorld.h"
 #include "RE/N/NiObject.h"
 

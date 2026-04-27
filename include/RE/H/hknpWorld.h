@@ -9,7 +9,7 @@
 #include "RE/H/hkRefPtr.h"
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkSimdFloat32.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 #include "RE/H/hknpBodyManager.h"
 #include "RE/H/hknpConstraintManager.h"
 #include "RE/H/hknpContactSolverType.h"
@@ -70,6 +70,31 @@ namespace RE
 			kSolve = 20,
 			kPostSolve = 40
 		};
+
+		using AdditionFlagsEnum = hkcdRayQueryFlags::Enum;
+		using LeavingBroadPhaseBehavior = hknpWorldCinfo::LeavingBroadPhaseBehavior;
+		using SimulationType = hknpWorldCinfo::SimulationType;
+
+		void AddBodies(hknpBodyId* a_ids, std::uint32_t a_idCount, AdditionMode a_additionMode, hkFlags<AdditionFlagsEnum, std::uint8_t> a_additionFlags)
+		{
+			using func_t = decltype(&hknpWorld::AddBodies);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::AddBodies };
+			func(this, a_ids, a_idCount, a_additionMode, a_additionFlags);
+		}
+
+		hknpBodyId& CreateBody(hknpBodyId& a_id, const hknpBodyCinfo& a_cInfo, AdditionMode a_additionMode, hkFlags<AdditionFlagsEnum, std::uint8_t> a_additionFlags)
+		{
+			using func_t = decltype(&hknpWorld::CreateBody);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::CreateBody };
+			return func(this, a_id, a_cInfo, a_additionMode, a_additionFlags);
+		}
+
+		hknpMotionId& CreateMotion(hknpMotionId& a_id, const hknpMotionCinfo& a_cInfo)
+		{
+			using func_t = decltype(&hknpWorld::CreateMotion);
+			static REL::Relocation<func_t> func{ ID::hknpWorld::CreateMotion };
+			return func(this, a_id, a_cInfo);
+		}
 
 		// members
 		hknpBodyManager                                                 bodyManager;                       // 010

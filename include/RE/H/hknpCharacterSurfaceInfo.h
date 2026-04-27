@@ -2,14 +2,19 @@
 
 #include "RE/H/hkBool.h"
 #include "RE/H/hkEnum.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 
 namespace RE
 {
 	class hknpCharacterSurfaceInfo
 	{
 	public:
-		enum class SupportedState;
+		enum class SupportedState
+		{
+			kUnsupported,
+			kSliding,
+			kSupported
+		};
 
 		// members
 		hkBool                               isSurfaceDynamic;       // 00

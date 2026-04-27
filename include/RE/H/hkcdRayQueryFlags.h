@@ -11,7 +11,7 @@ namespace RE
 			kDisableBackFacingTriangleHits = 0x1,
 			kDisableFrontFacingTriangleHits = 0x2,
 			kEnableInsideHits = 0x4,
-			kEnableExtraTriangleBevelplanes = 0x8
+			kEnableExtraTriangleBevelPlanes = 0x8
 		};
 	};
 	static_assert(std::is_empty_v<hkcdRayQueryFlags>);

@@ -19,9 +19,9 @@ namespace RE
 		static_assert(sizeof(State) == 0x04);
 
 		// members
-		State             state;            // 00
-		hkCriticalSection criticalSection;  // 08
-		hkBool            enabled;          // 30
+		State             state;            // 0x00
+		hkCriticalSection criticalSection;  // 0x08
+		hkBool            enabled;          // 0x30
 	};
 	static_assert(sizeof(hknpThreadSafetyCheck) == 0x38);
 }

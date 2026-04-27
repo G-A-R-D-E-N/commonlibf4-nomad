@@ -6,31 +6,34 @@ namespace RE
 	{
 	public:
 		static const NiPoint2 ZERO;
+		static const NiPoint2 UNIT;
+		static const NiPoint2 UNIT_X;
+		static const NiPoint2 UNIT_Y;
 
-		NiPoint2() noexcept = default;
-		NiPoint2(float a_x, float a_y) noexcept;
+		constexpr NiPoint2() noexcept = default;
+		constexpr NiPoint2(float a_x, float a_y) noexcept;
 
-		float&       operator[](std::size_t a_pos) noexcept;
-		const float& operator[](std::size_t a_pos) const noexcept;
-		bool         operator==(const NiPoint2& a_rhs) const noexcept;
-		bool         operator!=(const NiPoint2& a_rhs) const noexcept;
-		bool         operator<(const NiPoint2& a_rhs) const noexcept;
-		bool         operator>(const NiPoint2& a_rhs) const noexcept;
-		NiPoint2     operator+(const NiPoint2& a_rhs) const noexcept;
-		NiPoint2     operator-(const NiPoint2& a_rhs) const noexcept;
-		NiPoint2     operator*(const NiPoint2& a_rhs) const noexcept;
-		NiPoint2     operator/(const NiPoint2& a_rhs) const noexcept;
-		NiPoint2     operator*(float a_scalar) const noexcept;
-		NiPoint2     operator/(float a_scalar) const noexcept;
-		NiPoint2     operator-() const noexcept;
-		NiPoint2&    operator+=(const NiPoint2& a_rhs) noexcept;
-		NiPoint2&    operator-=(const NiPoint2& a_rhs) noexcept;
-		NiPoint2&    operator*=(const NiPoint2& a_rhs) noexcept;
-		NiPoint2&    operator/=(const NiPoint2& a_rhs) noexcept;
-		NiPoint2&    operator+=(float a_scalar) noexcept;
-		NiPoint2&    operator-=(float a_scalar) noexcept;
-		NiPoint2&    operator*=(float a_scalar) noexcept;
-		NiPoint2&    operator/=(float a_scalar) noexcept;
+		constexpr float&       operator[](std::size_t a_pos) noexcept;
+		constexpr const float& operator[](std::size_t a_pos) const noexcept;
+		constexpr bool         operator==(const NiPoint2& a_rhs) const noexcept;
+		constexpr bool         operator!=(const NiPoint2& a_rhs) const noexcept;
+		constexpr bool         operator<(const NiPoint2& a_rhs) const noexcept;
+		constexpr bool         operator>(const NiPoint2& a_rhs) const noexcept;
+		constexpr NiPoint2     operator+(const NiPoint2& a_rhs) const noexcept;
+		constexpr NiPoint2     operator-(const NiPoint2& a_rhs) const noexcept;
+		constexpr NiPoint2     operator*(const NiPoint2& a_rhs) const noexcept;
+		constexpr NiPoint2     operator/(const NiPoint2& a_rhs) const noexcept;
+		constexpr NiPoint2     operator*(float a_scalar) const noexcept;
+		constexpr NiPoint2     operator/(float a_scalar) const noexcept;
+		constexpr NiPoint2     operator-() const noexcept;
+		constexpr NiPoint2&    operator+=(const NiPoint2& a_rhs) noexcept;
+		constexpr NiPoint2&    operator-=(const NiPoint2& a_rhs) noexcept;
+		constexpr NiPoint2&    operator*=(const NiPoint2& a_rhs) noexcept;
+		constexpr NiPoint2&    operator/=(const NiPoint2& a_rhs) noexcept;
+		constexpr NiPoint2&    operator+=(float a_scalar) noexcept;
+		constexpr NiPoint2&    operator-=(float a_scalar) noexcept;
+		constexpr NiPoint2&    operator*=(float a_scalar) noexcept;
+		constexpr NiPoint2&    operator/=(float a_scalar) noexcept;
 
 		// members
 		float x{ 0.0F };  // 00
@@ -45,42 +48,47 @@ namespace RE
 	{
 	public:
 		static const NiPoint3 ZERO;
+		static const NiPoint3 UNIT;
+		static const NiPoint3 UNIT_X;
+		static const NiPoint3 UNIT_Y;
+		static const NiPoint3 UNIT_Z;
 
-		NiPoint3() noexcept = default;
-		NiPoint3(const NiPoint2& a_point) noexcept;
-		NiPoint3(float a_x, float a_y, float a_z) noexcept;
+		constexpr NiPoint3() noexcept = default;
+		constexpr NiPoint3(const NiPoint2& a_point) noexcept;
+		constexpr NiPoint3(float a_x, float a_y, float a_z) noexcept;
 
-		float&       operator[](std::size_t a_pos) noexcept;
-		const float& operator[](std::size_t a_pos) const noexcept;
-		bool         operator==(const NiPoint3& a_rhs) const noexcept;
-		bool         operator!=(const NiPoint3& a_rhs) const noexcept;
-		bool         operator<(const NiPoint3& a_rhs) const noexcept;
-		bool         operator>(const NiPoint3& a_rhs) const noexcept;
-		NiPoint3     operator+(const NiPoint3& a_rhs) const noexcept;
-		NiPoint3     operator-(const NiPoint3& a_rhs) const noexcept;
-		NiPoint3     operator*(const NiPoint3& a_rhs) const noexcept;
-		NiPoint3     operator/(const NiPoint3& a_rhs) const noexcept;
-		NiPoint3     operator*(float a_scalar) const noexcept;
-		NiPoint3     operator/(float a_scalar) const noexcept;
-		NiPoint3     operator-() const noexcept;
-		NiPoint3&    operator+=(const NiPoint3& a_rhs) noexcept;
-		NiPoint3&    operator-=(const NiPoint3& a_rhs) noexcept;
-		NiPoint3&    operator*=(const NiPoint3& a_rhs) noexcept;
-		NiPoint3&    operator/=(const NiPoint3& a_rhs) noexcept;
-		NiPoint3&    operator+=(float a_scalar) noexcept;
-		NiPoint3&    operator-=(float a_scalar) noexcept;
-		NiPoint3&    operator*=(float a_scalar) noexcept;
-		NiPoint3&    operator/=(float a_scalar) noexcept;
+		constexpr float&       operator[](std::size_t a_pos) noexcept;
+		constexpr const float& operator[](std::size_t a_pos) const noexcept;
+		constexpr bool         operator==(const NiPoint3& a_rhs) const noexcept;
+		constexpr bool         operator!=(const NiPoint3& a_rhs) const noexcept;
+		constexpr bool         operator<(const NiPoint3& a_rhs) const noexcept;
+		constexpr bool         operator>(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint3     operator+(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint3     operator-(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint3     operator*(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint3     operator/(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint3     operator*(float a_scalar) const noexcept;
+		constexpr NiPoint3     operator/(float a_scalar) const noexcept;
+		constexpr NiPoint3     operator-() const noexcept;
+		constexpr NiPoint3&    operator+=(const NiPoint3& a_rhs) noexcept;
+		constexpr NiPoint3&    operator-=(const NiPoint3& a_rhs) noexcept;
+		constexpr NiPoint3&    operator*=(const NiPoint3& a_rhs) noexcept;
+		constexpr NiPoint3&    operator/=(const NiPoint3& a_rhs) noexcept;
+		constexpr NiPoint3&    operator+=(float a_scalar) noexcept;
+		constexpr NiPoint3&    operator-=(float a_scalar) noexcept;
+		constexpr NiPoint3&    operator*=(float a_scalar) noexcept;
+		constexpr NiPoint3&    operator/=(float a_scalar) noexcept;
 
-		[[nodiscard]] NiPoint3 Cross(const NiPoint3& a_point) const noexcept;
-		[[nodiscard]] float    Dot(const NiPoint3& a_point) const noexcept;
-		[[nodiscard]] float    GetDistance(const NiPoint3& a_point) const noexcept;
-		[[nodiscard]] float    GetSquaredDistance(const NiPoint3& a_point) const noexcept;
-		[[nodiscard]] float    GetZAngleFromVector() const;
-		[[nodiscard]] float    Length() const noexcept;
-		[[nodiscard]] float    SqrLength() const noexcept;
-		[[nodiscard]] NiPoint3 UnitCross(const NiPoint3& a_point) const noexcept;
-		float                  Unitize() noexcept;
+		constexpr NiPoint3 Cross(const NiPoint3& a_point) const noexcept;
+		constexpr float    Dot(const NiPoint3& a_point) const noexcept;
+		constexpr float    GetSquaredDistance(const NiPoint3& a_point) const noexcept;
+		constexpr float    SqrLength() const noexcept;
+
+		float    GetDistance(const NiPoint3& a_point) const noexcept;
+		float    GetZAngleFromVector() const;
+		float    Length() const noexcept;
+		NiPoint3 UnitCross(const NiPoint3& a_point) const noexcept;
+		float    Unitize() noexcept;
 
 		// members
 		float x{ 0.0F };  // 00
@@ -94,6 +102,10 @@ namespace RE
 	{
 	public:
 		static const NiPoint3A ZERO;
+		static const NiPoint3A UNIT;
+		static const NiPoint3A UNIT_X;
+		static const NiPoint3A UNIT_Y;
+		static const NiPoint3A UNIT_Z;
 
 		using NiPoint3::NiPoint3;
 	};
@@ -111,32 +123,32 @@ namespace RE
 		static const NiPoint4 IDENTITY2;
 		static const NiPoint4 IDENTITY3;
 
-		NiPoint4() noexcept = default;
-		NiPoint4(const NiPoint2& a_point) noexcept;
-		NiPoint4(const NiPoint3& a_point) noexcept;
-		NiPoint4(float a_x, float a_y, float a_z, float a_w) noexcept;
+		constexpr NiPoint4() noexcept = default;
+		constexpr NiPoint4(const NiPoint2& a_point) noexcept;
+		constexpr NiPoint4(const NiPoint3& a_point) noexcept;
+		constexpr NiPoint4(float a_x, float a_y, float a_z, float a_w) noexcept;
 
-		float&       operator[](std::size_t a_pos) noexcept;
-		const float& operator[](std::size_t a_pos) const noexcept;
-		bool         operator==(const NiPoint4& a_rhs) const noexcept;
-		bool         operator!=(const NiPoint4& a_rhs) const noexcept;
-		bool         operator<(const NiPoint4& a_rhs) const noexcept;
-		bool         operator>(const NiPoint4& a_rhs) const noexcept;
-		NiPoint4     operator+(const NiPoint4& a_rhs) const noexcept;
-		NiPoint4     operator-(const NiPoint4& a_rhs) const noexcept;
-		NiPoint4     operator*(const NiPoint4& a_rhs) const noexcept;
-		NiPoint4     operator/(const NiPoint4& a_rhs) const noexcept;
-		NiPoint4     operator*(float a_scalar) const noexcept;
-		NiPoint4     operator/(float a_scalar) const noexcept;
-		NiPoint4     operator-() const noexcept;
-		NiPoint4&    operator+=(const NiPoint4& a_rhs) noexcept;
-		NiPoint4&    operator-=(const NiPoint4& a_rhs) noexcept;
-		NiPoint4&    operator*=(const NiPoint4& a_rhs) noexcept;
-		NiPoint4&    operator/=(const NiPoint4& a_rhs) noexcept;
-		NiPoint4&    operator+=(float a_scalar) noexcept;
-		NiPoint4&    operator-=(float a_scalar) noexcept;
-		NiPoint4&    operator*=(float a_scalar) noexcept;
-		NiPoint4&    operator/=(float a_scalar) noexcept;
+		constexpr float&       operator[](std::size_t a_pos) noexcept;
+		constexpr const float& operator[](std::size_t a_pos) const noexcept;
+		constexpr bool         operator==(const NiPoint4& a_rhs) const noexcept;
+		constexpr bool         operator!=(const NiPoint4& a_rhs) const noexcept;
+		constexpr bool         operator<(const NiPoint4& a_rhs) const noexcept;
+		constexpr bool         operator>(const NiPoint4& a_rhs) const noexcept;
+		constexpr NiPoint4     operator+(const NiPoint4& a_rhs) const noexcept;
+		constexpr NiPoint4     operator-(const NiPoint4& a_rhs) const noexcept;
+		constexpr NiPoint4     operator*(const NiPoint4& a_rhs) const noexcept;
+		constexpr NiPoint4     operator/(const NiPoint4& a_rhs) const noexcept;
+		constexpr NiPoint4     operator*(float a_scalar) const noexcept;
+		constexpr NiPoint4     operator/(float a_scalar) const noexcept;
+		constexpr NiPoint4     operator-() const noexcept;
+		constexpr NiPoint4&    operator+=(const NiPoint4& a_rhs) noexcept;
+		constexpr NiPoint4&    operator-=(const NiPoint4& a_rhs) noexcept;
+		constexpr NiPoint4&    operator*=(const NiPoint4& a_rhs) noexcept;
+		constexpr NiPoint4&    operator/=(const NiPoint4& a_rhs) noexcept;
+		constexpr NiPoint4&    operator+=(float a_scalar) noexcept;
+		constexpr NiPoint4&    operator-=(float a_scalar) noexcept;
+		constexpr NiPoint4&    operator*=(float a_scalar) noexcept;
+		constexpr NiPoint4&    operator/=(float a_scalar) noexcept;
 
 		// members
 		float x{ 0.0F };  // 00

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "RE/H/hkSimdFloat32.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 
 namespace RE
 {
@@ -9,36 +9,36 @@ namespace RE
 	{
 	public:
 		// members
-		float         tau;                                   // 000
-		float         frictionTau;                           // 004
-		hkSimdFloat32 damping;                               // 010
-		hkSimdFloat32 deltaTime;                             // 020
-		hkSimdFloat32 invDeltaTime;                          // 030
-		hkSimdFloat32 subStepDeltaTime;                      // 040
-		hkSimdFloat32 subStepInvDeltaTime;                   // 050
-		hkSimdFloat32 distanceToLinearTim;                   // 060
-		hkSimdFloat32 linearTimToDistance;                   // 070
-		hkSimdFloat32 collisionTolerance;                    // 080
-		hkSimdFloat32 unitScale;                             // 090
-		hkSimdFloat32 collisionAccuracy;                     // 0A0
-		float         maxApproachSpeedForHighQualitySolver;  // 0B0
-		std::int32_t  numSteps;                              // 0B4
-		float         invNumSteps;                           // 0B8
-		std::int32_t  numMicroSteps;                         // 0BC
-		float         invNumMicroSteps;                      // 0C0
-		float         nominalGravityLength;                  // 0C4
-		float         expectedDeltaTime;                     // 0C8
-		std::uint32_t stepSolveCount;                        // 0CC
-		hkVector4f    globalAccelerationPerSubStep;          // 0D0
-		hkVector4f    globalAccelerationPerStep;             // 0E0
-		hkVector4f    integrateVelocityFactor;               // 0F0
-		hkVector4f    invIntegrateVelocityFactor;            // 100
-		hkSimdFloat32 rhsFactor;                             // 110
-		hkSimdFloat32 frictionRhsFactor;                     // 120
-		float         dampDivTau;                            // 130
-		float         tauDivDamp;                            // 134
-		float         dampDivFrictionTau;                    // 138
-		float         frictionTauDivDamp;                    // 13C
+		float         tau;                                   // 0x000
+		float         frictionTau;                           // 0x004
+		hkSimdFloat32 damping;                               // 0x010
+		hkSimdFloat32 deltaTime;                             // 0x020
+		hkSimdFloat32 invDeltaTime;                          // 0x030
+		hkSimdFloat32 subStepDeltaTime;                      // 0x040
+		hkSimdFloat32 subStepInvDeltaTime;                   // 0x050
+		hkSimdFloat32 distanceToLinearTim;                   // 0x060
+		hkSimdFloat32 linearTimToDistance;                   // 0x070
+		hkSimdFloat32 collisionTolerance;                    // 0x080
+		hkSimdFloat32 unitScale;                             // 0x090
+		hkSimdFloat32 collisionAccuracy;                     // 0x0A0
+		float         maxApproachSpeedForHighQualitySolver;  // 0x0B0
+		std::int32_t  numSteps;                              // 0x0B4
+		float         invNumSteps;                           // 0x0B8
+		std::int32_t  numMicroSteps;                         // 0x0BC
+		float         invNumMicroSteps;                      // 0x0C0
+		float         nominalGravityLength;                  // 0x0C4
+		float         expectedDeltaTime;                     // 0x0C8
+		std::uint32_t stepSolveCount;                        // 0x0CC
+		hkVector4f    globalAccelerationPerSubStep;          // 0x0D0
+		hkVector4f    globalAccelerationPerStep;             // 0x0E0
+		hkVector4f    integrateVelocityFactor;               // 0x0F0
+		hkVector4f    invIntegrateVelocityFactor;            // 0x100
+		hkSimdFloat32 rhsFactor;                             // 0x110
+		hkSimdFloat32 frictionRhsFactor;                     // 0x120
+		float         dampDivTau;                            // 0x130
+		float         tauDivDamp;                            // 0x134
+		float         dampDivFrictionTau;                    // 0x138
+		float         frictionTauDivDamp;                    // 0x13C
 	};
 	static_assert(sizeof(hknpSolverInfo) == 0x140);
 }

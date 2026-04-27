@@ -5,7 +5,7 @@
 #include "RE/H/hkFlags.h"
 #include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkResult.h"
-#include "RE/H/hkVector4f.h"
+#include "RE/H/hkVector4.h"
 #include "RE/H/hknpCollisionDispatchType.h"
 #include "RE/H/hknpShapeType.h"
 
@@ -63,9 +63,23 @@ namespace RE
 			kIsQuadShape = 1u << 12
 		};
 
+		struct MassConfig
+		{
+			enum class Quality : std::int32_t
+			{
+				kLow = 0,
+				kMedium = 1,
+				kHigh = 2
+			};
+
+			Quality quality{ Quality::kHigh };
+			float   inertiaFactor{ 1.5f };
+			float   massOrNegativeDensity{ -1.0f };
+		};
+		static_assert(sizeof(MassConfig) == 0xC);
+
 		struct BuildSurfaceGeometryConfig;
 		struct GetShapeKeysConfig;
-		struct MassConfig;
 		struct SdfContactPoint;
 		struct SdfQuery;
 
@@ -98,12 +112,12 @@ namespace RE
 		virtual void                CheckConsistency() const;                                                                                                                                                                                                                                                                                                 // 1D
 
 		// members
-		hkFlags<FlagsEnum, std::uint16_t>                     flags;            // 10
-		std::uint8_t                                          numShapeKeyBits;  // 12
-		hkEnum<hknpCollisionDispatchType::Enum, std::uint8_t> dispatchType;     // 13
-		float                                                 convexRadius;     // 14
-		std::uintptr_t                                        userData;         // 18
-		hkRefCountedProperties*                               properties;       // 20
+		hkFlags<FlagsEnum, std::uint16_t>                     flags;            // 0x10
+		std::uint8_t                                          numShapeKeyBits;  // 0x12
+		hkEnum<hknpCollisionDispatchType::Enum, std::uint8_t> dispatchType;     // 0x13
+		float                                                 convexRadius;     // 0x14
+		std::uintptr_t                                        userData;         // 0x18
+		hkRefCountedProperties*                               properties;       // 0x20
 	};
 	static_assert(sizeof(hknpShape) == 0x30);
 }

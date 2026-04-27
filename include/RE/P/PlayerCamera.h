@@ -38,6 +38,18 @@ namespace RE
 			return *singleton;
 		}
 
+		[[nodiscard]] BSTSmartPointer<TESCameraState> GetCameraCurrentState() const
+		{
+			return currentState;
+		}
+
+		bool GetCameraPosition(NiPoint3& a_position, bool a_addPlayerPos) const
+		{
+			using func_t = decltype(&PlayerCamera::GetCameraPosition);
+			static REL::Relocation<func_t> func{ ID::PlayerCamera::GetCameraPosition };
+			return func(this, a_position, a_addPlayerPos);
+		}
+
 		[[nodiscard]] BSTSmartPointer<TESCameraState> GetState(CameraState a_state) const
 		{
 			return cameraStates[a_state];
@@ -71,7 +83,7 @@ namespace RE
 			return func(this, a_freezeTime);
 		}
 
-		void SetState(TESCameraState* a_newstate) const
+		void SetState(TESCameraState* a_newstate)
 		{
 			using func_t = decltype(&PlayerCamera::SetState);
 			static REL::Relocation<func_t> func{ ID::PlayerCamera::SetState };
@@ -99,7 +111,7 @@ namespace RE
 			return func(this);
 		}
 
-		bool QCameraEquals(CameraState a_state)
+		bool QCameraEquals(CameraState a_state) const
 		{
 			using func_t = decltype(&PlayerCamera::QCameraEquals);
 			static REL::Relocation<func_t> func{ ID::PlayerCamera::QCameraEquals };

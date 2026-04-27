@@ -10,23 +10,23 @@ namespace RE
 		static const NiMatrix3 ZERO;
 		static const NiMatrix3 IDENTITY;
 
-		NiMatrix3() noexcept = default;
-		NiMatrix3(const NiPoint4& a_point0, const NiPoint4& a_point1, const NiPoint4& a_point2) noexcept;
-		NiMatrix3(
+		constexpr NiMatrix3() noexcept = default;
+		constexpr NiMatrix3(const NiPoint4& a_point0, const NiPoint4& a_point1, const NiPoint4& a_point2) noexcept;
+		constexpr NiMatrix3(
 			float a_x0, float a_y0, float a_z0, float a_w0,
 			float a_x1, float a_y1, float a_z1, float a_w1,
 			float a_x2, float a_y2, float a_z2, float a_w2) noexcept;
 
-		NiPoint4&       operator[](std::size_t a_pos) noexcept;
-		const NiPoint4& operator[](std::size_t a_pos) const noexcept;
-		bool            operator==(const NiMatrix3& a_rhs) const noexcept;
-		bool            operator!=(const NiMatrix3& a_rhs) const noexcept;
-		NiMatrix3       operator*(const NiMatrix3& a_rhs) const noexcept;
-		NiMatrix3       operator*(float a_scalar) const noexcept;
-		NiPoint3        operator*(const NiPoint3& a_rhs) const noexcept;
+		constexpr NiPoint4&	      operator[](std::size_t a_pos) noexcept;
+		constexpr const NiPoint4& operator[](std::size_t a_pos) const noexcept;
+		constexpr bool            operator==(const NiMatrix3& a_rhs) const noexcept;
+		constexpr bool            operator!=(const NiMatrix3& a_rhs) const noexcept;
+		constexpr NiMatrix3       operator*(const NiMatrix3& a_rhs) const noexcept;
+		constexpr NiMatrix3       operator*(float a_scalar) const noexcept;
+		constexpr NiPoint3        operator*(const NiPoint3& a_rhs) const noexcept;
 
-		void      MakeIdentity() noexcept;
-		NiMatrix3 Transpose() const noexcept;
+		constexpr void      MakeIdentity() noexcept;
+		constexpr NiMatrix3 Transpose() const noexcept;
 
 		bool ToEulerAnglesXYZ(NiPoint3& a_point) const;
 		bool ToEulerAnglesXYZ(float& a_x, float& a_y, float& a_z) const;

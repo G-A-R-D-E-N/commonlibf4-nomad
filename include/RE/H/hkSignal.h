@@ -13,34 +13,26 @@ namespace RE
 	};
 	static_assert(sizeof(hkSignal) == 0x08);
 
-	class hkSignal0 :
-		public hkSignal
-	{
-	public:
-	};
-	static_assert(sizeof(hkSignal0) == 0x08);
+	struct hkSignal0 : hkSignal
+	{};
 
-	template <class T>
-	class hkSignal1 :
-		public hkSignal
-	{
-	public:
-	};
-	static_assert(sizeof(hkSignal1<void>) == 0x08);
+	template <class P0>
+	struct hkSignal1 : hkSignal
+	{};
 
-	template <class T, class U>
-	class hkSignal2 :
-		public hkSignal
-	{
-	public:
-	};
-	static_assert(sizeof(hkSignal2<void, void>) == 0x08);
+	template <class P0, class P1>
+	struct hkSignal2 : hkSignal
+	{};
 
-	template <class T, class U, class V>
-	class hkSignal3 :
-		public hkSignal
-	{
-	public:
-	};
-	static_assert(sizeof(hkSignal3<void, void, void>) == 0x08);
+	template <class P0, class P1, class P2>
+	struct hkSignal3 : hkSignal
+	{};
+
+	template <class P0, class P1, class P2, class P3>
+	struct hkSignal4 : hkSignal
+	{};
+
+	template <class P0, class P1, class P2, class P3, class P4>
+	struct hkSignal5 : hkSignal
+	{};
 }

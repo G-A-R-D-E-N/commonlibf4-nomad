@@ -28,6 +28,13 @@ namespace RE
 		virtual void RemoveFromWorld();                             // 2F
 		virtual bool SetCollisionFilterInfo(CFilter a_filterInfo);  // 30
 
+		static bhkNPCollisionObject* CreateObject()
+		{
+			using func_t = decltype(&bhkNPCollisionObject::CreateObject);
+			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::CreateObject };
+			func();
+		}
+
 		void CopyMembers(bhkNPCollisionObject* a_dest, NiCloningProcess& a_cloningProcess)
 		{
 			using func_t = decltype(&bhkNPCollisionObject::CopyMembers);
@@ -49,9 +56,9 @@ namespace RE
 			return func(this, a_id);
 		}
 
-		bhkPhysicsSystem* GetPhysicsSystem()
+		NiPointer<bhkPhysicsSystem> GetPhysicsSystem() const
 		{
-			return system.get();
+			return system;
 		}
 
 		hknpShape* GetShape()
@@ -73,6 +80,11 @@ namespace RE
 			using func_t = decltype(&bhkNPCollisionObject::SetMotionType);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::SetMotionType };
 			func(this, a_type);
+		}
+
+		void SetPhysicsSystem(NiPointer<bhkPhysicsSystem> a_system)
+		{
+			system = a_system;
 		}
 
 		bool SetTransform(hkTransformf& a_transform)

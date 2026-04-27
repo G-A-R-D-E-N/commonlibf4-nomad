@@ -9,4 +9,6 @@ namespace RE
 		hkVector4f vec;  // 00
 	};
 	static_assert(sizeof(hkQuaternionf) == 0x10);
+
+	using hkQuaternion = hkQuaternionf;
 }

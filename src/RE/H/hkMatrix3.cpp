@@ -1,0 +1,73 @@
+#include "RE/H/hkMatrix3.h"
+
+namespace RE
+{
+	constexpr hkMatrix3f::hkMatrix3f(const hkVector4f& a_vec0, const hkVector4f& a_vec1, const hkVector4f& a_vec2) noexcept
+	{
+		col[0] = a_vec0;
+		col[1] = a_vec1;
+		col[2] = a_vec2;
+	}
+
+	constexpr hkMatrix3f::hkMatrix3f(
+		float a_x0, float a_y0, float a_z0, float a_w0,
+		float a_x1, float a_y1, float a_z1, float a_w1,
+		float a_x2, float a_y2, float a_z2, float a_w2) noexcept
+	{
+		col[0] = { a_x0, a_y0, a_z0, a_w0 };
+		col[1] = { a_x1, a_y1, a_z1, a_w1 };
+		col[2] = { a_x2, a_y2, a_z2, a_w2 };
+	}
+
+	constexpr hkVector4f& hkMatrix3f::operator[](std::size_t a_pos) noexcept
+	{
+		assert(a_pos < 3);
+		return col[a_pos];
+	}
+
+	constexpr const hkVector4f& hkMatrix3f::operator[](std::size_t a_pos) const noexcept
+	{
+		assert(a_pos < 3);
+		return col[a_pos];
+	}
+
+	constexpr bool hkMatrix3f::operator==(const hkMatrix3f& a_rhs) const noexcept
+	{
+		return (col[0] == a_rhs[0]) && (col[1] == a_rhs[1]) && (col[2] == a_rhs[2]);
+	}
+
+	constexpr bool hkMatrix3f::operator!=(const hkMatrix3f& a_rhs) const noexcept
+	{
+		return !operator==(a_rhs);
+	}
+
+	constexpr hkMatrix3f hkMatrix3f::operator*(const hkMatrix3f& a_rhs) const noexcept
+	{
+		hkMatrix3f result;
+		result[0][0] = col[0][0] * a_rhs[0][0] + col[0][1] * a_rhs[1][0] + col[0][2] * a_rhs[2][0];
+		result[1][0] = col[1][0] * a_rhs[0][0] + col[1][1] * a_rhs[1][0] + col[1][2] * a_rhs[2][0];
+		result[2][0] = col[2][0] * a_rhs[0][0] + col[2][1] * a_rhs[1][0] + col[2][2] * a_rhs[2][0];
+		result[0][1] = col[0][0] * a_rhs[0][1] + col[0][1] * a_rhs[1][1] + col[0][2] * a_rhs[2][1];
+		result[1][1] = col[1][0] * a_rhs[0][1] + col[1][1] * a_rhs[1][1] + col[1][2] * a_rhs[2][1];
+		result[2][1] = col[2][0] * a_rhs[0][1] + col[2][1] * a_rhs[1][1] + col[2][2] * a_rhs[2][1];
+		result[0][2] = col[0][0] * a_rhs[0][2] + col[0][1] * a_rhs[1][2] + col[0][2] * a_rhs[2][2];
+		result[1][2] = col[1][0] * a_rhs[0][2] + col[1][1] * a_rhs[1][2] + col[1][2] * a_rhs[2][2];
+		result[2][2] = col[2][0] * a_rhs[0][2] + col[2][1] * a_rhs[1][2] + col[2][2] * a_rhs[2][2];
+		return result;
+	}
+
+	constexpr hkMatrix3f hkMatrix3f::operator*(float a_scalar) const noexcept
+	{
+		hkMatrix3f result;
+		result[0][0] = col[0][0] * a_scalar;
+		result[0][1] = col[0][1] * a_scalar;
+		result[0][2] = col[0][2] * a_scalar;
+		result[1][0] = col[1][0] * a_scalar;
+		result[1][1] = col[1][1] * a_scalar;
+		result[1][2] = col[1][2] * a_scalar;
+		result[2][0] = col[2][0] * a_scalar;
+		result[2][1] = col[2][1] * a_scalar;
+		result[2][2] = col[2][2] * a_scalar;
+		return result;
+	}
+}

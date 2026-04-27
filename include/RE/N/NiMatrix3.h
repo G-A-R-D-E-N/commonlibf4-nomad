@@ -17,7 +17,7 @@ namespace RE
 			float a_x1, float a_y1, float a_z1, float a_w1,
 			float a_x2, float a_y2, float a_z2, float a_w2) noexcept;
 
-		constexpr NiPoint4&	      operator[](std::size_t a_pos) noexcept;
+		constexpr NiPoint4&       operator[](std::size_t a_pos) noexcept;
 		constexpr const NiPoint4& operator[](std::size_t a_pos) const noexcept;
 		constexpr bool            operator==(const NiMatrix3& a_rhs) const noexcept;
 		constexpr bool            operator!=(const NiMatrix3& a_rhs) const noexcept;

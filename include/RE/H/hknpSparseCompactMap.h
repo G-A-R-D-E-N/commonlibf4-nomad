@@ -8,7 +8,6 @@ namespace RE
 	class hknpSparseCompactMap
 	{
 	public:
-
 	private:
 		std::uint32_t m_secondaryKeyMask;
 		std::uint32_t m_sencondaryKeyBits;

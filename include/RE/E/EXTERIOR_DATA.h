@@ -4,7 +4,7 @@ namespace RE
 {
 	class BGSTerrainVisibilityData;
 
-    class EXTERIOR_DATA
+	class EXTERIOR_DATA
 	{
 	public:
 		enum class LandHideFlag : std::uint8_t

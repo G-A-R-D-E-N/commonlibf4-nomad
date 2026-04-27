@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/N/NiTransform.h"
 #include "RE/H/hkTransform.h"
+#include "RE/N/NiTransform.h"
 
 namespace RE
 {

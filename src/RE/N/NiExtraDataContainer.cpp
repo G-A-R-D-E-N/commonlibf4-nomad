@@ -45,8 +45,8 @@ namespace RE
 		const BSAutoWriteLock l(lock);
 
 		const auto it = std::find_if(extra.begin(), extra.end(), [&](auto& entry) {
-            return entry->GetName() == a_key;
-        });
+			return entry->GetName() == a_key;
+		});
 
 		if (it != extra.end()) {
 			extra.erase(it);

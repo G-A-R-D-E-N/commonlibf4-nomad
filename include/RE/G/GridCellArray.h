@@ -17,13 +17,13 @@ namespace RE
 		class QueuedAttach
 		{
 		private:
-    		enum class ProgressiveAttachState : std::int32_t
-    		{
-    			kWorld = 0,
-    			kModels = 1,
-    			kRegisterCombinedObjectVisibility = 2,
-    			kDone = 3,
-    		};
+			enum class ProgressiveAttachState : std::int32_t
+			{
+				kWorld = 0,
+				kModels = 1,
+				kRegisterCombinedObjectVisibility = 2,
+				kDone = 3,
+			};
 
 		public:
 			// members
@@ -35,13 +35,13 @@ namespace RE
 		class QueuedDetach
 		{
 		private:
-    		enum class ProgressiveDetachState : std::int32_t
-    		{
-    			kActorsNext = 0,
-    			kRefsNext = 1,
-    			kCombinedArtNext = 2,
-    			kDone = 3,
-    		};
+			enum class ProgressiveDetachState : std::int32_t
+			{
+				kActorsNext = 0,
+				kRefsNext = 1,
+				kCombinedArtNext = 2,
+				kDone = 3,
+			};
 
 		public:
 			// members

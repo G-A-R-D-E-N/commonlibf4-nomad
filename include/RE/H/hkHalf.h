@@ -2,7 +2,7 @@
 
 namespace RE
 {
-    class hkHalf
+	class hkHalf
 	{
 	public:
 		std::int16_t value;

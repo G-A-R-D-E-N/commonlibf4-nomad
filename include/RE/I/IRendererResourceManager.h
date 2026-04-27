@@ -4,7 +4,7 @@
 
 namespace RE
 {
-    class BSDynamicLines;
+	class BSDynamicLines;
 	class BSDynamicTriShape;
 	class BSLines;
 	class BSMeshLODTriShape;
@@ -26,7 +26,7 @@ namespace RE
 		class Texture;
 	}
 
-   	class __declspec(novtable) IRendererResourceManager
+	class __declspec(novtable) IRendererResourceManager
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::IRendererResourceManager };

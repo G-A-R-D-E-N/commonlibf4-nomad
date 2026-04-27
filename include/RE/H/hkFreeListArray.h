@@ -28,7 +28,6 @@ namespace RE
 	class hkFreeListArray
 	{
 	public:
-
 	private:
 		// members
 		hkArray<hkFreeListArrayElement<T>> m_elements;

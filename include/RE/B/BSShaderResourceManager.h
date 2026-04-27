@@ -4,7 +4,7 @@
 
 namespace RE
 {
-    class __declspec(novtable) BSShaderResourceManager :
+	class __declspec(novtable) BSShaderResourceManager :
 		public IRendererResourceManager
 	{
 	public:

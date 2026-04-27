@@ -8,7 +8,7 @@
 
 namespace RE
 {
-    void TESObjectCELL::ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback)
+	void TESObjectCELL::ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback)
 	{
 		const BSAutoLock locker(spinLock);
 		for (const auto& ref : references) {
@@ -30,7 +30,7 @@ namespace RE
 		});
 	}
 
-    EXTERIOR_DATA* TESObjectCELL::GetCoordinates() const
+	EXTERIOR_DATA* TESObjectCELL::GetCoordinates() const
 	{
 		return IsExterior() ? cellData.exterior : nullptr;
 	}

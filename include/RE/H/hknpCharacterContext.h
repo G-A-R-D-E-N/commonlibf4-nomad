@@ -13,8 +13,8 @@ namespace RE
 		public hkReferencedObject
 	{
 	public:
-    	static constexpr auto RTTI{ RTTI::hknpCharacterContext };
-    	static constexpr auto VTABLE{ VTABLE::hknpCharacterContext };
+		static constexpr auto RTTI{ RTTI::hknpCharacterContext };
+		static constexpr auto VTABLE{ VTABLE::hknpCharacterContext };
 
 		enum class CharacterType : std::int32_t
 		{

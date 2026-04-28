@@ -2,9 +2,9 @@
 
 namespace RE
 {
-   	float NiPoint3::GetDistance(const NiPoint3& a_point) const noexcept
+	float NiPoint3::GetDistance(const NiPoint3& a_point) const noexcept
 	{
-	    // std math functions are not constexpr yet
+		// std math functions are not constexpr yet
 		return std::sqrtf(GetSquaredDistance(a_point));
 	}
 

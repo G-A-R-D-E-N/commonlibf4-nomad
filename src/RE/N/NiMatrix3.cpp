@@ -2,7 +2,7 @@
 
 namespace RE
 {
-    bool NiMatrix3::ToEulerAnglesXYZ(NiPoint3& a_point) const
+	bool NiMatrix3::ToEulerAnglesXYZ(NiPoint3& a_point) const
 	{
 		return ToEulerAnglesXYZ(a_point.x, a_point.y, a_point.z);
 	}

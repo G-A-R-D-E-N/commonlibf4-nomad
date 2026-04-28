@@ -10,7 +10,7 @@
 #include "RE/H/hknpCharacterContext.h"
 #include "RE/H/hknpCharacterState.h"
 #include "RE/H/hknpCharacterSurfaceInfo.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE

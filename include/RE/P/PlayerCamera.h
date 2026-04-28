@@ -8,7 +8,7 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/C/CameraStates.h"
 #include "RE/H/hknpBodyId.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/T/TESCamera.h"
 #include "RE/T/TESCameraState.h"
 

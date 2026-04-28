@@ -15,7 +15,7 @@
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicTarget.h"
 #include "RE/M/Modifiers.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiTFlags.h"
 #include "RE/O/ObjectEquipParams.h"
 #include "RE/S/SEX.h"

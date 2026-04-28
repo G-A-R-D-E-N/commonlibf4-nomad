@@ -1,7 +1,5 @@
 #pragma once
 
-#include "RE/N/NiPoint.h"
-
 namespace RE
 {
 	class BSDynamicLines;
@@ -17,6 +15,8 @@ namespace RE
 	class NiDefaultAVObjectPalette;
 	class NiNode;
 	class NiPick;
+	class NiPoint2;
+	class NiPoint3;
 	class NiShadeProperty;
 	class NiStream;
 	class NiTexture;

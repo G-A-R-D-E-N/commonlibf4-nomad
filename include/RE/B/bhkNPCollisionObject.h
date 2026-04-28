@@ -23,8 +23,8 @@ namespace RE
 		inline static constexpr auto Ni_RTTI{ Ni_RTTI::bhkNPCollisionObject };
 
 		// add
-		virtual void CreateInstance(bhkWorld& a_world);             // 2D
-		virtual void AddToWorld(bhkWorld& a_world);                 // 2E
+		virtual void CreateInstance(bhkWorld* a_world);             // 2D
+		virtual void AddToWorld(bhkWorld* a_world);                 // 2E
 		virtual void RemoveFromWorld();                             // 2F
 		virtual bool SetCollisionFilterInfo(CFilter a_filterInfo);  // 30
 
@@ -32,7 +32,7 @@ namespace RE
 		{
 			using func_t = decltype(&bhkNPCollisionObject::CreateObject);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::CreateObject };
-			func();
+			return func();
 		}
 
 		void CopyMembers(bhkNPCollisionObject* a_dest, NiCloningProcess& a_cloningProcess)

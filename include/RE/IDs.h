@@ -1089,6 +1089,12 @@ namespace RE::ID
 		inline constexpr REL::ID Get{ 2194566 };
 	}
 
+	namespace hknpCapsuleShape
+	{
+		inline constexpr REL::ID Init{ 2257217 };
+		inline constexpr REL::ID CreateCapsuleShape{ 2257207 };
+	}
+
 	namespace hkContainerHeapAllocator
 	{
 		inline constexpr REL::ID Singleton{ 2665426 };
@@ -1462,18 +1468,18 @@ namespace RE::ID
 
 	namespace NiMatrix3
 	{
-		inline constexpr REL::ID ToEulerAnglesXYZ1{ 2269806 };
-		inline constexpr REL::ID ToEulerAnglesXZY2{ 2269807 };
-		inline constexpr REL::ID ToEulerAnglesYXZ3{ 2269808 };
-		inline constexpr REL::ID ToEulerAnglesYZX4{ 2269809 };
-		inline constexpr REL::ID ToEulerAnglesZYX5{ 2269810 };
-		inline constexpr REL::ID ToEulerAnglesZXY6{ 2269824 };
-		inline constexpr REL::ID FromEulerAnglesXYZ1{ 2269813 };
-		inline constexpr REL::ID FromEulerAnglesXZY2{ 2269814 };
-		inline constexpr REL::ID FromEulerAnglesYXZ3{ 2269815 };
-		inline constexpr REL::ID FromEulerAnglesYZX4{ 2269816 };
-		inline constexpr REL::ID FromEulerAnglesZYX5{ 2269817 };
-		inline constexpr REL::ID FromEulerAnglesZXY6{ 2269825 };
+		inline constexpr REL::ID ToEulerAnglesXYZ{ 2269806 };
+		inline constexpr REL::ID ToEulerAnglesXZY{ 2269807 };
+		inline constexpr REL::ID ToEulerAnglesYXZ{ 2269808 };
+		inline constexpr REL::ID ToEulerAnglesYZX{ 2269809 };
+		inline constexpr REL::ID ToEulerAnglesZYX{ 2269810 };
+		inline constexpr REL::ID ToEulerAnglesZXY{ 2269824 };
+		inline constexpr REL::ID FromEulerAnglesXYZ{ 2269813 };
+		inline constexpr REL::ID FromEulerAnglesXZY{ 2269814 };
+		inline constexpr REL::ID FromEulerAnglesYXZ{ 2269815 };
+		inline constexpr REL::ID FromEulerAnglesYZX{ 2269816 };
+		inline constexpr REL::ID FromEulerAnglesZYX{ 2269817 };
+		inline constexpr REL::ID FromEulerAnglesZXY{ 2269825 };
 	}
 
 	namespace NiNode
@@ -1481,12 +1487,9 @@ namespace RE::ID
 		inline constexpr REL::ID ChildrenVTable{ 390064 };
 	}
 
-	namespace NiPoint
+	namespace NiPoint3
 	{
-		namespace NiPoint3
-		{
-			inline constexpr REL::ID GetZAngleFromVector{ 2269788 };
-		}
+		inline constexpr REL::ID GetZAngleFromVector{ 2269788 };
 	}
 
 	namespace NiRefObject

@@ -3,7 +3,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/G/GridArray.h"
 #include "RE/G/GridCell.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

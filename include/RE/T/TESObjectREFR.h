@@ -16,7 +16,7 @@
 #include "RE/I/IKeywordFormBase.h"
 #include "RE/I/ITEM_REMOVE_REASON.h"
 #include "RE/M/MapMarkerData.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/O/OBJ_REFR.h"
 #include "RE/T/TESForm.h"
 

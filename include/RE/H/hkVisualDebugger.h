@@ -32,8 +32,8 @@ namespace RE
 		}
 
 		// add
-		virtual void Step(float a_frameTime) {}  // 04
-		virtual void PollForNewClients() {}      // 05
+		virtual void Step([[maybe_unused]] float a_frameTime) {}  // 04
+		virtual void PollForNewClients() {}                       // 05
 
 		void AddContext(hkProcessContext* a_context)
 		{

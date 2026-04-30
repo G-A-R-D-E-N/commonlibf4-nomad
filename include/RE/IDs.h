@@ -2010,7 +2010,7 @@ namespace RE::ID
 
 	namespace TESObjectCONT
 	{
-		inline constexpr REL::ID GetActivateText{ 2917378, 198653 }; // Check
+		inline constexpr REL::ID GetActivateText{ 917378, 2198653 }; // Check
 	}
 
 	namespace TESObjectDOOR

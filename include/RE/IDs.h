@@ -66,6 +66,8 @@ namespace RE::ID
 		inline constexpr REL::ID GetMobilityCrippled{ 2230996 };
 		inline constexpr REL::ID SPECIALModifiedCallback{ 2231020 };
 		inline constexpr REL::ID StopInteractingQuick{ 2231227 };
+		inline constexpr REL::ID CalculateDetectionFormula{ 2230213 };
+		inline constexpr REL::ID DoHitMe{ 2231148 };
 	}
 
 	namespace ActorEquipManager
@@ -95,6 +97,7 @@ namespace RE::ID
 	namespace AIFormulas
 	{
 		inline constexpr REL::ID GetBarterValue{ 2208969 };
+		inline constexpr REL::ID ComputePickpocketSuccess{ 2208977 };
 	}
 
 	namespace AIProcess
@@ -116,6 +119,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetRunOncePackage{ 2232344 };
 		inline constexpr REL::ID AddToProcedureIndexRunning{ 2718412 };
 		inline constexpr REL::ID ComputeLastTimeProcessed{ 2231541 };
+		inline constexpr REL::ID GetActorLightLevel{ 2231981 };
 	}
 
 	namespace AITimer
@@ -851,6 +855,7 @@ namespace RE::ID
 		inline constexpr REL::ID CalcWeaponDamage{ 2209001 };
 		inline constexpr REL::ID GetNumCrippledAttackConditions{ 2209041 };
 		inline constexpr REL::ID CalcScopeSteadyActionPointDrain{ 2209045 };
+		inline constexpr REL::ID CalcResistedPercentage{ 2209007 };
 	}
 
 	namespace CombatUtilities
@@ -1235,6 +1240,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::ID OpenLockpickingMenu{ 2249263 };
 		inline constexpr REL::ID SendLockInfoToMenu{ 2249267 };
+		inline constexpr REL::ID DamageLockpick{ 2249275 };
 	}
 
 	namespace LocksPicked
@@ -1613,6 +1619,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetPerkCount{ 2233187 };
 		inline constexpr REL::ID HasLOSToTarget{ 2233004 };
 		inline constexpr REL::ID TryUnlockObject{ 2233040 };
+		inline constexpr REL::ID EnableRadio{ 2233211 };
 	}
 
 	namespace PlayerControls
@@ -1667,6 +1674,13 @@ namespace RE::ID
 		inline constexpr REL::ID AreHostileActorsNear{ 2234105 };
 		inline constexpr REL::ID IsActorTargetingREFinPackage{ 2234033 };
 		inline constexpr REL::ID RequestHighestDetectionLevelAgainstActor{ 2234111 };
+	}
+
+	namespace RadioManager
+	{
+		inline constexpr REL::ID QPlayerRadioEnabled{ 2227674 };
+		inline constexpr REL::ID QCurrentPlayerFreq{ 2227670 };
+		inline constexpr REL::ID EnablePlayerRadio{ 2227673 };
 	}
 
 	namespace REFR_LOCK
@@ -1783,6 +1797,7 @@ namespace RE::ID
 		inline constexpr REL::ID QueueShowPipboy{ 2229288 };
 		inline constexpr REL::ID QueueUpdate3D{ 2229234 };
 		inline constexpr REL::ID QueueWeaponFire{ 2229186 };
+		inline constexpr REL::ID TaskUnpackFunc{ 2229323 };
 	}
 
 	namespace TerminalHacked
@@ -1974,6 +1989,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetFacialBoneMorphIntensity{ 2207416 };
 		inline constexpr REL::ID SetHairColor{ 2207426 };
 		inline constexpr REL::ID GetShortName{ 2207405 };
+		inline constexpr REL::ID GetXPValue{ 2207384 };
 	}
 
 	namespace TESObjectARMO

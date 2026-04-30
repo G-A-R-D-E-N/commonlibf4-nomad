@@ -40,6 +40,13 @@ namespace RE
 			return func(a_lockedRef);
 		}
 
+		static void DamageLockpick()
+		{
+			using func_t = decltype(&LockpickingMenu::DamageLockpick);
+			static REL::Relocation<func_t> func{ ID::LockpickingMenu::DamageLockpick };
+			return func();
+		}
+
 		// members
 		NiMatrix3             origPickRotate;           // 0E0
 		NiPoint3              origPickTranslate;        // 110

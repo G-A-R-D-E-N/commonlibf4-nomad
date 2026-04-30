@@ -35,7 +35,7 @@ namespace RE
 		float              visualDetectionLevel;     // 5C
 		float              soundDetectionLevel;      // 60
 		bool               LOS;                      // 64
-		bool               _360LOS;                  // 65
+		bool               LOS360;                   // 65
 		bool               exterior;                 // 66
 		bool               alert;                    // 67
 		bool               sleeping;                 // 68

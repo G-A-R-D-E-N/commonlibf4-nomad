@@ -1115,7 +1115,7 @@ namespace RE::ID
 
 	namespace hkIArchive
 	{
-		inline constexpr REL::ID ctor2{  };
+		inline constexpr REL::ID ctor2{};
 	}
 
 	namespace hkMemoryRouter

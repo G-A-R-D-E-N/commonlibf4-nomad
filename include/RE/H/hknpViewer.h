@@ -1,16 +1,16 @@
 #pragma once
 
-#include "RE/H/hknpBodyId.h"
-#include "RE/H/hknpProcessContextListener.h"
 #include "RE/H/hkProcess.h"
 #include "RE/H/hkReferencedObject.h"
+#include "RE/H/hknpBodyId.h"
+#include "RE/H/hknpProcessContextListener.h"
 
 namespace RE
 {
 	class hknpProcessContext;
 	class hknpWorld;
 
-	class hknpViewer : 
+	class hknpViewer :
 		public hkReferencedObject,
 		public hkProcess,
 		public hknpProcessContextListener

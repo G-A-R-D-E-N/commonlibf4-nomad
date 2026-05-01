@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RE/H/hkBool.h"
-#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkRefPtr.h"
+#include "RE/H/hkReferencedObject.h"
 #include "RE/H/hkStreamWriter.h"
 
 namespace RE

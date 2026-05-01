@@ -18,7 +18,7 @@
 #include "RE/D/DifficultyLevel.h"
 #include "RE/F/FriendshipFactionsStruct.h"
 #include "RE/I/IMovementPlayerControlsFilter.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiPointer.h"
 #include "RE/N/NiTMap.h"
 #include "RE/P/PLAYER_TARGET_LOC.h"

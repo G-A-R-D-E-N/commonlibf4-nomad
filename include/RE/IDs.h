@@ -426,6 +426,7 @@ namespace RE::ID
 
 	namespace bhkNPCollisionObject
 	{
+		inline constexpr REL::ID CreateObject{ 2277912 };
 		inline constexpr REL::ID CopyMembers{ 2277907 };
 		inline constexpr REL::ID GetBody{ 2277926 };
 		inline constexpr REL::ID GetBodyId{ 2277928 };
@@ -434,6 +435,11 @@ namespace RE::ID
 		inline constexpr REL::ID SetMotionType{ 2277913 };
 		inline constexpr REL::ID SetTransform{ 2277945 };
 		inline constexpr REL::ID Getbhk{ 2277919 };
+	}
+
+	namespace hknpBodyCinfo
+	{
+		inline constexpr REL::ID ctor{ 2255967 };
 	}
 
 	namespace bhkPhysicsSystem
@@ -460,13 +466,23 @@ namespace RE::ID
 	namespace bhkUtilFunctions
 	{
 		inline constexpr REL::ID FindFirstCollisionObject{ 2278093 };
+		inline constexpr REL::ID GetAVObjectFromBodyID{ 2278085 };
 	}
 
 	namespace bhkWorld
 	{
+		inline constexpr REL::ID AddObjects{ 2277719 };
 		inline constexpr REL::ID AddPhysicsSystem{ 2277752 };
+		inline constexpr REL::ID IsBodyAdded{ 2277997 };
 		inline constexpr REL::ID RemovePhysicsSystem{ 2277753 };
+		inline constexpr REL::ID Activate{ 2277728 };
+		inline constexpr REL::ID Enable{ 2277725 };
+		inline constexpr REL::ID EnableCollision{ 2277730 };
+		inline constexpr REL::ID IsActive{ 2277729 };
 		inline constexpr REL::ID RemoveObjects{ 2277721 };
+		inline constexpr REL::ID SetCollisionGroup{ 2277722 };
+		inline constexpr REL::ID SetDismemberedLimb{ 2277726 };
+		inline constexpr REL::ID SetMotion{ 2277723 };
 	}
 
 	namespace BIPOBJECT
@@ -717,6 +733,11 @@ namespace RE::ID
 		inline constexpr REL::ID SetMaterial{ 2316285 };
 	}
 
+	namespace BSShaderResourceManager
+	{
+		inline constexpr REL::ID Singleton{ 2703483 };
+	}
+
 	namespace BSShaderTextureSet
 	{
 		inline constexpr REL::ID CreateObject{ 2316324 };
@@ -729,11 +750,24 @@ namespace RE::ID
 
 	namespace BSSoundHandle
 	{
+		inline constexpr REL::ID ClearFollowedObject{ 2267067 };
 		inline constexpr REL::ID FadeInPlay{ 2267075 };
 		inline constexpr REL::ID FadeOutAndRelease{ 2267076 };
+		inline constexpr REL::ID FadeTo{ 2267074 };
+		inline constexpr REL::ID GetDuration{ 2267062 };
+		inline constexpr REL::ID IsEnvelopeLoop{ 2267051 };
+		inline constexpr REL::ID IsPaused{ 2267047 };
 		inline constexpr REL::ID IsPlaying{ 2267046 };
+		inline constexpr REL::ID IsValid{ 2267048 };
+		inline constexpr REL::ID Pause{ 2267044 };
 		inline constexpr REL::ID Play{ 2276042 };
+		inline constexpr REL::ID PlayAfter{ 2267043 };
+		inline constexpr REL::ID SetFrequency{ 2267059 };
+		inline constexpr REL::ID SetFrequencyVariance{ 2267060 };
+		inline constexpr REL::ID SetObjectToFollow{ 2267066 };
 		inline constexpr REL::ID SetOutputModel{ 2267053 };
+		inline constexpr REL::ID SetPosition{ 2267064 };
+		inline constexpr REL::ID SetStaticAttenuation{ 2267061 };
 		inline constexpr REL::ID Stop{ 2267045 };
 	}
 
@@ -1069,6 +1103,140 @@ namespace RE::ID
 		inline constexpr REL::ID Get{ 2194566 };
 	}
 
+	namespace hkContainerHeapAllocator
+	{
+		inline constexpr REL::ID Singleton{ 2665426 };
+	}
+
+	namespace hkDisplaySerializeOStream
+	{
+		inline constexpr REL::ID ctor{ 2266374 };
+	}
+
+	namespace hkHardwareInfo
+	{
+		inline constexpr REL::ID CalcNumHardwareThreads{ 2260765 };
+	}
+
+	namespace hkIArchive
+	{
+		inline constexpr REL::ID ctor2{};
+	}
+
+	namespace hkMemoryRouter
+	{
+		inline constexpr REL::ID tlsSlotID{ 878080 };
+	}
+
+	namespace hkMonitorStream
+	{
+		inline constexpr REL::ID tlsSlotID{ 2702743 };
+		inline constexpr REL::ID Clear{ 2257312 };
+		inline constexpr REL::ID Resize{ 2257310 };
+	}
+
+	namespace hknpCapsuleShape
+	{
+		inline constexpr REL::ID Init{ 2257217 };
+		inline constexpr REL::ID CreateCapsuleShape{ 2257207 };
+	}
+
+	namespace hknpConvexPolytopeShape
+	{
+		inline constexpr REL::ID CreateFromVerticesInternal{ 2257201 };
+	}
+
+	namespace hknpConvexShape
+	{
+		inline constexpr REL::ID CreateFromAabb{ 2257125 };
+		inline constexpr REL::ID CreateFromCylinder{ 2257126 };
+		inline constexpr REL::ID CreateFromHalfExtents{ 2257124 };
+		inline constexpr REL::ID CreateFromIndexedVertices{ 2257123 };
+		inline constexpr REL::ID CreateFromVertices{ 2257122 };
+	}
+
+	namespace hknpMotionCinfo
+	{
+		inline constexpr REL::ID ctor{ 2258369 };
+		inline constexpr REL::ID InitializeAsKeyFramed{ 2258373 };
+	}
+
+	namespace hknpPhysicsSystem
+	{
+		inline constexpr REL::ID AddToWorld{ 2255984 };
+		inline constexpr REL::ID RemoveFromWorld{ 2255985 };
+	}
+
+	namespace hknpSphereShape
+	{
+		inline constexpr REL::ID CreateSphereShape{ 2256377 };
+	}
+
+	namespace hknpTriangleShape
+	{
+		inline constexpr REL::ID CreateEmptyTriangleShape{ 2256226 };
+		inline constexpr REL::ID SetVertices{ 2256228 };
+	}
+
+	namespace hknpBSWorld
+	{
+		inline constexpr REL::ID AccessMotion{ 2277680 };
+		inline constexpr REL::ID ActivateBody{ 2277677 };
+		inline constexpr REL::ID SetBodyAngularVelocity{ 2277672 };
+		inline constexpr REL::ID SetBodyKeyframed{ 2277684 };
+		inline constexpr REL::ID SetBodyLinearVelocity{ 2277671 };
+		inline constexpr REL::ID SetBodyStatic{ 2277683 };
+		inline constexpr REL::ID SetBodyVelocity{ 2277670 };
+	}
+
+	namespace hknpWorld
+	{
+		inline constexpr REL::ID AddBodies{ 2255681 };
+		inline constexpr REL::ID CreateBody{ 2255680 };
+		inline constexpr REL::ID CreateMotion{ 2255688 };
+		inline constexpr REL::ID DisableBodyFlags{ 2255636 };
+		inline constexpr REL::ID EnableBodyFlags{ 2255635 };
+		inline constexpr REL::ID GetActionManager{ 2255709 };
+		inline constexpr REL::ID SetBodyCollisionFilterInfo{ 2255626 };
+		inline constexpr REL::ID SetBodyMotion{ 2255634 };
+	}
+
+	namespace hkOArchive
+	{
+		inline constexpr REL::ID ctor2{ 2259258 };
+	}
+
+	namespace hkProcessFactory
+	{
+		inline constexpr REL::ID Singleton{ 2702978 };
+		inline constexpr REL::ID CreateProcess{ 2263377 };
+	}
+
+	namespace hkReferencedObject
+	{
+		inline constexpr REL::ID AddReference{ 2259213 };
+		inline constexpr REL::ID RemoveReference{ 2195747 };
+	}
+
+	namespace hkStringPtr
+	{
+		inline constexpr REL::ID ctor{ 2255573 };
+	}
+
+	namespace hkVisualDebugger
+	{
+		inline constexpr REL::ID ctor{ 2263295 };
+		inline constexpr REL::ID AddContext{ 2263313 };
+		inline constexpr REL::ID AddDefaultProcess{ 2263302 };
+		inline constexpr REL::ID Serve{ 2263296 };
+		inline constexpr REL::ID Shutdown{ 2263300 };
+	}
+
+	namespace hkVtableClassRegistry
+	{
+		inline constexpr REL::ID Singleton{ 2702926 };
+	}
+
 	namespace HolotapeMenu
 	{
 		inline constexpr REL::ID ShowHolotapeInPipboy{ 2224028 };
@@ -1357,18 +1525,18 @@ namespace RE::ID
 
 	namespace NiMatrix3
 	{
-		inline constexpr REL::ID ToEulerAnglesXYZ1{ 2269806 };
-		inline constexpr REL::ID ToEulerAnglesXZY2{ 2269807 };
-		inline constexpr REL::ID ToEulerAnglesYXZ3{ 2269808 };
-		inline constexpr REL::ID ToEulerAnglesYZX4{ 2269809 };
-		inline constexpr REL::ID ToEulerAnglesZYX5{ 2269810 };
-		inline constexpr REL::ID ToEulerAnglesZXY6{ 2269824 };
-		inline constexpr REL::ID FromEulerAnglesXYZ1{ 2269813 };
-		inline constexpr REL::ID FromEulerAnglesXZY2{ 2269814 };
-		inline constexpr REL::ID FromEulerAnglesYXZ3{ 2269815 };
-		inline constexpr REL::ID FromEulerAnglesYZX4{ 2269816 };
-		inline constexpr REL::ID FromEulerAnglesZYX5{ 2269817 };
-		inline constexpr REL::ID FromEulerAnglesZXY6{ 2269825 };
+		inline constexpr REL::ID ToEulerAnglesXYZ{ 2269806 };
+		inline constexpr REL::ID ToEulerAnglesXZY{ 2269807 };
+		inline constexpr REL::ID ToEulerAnglesYXZ{ 2269808 };
+		inline constexpr REL::ID ToEulerAnglesYZX{ 2269809 };
+		inline constexpr REL::ID ToEulerAnglesZYX{ 2269810 };
+		inline constexpr REL::ID ToEulerAnglesZXY{ 2269824 };
+		inline constexpr REL::ID FromEulerAnglesXYZ{ 2269813 };
+		inline constexpr REL::ID FromEulerAnglesXZY{ 2269814 };
+		inline constexpr REL::ID FromEulerAnglesYXZ{ 2269815 };
+		inline constexpr REL::ID FromEulerAnglesYZX{ 2269816 };
+		inline constexpr REL::ID FromEulerAnglesZYX{ 2269817 };
+		inline constexpr REL::ID FromEulerAnglesZXY{ 2269825 };
 	}
 
 	namespace NiNode
@@ -1376,12 +1544,9 @@ namespace RE::ID
 		inline constexpr REL::ID ChildrenVTable{ 390064 };
 	}
 
-	namespace NiPoint
+	namespace NiPoint3
 	{
-		namespace NiPoint3
-		{
-			inline constexpr REL::ID GetZAngleFromVector{ 2269788 };
-		}
+		inline constexpr REL::ID GetZAngleFromVector{ 2269788 };
 	}
 
 	namespace NiRefObject
@@ -1579,6 +1744,7 @@ namespace RE::ID
 	namespace PlayerCamera
 	{
 		inline constexpr REL::ID Singleton{ 4796065 };
+		inline constexpr REL::ID GetCameraPosition{ 2248334 };
 		inline constexpr REL::ID PopState{ 2248424 };
 		inline constexpr REL::ID PushState{ 2248422 };
 		inline constexpr REL::ID ToggleFreeCameraMode{ 2248368 };
@@ -2044,6 +2210,10 @@ namespace RE::ID
 		inline constexpr REL::ID FindReferenceFor3D{ 2201082 };
 		inline constexpr REL::ID GetCurrentLocation{ 2201163 };
 		inline constexpr REL::ID GetDisplayFullName{ 2201126 };
+		inline constexpr REL::ID GetDistanceFromPoint{ 2201172 };
+		inline constexpr REL::ID GetDistanceFromReference{ 2201174 };
+		inline constexpr REL::ID GetDistanceSqFromPoint{ 2201173 };
+		inline constexpr REL::ID GetDistanceSqFromReference{ 2201175 };
 		inline constexpr REL::ID GetEditorDead{ 2200781 };
 		inline constexpr REL::ID GetOwner{ 2202616 };
 		inline constexpr REL::ID GetGoldAmount{ 2200923 };

@@ -2,7 +2,7 @@
 
 #include "RE/D/DetectionFormulaData.h"
 #include "RE/D/DetectionLevels.h"
-#include "RE/N/NiPoint.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {

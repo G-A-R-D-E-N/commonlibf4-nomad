@@ -51,7 +51,7 @@ namespace RE
 
 namespace RE
 {
-	inline constexpr hkVector4f hkVector4f::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F };
+	inline const hkVector4f hkVector4f::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F };
 
 	constexpr hkVector4f::hkVector4f(float a_x, float a_y, float a_z, float a_w) noexcept :
 		x(a_x), y(a_y), z(a_z), w(a_w)

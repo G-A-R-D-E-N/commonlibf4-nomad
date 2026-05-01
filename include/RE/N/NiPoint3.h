@@ -239,16 +239,16 @@ namespace RE
 		return x * x + y * y + z * z;
 	}
 
-	inline constexpr NiPoint3  NiPoint3::ZERO = { 0.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint3  NiPoint3::UNIT = { 1.0F, 1.0F, 1.0F };
-	inline constexpr NiPoint3  NiPoint3::UNIT_X = { 1.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint3  NiPoint3::UNIT_Y = { 0.0F, 1.0F, 0.0F };
-	inline constexpr NiPoint3  NiPoint3::UNIT_Z = { 0.0F, 0.0F, 1.0F };
-	inline constexpr NiPoint3A NiPoint3A::ZERO = { 0.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint3A NiPoint3A::UNIT = { 1.0F, 1.0F, 1.0F };
-	inline constexpr NiPoint3A NiPoint3A::UNIT_X = { 1.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint3A NiPoint3A::UNIT_Y = { 0.0F, 1.0F, 0.0F };
-	inline constexpr NiPoint3A NiPoint3A::UNIT_Z = { 0.0F, 0.0F, 1.0F };
+	inline const NiPoint3  NiPoint3::ZERO = { 0.0F, 0.0F, 0.0F };
+	inline const NiPoint3  NiPoint3::UNIT = { 1.0F, 1.0F, 1.0F };
+	inline const NiPoint3  NiPoint3::UNIT_X = { 1.0F, 0.0F, 0.0F };
+	inline const NiPoint3  NiPoint3::UNIT_Y = { 0.0F, 1.0F, 0.0F };
+	inline const NiPoint3  NiPoint3::UNIT_Z = { 0.0F, 0.0F, 1.0F };
+	inline const NiPoint3A NiPoint3A::ZERO = { 0.0F, 0.0F, 0.0F };
+	inline const NiPoint3A NiPoint3A::UNIT = { 1.0F, 1.0F, 1.0F };
+	inline const NiPoint3A NiPoint3A::UNIT_X = { 1.0F, 0.0F, 0.0F };
+	inline const NiPoint3A NiPoint3A::UNIT_Y = { 0.0F, 1.0F, 0.0F };
+	inline const NiPoint3A NiPoint3A::UNIT_Z = { 0.0F, 0.0F, 1.0F };
 }
 
 template <>

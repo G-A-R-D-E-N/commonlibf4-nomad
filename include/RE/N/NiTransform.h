@@ -33,8 +33,8 @@ namespace RE
 
 namespace RE
 {
-	inline constexpr NiTransform NiTransform::ZERO = { NiMatrix3::ZERO, NiPoint3::ZERO, 0.0F };
-	inline constexpr NiTransform NiTransform::IDENTITY = { NiMatrix3::IDENTITY, NiPoint3::ZERO, 1.0F };
+	inline const NiTransform NiTransform::ZERO = { NiMatrix3::ZERO, NiPoint3::ZERO, 0.0F };
+	inline const NiTransform NiTransform::IDENTITY = { NiMatrix3::IDENTITY, NiPoint3::ZERO, 1.0F };
 
 	constexpr NiTransform::NiTransform(const NiMatrix3& a_rotation, const NiPoint3& a_translation, const float a_scale) noexcept :
 		rotate(a_rotation), translate(a_translation), scale(a_scale)

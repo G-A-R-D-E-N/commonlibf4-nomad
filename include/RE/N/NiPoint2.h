@@ -171,10 +171,10 @@ namespace RE
 		return *this;
 	}
 
-	inline constexpr NiPoint2 NiPoint2::ZERO = { 0.0F, 0.0F };
-	inline constexpr NiPoint2 NiPoint2::UNIT = { 1.0F, 1.0F };
-	inline constexpr NiPoint2 NiPoint2::UNIT_X = { 1.0F, 0.0F };
-	inline constexpr NiPoint2 NiPoint2::UNIT_Y = { 0.0F, 1.0F };
+	inline const NiPoint2 NiPoint2::ZERO = { 0.0F, 0.0F };
+	inline const NiPoint2 NiPoint2::UNIT = { 1.0F, 1.0F };
+	inline const NiPoint2 NiPoint2::UNIT_X = { 1.0F, 0.0F };
+	inline const NiPoint2 NiPoint2::UNIT_Y = { 0.0F, 1.0F };
 }
 
 template <>

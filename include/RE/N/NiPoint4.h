@@ -202,11 +202,11 @@ namespace RE
 		return *this;
 	}
 
-	inline constexpr NiPoint4 NiPoint4::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint4 NiPoint4::IDENTITY0 = { 1.0F, 0.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint4 NiPoint4::IDENTITY1 = { 0.0F, 1.0F, 0.0F, 0.0F };
-	inline constexpr NiPoint4 NiPoint4::IDENTITY2 = { 0.0F, 0.0F, 1.0F, 0.0F };
-	inline constexpr NiPoint4 NiPoint4::IDENTITY3 = { 0.0F, 0.0F, 0.0F, 1.0F };
+	inline const NiPoint4 NiPoint4::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F };
+	inline const NiPoint4 NiPoint4::IDENTITY0 = { 1.0F, 0.0F, 0.0F, 0.0F };
+	inline const NiPoint4 NiPoint4::IDENTITY1 = { 0.0F, 1.0F, 0.0F, 0.0F };
+	inline const NiPoint4 NiPoint4::IDENTITY2 = { 0.0F, 0.0F, 1.0F, 0.0F };
+	inline const NiPoint4 NiPoint4::IDENTITY3 = { 0.0F, 0.0F, 0.0F, 1.0F };
 }
 
 template <>

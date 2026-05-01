@@ -19,7 +19,7 @@ namespace RE
 		// add
 		virtual hkBool                  IsOk() = 0;                                                                                        // 0x20 [04]
 		virtual std::int32_t            Read([[maybe_unused]] void* a_buffer, [[maybe_unused]] std::int32_t a_numBytes) = 0;               // 0x28 [05]
-		virtual std::int32_t            Skip([[maybe_unused]] std::int32_t a_numBytes) {}                                                  // 0x30 [06]
+		virtual std::int32_t            Skip([[maybe_unused]] std::int32_t a_numBytes) { return 0; }                                       // 0x30 [06]
 		virtual std::int32_t            Peek([[maybe_unused]] void* a_buffer, [[maybe_unused]] std::int32_t a_numBytes) { return false; }  // 0x38 [07]
 		virtual hkSeekableStreamReader* IsSeekTellSupported() { return nullptr; }                                                          // 0x40 [08]
 	};

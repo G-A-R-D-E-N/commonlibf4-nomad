@@ -10,10 +10,11 @@ namespace RE
 	class hknpViewerColorScheme
 	{
 	public:
-		virtual ~hknpViewerColorScheme() = default;
+		virtual ~hknpViewerColorScheme() = default;  // 0x00 [00]
 
-		virtual std::uint32_t GetBodyColor(const hknpWorld&, hknpBodyId, hknpViewer*) = 0;
-		virtual bool          IsBodyVisible(const hknpWorld&, hknpBodyId, hknpViewer*) = 0;
+		// add
+		virtual std::uint32_t GetBodyColor(const hknpWorld* a_world, hknpBodyId a_bodyId, hknpViewer* a_viewer) = 0;   // 0x08 [01]
+		virtual bool          IsBodyVisible(const hknpWorld* a_world, hknpBodyId a_bodyId, hknpViewer* a_viewer) = 0;  // 0x10 [02]
 	};
-	static_assert(sizeof(hknpViewerColorScheme) == 0x8);
+	static_assert(sizeof(hknpViewerColorScheme) == 0x08);
 }

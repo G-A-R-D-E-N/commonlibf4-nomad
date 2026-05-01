@@ -24,7 +24,7 @@ namespace RE
 			ni[2] = { a_hk[0][2], a_hk[1][2], a_hk[2][2], 0.0F };
 			return ni;
 		} else if constexpr (std::is_same_v<T1, NiTransform> && std::is_same_v<T2, hkTransform>) {
-			return NiTransform(HK_TO_NI<NiMatrix3>(a_hk.rotation), HK_TO_NI<NiPoint3>(a_hk.translation));
+			return NiTransform(HK_TO_NI<NiMatrix3>(a_hk.m_rotation), HK_TO_NI<NiPoint3>(a_hk.m_translation));
 		}
 	}
 

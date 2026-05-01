@@ -9,7 +9,7 @@ namespace RE
 		~hkHandle() noexcept {}  // intentional
 
 		// members
-		T value;  // 0x00
+		T m_value;  // 0x00
 	};
 	static_assert(sizeof(hkHandle<std::uint8_t, 255, void>) == 0x01);
 }

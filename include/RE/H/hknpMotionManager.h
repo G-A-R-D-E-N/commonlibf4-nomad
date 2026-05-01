@@ -16,7 +16,7 @@ namespace RE
 		{
 		public:
 			// members
-			hkArray<hknpMotionId> solverIdToMotionId;  // 0x00
+			hkArray<hknpMotionId> m_solverIdToMotionId;  // 0x00
 		};
 		static_assert(sizeof(CellData) == 0x10);
 

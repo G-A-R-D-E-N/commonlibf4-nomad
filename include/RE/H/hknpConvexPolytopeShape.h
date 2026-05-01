@@ -20,6 +20,13 @@ namespace RE
 			std::uint8_t  minHalfAngle;
 		};
 
+		static hknpConvexPolytopeShape* CreateFromVerticesInternal(const hkStridedVertices& a_vertices, const float a_radius, const BuildConfig& a_config)
+		{
+			using func_t = decltype(&hknpConvexPolytopeShape::CreateFromVerticesInternal);
+			static REL::Relocation<func_t> func{ ID::hknpConvexPolytopeShape::CreateFromVerticesInternal };
+			return func(a_vertices, a_radius, a_config);
+		}
+
 		// members
 		hkRelArray<hkVector4f>   planes;   // 0x40
 		hkRelArray<Face>         faces;    // 0x44

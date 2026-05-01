@@ -24,28 +24,28 @@ namespace RE
 
 		void AddWorld(hknpWorld* a_world)
 		{
-			for (auto world : worlds) {
+			for (auto world : m_worlds) {
 				if (world == a_world)
 					return;
 			}
 
-			worlds.push_back(a_world);
+			m_worlds.push_back(a_world);
 		}
 
 		void SetColorScheme(hknpViewerColorScheme* a_colorScheme)
 		{
 			if (a_colorScheme)
-				colorScheme = a_colorScheme;
+				m_colorScheme = a_colorScheme;
 			else
-				colorScheme = &defaultColorScheme;
+				m_colorScheme = &m_defaultColorScheme;
 		}
 
 		// members
-		hkArray<hknpWorld*>                  worlds;                              // 0xA0
-		hkArray<hknpProcessContextListener*> addListeners;                        // 0xB0
-		hknpViewerColorScheme*               colorScheme{ &defaultColorScheme };  // 0xC0
-		hknpDefaultViewerColorScheme         defaultColorScheme;                  // 0xC8
-		hkTaskQueue*                         taskQueue{ nullptr };                // 0xE8
+		hkArray<hknpWorld*>                  m_worlds;                                // 0xA0
+		hkArray<hknpProcessContextListener*> m_addListeners;                          // 0xB0
+		hknpViewerColorScheme*               m_colorScheme{ &m_defaultColorScheme };  // 0xC0
+		hknpDefaultViewerColorScheme         m_defaultColorScheme;                    // 0xC8
+		hkTaskQueue*                         m_taskQueue{ nullptr };                  // 0xE8
 	};
 	static_assert(sizeof(hknpProcessContext) == 0xF0);
 }

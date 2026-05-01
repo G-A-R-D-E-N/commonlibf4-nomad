@@ -39,15 +39,15 @@ namespace RE
 		}
 
 		// members
-		Implementation*    impl{ nullptr };               // 0x08
-		const std::int32_t slabSize{ 0x8000 };            // 0x10
-		void*              cur{ nullptr };                // 0x18
-		void*              end{ nullptr };                // 0x20
-		void*              firstNonLifoEnd{ nullptr };    // 0x28
-		void*              cachedEmptySlab{ nullptr };    // 0x30
-		hkMemoryAllocator* slabAllocator{ nullptr };      // 0x38
-		hkMemoryAllocator* largeAllocator{ nullptr };     // 0x40
-		hkMemoryAllocator* internalAllocator{ nullptr };  // 0x48
+		Implementation*    m_impl{ nullptr };               // 0x08
+		const std::int32_t m_slabSize{ 0x8000 };            // 0x10
+		void*              m_cur{ nullptr };                // 0x18
+		void*              m_end{ nullptr };                // 0x20
+		void*              m_firstNonLifoEnd{ nullptr };    // 0x28
+		void*              m_cachedEmptySlab{ nullptr };    // 0x30
+		hkMemoryAllocator* m_slabAllocator{ nullptr };      // 0x38
+		hkMemoryAllocator* m_largeAllocator{ nullptr };     // 0x40
+		hkMemoryAllocator* m_internalAllocator{ nullptr };  // 0x48
 	};
 	static_assert(sizeof(hkLifoAllocator) == 0x50);
 }

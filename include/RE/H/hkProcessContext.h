@@ -11,19 +11,20 @@ namespace RE
 	public:
 		hkProcessContext() = default;
 
-		virtual ~hkProcessContext() = default;
+		virtual ~hkProcessContext() = default;  // 0x00 [00]
 
-		virtual const char* GetType() = 0;
+		// add
+		virtual const char* GetType() = 0;  // 0x08 [01]
 
-		virtual void SetOwner(hkVisualDebugger* a_owner)
+		virtual void SetOwner(hkVisualDebugger* a_owner)  // 0x10 [02]
 		{
-			owner = a_owner;
+			m_owner = a_owner;
 		}
 
 		// members
-		hkVisualDebugger*              owner{ nullptr };     // 0x08
-		hkInplaceArray<const char*, 6> monitorStreamBegins;  // 0x10
-		hkInplaceArray<const char*, 6> monitorStreamEnds;    // 0x50
+		hkVisualDebugger*              m_owner{ nullptr };     // 0x08
+		hkInplaceArray<const char*, 6> m_monitorStreamBegins;  // 0x10
+		hkInplaceArray<const char*, 6> m_monitorStreamEnds;    // 0x50
 	};
 	static_assert(sizeof(hkProcessContext) == 0x90);
 }

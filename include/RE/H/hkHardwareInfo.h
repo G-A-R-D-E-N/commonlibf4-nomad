@@ -19,8 +19,8 @@ namespace RE
 		}
 
 		// members
-		std::int32_t  numHardwareThreads;
-		std::uint32_t cpuFeatures;
+		std::int32_t  m_numHardwareThreads;
+		std::uint32_t m_cpuFeatures;
 	};
 	static_assert(sizeof(hkHardwareInfo) == 0x18);
 }

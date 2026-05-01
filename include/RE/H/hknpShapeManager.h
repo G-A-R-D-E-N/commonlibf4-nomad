@@ -17,17 +17,17 @@ namespace RE
 		{
 		public:
 			// members
-			hknpShapeManager*                                          shapeManager;  // 0x00
-			const hknpShape*                                           shape;         // 0x08
-			hkArray<hknpBodyId>                                        bodyIds;       // 0x10
-			hkFlags<hknpShapeSignals::MutationFlagsEnum, std::uint8_t> mutations;     // 0x20
+			hknpShapeManager*                                          m_shapeManager;  // 0x00
+			const hknpShape*                                           m_shape;         // 0x08
+			hkArray<hknpBodyId>                                        m_bodyIds;       // 0x10
+			hkFlags<hknpShapeSignals::MutationFlagsEnum, std::uint8_t> m_mutations;     // 0x20
 		};
 		static_assert(sizeof(MutableShapeInfo) == 0x28);
 
 		// members
-		hkArray<MutableShapeInfo*> mutableShapeInfos;      // 0x00
-		hkArray<MutableShapeInfo*> freeMutableShapeInfos;  // 0x10
-		hkBool                     isAnyShapeMutated;      // 0x20
+		hkArray<MutableShapeInfo*> m_mutableShapeInfos;      // 0x00
+		hkArray<MutableShapeInfo*> m_freeMutableShapeInfos;  // 0x10
+		hkBool                     m_isAnyShapeMutated;      // 0x20
 	};
 	static_assert(sizeof(hknpShapeManager) == 0x28);
 }

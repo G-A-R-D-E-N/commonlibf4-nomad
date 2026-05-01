@@ -44,10 +44,10 @@ namespace RE
 		}
 
 		// members
-		hkRefPtr<const hknpPhysicsSystemData> data;           // 0x10
-		hkRefPtr<hknpWorld>                   world;          // 0x18
-		hkArray<hknpBodyId>                   bodyIds;        // 0x20
-		hkArray<hknpConstraintId>             constraintIds;  // 0x30
+		hkRefPtr<const hknpPhysicsSystemData> m_data;           // 0x10
+		hkRefPtr<hknpWorld>                   m_world;          // 0x18
+		hkArray<hknpBodyId>                   m_bodyIds;        // 0x20
+		hkArray<hknpConstraintId>             m_constraintIds;  // 0x30
 	};
 	static_assert(sizeof(hknpPhysicsSystem) == 0x40);
 }

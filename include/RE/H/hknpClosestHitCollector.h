@@ -14,15 +14,15 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::hknpClosestHitCollector };
 
 		// override (hknpCollisionQueryCollector)
-		void                       Reset() override;                             // 01
-		void                       AddHit(const hknpCollisionResult&) override;  // 02
-		bool                       HasHit() const override;                      // 03
-		std::int32_t               GetNumHits() const override;                  // 04
-		const hknpCollisionResult* GetHits() const override;                     // 05
+		void                       Reset() override;                             // 0x08 [01]
+		void                       AddHit(const hknpCollisionResult&) override;  // 0x10 [02]
+		bool                       HasHit() const override;                      // 0x18 [03]
+		std::int32_t               GetNumHits() const override;                  // 0x20 [04]
+		const hknpCollisionResult* GetHits() const override;                     // 0x28 [05]
 
 		// members
-		hknpCollisionResult result;  // 0x20
-		bool                hasHit;  // 0x80
+		hknpCollisionResult m_result;  // 0x20
+		hkBool              m_hasHit;  // 0x80
 	};
 	static_assert(sizeof(hknpClosestHitCollector) == 0x90);
 }

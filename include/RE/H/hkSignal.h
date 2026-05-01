@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		// members
-		hkPtrAndInt<hkSlot, std::uint32_t, 3> slots;  // 00
+		hkPtrAndInt<hkSlot, std::uint32_t, 3> m_slots;  // 00
 	};
 	static_assert(sizeof(hkSignal) == 0x08);
 

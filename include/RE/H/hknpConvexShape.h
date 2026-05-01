@@ -21,16 +21,16 @@ namespace RE
 		struct BuildConfig
 		{
 			float         simplificationTolerance{ 0.0099999998f };  // 0x00
-			bool          shrinkByRadius{ true };                    // 0x04
+			hkBool        shrinkByRadius{ true };                    // 0x04
 			float         featurePreservationFactor{ 0.0f };         // 0x08
-			bool          buildFaces{ true };                        // 0x0C
-			bool          buildMassProperties{ false };              // 0x0D
+			hkBool        buildFaces{ true };                        // 0x0C
+			hkBool        buildMassProperties{ false };              // 0x0D
 			MassConfig    massConfig;                                // 0x10
 			hkTransformf* extraTransform{ nullptr };                 // 0x20
 			std::uint32_t sizeOfBaseClass{ 80 };                     // 0x28
 			std::uint32_t maxNumVertices{ 252 };                     // 0x2C
-			bool          checkForDegenerateFaces{ false };          // 0x30
-			bool          verbose{ false };                          // 0x31
+			hkBool        checkForDegenerateFaces{ false };          // 0x30
+			hkBool        verbose{ false };                          // 0x31
 		};
 		static_assert(sizeof(BuildConfig) == 0x38);
 

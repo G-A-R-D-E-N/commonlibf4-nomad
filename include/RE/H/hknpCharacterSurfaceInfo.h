@@ -17,13 +17,13 @@ namespace RE
 		};
 
 		// members
-		hkBool                               isSurfaceDynamic;       // 00
-		hkEnum<SupportedState, std::uint8_t> supportedState;         // 01
-		std::byte                            pad02[0x02];            // 02
-		float                                surfaceDistanceExcess;  // 04
-		std::byte                            pad08[8];               // 08
-		hkVector4f                           surfaceNormal;          // 10
-		hkVector4f                           surfaceVelocity;        // 20
+		hkBool                               m_isSurfaceDynamic;       // 0x00
+		hkEnum<SupportedState, std::uint8_t> m_supportedState;         // 0x01
+		std::byte                            m_pad02[0x02];            // 0x02
+		float                                m_surfaceDistanceExcess;  // 0x04
+		std::byte                            m_pad08[8];               // 0x08
+		hkVector4f                           m_surfaceNormal;          // 0x10
+		hkVector4f                           m_surfaceVelocity;        // 0x20
 	};
 	static_assert(sizeof(hknpCharacterSurfaceInfo) == 0x30);
 }

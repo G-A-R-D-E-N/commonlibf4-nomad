@@ -10,12 +10,12 @@ namespace RE
 	public:
 		hknpDefaultViewerColorScheme() = default;
 
-		virtual std::uint32_t GetBodyColor(const hknpWorld&, hknpBodyId, hknpViewer*) override
+		virtual std::uint32_t GetBodyColor(const hknpWorld*, hknpBodyId, hknpViewer*) override
 		{
 			return staticBodyColor;  // TODO: Get color based on body flags
 		}
 
-		virtual bool IsBodyVisible(const hknpWorld&, hknpBodyId, hknpViewer*) override
+		virtual bool IsBodyVisible(const hknpWorld*, hknpBodyId, hknpViewer*) override
 		{
 			return true;  // TODO: err...?
 		}

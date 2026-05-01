@@ -49,11 +49,11 @@ namespace RE
 			return func(this);
 		}
 
-		hknpBodyId& GetBodyId(hknpBodyId& a_id)
+		hknpBodyId& GetBodyId(hknpBodyId& a_bodyId)
 		{
 			using func_t = decltype(&bhkNPCollisionObject::GetBodyId);
 			static REL::Relocation<func_t> func{ ID::bhkNPCollisionObject::GetBodyId };
-			return func(this, a_id);
+			return func(this, a_bodyId);
 		}
 
 		NiPointer<bhkPhysicsSystem> GetPhysicsSystem() const

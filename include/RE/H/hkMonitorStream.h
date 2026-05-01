@@ -23,7 +23,7 @@ namespace RE
 
 		void Reset()
 		{
-			end = start;
+			m_end = m_start;
 		}
 
 		void Resize(const std::int32_t a_newSize)
@@ -34,11 +34,11 @@ namespace RE
 		}
 
 		// members
-		hkPadSpu<char*> start;                       // 0x00
-		hkPadSpu<char*> end;                         // 0x08
-		hkPadSpu<char*> capacity;                    // 0x10
-		hkPadSpu<char*> capacityMinus16;             // 0x18
-		hkBool          isBufferAllocatedOnTheHeap;  // 0x20
+		hkPadSpu<char*> m_start;                       // 0x00
+		hkPadSpu<char*> m_end;                         // 0x08
+		hkPadSpu<char*> m_capacity;                    // 0x10
+		hkPadSpu<char*> m_capacityMinus16;             // 0x18
+		hkBool          m_isBufferAllocatedOnTheHeap;  // 0x20
 	};
 	static_assert(sizeof(hkMonitorStream) == 0x28);
 }

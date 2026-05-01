@@ -24,16 +24,16 @@ namespace RE
 
 		hknpPhysicsSystemData() { REX::EMPLACE_VTABLE(this); }
 
-		virtual ~hknpPhysicsSystemData();  // 00
+		virtual ~hknpPhysicsSystemData();  // 0x00
 
 		// members
-		hkArray<hknpMaterial>                       materials;          // 0x10
-		hkArray<hknpMotionProperties>               motionProperties;   // 0x20
-		hkArray<hknpMotionCinfo>                    motionCinfos;       // 0x30
-		hkArray<hknpBodyCinfo>                      bodyCinfos;         // 0x40
-		hkArray<hknpConstraintCinfo>                constraintCinfos;   // 0x50
-		hkArray<hkRefPtr<const hkReferencedObject>> referencedObjects;  // 0x60
-		hkStringPtr                                 name;               // 0x70
+		hkArray<hknpMaterial>                       m_materials;          // 0x10
+		hkArray<hknpMotionProperties>               m_motionProperties;   // 0x20
+		hkArray<hknpMotionCinfo>                    m_motionCinfos;       // 0x30
+		hkArray<hknpBodyCinfo>                      m_bodyCinfos;         // 0x40
+		hkArray<hknpConstraintCinfo>                m_constraintCinfos;   // 0x50
+		hkArray<hkRefPtr<const hkReferencedObject>> m_referencedObjects;  // 0x60
+		hkStringPtr                                 m_name;               // 0x70
 	};
 	static_assert(sizeof(hknpPhysicsSystemData) == 0x78);
 }

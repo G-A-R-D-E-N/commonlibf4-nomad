@@ -14,7 +14,7 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::hknpDynamicCompoundShape };
 
 		// members
-		hknpDynamicCompoundShapeData* boundingVolumeData;  // 0xC0
+		hknpDynamicCompoundShapeData* m_boundingVolumeData;  // 0xC0
 	};
 	static_assert(sizeof(hknpDynamicCompoundShape) == 0xD0);
 }

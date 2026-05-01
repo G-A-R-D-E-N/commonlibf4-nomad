@@ -5,7 +5,7 @@ namespace RE
 	class hkcdRayQueryFlags
 	{
 	public:
-		enum class Enum
+		enum class Enum : std::int32_t
 		{
 			kNoFlags = 0x0,
 			kDisableBackFacingTriangleHits = 0x1,

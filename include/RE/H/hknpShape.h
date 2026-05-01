@@ -72,9 +72,9 @@ namespace RE
 				kHigh = 2
 			};
 
-			Quality quality{ Quality::kHigh };
-			float   inertiaFactor{ 1.5f };
-			float   massOrNegativeDensity{ -1.0f };
+			Quality m_quality{ Quality::kHigh };
+			float   m_inertiaFactor{ 1.5f };
+			float   m_massOrNegativeDensity{ -1.0f };
 		};
 		static_assert(sizeof(MassConfig) == 0xC);
 
@@ -112,12 +112,13 @@ namespace RE
 		virtual void                CheckConsistency() const;                                                                                                                                                                                                                                                                                                 // 1D
 
 		// members
-		hkFlags<FlagsEnum, std::uint16_t>                     flags;            // 0x10
-		std::uint8_t                                          numShapeKeyBits;  // 0x12
-		hkEnum<hknpCollisionDispatchType::Enum, std::uint8_t> dispatchType;     // 0x13
-		float                                                 convexRadius;     // 0x14
-		std::uintptr_t                                        userData;         // 0x18
-		hkRefCountedProperties*                               properties;       // 0x20
+		hkFlags<FlagsEnum, std::uint16_t>                     m_flags;            // 0x10
+		std::uint8_t                                          m_numShapeKeyBits;  // 0x12
+		hkEnum<hknpCollisionDispatchType::Enum, std::uint8_t> m_dispatchType;     // 0x13
+		float                                                 m_convexRadius;     // 0x14
+		std::uintptr_t                                        m_userData;         // 0x18
+		hkRefCountedProperties*                               m_properties;       // 0x20
+		std::byte                                             m_pad28[0x08];      // 0x28
 	};
 	static_assert(sizeof(hknpShape) == 0x30);
 }

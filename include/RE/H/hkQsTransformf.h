@@ -9,9 +9,9 @@ namespace RE
 	{
 	public:
 		// members
-		hkVector4f    translation;  // 0x00
-		hkQuaternionf rotation;     // 0x10
-		hkVector4f    scale;        // 0x20
+		hkVector4f    m_translation;  // 0x00
+		hkQuaternionf m_rotation;     // 0x10
+		hkVector4f    m_scale;        // 0x20
 	};
 	static_assert(sizeof(hkQsTransformf) == 0x30);
 

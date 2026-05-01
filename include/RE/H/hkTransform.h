@@ -8,19 +8,15 @@ namespace RE
 	{
 	public:
 		constexpr hkTransformf() noexcept = default;
-		constexpr hkTransformf(const hkRotationf& a_rotation, const hkVector4f& a_translation) noexcept;
+
+		constexpr hkTransformf(const hkRotationf& a_rotation, const hkVector4f& a_translation) noexcept :
+			m_rotation(a_rotation), m_translation(a_translation)
+		{}
 
 		// members
-		hkRotationf rotation;
-		hkVector4f  translation;
+		hkRotationf m_rotation;
+		hkVector4f  m_translation;
 	};
 
 	using hkTransform = hkTransformf;
-}
-
-namespace RE
-{
-	constexpr hkTransformf::hkTransformf(const hkRotationf& a_rotation, const hkVector4f& a_translation) noexcept :
-		rotation(a_rotation), translation(a_translation)
-	{}
 }

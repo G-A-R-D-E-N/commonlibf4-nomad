@@ -16,7 +16,7 @@ namespace RE
 		{
 			using func_t = decltype(&hknpCapsuleShape::Init);
 			static REL::Relocation<func_t> func{ ID::hknpCapsuleShape::Init };
-			return func(this, a_vertexA, a_vertexB);
+			func(this, a_vertexA, a_vertexB);
 		}
 
 		static hknpCapsuleShape* CreateCapsuleShape(const hkVector4f& a_vertexA, const hkVector4f& a_vertexB, float a_radius)
@@ -27,8 +27,8 @@ namespace RE
 		}
 
 		// members
-		hkVector4f vertexA;  // 0x50
-		hkVector4f vertexB;  // 0x60
+		hkVector4f m_vertexA;  // 0x50
+		hkVector4f m_vertexB;  // 0x60
 	};
 	static_assert(sizeof(hknpCapsuleShape) == 0x70);
 }

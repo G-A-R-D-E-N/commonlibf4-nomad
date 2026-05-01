@@ -467,9 +467,18 @@ namespace RE::ID
 
 	namespace bhkWorld
 	{
+		inline constexpr REL::ID AddObjects{ 2277719 };
 		inline constexpr REL::ID AddPhysicsSystem{ 2277752 };
+		inline constexpr REL::ID IsBodyAdded{ 2277997 };
 		inline constexpr REL::ID RemovePhysicsSystem{ 2277753 };
+		inline constexpr REL::ID Activate{ 2277728 };
+		inline constexpr REL::ID Enable{ 2277725 };
+		inline constexpr REL::ID EnableCollision{ 2277730 };
+		inline constexpr REL::ID IsActive{ 2277729 };
 		inline constexpr REL::ID RemoveObjects{ 2277721 };
+		inline constexpr REL::ID SetCollisionGroup{ 2277722 };
+		inline constexpr REL::ID SetDismemberedLimb{ 2277726 };
+		inline constexpr REL::ID SetMotion{ 2277723 };
 	}
 
 	namespace BIPOBJECT
@@ -1089,20 +1098,24 @@ namespace RE::ID
 		inline constexpr REL::ID Get{ 2194566 };
 	}
 
-	namespace hknpCapsuleShape
-	{
-		inline constexpr REL::ID Init{ 2257217 };
-		inline constexpr REL::ID CreateCapsuleShape{ 2257207 };
-	}
-
 	namespace hkContainerHeapAllocator
 	{
 		inline constexpr REL::ID Singleton{ 2665426 };
 	}
 
+	namespace hkDisplaySerializeOStream
+	{
+		inline constexpr REL::ID ctor{ 2266374 };
+	}
+
 	namespace hkHardwareInfo
 	{
 		inline constexpr REL::ID CalcNumHardwareThreads{ 2260765 };
+	}
+
+	namespace hkIArchive
+	{
+		inline constexpr REL::ID ctor2{  };
 	}
 
 	namespace hkMemoryRouter
@@ -1115,6 +1128,17 @@ namespace RE::ID
 		inline constexpr REL::ID tlsSlotID{ 2702743 };
 		inline constexpr REL::ID Clear{ 2257312 };
 		inline constexpr REL::ID Resize{ 2257310 };
+	}
+
+	namespace hknpCapsuleShape
+	{
+		inline constexpr REL::ID Init{ 2257217 };
+		inline constexpr REL::ID CreateCapsuleShape{ 2257207 };
+	}
+
+	namespace hknpConvexPolytopeShape
+	{
+		inline constexpr REL::ID CreateFromVerticesInternal{ 2257201 };
 	}
 
 	namespace hknpConvexShape
@@ -1143,11 +1167,38 @@ namespace RE::ID
 		inline constexpr REL::ID CreateSphereShape{ 2256377 };
 	}
 
+	namespace hknpTriangleShape
+	{
+		inline constexpr REL::ID CreateEmptyTriangleShape{ 2256226 };
+		inline constexpr REL::ID SetVertices{ 2256228 };
+	}
+
+	namespace hknpBSWorld
+	{
+		inline constexpr REL::ID AccessMotion{ 2277680 };
+		inline constexpr REL::ID ActivateBody{ 2277677 };
+		inline constexpr REL::ID SetBodyAngularVelocity{ 2277672 };
+		inline constexpr REL::ID SetBodyKeyframed{ 2277684 };
+		inline constexpr REL::ID SetBodyLinearVelocity{ 2277671 };
+		inline constexpr REL::ID SetBodyStatic{ 2277683 };
+		inline constexpr REL::ID SetBodyVelocity{ 2277670 };
+	}
+
 	namespace hknpWorld
 	{
 		inline constexpr REL::ID AddBodies{ 2255681 };
 		inline constexpr REL::ID CreateBody{ 2255680 };
 		inline constexpr REL::ID CreateMotion{ 2255688 };
+		inline constexpr REL::ID DisableBodyFlags{ 2255636 };
+		inline constexpr REL::ID EnableBodyFlags{ 2255635 };
+		inline constexpr REL::ID GetActionManager{ 2255709 };
+		inline constexpr REL::ID SetBodyCollisionFilterInfo{ 2255626 };
+		inline constexpr REL::ID SetBodyMotion{ 2255634 };
+	}
+
+	namespace hkOArchive
+	{
+		inline constexpr REL::ID ctor2{ 2259258 };
 	}
 
 	namespace hkProcessFactory

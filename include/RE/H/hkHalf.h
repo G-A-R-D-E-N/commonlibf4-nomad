@@ -5,6 +5,6 @@ namespace RE
 	class hkHalf
 	{
 	public:
-		std::int16_t value;
+		std::int16_t m_value;
 	};
 }

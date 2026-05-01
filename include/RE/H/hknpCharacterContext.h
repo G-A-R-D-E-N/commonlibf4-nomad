@@ -22,18 +22,18 @@ namespace RE
 			kRigidBody = 0x1
 		};
 
-		CharacterType                              characterType;             // 0x10
-		const hknpCharacterStateManager*           stateManager;              // 0x18
-		hknpCharacterState::hknpCharacterStateType currentState;              // 0x20
-		hknpCharacterState::hknpCharacterStateType previousState;             // 0x24
-		hkBool                                     filterEnable;              // 0x28
-		float                                      maxLinearAcceleration;     // 0x2C
-		float                                      maxLinearSpeed;            // 0x30
-		float                                      gain;                      // 0x34
-		std::byte                                  pad38[0x04];               // 0x38
-		hkVector4f                                 previousSurfaceVelocity;   // 0x40
-		std::int32_t                               numUpdatesInCurrentState;  // 0x50
-		std::byte                                  pad54[0x0C];               // 0x54
+		CharacterType                              m_characterType;             // 0x10
+		const hknpCharacterStateManager*           m_stateManager;              // 0x18
+		hknpCharacterState::hknpCharacterStateType m_currentState;              // 0x20
+		hknpCharacterState::hknpCharacterStateType m_previousState;             // 0x24
+		hkBool                                     m_filterEnable;              // 0x28
+		float                                      m_maxLinearAcceleration;     // 0x2C
+		float                                      m_maxLinearSpeed;            // 0x30
+		float                                      m_gain;                      // 0x34
+		std::byte                                  m_pad38[0x04];               // 0x38
+		hkVector4f                                 m_previousSurfaceVelocity;   // 0x40
+		std::int32_t                               m_numUpdatesInCurrentState;  // 0x50
+		std::byte                                  m_pad54[0x0C];               // 0x54
 	};
 	static_assert(sizeof(hknpCharacterContext) == 0x60);
 }

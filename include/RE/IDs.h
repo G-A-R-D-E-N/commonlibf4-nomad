@@ -1425,17 +1425,17 @@ namespace RE::ID
 
 	namespace PipboyDataGroup
 	{
-		inline constexpr REL::VariantID LockDataGroup{ 287528, 2225147 }; // Check
-		inline constexpr REL::VariantID UnlockDataGroup{ 1165260, 2225148 }; // Check
+		inline constexpr REL::VariantID LockDataGroup{ 287528, 2225147 };
+		inline constexpr REL::VariantID UnlockDataGroup{ 1165260, 2225148 };
 	}
 
 	namespace PipboyInventoryData
 	{
 		inline constexpr REL::VariantID AddItemCardInfoEntry{ 1191786, 2225267 };
 		inline constexpr REL::VariantID BaseAddItemCardInfoEntry{ 1150364, 2225270 };
-		inline constexpr REL::VariantID InitializeItem{ 482276, 2225264 }; // Check
+		inline constexpr REL::VariantID InitializeItem{ 482276, 2225264 };
 		inline constexpr REL::VariantID PopulateItemCardInfo{ 54211, 2225266 };
-		inline constexpr REL::VariantID QueueItemCardRepopulate{ 1034299, 2225311 }; // Check
+		inline constexpr REL::VariantID QueueItemCardRepopulate{ 1034299, 2225311 };
 		inline constexpr REL::VariantID RepopulateItemCardOnSection{ 892255, 2225279 };
 	}
 
@@ -1508,7 +1508,7 @@ namespace RE::ID
 
 	namespace PipboyPerksMenu
 	{
-		inline constexpr REL::VariantID UpdateData{ 783380, 2224224 }; // Check
+		inline constexpr REL::VariantID UpdateData{ 783380, 2224224 };
 	}
 
 	namespace PipboyPlayerInfoData
@@ -1518,19 +1518,19 @@ namespace RE::ID
 
 	namespace PipboyPlayerInfoMenu
 	{
-		inline constexpr REL::VariantID UpdateData{ 426990, 2224248 }; // Check
+		inline constexpr REL::VariantID UpdateData{ 426990, 2224248 };
 	}
 
 	namespace PipboyPrimitiveValue
 	{
 		namespace uint32
 		{
-			inline constexpr REL::VariantID ctor{ 201797, 2225324 }; // Check
+			inline constexpr REL::VariantID ctor{ 201797, 2225324 };
 		}
 
 		namespace boolean
 		{
-			inline constexpr REL::VariantID ctor{ 1158654, 2225327 }; // Check
+			inline constexpr REL::VariantID ctor{ 1158654, 2225327 };
 		}
 	}
 
@@ -1552,7 +1552,7 @@ namespace RE::ID
 	namespace PipboyStatsMenu
 	{
 		inline constexpr REL::VariantID UpdateData{ 332518, 2224261 };
-		inline constexpr REL::VariantID UpdateActiveEffects{ 236337, 2224262 }; // Check
+		inline constexpr REL::VariantID UpdateActiveEffects{ 236337, 2224262 };
 	}
 
 	namespace PipboySubMenu
@@ -1562,7 +1562,7 @@ namespace RE::ID
 
 	namespace PipboyValue
 	{
-		inline constexpr REL::VariantID ctor{ 531562, 2225915 }; // Check
+		inline constexpr REL::VariantID ctor{ 531562, 2225915 };
 	}
 
 	namespace PipboyWorkshopMenu
@@ -1609,10 +1609,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID ShowPipboyLight{ 1304102, 2233203 };
 		inline constexpr REL::VariantID SetLastDialogueInput{ 696117, 2233190 };
 		inline constexpr REL::VariantID ClearPrison{ 920390, 2233196 };
-		inline constexpr REL::VariantID ReloadWeapon{ 458406, 2232907 }; // Check
+		inline constexpr REL::VariantID ReloadWeapon{ 458406, 2232907 };
 		inline constexpr REL::VariantID SetPerkCount{ 616372, 2233187 };
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
-		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 }; // Check
+		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
 	}
 
 	namespace PlayerControls
@@ -1652,7 +1652,7 @@ namespace RE::ID
 
 	namespace PowerArmorModMenu
 	{
-		inline constexpr REL::VariantID ShowBuildFailureMessage{ 1215152, 2224322 }; // Check
+		inline constexpr REL::VariantID ShowBuildFailureMessage{ 1215152, 2224322 };
 	}
 
 	namespace PowerUtils
@@ -1671,12 +1671,12 @@ namespace RE::ID
 
 	namespace REFR_LOCK
 	{
-		inline constexpr REL::VariantID GetLevel{ 689812, 2191019 }; // Check
+		inline constexpr REL::VariantID GetLevel{ 689812, 2191019 };
 		inline constexpr REL::VariantID GetLockLevel{ 782953, 2191018 };
 		inline constexpr REL::VariantID SetLocked{ 157617, 2191020 };
-		inline constexpr REL::VariantID IsBroken{ 1034859, 2191021 }; // Check
-		inline constexpr REL::VariantID NumericValueToEnum{ 1380232, 2191023 }; // Check
-		inline constexpr REL::VariantID IsInaccessible{ 502938, 2191022 }; // Check
+		inline constexpr REL::VariantID IsBroken{ 1034859, 2191021 };
+		inline constexpr REL::VariantID NumericValueToEnum{ 1380232, 2191023 };
+		inline constexpr REL::VariantID IsInaccessible{ 502938, 2191022 };
 	}
 
 	namespace SavefileMetadata
@@ -1759,7 +1759,7 @@ namespace RE::ID
 
 	namespace StartMenuBase
 	{
-		inline constexpr REL::VariantID GetMenuDifficultyLevel{ 1089336, 2224540 }; // Check
+		inline constexpr REL::VariantID GetMenuDifficultyLevel{ 1089336, 2224540 };
 	}
 
 	namespace ILStringMap
@@ -1771,9 +1771,9 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 740511, 2689088, 4796374 };
 		inline constexpr REL::VariantID RWLock{ 589656, 2701704 };
-		inline constexpr REL::VariantID ShowSubtitle{ 875508, 2249542 }; // Check
-		inline constexpr REL::VariantID UpdateSubtitles{ 381778, 2249545 }; // Check
-		inline constexpr REL::VariantID DisplayNextSubtitle{ 102120, 2249551 }; // Check
+		inline constexpr REL::VariantID ShowSubtitle{ 875508, 2249542 };
+		inline constexpr REL::VariantID UpdateSubtitles{ 381778, 2249545 };
+		inline constexpr REL::VariantID DisplayNextSubtitle{ 102120, 2249551 };
 	}
 
 	namespace SWFToCodeFunctionHandler
@@ -1905,7 +1905,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID AllFormsByEditorID{ 642758, 2689179, 4796466 };
 		inline constexpr REL::VariantID AllFormsEditorIDMapLock{ 910917, 2689190, 4796477 };
 		inline constexpr REL::VariantID GetFile{ 1376557, 2193103 };
-		inline constexpr REL::VariantID GetFormByNumericID{ 796114, 2193092 }; // Check
+		inline constexpr REL::VariantID GetFormByNumericID{ 796114, 2193092 };
 		inline constexpr REL::VariantID GetFormEnumString{ 1309967 }; // Same
 		inline constexpr REL::VariantID GetFormTypeFromString{ 565203, 2193108 };
 		inline constexpr REL::VariantID SetTemporary{ 482454, 2193125 };
@@ -1980,7 +1980,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID AlternateHeadPartListMap{ 1306546, 2662368 };
 		inline constexpr REL::VariantID GetSex{ 1257181, 2207107 };
 		inline constexpr REL::VariantID GetFacialBoneMorphIntensity{ 272217, 2207416 };
-		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 }; // Check
+		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 };
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 	}
 
@@ -2010,13 +2010,13 @@ namespace RE::ID
 
 	namespace TESObjectCONT
 	{
-		inline constexpr REL::VariantID GetActivateText{ 917378, 2198653 }; // Check
+		inline constexpr REL::VariantID GetActivateText{ 917378, 2198653 };
 	}
 
 	namespace TESObjectDOOR
 	{
-		inline constexpr REL::VariantID GetActivateText{ 978619, 2198690 }; // Check
-		inline constexpr REL::VariantID CalculateDoFavor{ 1428007, 2198692 }; // Check
+		inline constexpr REL::VariantID GetActivateText{ 978619, 2198690 };
+		inline constexpr REL::VariantID CalculateDoFavor{ 1428007, 2198692 };
 	}
 
 	namespace TESObjectLoadedEvent
@@ -2039,11 +2039,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEditorDead{ 941388, 2200781 };
 		inline constexpr REL::VariantID GetOwner{ 1323437, 2202616 };
 		inline constexpr REL::VariantID GetGoldAmount{ 564356, 2200923 };
-		inline constexpr REL::VariantID GetHandle{ 1573130, 2201196 }; // Check
+		inline constexpr REL::VariantID GetHandle{ 1573130, 2201196 };
 		inline constexpr REL::VariantID GetHasOwner{ 1016277, 2202622 };
 		inline constexpr REL::VariantID GetInventoryObjectCount{ 333415, 2200939 };
 		inline constexpr REL::VariantID GetLinkedRef{ 897287, 2202683 };
-		inline constexpr REL::VariantID GetLock{ 930785, 2202648 }; // Check
+		inline constexpr REL::VariantID GetLock{ 930785, 2202648 };
 		inline constexpr REL::VariantID GetWeightInContainer{ 1377567, 2201001 };
 		inline constexpr REL::VariantID HasContainer{ 1213017, 2201022 };
 		inline constexpr REL::VariantID IsAnOwner{ 933798, 2202635 };
@@ -2064,7 +2064,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsMarker{ 364958, 2201157 };
 		inline constexpr REL::VariantID IsDecalRef{ 686485, 2200794 };
 		inline constexpr REL::VariantID UpdateDynamicNavmesh{ 1518094, 2201206 };
-		inline constexpr REL::VariantID GetMapMarkerData{ 253640, 2202644 }; // Check
+		inline constexpr REL::VariantID GetMapMarkerData{ 253640, 2202644 };
 		inline constexpr REL::VariantID GetRelevantWaterHeight{ 6866, 2201189 };
 		inline constexpr REL::VariantID CanBeMoved{ 683719, 2200898 };
 	}
@@ -2073,7 +2073,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID GetMeleeAttackSpeed{ 817670, 2198957 };
 		inline constexpr REL::VariantID GetMeleeAttackSpeedLabel{ 178784, 2198959 };
-		inline constexpr REL::VariantID Fire{ 1056037, 2198960 }; // Check
+		inline constexpr REL::VariantID Fire{ 1056037, 2198960 };
 	}
 
 	namespace TESQuest
@@ -2121,7 +2121,7 @@ namespace RE::ID
 
 	namespace TESWaterDisplacement
 	{
-		inline constexpr REL::VariantID SetStencilBit{ 705016, 2213923 }; // Check
+		inline constexpr REL::VariantID SetStencilBit{ 705016, 2213923 };
 	}
 
 	namespace TESWeightForm
@@ -2132,7 +2132,7 @@ namespace RE::ID
 	namespace TESWorldSpace
 	{
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
-		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 }; // Check
+		inline constexpr REL::VariantID GetSkyCell{ 903020, 2202924 };
 	}
 
 	namespace UI
@@ -2153,7 +2153,7 @@ namespace RE::ID
 	namespace UIMessageQueue
 	{
 		inline constexpr REL::VariantID Singleton{ 82123, 2689091, 4796377 };
-		inline constexpr REL::VariantID AddMessage{ 1182019, 2284929 }; // Check
+		inline constexpr REL::VariantID AddMessage{ 1182019, 2284929 };
 	}
 
 	namespace UIUtils
@@ -2169,14 +2169,14 @@ namespace RE::ID
 	namespace VATS
 	{
 		inline constexpr REL::VariantID Singleton{ 570121, 2690444, 4797733 };
-		inline constexpr REL::VariantID CanActivateCriticals{ 1057603, 2237208 }; // Check
+		inline constexpr REL::VariantID CanActivateCriticals{ 1057603, 2237208 };
 	}
 
 	namespace WorkbenchMenuBase
 	{
 		inline constexpr REL::VariantID UpdateOptimizedAutoBuildInv{ 769581, 2224955 };
-		inline constexpr REL::VariantID QCurrentModChoiceData{ 583103, 2224958 }; // Check
-		inline constexpr REL::VariantID ShowBuildFailureMessage{ 316889, 2224959 }; // Check
+		inline constexpr REL::VariantID QCurrentModChoiceData{ 583103, 2224958 };
+		inline constexpr REL::VariantID ShowBuildFailureMessage{ 316889, 2224959 };
 	}
 
 	namespace Workshop

@@ -4,6 +4,7 @@
 #include "RE/H/hknpRayCastQuery.h"
 #include "RE/H/hknpRayCastQueryResult.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/N/NiPoint.h"
 
 namespace RE
 {
@@ -11,7 +12,6 @@ namespace RE
 	class hknpBSWorld;
 	class hknpCollisionQueryCollector;
 	class NiAVObject;
-	class NiPoint3;
 
 	class bhkPickData
 	{

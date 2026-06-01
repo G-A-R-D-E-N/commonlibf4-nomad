@@ -21,12 +21,12 @@ namespace RE
 		// Members
 		std::unique_ptr<BSGFxShaderFXTarget>                    dialogueButtonOBJs[4];
 		std::unique_ptr<BSGFxShaderFXTarget>                    speechChallengeAnimObj;
-		BSTValueEventSink<HUDPerkVaultBoySwfDisplayEvent>       currentVBPerk;
-		BSTValueEventSource<ShowingDialogueSpeechChallengeAnim> showingSpeechChallenge;
+		BSTValueEventSink<HUDPerkVaultBoySwfDisplayEvent>       CurrentVBPerk;
+		BSTValueEventSource<ShowingDialogueSpeechChallengeAnim> ShowingSpeechChallenge;
 		BSTSmartPointer<BSInputEnableLayer>                     inputLayer;
-		UserEvents::INPUT_CONTEXT_ID                            currentContext;
-		bool                                                    isLookingAtPlayer;
-		bool                                                    areButtonsShown;
+		UserEvents::INPUT_CONTEXT_ID                            CurrentContext;
+		bool                                                    IsLookingAtPlayer;
+		bool                                                    AreButtonsShown;
 	};
 	static_assert(sizeof(DialogueMenu) == 0x168);
 }

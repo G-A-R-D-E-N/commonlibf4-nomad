@@ -4,13 +4,10 @@
 
 namespace RE
 {
-	class __declspec(novtable) hknpCharacterState :
+	class hknpCharacterState :
 		public hkReferencedObject
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::hknpCharacterState };
-		static constexpr auto VTABLE{ VTABLE::hknpCharacterState };
-
 		enum class hknpCharacterStateType
 		{
 			kOnGround = 0x0,

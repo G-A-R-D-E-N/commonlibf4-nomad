@@ -6,7 +6,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
-#include "RE/N/NiPoint3.h"
+#include "RE/N/NiPoint.h"
 
 namespace RE
 {

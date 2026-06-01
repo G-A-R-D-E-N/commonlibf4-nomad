@@ -2,7 +2,7 @@
 
 #include "RE/B/BGSAimModel.h"
 #include "RE/B/BSSpring_SpringState.h"
-#include "RE/N/NiPoint2.h"
+#include "RE/N/NiPoint.h"
 
 namespace RE
 {

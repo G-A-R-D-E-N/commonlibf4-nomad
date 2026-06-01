@@ -2,7 +2,7 @@
 
 #include "RE/B/BSOcclusionShape.h"
 #include "RE/N/NiFrustumPlanes.h"
-#include "RE/N/NiPoint3.h"
+#include "RE/N/NiPoint.h"
 
 namespace RE
 {

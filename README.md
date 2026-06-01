@@ -1,38 +1,75 @@
-# CommonLibF4
+# CommonLibF4 Unified
 
-### Requirements
-* [XMake](https://xmake.io) [3.0.0+]
-* C++23 Compiler (MSVC or Clang-CL)
+This is the active local CommonLibF4 workspace for OG and AE plugin development.
 
-## Getting Started
-```bat
-git clone --recurse-submodules https://github.com/libxse/commonlibf4
-cd commonlibf4
-```
+It is based on the OGAE2 CommonLibF4 line and keeps its 3-slot relocation layout.
 
-### Build
-To build the project, run the following command:
-```bat
+## Supported Runtimes
+
+- OG: Fallout 4 `1.10.163`
+- NG: slot preserved from OGAE2, not an active support target
+- AE: Fallout 4 `1.11.137+`, currently tracked through `1.11.191`
+
+VR is not supported in this workspace.
+
+## Build Requirements
+
+- XMake `3.0.0+`
+- C++23 compiler, MSVC or Clang-CL
+
+## Build
+
+```powershell
+xmake f -y
 xmake build
 ```
 
-> ***Note:*** *This will generate a `build/windows/` directory in the **project's root directory** with the build output.*
+The default build produces:
 
-### Project Generation (Optional)
-If you use Visual Studio, run the following command:
-```bat
+```text
+build/windows/x64/release/commonlibf4.lib
+build/windows/x64/release/commonlib-shared.lib
+```
+
+## Visual Studio Project Generation
+
+```powershell
 xmake project -k vsxmake
 ```
 
-> ***Note:*** *This will generate a `vsxmakeXXXX/` directory in the **project's root directory** using the latest version of Visual Studio installed on the system.*
+## CMake Consumers
 
-**Alternatively**, if you do not use Visual Studio, you can generate a `compile_commands.json` file for use with a laguage server like clangd in any code editor that supports it, like vscode:
-```bat
-xmake project -k compile_commands
+Existing CMake plugin projects can consume the xmake-built Unified library through:
+
+```powershell
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCommonLibF4Unified_DIR=D:/CommonLibF4-Unified/cmake
+cmake --build build --config Release
 ```
 
-> ***Note:*** *You must have a language server extension installed to make use of this file. I recommend `clangd`. Do not have more than one installed at a time as they will conflict with each other. I also recommend installing the `xmake` extension if available to make building the project easier.*
+Plugin CMake files should link the package target:
 
-## Notes
+```cmake
+find_package(CommonLibF4Unified REQUIRED CONFIG)
+target_link_libraries(MyPlugin PRIVATE CommonLibF4Unified::CommonLibF4)
+```
 
-CommonLibF4 is intended to replace F4SE as a static dependency. However, the runtime component of F4SE is still required.
+The helper below generates the `F4SEPlugin_Version` export required by AE F4SE:
+
+```cmake
+commonlibf4_unified_add_plugin_version(
+	MyPlugin
+	NAME MyPlugin
+	VERSION ${PROJECT_VERSION}
+	COMPATIBLE_RUNTIMES OG AE
+)
+```
+
+## Relocation ID Policy
+
+Runtime ID slots are:
+
+```cpp
+{ OG, NG, AE }
+```
+
+NG values are preserved as inherited from OGAE2. Current development and runtime testing target OG and AE only.

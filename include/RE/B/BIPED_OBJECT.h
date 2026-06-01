@@ -2,7 +2,7 @@
 
 namespace RE
 {
-	enum class BIPED_OBJECT : std::int32_t
+	enum class BIPED_OBJECT
 	{
 		kNone = static_cast<std::underlying_type_t<BIPED_OBJECT>>(-1),
 		kHairTop = 0,

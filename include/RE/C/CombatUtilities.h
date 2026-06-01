@@ -1,9 +1,10 @@
 #pragma once
 
+#include "RE/N/NiPoint.h"
+
 namespace RE
 {
 	class bhkPickData;
-	class NiPoint3;
 
 	namespace CombatUtilities
 	{

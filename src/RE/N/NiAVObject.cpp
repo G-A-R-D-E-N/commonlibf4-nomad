@@ -20,17 +20,17 @@ namespace RE
 
 	void NiAVObject::CullGeometry(bool a_cull)
 	{
-		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geo) -> BSVisitControl {
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geo) -> BSVisit::BSVisitControl {
 			a_geo->SetAppCulled(a_cull);
-			return BSVisitControl::kContinue;
+			return BSVisit::BSVisitControl::kContinue;
 		});
 	}
 
 	void NiAVObject::CullNode(bool a_cull)
 	{
-		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisitControl {
+		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {
 			a_object->SetAppCulled(a_cull);
-			return BSVisitControl::kContinue;
+			return BSVisit::BSVisitControl::kContinue;
 		});
 	}
 

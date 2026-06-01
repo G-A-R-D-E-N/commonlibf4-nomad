@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/N/NiExtraData.h"
 #include "RE/N/NiExtraDataContainer.h"
 #include "RE/N/NiObject.h"
 #include "RE/N/NiPointer.h"
@@ -8,8 +9,6 @@
 
 namespace RE
 {
-	class NiExtraData;
-
 	class __declspec(novtable) NiObjectNET :
 		public NiObject  // 00
 	{
@@ -30,20 +29,8 @@ namespace RE
 
 		F4_HEAP_REDEFINE_NEW(NiObjectNET);
 
-		bool                 AddExtraData(const BSFixedString& a_key, NiExtraData* a_extra);
-		bool                 AddExtraData(NiExtraData* a_extra);
-		NiExtraData*         GetExtraData(const BSFixedString& a_key) const;
-		std::uint16_t        GetExtraDataSize() const;
-		const BSFixedString& GetName() const { return name; }
-		bool                 HasExtraData(const BSFixedString& a_key) const;
-		bool                 InsertExtraData(NiExtraData* a_extra);
-		bool                 RemoveExtraData(const BSFixedString& a_key);
-
-		template <class T>
-		T* GetExtraData(const BSFixedString& a_key) const
-		{
-			return static_cast<T*>(GetExtraData(a_key));
-		}
+		[[nodiscard]] NiExtraData*     GetExtraData(BSFixedString a_key) const noexcept;
+		[[nodiscard]] std::string_view GetName() const { return name; }
 
 		// members
 		BSFixedString               name{ "" };        // 10

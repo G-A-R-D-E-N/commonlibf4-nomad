@@ -66,8 +66,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMobilityCrippled{ 281477, 2230996 };
 		inline constexpr REL::VariantID SPECIALModifiedCallback{ 234305, 2231020 };
 		inline constexpr REL::VariantID StopInteractingQuick{ 129904, 2231227 };
-		inline constexpr REL::VariantID CalculateDetectionFormula{ 589441, 2230213 };
-		inline constexpr REL::VariantID DoHitMe{ 881215, 2231148 };
 	}
 
 	namespace ActorEquipManager
@@ -97,7 +95,6 @@ namespace RE::ID
 	namespace AIFormulas
 	{
 		inline constexpr REL::VariantID GetBarterValue{ 984344, 2208969 };
-		inline constexpr REL::VariantID ComputePickpocketSuccess{ 915759, 2208977 };
 	}
 
 	namespace AIProcess
@@ -119,7 +116,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
-		inline constexpr REL::VariantID GetActorLightLevel{ 898888, 2231981 };
 	}
 
 	namespace AITimer
@@ -238,13 +234,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID FindAndWriteStackDataForItem{ 1354005, 2194179 };
 		inline constexpr REL::VariantID BuildFromContainer{ 551792, 2194158 };
 		inline constexpr REL::VariantID ctor{ 845050, 2194153 };
-		inline constexpr REL::VariantID AddItem1{ 19103, 2194159 };
-		inline constexpr REL::VariantID AddItem2{ 98986, 2194160 };
-		inline constexpr REL::VariantID RemoveItem1{ 400062, 2194169 };
-		inline constexpr REL::VariantID GetItemCount{ 894081, 2194163 };
-		inline constexpr REL::VariantID GetQuestItemCount{ 800903, 2194164 };
-		inline constexpr REL::VariantID FindItemIndex{ 2111, 2194165 };
-		inline constexpr REL::VariantID Clear{ 1080446, 2194162 };
+		inline constexpr REL::VariantID AddItem{ 19103, 2194159 };
 	}
 
 	namespace BGSKeyword
@@ -438,7 +428,6 @@ namespace RE::ID
 
 	namespace bhkNPCollisionObject
 	{
-		inline constexpr REL::VariantID CreateObject{ 1264820, 2277912 };
 		inline constexpr REL::VariantID CopyMembers{ 1558409, 2277907 };
 		inline constexpr REL::VariantID GetBody{ 1127049, 2277926 };
 		inline constexpr REL::VariantID GetBodyId{ 1286222, 2277928 };
@@ -447,11 +436,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMotionType{ 200912, 2277913 };
 		inline constexpr REL::VariantID SetTransform{ 178085, 2277945 };
 		inline constexpr REL::VariantID Getbhk{ 730034, 2277919 };
-	}
-
-	namespace hknpBodyCinfo
-	{
-		inline constexpr REL::VariantID ctor{ 718403, 2255967 };
 	}
 
 	namespace bhkPhysicsSystem
@@ -478,23 +462,13 @@ namespace RE::ID
 	namespace bhkUtilFunctions
 	{
 		inline constexpr REL::VariantID FindFirstCollisionObject{ 507243, 2278093 };
-		inline constexpr REL::VariantID GetAVObjectFromBodyID{ 962716, 2278085 };
 	}
 
 	namespace bhkWorld
 	{
-		inline constexpr REL::VariantID AddObjects{ 585426, 2277719 };
 		inline constexpr REL::VariantID AddPhysicsSystem{ 82382, 2277752 };
-		inline constexpr REL::VariantID IsBodyAdded{ 1062018, 2277997 };
 		inline constexpr REL::VariantID RemovePhysicsSystem{ 1039226, 2277753 };
-		inline constexpr REL::VariantID Activate{ 1207639, 2277728 };
-		inline constexpr REL::VariantID Enable{ 343580, 2277725 };
-		inline constexpr REL::VariantID EnableCollision{ 50037, 2277730 };
-		inline constexpr REL::VariantID IsActive{ 848114, 2277729 };
 		inline constexpr REL::VariantID RemoveObjects{ 1514984, 2277721 };
-		inline constexpr REL::VariantID SetCollisionGroup{ 717116, 2277722 };
-		inline constexpr REL::VariantID SetDismemberedLimb{ 1566977, 2277726 };
-		inline constexpr REL::VariantID SetMotion{ 357289, 2277723 };
 	}
 
 	namespace BIPOBJECT
@@ -612,9 +586,9 @@ namespace RE::ID
 	namespace BSRandom
 	{
 		inline constexpr REL::VariantID UnsignedInt{ 694400, 2267950 };
-		inline constexpr REL::VariantID Float{ 1118937, 2267953 };
-		inline constexpr REL::VariantID Float0To1{ 1025602, 2267954 };
-		inline constexpr REL::VariantID Int{ 1212543, 2267952 };
+		inline constexpr REL::VariantID Float{ 1118937, 2267953 }; // Check
+		inline constexpr REL::VariantID Float0To1{ 1025602, 2267954 }; // Check
+		inline constexpr REL::VariantID Int{ 1212543, 2267952 }; // Check
 	}
 
 	namespace BSResource_Archive2_AsyncReaderStream
@@ -745,11 +719,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetMaterial{ 706318, 2316285 };
 	}
 
-	namespace BSShaderResourceManager
-	{
-		inline constexpr REL::VariantID Singleton{ 583240, 2703483 };
-	}
-
 	namespace BSShaderTextureSet
 	{
 		inline constexpr REL::VariantID CreateObject{ 993063, 2316324 };
@@ -762,24 +731,11 @@ namespace RE::ID
 
 	namespace BSSoundHandle
 	{
-		inline constexpr REL::VariantID ClearFollowedObject{ 208569, 2267067 };
 		inline constexpr REL::VariantID FadeInPlay{ 353528, 2267075 };
 		inline constexpr REL::VariantID FadeOutAndRelease{ 260328, 2267076 };
-		inline constexpr REL::VariantID FadeTo{ 446556, 2267074 };
-		inline constexpr REL::VariantID GetDuration{ 1192939, 2267062 };
-		inline constexpr REL::VariantID IsEnvelopeLoop{ 529498, 2267051 };
-		inline constexpr REL::VariantID IsPaused{ 543387, 2267047 };
 		inline constexpr REL::VariantID IsPlaying{ 1514207, 2267046 }; // Check
-		inline constexpr REL::VariantID IsValid{ 1154607, 2267048 };
-		inline constexpr REL::VariantID Pause{ 1168427, 2267044 };
 		inline constexpr REL::VariantID Play{ 384073, 2276042 };
-		inline constexpr REL::VariantID PlayAfter{ 557072, 2267043 };
-		inline constexpr REL::VariantID SetFrequency{ 940583, 2267059 };
-		inline constexpr REL::VariantID SetFrequencyVariance{ 1552262, 2267060 };
-		inline constexpr REL::VariantID SetObjectToFollow{ 1179144, 2267066 };
 		inline constexpr REL::VariantID SetOutputModel{ 170407, 2267053 };
-		inline constexpr REL::VariantID SetPosition{ 1538508, 2267064 };
-		inline constexpr REL::VariantID SetStaticAttenuation{ 581557, 2267061 };
 		inline constexpr REL::VariantID Stop{ 1340948, 2267045 };
 	}
 
@@ -901,7 +857,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID CalcWeaponDamage{ 211411, 2209001 };
 		inline constexpr REL::VariantID GetNumCrippledAttackConditions{ 170270, 2209041 };
 		inline constexpr REL::VariantID CalcScopeSteadyActionPointDrain{ 380926, 2209045 };
-		inline constexpr REL::VariantID CalcResistedPercentage{ 420470, 2209007 };
 	}
 
 	namespace CombatUtilities
@@ -1028,9 +983,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID CompareList{ 585876, 2190098 };
 		inline constexpr REL::VariantID SetFavorite{ 534268, 2190188 }; // Check
 		inline constexpr REL::VariantID GetPrimitive{ 1271508, 2190427 }; // Check
-		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };
-		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };
-		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
 	}
 
 	namespace ExtraTextDisplayData
@@ -1116,140 +1068,6 @@ namespace RE::ID
 	namespace GridCellArray
 	{
 		inline constexpr REL::VariantID Get{ 1330136, 2194566 }; // Check
-	}
-
-	namespace hkContainerHeapAllocator
-	{
-		inline constexpr REL::VariantID Singleton{ 409811, 2665426 };
-	}
-
-	namespace hkDisplaySerializeOStream
-	{
-		inline constexpr REL::VariantID ctor{ 371904, 2266374 };
-	}
-
-	namespace hkHardwareInfo
-	{
-		inline constexpr REL::VariantID CalcNumHardwareThreads{ 1392261, 2260765 };
-	}
-
-	namespace hkIArchive
-	{
-		inline constexpr REL::VariantID ctor2{};
-	}
-
-	namespace hkMemoryRouter
-	{
-		inline constexpr REL::VariantID tlsSlotID{ 878080, 2787927 };
-	}
-
-	namespace hkMonitorStream
-	{
-		inline constexpr REL::VariantID tlsSlotID{ 1467653, 2702743 };
-		inline constexpr REL::VariantID Clear{ 667853, 2257312 };
-		inline constexpr REL::VariantID Resize{ 854140, 2257310 };
-	}
-
-	namespace hknpCapsuleShape
-	{
-		inline constexpr REL::VariantID Init{ 647475, 2257217 };
-		inline constexpr REL::VariantID CreateCapsuleShape{ 1316723, 2257207 };
-	}
-
-	namespace hknpConvexPolytopeShape
-	{
-		inline constexpr REL::VariantID CreateFromVerticesInternal{ 720930, 2257201 };
-	}
-
-	namespace hknpConvexShape
-	{
-		inline constexpr REL::VariantID CreateFromAabb{ 1144958, 2257125 };
-		inline constexpr REL::VariantID CreateFromCylinder{ 39591, 2257126 };
-		inline constexpr REL::VariantID CreateFromHalfExtents{ 972150, 2257124 };
-		inline constexpr REL::VariantID CreateFromIndexedVertices{ 308779, 2257123 };
-		inline constexpr REL::VariantID CreateFromVertices{ 1389383, 2257122 };
-	}
-
-	namespace hknpMotionCinfo
-	{
-		inline constexpr REL::VariantID ctor{ 1248706, 2258369 };
-		inline constexpr REL::VariantID InitializeAsKeyFramed{ 1204390, 2258373 };
-	}
-
-	namespace hknpPhysicsSystem
-	{
-		inline constexpr REL::VariantID AddToWorld{ 189542, 2255984 };
-		inline constexpr REL::VariantID RemoveFromWorld{ 773481, 2255985 };
-	}
-
-	namespace hknpSphereShape
-	{
-		inline constexpr REL::VariantID CreateSphereShape{ 1116388, 2256377 };
-	}
-
-	namespace hknpTriangleShape
-	{
-		inline constexpr REL::VariantID CreateEmptyTriangleShape{ 1355865, 2256226 };
-		inline constexpr REL::VariantID SetVertices{ 1435439, 2256228 };
-	}
-
-	namespace hknpBSWorld
-	{
-		inline constexpr REL::VariantID AccessMotion{ 979298, 2277680 };
-		inline constexpr REL::VariantID ActivateBody{ 1259285, 2277677 };
-		inline constexpr REL::VariantID SetBodyAngularVelocity{ 1020581, 2277672 };
-		inline constexpr REL::VariantID SetBodyKeyframed{ 527037, 2277684 };
-		inline constexpr REL::VariantID SetBodyLinearVelocity{ 1552859, 2277671 };
-		inline constexpr REL::VariantID SetBodyStatic{ 1058828, 2277683 };
-		inline constexpr REL::VariantID SetBodyVelocity{ 1300379, 2277670 };
-	}
-
-	namespace hknpWorld
-	{
-		inline constexpr REL::VariantID AddBodies{ 1454855, 2255681 };
-		inline constexpr REL::VariantID CreateBody{ 72830, 2255680 };
-		inline constexpr REL::VariantID CreateMotion{ 1574333, 2255688 };
-		inline constexpr REL::VariantID DisableBodyFlags{ 1506647, 2255636 };
-		inline constexpr REL::VariantID EnableBodyFlags{ 987833, 2255635 };
-		inline constexpr REL::VariantID GetActionManager{ 1548356, 2255709 };
-		inline constexpr REL::VariantID SetBodyCollisionFilterInfo{ 1114792, 2255626 };
-		inline constexpr REL::VariantID SetBodyMotion{ 618186, 2255634 };
-	}
-
-	namespace hkOArchive
-	{
-		inline constexpr REL::VariantID ctor2{ 650732, 2259258 };
-	}
-
-	namespace hkProcessFactory
-	{
-		inline constexpr REL::VariantID Singleton{ 111134, 2702978 };
-		inline constexpr REL::VariantID CreateProcess{ 1489919, 2263377 };
-	}
-
-	namespace hkReferencedObject
-	{
-		inline constexpr REL::VariantID AddReference{ 866015, 2259213 };
-		inline constexpr REL::VariantID RemoveReference{ 1379897, 2195747 };
-	}
-
-	namespace hkStringPtr
-	{
-		inline constexpr REL::VariantID ctor{ 1051944, 2255573 };
-	}
-
-	namespace hkVisualDebugger
-	{
-		inline constexpr REL::VariantID ctor{ 1503084, 2263295 };
-		inline constexpr REL::VariantID AddContext{ 136058, 2263313 };
-		inline constexpr REL::VariantID AddDefaultProcess{ 926323, 2263302 };
-		inline constexpr REL::VariantID Serve{ 1036317, 2263296 };
-		inline constexpr REL::VariantID Shutdown{ 156043, 2263300 };
-	}
-
-	namespace hkVtableClassRegistry
-	{
-		inline constexpr REL::VariantID Singleton{ 1281220, 2702926 };
 	}
 
 	namespace HolotapeMenu
@@ -1423,7 +1241,6 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID OpenLockpickingMenu{ 129892, 2249263 };
 		inline constexpr REL::VariantID SendLockInfoToMenu{ 1256681, 2249267 }; // Check
-		inline constexpr REL::VariantID DamageLockpick{ 1118991, 2249275 };
 	}
 
 	namespace LocksPicked
@@ -1540,18 +1357,18 @@ namespace RE::ID
 
 	namespace NiMatrix3
 	{
-		inline constexpr REL::VariantID ToEulerAnglesXYZ{ 34114, 2269806 };
-		inline constexpr REL::VariantID ToEulerAnglesXZY{ 1164218, 2269807 };
-		inline constexpr REL::VariantID ToEulerAnglesYXZ{ 272989, 2269808 };
-		inline constexpr REL::VariantID ToEulerAnglesYZX{ 963829, 2269809 };
-		inline constexpr REL::VariantID ToEulerAnglesZYX{ 511385, 2269810 };
-		inline constexpr REL::VariantID ToEulerAnglesZXY{ 606387, 2269824 };
-		inline constexpr REL::VariantID FromEulerAnglesXYZ{ 124665, 2269813 };
-		inline constexpr REL::VariantID FromEulerAnglesXZY{ 1319962, 2269814 };
-		inline constexpr REL::VariantID FromEulerAnglesYXZ{ 55761, 2269815 };
-		inline constexpr REL::VariantID FromEulerAnglesYZX{ 373803, 2269816 };
-		inline constexpr REL::VariantID FromEulerAnglesZYX{ 1569564, 2269817 };
-		inline constexpr REL::VariantID FromEulerAnglesZXY{ 326460, 2269825 };
+		inline constexpr REL::VariantID ToEulerAnglesXYZ1{ 34114, 2269806 };
+		inline constexpr REL::VariantID ToEulerAnglesXZY2{ 1164218, 2269807 };
+		inline constexpr REL::VariantID ToEulerAnglesYXZ3{ 272989, 2269808 };
+		inline constexpr REL::VariantID ToEulerAnglesYZX4{ 963829, 2269809 };
+		inline constexpr REL::VariantID ToEulerAnglesZYX5{ 511385, 2269810 };
+		inline constexpr REL::VariantID ToEulerAnglesZXY6{ 606387, 2269824 };
+		inline constexpr REL::VariantID FromEulerAnglesXYZ1{ 124665, 2269813 };
+		inline constexpr REL::VariantID FromEulerAnglesXZY2{ 1319962, 2269814 };
+		inline constexpr REL::VariantID FromEulerAnglesYXZ3{ 55761, 2269815 };
+		inline constexpr REL::VariantID FromEulerAnglesYZX4{ 373803, 2269816 };
+		inline constexpr REL::VariantID FromEulerAnglesZYX5{ 1569564, 2269817 };
+		inline constexpr REL::VariantID FromEulerAnglesZXY6{ 326460, 2269825 };
 	}
 
 	namespace NiNode
@@ -1559,9 +1376,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID ChildrenVTable{ 390064 };
 	}
 
-	namespace NiPoint3
+	namespace NiPoint
 	{
-		inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
+		namespace NiPoint3
+		{
+			inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
+		}
 	}
 
 	namespace NiRefObject
@@ -1759,7 +1579,6 @@ namespace RE::ID
 	namespace PlayerCamera
 	{
 		inline constexpr REL::VariantID Singleton{ 1171980, 2688801, 4796065 };
-		inline constexpr REL::VariantID GetCameraPosition{ 1574794, 2248334 };
 		inline constexpr REL::VariantID PopState{ 120998, 2248424 };
 		inline constexpr REL::VariantID PushState{ 746523, 2248422 };
 		inline constexpr REL::VariantID ToggleFreeCameraMode{ 224913, 2248368 };
@@ -1800,7 +1619,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetPerkCount{ 616372, 2233187 };
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
 		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
-		inline constexpr REL::VariantID EnableRadio{ 741937, 2233211 };
 	}
 
 	namespace PlayerControls
@@ -1855,13 +1673,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID AreHostileActorsNear{ 1053584, 2234105 };
 		inline constexpr REL::VariantID IsActorTargetingREFinPackage{ 559542, 2234033 };
 		inline constexpr REL::VariantID RequestHighestDetectionLevelAgainstActor{ 1036693, 2234111 };
-	}
-
-	namespace RadioManager
-	{
-		inline constexpr REL::VariantID QPlayerRadioEnabled{ 811921, 2227674 };
-		inline constexpr REL::VariantID QCurrentPlayerFreq{ 227903, 2227670 };
-		inline constexpr REL::VariantID EnablePlayerRadio{ 653012, 2227673 };
 	}
 
 	namespace REFR_LOCK
@@ -1986,7 +1797,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID QueueShowPipboy{ 1133684, 2229288 };
 		inline constexpr REL::VariantID QueueUpdate3D{ 581890, 2229234 };
 		inline constexpr REL::VariantID QueueWeaponFire{ 15449, 2229186 };
-		inline constexpr REL::VariantID TaskUnpackFunc{ 1546751, 2229323 };
 	}
 
 	namespace TerminalHacked
@@ -2178,7 +1988,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetFacialBoneMorphIntensity{ 272217, 2207416 };
 		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 };
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
-		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
 	}
 
 	namespace TESObjectARMO
@@ -2233,10 +2042,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID FindReferenceFor3D{ 766937, 2201082 };
 		inline constexpr REL::VariantID GetCurrentLocation{ 1135470, 2201163 };
 		inline constexpr REL::VariantID GetDisplayFullName{ 1212056, 2201126 };
-		inline constexpr REL::VariantID GetDistanceFromPoint{ 1332593, 2201172 };
-		inline constexpr REL::VariantID GetDistanceFromReference{ 268887, 2201174 };
-		inline constexpr REL::VariantID GetDistanceSqFromPoint{ 361891, 2201173 };
-		inline constexpr REL::VariantID GetDistanceSqFromReference{ 1225962, 2201175 };
 		inline constexpr REL::VariantID GetEditorDead{ 941388, 2200781 };
 		inline constexpr REL::VariantID GetOwner{ 1323437, 2202616 };
 		inline constexpr REL::VariantID GetGoldAmount{ 564356, 2200923 };

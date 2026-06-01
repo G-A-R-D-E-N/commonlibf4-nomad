@@ -2,7 +2,7 @@
 
 namespace RE
 {
-	enum class COL_LAYER : std::int32_t
+	enum class COL_LAYER
 	{
 		kUnidentified = 0,
 		kStatic = 1,

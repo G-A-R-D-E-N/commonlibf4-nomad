@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/H/hkQuaternion.h"
-#include "RE/H/hkVector4.h"
+#include "RE/H/hkQuaternionf.h"
+#include "RE/H/hkVector4f.h"
 
 namespace RE
 {
@@ -9,11 +9,9 @@ namespace RE
 	{
 	public:
 		// members
-		hkVector4f    m_translation;  // 0x00
-		hkQuaternionf m_rotation;     // 0x10
-		hkVector4f    m_scale;        // 0x20
+		hkVector4f    translation;  // 00
+		hkQuaternionf rotation;     // 10
+		hkVector4f    scale;        // 20
 	};
 	static_assert(sizeof(hkQsTransformf) == 0x30);
-
-	using hkQsTransform = hkQsTransformf;
 }

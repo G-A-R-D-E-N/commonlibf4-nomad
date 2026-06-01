@@ -2,7 +2,7 @@
 
 namespace RE
 {
-	enum class ImpactResult : std::int32_t
+	enum class ImpactResult
 	{
 		kNone = 0x0,
 		kDestroy = 0x1,

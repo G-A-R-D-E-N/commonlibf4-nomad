@@ -67,5 +67,3 @@ Runtime ID slots are:
 ```cpp
 { OG, NG, AE }
 ```
-
-NG values are preserved as inherited from OGAE2. Current development and runtime testing target OG and AE only.

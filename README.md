@@ -13,6 +13,22 @@ CommonLibF4 workspace for OG and AE plugin development.
 - XMake `3.0.0+`
 - C++23 compiler, MSVC or Clang-CL
 
+## Installation
+
+Clone this repository with its Unified `commonlib-shared` submodule:
+
+```powershell
+git clone --recurse-submodules https://github.com/EnclaveShrew/commonlibf4-unified.git
+cd commonlibf4-unified
+```
+
+If the repository was cloned without submodules, initialize them before building:
+
+```powershell
+git submodule sync --recursive
+git submodule update --init --recursive
+```
+
 ## Build
 
 ```powershell

@@ -6,7 +6,7 @@ CommonLibF4 workspace for OG and AE plugin development.
 
 - OG: Fallout 4 `1.10.163`
 - NG: not an active support target
-- AE: Fallout 4 `1.11.137+` ~ `1.11.191`
+- AE: Fallout 4 `1.11.221`
 
 ## Build Requirements
 

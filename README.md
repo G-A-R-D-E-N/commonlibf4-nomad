@@ -2,15 +2,11 @@
 
 This is the active local CommonLibF4 workspace for OG and AE plugin development.
 
-It is based on the OGAE2 CommonLibF4 line and keeps its 3-slot relocation layout.
-
 ## Supported Runtimes
 
 - OG: Fallout 4 `1.10.163`
-- NG: slot preserved from OGAE2, not an active support target
-- AE: Fallout 4 `1.11.137+`, currently tracked through `1.11.191`
-
-VR is not supported in this workspace.
+- NG: not an active support target
+- AE: Fallout 4 `1.11.137+` ~ `1.11.191`
 
 ## Build Requirements
 

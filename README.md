@@ -1,6 +1,6 @@
 # CommonLibF4 Unified
 
-This is the active local CommonLibF4 workspace for OG and AE plugin development.
+CommonLibF4 workspace for OG and AE plugin development.
 
 ## Supported Runtimes
 

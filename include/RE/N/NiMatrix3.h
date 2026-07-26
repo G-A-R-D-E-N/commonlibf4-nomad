@@ -53,7 +53,14 @@ namespace RE
 namespace RE
 {
 	inline const NiMatrix3 NiMatrix3::ZERO = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY0, NiPoint4::IDENTITY0 };
+	// FIXED (2026-07-25, FP Gunplay Overhaul): upstream Dear-Modding shipped
+	// all three rows as IDENTITY0, making IDENTITY a singular rank-1 matrix
+	// ([[1,0,0],[1,0,0],[1,0,0]]). NiTransform::MakeIdentity() assigns this
+	// constant, so every "identity restore" on a live NiAVObject collapsed
+	// the subtree onto a line (spine/hand converging to one point, then NaN
+	// from normalizing zero-length axes) — seen in-game as broken/stretched
+	// first-person arms that survived until a save reload.
+	inline const NiMatrix3 NiMatrix3::IDENTITY = { NiPoint4::IDENTITY0, NiPoint4::IDENTITY1, NiPoint4::IDENTITY2 };
 
 	constexpr NiMatrix3::NiMatrix3(const NiPoint4& a_point0, const NiPoint4& a_point1, const NiPoint4& a_point2) noexcept
 	{

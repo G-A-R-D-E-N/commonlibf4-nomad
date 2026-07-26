@@ -193,7 +193,23 @@ namespace RE::ID
 
 	namespace BGSDefaultObjectManager
 	{
-		inline constexpr REL::VariantID Singleton{ 484974, 0 };	// Inlined NG/AE - old ids 2192850 this function get by type (also, the number increased by 1)
+		// OG: BGSDefaultObjectManager::GetSingleton.
+		// NG/AE: BSTSingletonImplicit<BGSDefaultObjectManager>::QInstance,
+		// the no-arg getter (init-once guard + return static instance).
+		// Verified by disassembly: NG 1.10.984 RVA 0x29F1B0, AE 1.11.221
+		// RVA 0x2F33E0.
+		//
+		// Do NOT use 0 for the NG/AE slot: Address Library lower_bound
+		// treats a missing ID 0 as the first bin entry and returns a data
+		// RVA (AE: id=15 -> 0x29B3ED8), which crashes when called.
+		//
+		// Do NOT use 2192850 either. The symbol export also names it QInstance, but
+		// it is actually TESForm* GetDefaultObjectByIndex(int): it takes a
+		// DEFAULT_OBJECT index in ECX and returns objectArray[index]
+		// (AE RVA 0x307DE0 does `movslq ecx,rbx` then
+		// `mov rax,[rdi+rbx*8+0x20]`). Calling it as a no-arg getter reads
+		// garbage-index memory and crashes.
+		inline constexpr REL::VariantID Singleton{ 484974, 2192468 };
 	}
 
 	namespace BGSDynamicPersistenceManager
@@ -474,7 +490,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetStartEnd{ 747470, 2236622 };
 		inline constexpr REL::VariantID Reset{ 438299, 2277761 };
 		inline constexpr REL::VariantID HasHit{ 1181584, 2277770 };
-		inline constexpr REL::VariantID GetHitFraction{ 476687, 2277772 };
+		// NG/AE have TWO adjacent GetHitFraction overloads, 0x60 bytes
+		// apart: 2277771 = float(bhkPickData*) reading the pick's own
+		// embedded result (this+0x80), 2277772 = float(bhkPickData*,
+		// hknpRayCastQueryResult&) reading the caller's result (rdx+0x20).
+		// The wrapper above passes only `this`, so it must use 2277771;
+		// 2277772 crashed with rdx=null on AE 1.11.221 (verified by
+		// disassembly at RVA 0x18787B0 / 0x1878810, 2026-07-25).
+		inline constexpr REL::VariantID GetHitFraction{ 476687, 2277771 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitSize{ 1288513, 2277765 };
 		inline constexpr REL::VariantID GetAllCollectorRayHitAt{ 583997, 2277766 };
 		inline constexpr REL::VariantID SortAllCollectorHits{ 1274842, 2277767 };

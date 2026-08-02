@@ -51,11 +51,16 @@ namespace RE
 			func(this, a_handle, a_soundName, a_distance, a_usageFlags, a_data);
 		}
 
-		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority)
+		// Signature per the CK 2.21 symbol export: GetSoundHandleByFile(BSSoundHandle&,
+		// BSResource::ID&, uint, uchar, char*). The trailing string is the
+		// data-relative file path; the ID alone is just a hash, and the loose
+		// file open needs the actual path. The wrapper previously omitted it,
+		// which left stack garbage in that slot at the call site.
+		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority, const char* a_fileName = nullptr)
 		{
 			using func_t = decltype(&BSAudioManager::GetSoundHandleByFile);
 			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandleByFile };
-			func(this, a_handle, a_file, a_usageFlags, a_priority);
+			func(this, a_handle, a_file, a_usageFlags, a_priority, a_fileName);
 		}
 
 		// members

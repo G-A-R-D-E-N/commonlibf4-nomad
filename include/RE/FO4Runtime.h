@@ -551,7 +551,7 @@ namespace RE::FO4Runtime
 		inline constexpr RuntimeAddressValue CURRENT_HULL_SHADER_ENTRY{ 0x143E5AEE0ull };
 		inline constexpr RuntimeAddressValue CURRENT_DOMAIN_SHADER_ENTRY{ 0x143E5AEE8ull };
 		inline constexpr RuntimeAddressValue CURRENT_PIXEL_SHADER_ENTRY{ 0x143E5AEF0ull };
-		inline constexpr RuntimeField SHADER_ENTRY_D3D_OBJECT{ 0x8 };
+		inline constexpr RuntimeField        SHADER_ENTRY_D3D_OBJECT{ 0x8 };
 
 		// TODO(PostAE LLF): Still missing — BSRenderPass light tables,
 		// BSShadowLight maskIndex, ShadowSceneNode active buckets (and their

@@ -538,11 +538,24 @@ namespace RE::FO4Runtime
 
 	namespace PostNG
 	{
-		// TODO(PostAE LLF): PostAE builds currently share this PostNG namespace.
-		// Add audited PostAE runtime data for BSRenderPass light tables,
-		// BSShadowLight maskIndex, ShadowSceneNode active buckets,
-		// BSShaderLookup/BindShaders globals, and shader entry D3D object fields.
-		// The entries below only cover hooks already consumed by FO4CS.
+		// LLF consumer-bind runtime data (statically verified against the
+		// SteamLibrary PostAE export; see
+		// .codex/docs/llf-consumer-bind-addresses-verified.md). These are
+		// version-pinned static VAs (image base 0x140000000), NOT REL::IDs —
+		// migrate to Address Library IDs before shipping so a Bethesda update
+		// cannot silently break the bind.
+		inline constexpr RuntimeAddressValue BS_SHADER_LOOKUP{ 0x14222A0B0ull };
+		inline constexpr RuntimeAddressValue BIND_SHADERS{ 0x14181CFE0ull };
+		inline constexpr RuntimeAddressValue RENDERER_STATE{ 0x143A0F480ull };
+		inline constexpr RuntimeAddressValue CURRENT_VERTEX_SHADER_ENTRY{ 0x143E5AED8ull };
+		inline constexpr RuntimeAddressValue CURRENT_HULL_SHADER_ENTRY{ 0x143E5AEE0ull };
+		inline constexpr RuntimeAddressValue CURRENT_DOMAIN_SHADER_ENTRY{ 0x143E5AEE8ull };
+		inline constexpr RuntimeAddressValue CURRENT_PIXEL_SHADER_ENTRY{ 0x143E5AEF0ull };
+		inline constexpr RuntimeField SHADER_ENTRY_D3D_OBJECT{ 0x8 };
+
+		// TODO(PostAE LLF): Still missing — BSRenderPass light tables,
+		// BSShadowLight maskIndex, ShadowSceneNode active buckets (and their
+		// field offsets). Add before enabling full light collection on PostAE.
 		namespace Hooks
 		{
 			inline constexpr REL::ID      UPSCALER_WINDOW_SIZE_CHANGED{ 2276824 };

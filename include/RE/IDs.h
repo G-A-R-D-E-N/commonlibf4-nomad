@@ -473,7 +473,7 @@ namespace RE::ID
 		inline constexpr REL::ID SetStartEnd{ 2236622 };
 		inline constexpr REL::ID Reset{ 2277761 };
 		inline constexpr REL::ID HasHit{ 2277770 };
-		inline constexpr REL::ID GetHitFraction{ 2277772 };
+		inline constexpr REL::ID GetHitFraction{ 2277771 };
 		inline constexpr REL::ID GetAllCollectorRayHitSize{ 2277765 };
 		inline constexpr REL::ID GetAllCollectorRayHitAt{ 2277766 };
 		inline constexpr REL::ID SortAllCollectorHits{ 2277767 };

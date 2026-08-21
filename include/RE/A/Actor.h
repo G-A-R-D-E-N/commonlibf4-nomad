@@ -134,7 +134,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual void SetAvoidanceDisabled([[maybe_unused]] bool a_tf)
     {
         return;
-    }                                                                                                     // 0C8
+    } // 0C8
     virtual void DrawWeaponMagicHands(bool a_draw);                                                       // 0C9
     virtual void SetPosition(const NiPoint3 &a_pos, bool a_updateCharController);                         // 0CA
     virtual void KillDying();                                                                             // 0CB
@@ -165,7 +165,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
                          [[maybe_unused]] bool a_removeStolenItems)
     {
         return;
-    }                                                  // 0DC
+    } // 0DC
     virtual float GetCurrentEyeLevel() const;          // 0DD
     virtual void SetInDialoguewithPlayer(bool a_flag); // 0DE
     virtual bool GetCannibal()
@@ -183,7 +183,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual void SetVampireFeed(bool)
     {
         return;
-    }                                                                                                       // 0E2
+    } // 0E2
     virtual void InitiateVampireFeedPackage(Actor *a_target, TESObjectREFR *a_furniture);                   // 0E3
     virtual void InitiateCannibalPackage(Actor *a_target);                                                  // 0E4
     virtual float GetEyeHeading() const;                                                                    // 0E5
@@ -193,7 +193,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual float GetAcrobatics() const
     {
         return 1.0F;
-    }                                                          // 0E9
+    } // 0E9
     virtual bool Get3DUpdateFlag(RESET_3D_FLAGS a_flag) const; // 0EA
     virtual ObjectRefHandle DropObject(const BGSObjectInstance &a_object, BSTSmallArray<std::uint32_t, 4> *a_stackData,
                                        std::int32_t a_number, const NiPoint3 *a_point, const NiPoint3 *a_rotate); // 0EB
@@ -229,7 +229,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual std::uint8_t GetPowerAttackPercent(POWER_ATTACK_TYPE)
     {
         return 0;
-    }                                                             // 102
+    } // 102
     virtual void WeaponSwingCallBack(BGSEquipIndex a_equipIndex); // 103
     virtual void SetActorStartingPosition();                      // 104
     virtual void SetLifeState(ACTOR_LIFE_STATE a_lifeState);      // 105
@@ -252,7 +252,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual bool IsPowerAttackCoolingDown() const
     {
         return false;
-    }                                                                           // 10F
+    } // 10F
     virtual void HandleHealthDamage(Actor *a_attacker, float a_damage);         // 110
     virtual bool QSpeakingDone() const;                                         // 111
     virtual void SetSpeakingDone(bool a_done);                                  // 112
@@ -265,7 +265,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual BGSKeyword *GetSpeakingAnimArchType()
     {
         return speakingAnimArchType;
-    }                                                                                                             // 116
+    } // 116
     virtual void KillImpl(Actor *a_attacker, float a_damage, bool a_sendEvent, bool a_ragdollInstant);            // 117
     virtual void DoReparentWeapon(const TESObjectWEAP *a_weapon, BGSEquipIndex a_equipIndex, bool a_weaponDrawn); // 118
     virtual bool DrinkPotion(AlchemyItem *a_potion, std::uint32_t a_stackID);                                     // 119
@@ -277,7 +277,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual void SetLastRiddenMount([[maybe_unused]] ActorHandle a_mount)
     {
         return;
-    }                                                  // 11C
+    } // 11C
     virtual ActorHandle QLastRiddenMount() const;      // 11D
     virtual bool CalculateCachedOwnerIsUndead() const; // 11E
     virtual bool CalculateCachedOwnerIsNPC() const;    // 11F
@@ -286,7 +286,7 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
     virtual bool ShouldDoCharacterUpdate() const
     {
         return true;
-    }                                                                                              // 122
+    } // 122
     virtual bool GetAnimationCanBeInterpolated() const;                                            // 123
     virtual const BSFixedString &GetResponseString() const;                                        // 124
     virtual void ModifyMovementData(float a_delta, NiPoint3 &a_moveDelta, NiPoint3 &a_angleDelta); // 125
@@ -480,6 +480,13 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
         return func(this);
     }
 
+    [[nodiscard]] bool IsEquipReady() const
+    {
+        using func_t = decltype(&Actor::IsEquipReady);
+        static REL::Relocation<func_t> func{ID::Actor::IsEquipReady};
+        return func(this);
+    }
+
     bool IsFollowing()
     {
         using func_t = decltype(&Actor::IsFollowing);
@@ -547,6 +554,13 @@ class __declspec(novtable) Actor : public TESObjectREFR,                        
         using func_t = decltype(&Actor::PerformAction);
         static REL::Relocation<func_t> func{ID::Actor::PerformAction};
         return func(this, a_action, a_target);
+    }
+
+    void PollItemEquip(bool a_force)
+    {
+        using func_t = decltype(&Actor::PollItemEquip);
+        static REL::Relocation<func_t> func{ID::Actor::PollItemEquip};
+        return func(this, a_force);
     }
 
     void RemovePerk(BGSPerk *a_perk)

@@ -15,9 +15,22 @@ class __declspec(novtable) hkbBehaviorGraph : public hkbGenerator
     static constexpr auto RTTI{RTTI::hkbBehaviorGraph};
     static constexpr auto VTABLE{VTABLE::hkbBehaviorGraph};
 
+    [[nodiscard]] hkbGenerator *GetRootGenerator()
+    {
+        return rootGenerator;
+    }
+
     [[nodiscard]] hkArray<hkbNodeInfo *> *GetActiveNodes()
     {
-        return *reinterpret_cast<hkArray<hkbNodeInfo *> **>(reinterpret_cast<std::uintptr_t>(this) + 0xE0);
+        return activeNodes;
     }
+
+    // members
+    std::uint8_t pad10[0xC0 - 0x10];     // 10
+    hkbGenerator *rootGenerator;         // C0
+    std::uint8_t padC8[0xE0 - 0xC8];     // C8
+    hkArray<hkbNodeInfo *> *activeNodes; // E0
 };
+static_assert(offsetof(hkbBehaviorGraph, rootGenerator) == 0xC0);
+static_assert(offsetof(hkbBehaviorGraph, activeNodes) == 0xE0);
 } // namespace RE

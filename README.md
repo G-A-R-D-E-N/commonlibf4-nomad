@@ -1,33 +1,23 @@
 # CommonLibF4 Unified
 
-CommonLibF4 workspace for OG and AE plugin development.
+This is the active local CommonLibF4 workspace for OG and AE plugin development.
+
+It is based on the OGAE2 CommonLibF4 line and keeps its 3-slot relocation layout.
 
 ## Supported Runtimes
 
 - OG: Fallout 4 `1.10.163`
-- NG: not an active support target
+- NG: slot preserved from OGAE2, not an active support target
 - AE: Fallout 4 `1.11.221`
+
+VR is not supported in this workspace.
+
+AE builds require the Address Library package for Fallout 4 `1.11.221`.
 
 ## Build Requirements
 
 - XMake `3.0.0+`
 - C++23 compiler, MSVC or Clang-CL
-
-## Installation
-
-Clone this repository with its Unified `commonlib-shared` submodule:
-
-```powershell
-git clone --recurse-submodules https://github.com/EnclaveShrew/commonlibf4-unified.git
-cd commonlibf4-unified
-```
-
-If the repository was cloned without submodules, initialize them before building:
-
-```powershell
-git submodule sync --recursive
-git submodule update --init --recursive
-```
 
 ## Build
 
@@ -83,3 +73,7 @@ Runtime ID slots are:
 ```cpp
 { OG, NG, AE }
 ```
+
+NG values are preserved as inherited from OGAE2. Current development and runtime testing target OG and AE only.
+
+The `commonlib-shared` submodule is currently upstream `commonlib-shared` plus the Unified `REL::VariantID` offset resolution change. No additional `commonlib-shared` changes were needed for the `1.11.221` update.

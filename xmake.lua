@@ -64,7 +64,7 @@ rule("commonlibf4.plugin", function()
         end
 
         target:add("configfiles", plugin_file)
-        target:add("files", path.join(target:configdir(), "commonlibf4-plugin.cpp"))
+        target:add("files", path.join(target:configdir(), "commonlibf4-plugin.cpp"), { always_added = true })
 
         if os.getenv("XSE_FO4_MODS_PATH") then
             target:set("installdir", path.join(os.getenv("XSE_FO4_MODS_PATH"), target:name()))

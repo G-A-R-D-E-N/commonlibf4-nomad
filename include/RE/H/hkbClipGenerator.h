@@ -5,14 +5,13 @@
 #include "RE/H/hkRefPtr.h"
 #include "RE/H/hkStringPtr.h"
 #include "RE/H/hkaAnimation.h"
+#include "RE/H/hkaAnimationControl.h"
 #include "RE/H/hkbGenerator.h"
 #include "RE/IDs_RTTI.h"
 #include "RE/IDs_VTABLE.h"
 
 namespace RE
 {
-class hkaAnimationBinding;
-class hkaDefaultAnimationControl;
 class hkaDefaultAnimationControlMapperData;
 class hkbClipTriggerArray;
 struct hkbContext;
@@ -64,30 +63,14 @@ class __declspec(novtable) hkbClipGenerator : public hkbGenerator
     float time;                                            // 144
     float previousUserControlledTimeFraction;              // 148
     std::uint8_t pad14C[0x04];                             // 14C
-    std::uint16_t unk150;                                  // 150
+    bool resetLocalTime;                                   // 150
+    bool hasSetLocalTime;                                  // 151
     bool atEnd;                                            // 152
     bool ignoreStartTime;                                  // 153
 
     [[nodiscard]] const char *GetClipName() const
     {
         return animationName.get();
-    }
-
-    [[nodiscard]] hkaAnimation *GetAnimation() const
-    {
-        auto ctrl = reinterpret_cast<std::uintptr_t>(animationControl.ptr);
-        if (!ctrl)
-        {
-            return nullptr;
-        }
-
-        auto bind = *reinterpret_cast<std::uintptr_t *>(ctrl + 0x38);
-        if (!bind)
-        {
-            return nullptr;
-        }
-
-        return *reinterpret_cast<hkaAnimation **>(bind + 0x18);
     }
 };
 static_assert(offsetof(hkbClipGenerator, name) == 0x38);
@@ -102,4 +85,5 @@ static_assert(offsetof(hkbClipGenerator, animationControl) == 0xD0);
 static_assert(offsetof(hkbClipGenerator, binding) == 0xE8);
 static_assert(offsetof(hkbClipGenerator, extractedMotion) == 0x100);
 static_assert(offsetof(hkbClipGenerator, localTime) == 0x140);
+static_assert(offsetof(hkbClipGenerator, hasSetLocalTime) == 0x151);
 } // namespace RE

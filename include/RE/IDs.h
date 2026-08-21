@@ -5,7 +5,8 @@ namespace RE::ID
 namespace ActiveEffect
 {
 inline constexpr REL::VariantID CheckDisplacementSpellOnTarget{1415178, 2226001};
-}
+inline constexpr REL::VariantID Dispel{178839, 2226002};
+} // namespace ActiveEffect
 
 namespace Actor
 {
@@ -35,6 +36,7 @@ inline constexpr REL::VariantID HandleItemEquip{164912, 2229781};
 inline constexpr REL::VariantID HasObjects{861256, 2229961};
 inline constexpr REL::VariantID InitiateDoNothingPackage{89993, 2229807};
 inline constexpr REL::VariantID IsCrippled{1238666, 2230998};
+inline constexpr REL::VariantID IsEquipReady{451607, 2231162};
 inline constexpr REL::VariantID IsFollowing{629579, 2230013};
 inline constexpr REL::VariantID IsJumping{1041558, 2229640};
 inline constexpr REL::VariantID IsPathValid{1522194, 2230279};
@@ -44,6 +46,7 @@ inline constexpr REL::VariantID IsQuadruped{1552322, 2229614};
 inline constexpr REL::VariantID IsSneaking{1173627, 2207655};
 inline constexpr REL::VariantID Move{737625, 2229934};
 inline constexpr REL::VariantID PerformAction{1057231, 2231177};
+inline constexpr REL::VariantID PollItemEquip{612104, 2230558};
 inline constexpr REL::VariantID RemovePerk{1316475, 2230122};
 inline constexpr REL::VariantID Reset3D{302888, 2229913};
 inline constexpr REL::VariantID RewardExperience{262786, 2230428};
@@ -102,6 +105,7 @@ inline constexpr REL::VariantID GetBarterValue{984344, 2208969};
 namespace AIProcess
 {
 inline constexpr REL::VariantID GetCurrentAmmo{1154936, 2232300};
+inline constexpr REL::VariantID GetFaceAnimationData{557396, 2232299};
 inline constexpr REL::VariantID GetCommandType{678523, 2231825};
 inline constexpr REL::VariantID GetOccupiedFurniture{1162965, 2232401};
 inline constexpr REL::VariantID IsWeaponSubgraphFinishedLoading{320183, 2231757};
@@ -152,6 +156,7 @@ namespace BGSAnimationSystemUtils
 inline constexpr REL::VariantID GetActiveSyncInfo{1349978, 2214289};
 inline constexpr REL::VariantID InitializeActorInstant{672857, 2236393};
 inline constexpr REL::VariantID IsActiveGraphInTransition{839650, 2214305};
+inline constexpr REL::VariantID IsAnimationSubGraphLoaded{941561, 2236385};
 } // namespace BGSAnimationSystemUtils
 
 namespace BGSAttachParentArray
@@ -486,10 +491,21 @@ namespace BIPOBJECT
 inline constexpr REL::VariantID dtor{765242, 2194330};
 }
 
+namespace BSAnimationGraphManager
+{
+inline constexpr REL::VariantID SetTargets{231694, 2256659};
+inline constexpr REL::VariantID Update{1534254, 2256660};
+} // namespace BSAnimationGraphManager
+
+namespace BShkbAnimationGraph
+{
+inline constexpr REL::VariantID InitImpl{1026105, 2256855};
+}
+
 namespace BSAudioManager
 {
 inline constexpr REL::VariantID Singleton{1321158, 2703058};
-inline constexpr REL::VariantID GetSoundHandleByName{196484, 2267105};
+inline constexpr REL::VariantID GetSoundHandleByName{196484, 2267104};
 inline constexpr REL::VariantID GetSoundHandleByFile{37039, 2267103};
 } // namespace BSAudioManager
 
@@ -641,6 +657,7 @@ inline constexpr REL::VariantID Singleton{210868, 2703393};
 namespace BSResource
 {
 inline constexpr REL::VariantID RegisterLocation{918408, 2269481};
+inline constexpr REL::VariantID RegisterPrefix{276445, 2269504};
 inline constexpr REL::VariantID GetOrCreateStream{1143155, 2269490};
 
 namespace ID
@@ -744,7 +761,8 @@ namespace BSSoundHandle
 inline constexpr REL::VariantID FadeInPlay{353528, 2267075};
 inline constexpr REL::VariantID FadeOutAndRelease{260328, 2267076};
 inline constexpr REL::VariantID IsPlaying{1514207, 2267046}; // Check
-inline constexpr REL::VariantID Play{384073, 2276042};
+inline constexpr REL::VariantID Play{384073, 2267042};
+inline constexpr REL::VariantID SetStaticAttenuation{581557, 2267061};
 inline constexpr REL::VariantID SetOutputModel{170407, 2267053};
 inline constexpr REL::VariantID Stop{1340948, 2267045};
 } // namespace BSSoundHandle
@@ -783,6 +801,24 @@ namespace BSSystemFileStreamer
 {
 inline constexpr REL::VariantID UncacheAll{40925, 2268797};
 }
+
+namespace BSTextureArray
+{
+namespace StaticTexture
+{
+inline constexpr REL::VariantID LoadSlices{611345, 4492265};
+inline constexpr REL::VariantID LoadSliceFromDesc{1088137, 2276280};
+inline constexpr REL::VariantID PollLoadSlices{742955, 2276278};
+inline constexpr REL::VariantID WaitLoadSlices{37713, 2276279};
+} // namespace StaticTexture
+
+namespace StaticTextureIndexed
+{
+inline constexpr REL::VariantID ctor{262675, 2276281};
+inline constexpr REL::VariantID CopyFrom{235292, 2276284};
+inline constexpr REL::VariantID FindSlice{912424, 2276285};
+} // namespace StaticTextureIndexed
+} // namespace BSTextureArray
 
 namespace BSTempEffectDebris
 {
@@ -865,6 +901,7 @@ inline constexpr REL::VariantID GetWeaponDisplayRange{1324037, 2209047};
 inline constexpr REL::VariantID GetWeaponDisplayRateOfFire{1403591, 2209048};
 inline constexpr REL::VariantID CalcTargetedLimbDamage{1530751, 2209033};
 inline constexpr REL::VariantID CalcWeaponDamage{211411, 2209001};
+inline constexpr REL::VariantID CalcResistedPercentage{420470, 2209007};
 inline constexpr REL::VariantID GetNumCrippledAttackConditions{170270, 2209041};
 inline constexpr REL::VariantID CalcScopeSteadyActionPointDrain{380926, 2209045};
 } // namespace CombatFormulas
@@ -1111,12 +1148,21 @@ namespace HUDModeEvent
 inline constexpr REL::VariantID GetEventSource{683142, 2694697, 4801988};
 }
 
+namespace hkbUtils
+{
+inline constexpr REL::VariantID collectNodesLeafFirst{REL::Offset{0x18821C0}, REL::Offset{0x148F2E0},
+                                                      REL::Offset{0x148F3E0}};
+} // namespace hkbUtils
+
 namespace IAnimationGraphManagerHolder
 {
+inline constexpr REL::VariantID CreateAnimationGraphManager{1302676, 2214554};
 inline constexpr REL::VariantID SetGraphVariableBool{1437197, 2214543};
 inline constexpr REL::VariantID SetGraphVariableFloat{27400, 2214545};
 inline constexpr REL::VariantID SetGraphVariableInt{732926, 2214544};
 inline constexpr REL::VariantID RevertAnimationGraphManager{41382, 2214541};
+inline constexpr REL::VariantID SetAnimationGraphTargets{1340816, 2214556};
+inline constexpr REL::VariantID UpdateAnimationGraphManager{1492656, 2214536};
 } // namespace IAnimationGraphManagerHolder
 
 namespace IFormFactory
@@ -1267,9 +1313,16 @@ inline constexpr REL::VariantID IsTakingHealthDamageFromActiveEffect{999442, 222
 inline constexpr REL::VariantID IsTakingRadDamageFromActiveEffect{1079111, 2226398};
 } // namespace MagicTarget
 
+namespace MagicCaster
+{
+inline constexpr REL::VariantID CastSpellImmediate{152390, 2226290};
+inline constexpr REL::VariantID InterruptCast{788485, 2226294};
+} // namespace MagicCaster
+
 namespace Main
 {
 inline constexpr REL::VariantID Singleton{756304, 2698043};
+inline constexpr REL::VariantID OnIdle{633524, 2228917};
 inline constexpr REL::VariantID WorldRootCamera{384264, 2228956};
 inline constexpr REL::VariantID WorldRootNode{569647, 2698065};
 inline constexpr REL::VariantID QGameSystemsShouldUpdate{779552, 2698031};
@@ -1806,6 +1859,7 @@ namespace TaskQueueInterface
 inline constexpr REL::VariantID Singleton{7491, 2698331};
 inline constexpr REL::VariantID QueueClosePipboy{69886, 2229289};
 inline constexpr REL::VariantID QueueRebuildBendableSpline{198419, 2229302};
+inline constexpr REL::VariantID QueueRemoveActiveEffect{66790, 2229298};
 inline constexpr REL::VariantID QueueShow1stPerson{994377, 2229268};
 inline constexpr REL::VariantID QueueShowPipboy{1133684, 2229288};
 inline constexpr REL::VariantID QueueUpdate3D{581890, 2229234};
@@ -1819,8 +1873,9 @@ inline constexpr REL::VariantID GetEventSource{425579, 2233751};
 
 namespace TES
 {
+inline constexpr REL::VariantID GetCellPriority{665767, 2192052};
 inline constexpr REL::VariantID Singleton{1194835, 2698044};
-}
+} // namespace TES
 
 namespace TESActivateEvent
 {
@@ -1902,6 +1957,11 @@ inline constexpr REL::VariantID GetDescription{523613, 2193019};
 namespace TESEnterSneakingEvent
 {
 inline constexpr REL::VariantID GetEventSource{28138, 2201837};
+}
+
+namespace TESEquipEvent
+{
+inline constexpr REL::VariantID GetEventSource{485633, 2201838};
 }
 
 namespace TESFile

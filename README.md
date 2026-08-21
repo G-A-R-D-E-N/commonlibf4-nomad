@@ -7,12 +7,13 @@ It is based on the OGAE2 CommonLibF4 line and keeps its 3-slot relocation layout
 ## Supported Runtimes
 
 - OG: Fallout 4 `1.10.163`
-- NG: slot preserved from OGAE2, not an active support target
-- AE: Fallout 4 `1.11.221`
+- AE: Fallout 4 `1.11.240`
+
+The NG relocation slot is preserved for OGAE2 layout compatibility, but is not a supported runtime.
 
 VR is not supported in this workspace.
 
-AE builds require the Address Library package for Fallout 4 `1.11.221`.
+AE builds require the Address Library package for Fallout 4 `1.11.240`.
 
 ## Build Requirements
 

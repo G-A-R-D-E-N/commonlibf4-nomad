@@ -163,7 +163,7 @@ class __declspec(novtable) PlayerCharacter : public Actor,                      
     virtual void InitiateSpectator(Actor *)
     {
         return;
-    }                                                                               // 133
+    } // 133
     virtual std::uint32_t GetViolentCrimeGoldValue(const TESFaction *a_faction);    // 134
     virtual std::uint32_t GetNonViolentCrimeGoldValue(const TESFaction *a_faction); // 135
     virtual void ClearAllCrimeGold(TESFaction *a_faction);                          // 136
@@ -336,7 +336,7 @@ class __declspec(novtable) PlayerCharacter : public Actor,                      
     BSTArray<ImageSpaceModifierInstanceForm *> animationImageSpaceInstances;         // 798
     BSTArray<BSTTuple<NiPointer<NiLight>, bool>> playerLights;                       // 7B0
     BSSimpleList<TESQuestStageItem *> questLog;                                      // 7C8
-    BSTArray<BGSInstancedQuestObjective> objectives;                                 // 7D9
+    BSTArray<BGSInstancedQuestObjective> objectives;                                 // 7D8
     BSTHashMap<TESQuest *, QuestTargetArray *> questTargets;                         // 7F0
     BSTHashMap<std::uint32_t, SayOnceTimeStampStruct> currentSayOnceInfosMap;        // 820
     BSTHashMap<std::uint32_t, SayOnceTimeStampStruct> currentSpeechRepeatMap;        // 850

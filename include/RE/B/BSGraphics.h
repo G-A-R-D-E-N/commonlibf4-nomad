@@ -23,6 +23,17 @@ namespace RE
 		enum class Format;
 		class Texture;
 
+		enum class AlphaBlendAlphaToCoverage : std::int32_t;
+		enum class AlphaBlendMode : std::int32_t;
+		enum class AlphaBlendWriteMode : std::int32_t;
+		enum class DepthStencilDepthMode : std::int32_t;
+		enum class DepthStencilExtraMode : std::int32_t;
+		enum class DepthStencilStencilMode : std::int32_t;
+		enum class RasterStateCullMode : std::int32_t;
+		enum class RasterStateDepthBiasMode : std::int32_t;
+		enum class RasterStateFillMode : std::int32_t;
+		enum class RasterStateScissorMode : std::int32_t;
+
 		enum class MultiSampleLevel
 		{
 			kNone,
@@ -271,10 +282,111 @@ namespace RE
 		};
 		static_assert(sizeof(RendererWindow) == 0x50);
 
+		enum class ShaderFlags : std::uint32_t
+		{
+			DIRTY_RENDERTARGET = 0x1,
+			DIRTY_VIEWPORT = 0x2,
+			DIRTY_DEPTH_STENCIL_STATE = 0x4,
+			DIRTY_RASTERIZER_STATE = 0x8,
+			DIRTY_BLEND_STATE = 0x10,
+			DIRTY_INPUT_LAYOUT = 0x20,
+			DIRTY_PRIMITIVE_TOPOLOGY = 0x40,
+		};
+
+		class ViewData
+		{
+		public:
+			// members
+			NiRect<float> viewPort;                       // 000
+			NiPoint2      viewDepthRange;                 // 010
+			__m128        viewUp;                         // 020
+			__m128        viewRight;                      // 030
+			__m128        viewDir;                        // 040
+			__m128        viewMat[4];                     // 050
+			__m128        projMat[4];                     // 090
+			__m128        viewProjMat[4];                 // 0D0
+			__m128        viewProjUnjittered[4];          // 110
+			__m128        currentViewProjUnjittered[4];   // 150
+			__m128        previousViewProjUnjittered[4];  // 190
+			__m128        inv1stPersonProjMat[4];         // 1D0
+		};
+		static_assert(sizeof(ViewData) == 0x210);
+
 		class alignas(0x10) RendererShadowState
 		{
 		public:
-			std::byte pad[0x910];  // 000
+			// members
+			std::uint32_t                                stateUpdateFlags;                 // 000
+			std::uint32_t                                vsResourceModifiedBits;           // 004
+			std::uint32_t                                vsSamplerModifiedBits;            // 008
+			std::uint32_t                                dsResourceModifiedBits;           // 00C
+			std::uint32_t                                dsSamplerModifiedBits;            // 010
+			std::uint32_t                                psResourceModifiedBits;           // 014
+			std::uint32_t                                psSamplerModifiedBits;            // 018
+			std::uint32_t                                csResourceModifiedBits;           // 01C
+			std::uint32_t                                csSamplerModifiedBits;            // 020
+			std::uint32_t                                csUAVModifiedBits;                // 024
+			bool                                         readOnlyDepth;                    // 028
+			bool                                         readOnlyStencil;                  // 029
+			bool                                         usesVertexIndexBuffer;            // 02A
+			std::int32_t                                 renderTargets[8];                 // 02C
+			std::int32_t                                 depthStencil;                     // 04C
+			std::int32_t                                 depthStencilSlice;                // 050
+			std::int32_t                                 cubeMapRenderTarget;              // 054
+			std::int32_t                                 cubeMapRenderTargetView;          // 058
+			REX::TEnum<SetRenderTargetMode>              setRenderTargetMode[8];           // 05C
+			REX::TEnum<SetRenderTargetMode>              setDepthStencilMode;              // 07C
+			REX::TEnum<SetRenderTargetMode>              setCubeMapRenderTargetMode;       // 080
+			std::int32_t                                 currentRenderTargetIndex;         // 084
+			std::int32_t                                 currentDepthStencilTargetIndex;   // 088
+			std::int32_t                                 currentCubeMapRenderTargetIndex;  // 08C
+			REX::W32::D3D11_VIEWPORT                     viewPort;                         // 090
+			REX::TEnum<DepthStencilDepthMode>            depthStencilDepthMode;            // 0A8
+			REX::TEnum<DepthStencilStencilMode>          depthStencilStencilMode;          // 0AC
+			REX::TEnum<DepthStencilExtraMode>            depthStencilExtraMode;            // 0B0
+			std::uint32_t                                stencilRef;                       // 0B4
+			REX::TEnum<RasterStateFillMode>              rasterStateFillMode;              // 0B8
+			REX::TEnum<RasterStateCullMode>              rasterStateCullMode;              // 0BC
+			REX::TEnum<RasterStateDepthBiasMode>         rasterStateDepthBiasMode;         // 0C0
+			REX::TEnum<RasterStateScissorMode>           rasterStateScissorMode;           // 0C4
+			REX::TEnum<AlphaBlendMode>                   alphaBlendMode;                   // 0C8
+			REX::TEnum<AlphaBlendAlphaToCoverage>        alphaBlendAlphaToCoverage;        // 0CC
+			REX::TEnum<AlphaBlendWriteMode>              alphaBlendWriteMode;              // 0D0
+			bool                                         alphaTestEnabled;                 // 0D4
+			float                                        alphaTestRef;                     // 0D8
+			REX::TEnum<TextureAddressMode>               vsTextureAddressMode[16];         // 0DC
+			REX::TEnum<TextureFilterMode>                vsTextureFilterMode[16];          // 11C
+			REX::W32::ID3D11ShaderResourceView*          vsTexture[16];                    // 160
+			std::uint32_t                                vsTextureMinLODMode[16];          // 1E0
+			REX::TEnum<TextureAddressMode>               dsTextureAddressMode[16];         // 220
+			REX::TEnum<TextureFilterMode>                dsTextureFilterMode[16];          // 260
+			REX::W32::ID3D11ShaderResourceView*          dsTexture[16];                    // 2A0
+			std::uint32_t                                dsTextureMinLODMode[16];          // 320
+			REX::TEnum<TextureAddressMode>               psTextureAddressMode[16];         // 360
+			REX::TEnum<TextureFilterMode>                psTextureFilterMode[16];          // 3A0
+			REX::W32::ID3D11ShaderResourceView*          psTexture[16];                    // 3E0
+			std::uint32_t                                psTextureMinLODMode[16];          // 460
+			REX::TEnum<TextureAddressMode>               csTextureAddressMode[16];         // 4A0
+			REX::TEnum<TextureFilterMode>                csTextureFilterMode[16];          // 4E0
+			REX::W32::ID3D11ShaderResourceView*          csTexture[16];                    // 520
+			std::uint32_t                                csTextureMinLODMode[16];          // 5A0
+			REX::W32::ID3D11UnorderedAccessView*         csUAV[8];                         // 5E0
+			REX::W32::ID3D11Buffer*                      vertexConstantBuffers[3];         // 620
+			REX::W32::ID3D11Buffer*                      pixelConstantBuffers[3];          // 638
+			REX::W32::ID3D11Buffer*                      domainConstantBuffers[3];         // 650
+			REX::W32::ID3D11Buffer*                      hullConstantBuffers[3];           // 668
+			std::uint64_t                                vertexDesc;                       // 680
+			VertexShader*                                currentVertexShader;              // 688
+			DomainShader*                                currentDomainShader;              // 690
+			HullShader*                                  currentHullShader;                // 698
+			PixelShader*                                 currentPixelShader;               // 6A0
+			REX::TEnum<REX::W32::D3D_PRIMITIVE_TOPOLOGY> primitiveTopology;                // 6A8
+			NiPoint3A                                    posAdjust;                        // 6B0
+			NiPoint3A                                    previousPosAdjust;                // 6C0
+			ViewData                                     cameraData;                       // 6D0
+			float                                        clearColor[4];                    // 8E0
+			float                                        previousClearColor[4];            // 8F0
+			std::uint8_t                                 clearStencil;                     // 900
 		};
 		static_assert(sizeof(RendererShadowState) == 0x910);
 
@@ -551,25 +663,6 @@ namespace RE
 		};
 		static_assert(sizeof(FogStateType) == 0x60);
 
-		class ViewData
-		{
-		public:
-			// members
-			NiRect<float> viewPort;                       // 000
-			NiPoint2      viewDepthRange;                 // 010
-			__m128        viewUp;                         // 020
-			__m128        viewRight;                      // 030
-			__m128        viewDir;                        // 040
-			__m128        viewMat[4];                     // 050
-			__m128        projMat[4];                     // 090
-			__m128        viewProjMat[4];                 // 0D0
-			__m128        viewProjUnjittered[4];          // 110
-			__m128        currentViewProjUnjittered[4];   // 150
-			__m128        previousViewProjUnjittered[4];  // 190
-			__m128        inv1stPersonProjMat[4];         // 1D0
-		};
-		static_assert(sizeof(ViewData) == 0x210);
-
 		class CameraStateData
 		{
 		public:
@@ -586,10 +679,10 @@ namespace RE
 		class State
 		{
 		public:
-			[[nodiscard]] static State GetSingleton()
+			[[nodiscard]] static State* GetSingleton()
 			{
 				static REL::Relocation<State*> singleton{ ID::BSGraphics::State::Singleton };
-				return *singleton;
+				return singleton.get();
 			}
 
 			// members
@@ -713,10 +806,10 @@ namespace RE
 		public:
 			using Create_T = void (*)();
 
-			[[nodiscard]] static RenderTargetManager GetSingleton()
+			[[nodiscard]] static RenderTargetManager* GetSingleton()
 			{
 				static REL::Relocation<RenderTargetManager*> singleton{ ID::BSGraphics::RenderTargetManager::Singleton };
-				return *singleton;
+				return singleton.get();
 			}
 
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
@@ -726,14 +819,67 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
+			[[nodiscard]] float GetDynamicWidthRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().widthRatio);
+			}
+
+			[[nodiscard]] float GetDynamicHeightRatio() const noexcept
+			{
+				return GetRuntimeField<float>(GetDynamicResolutionOffsets().heightRatio);
+			}
+
+			[[nodiscard]] bool IsDynamicResolutionCurrentlyActivated() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().isActivated);
+			}
+
+			void SetDynamicResolutionState(float a_widthRatio, float a_heightRatio, bool a_activated) noexcept
+			{
+				const auto offsets = GetDynamicResolutionOffsets();
+				GetRuntimeField<float>(offsets.widthRatio) = a_widthRatio;
+				GetRuntimeField<float>(offsets.heightRatio) = a_heightRatio;
+				GetRuntimeField<bool>(offsets.isActivated) = a_activated;
+			}
+
+		private:
+			struct DynamicResolutionOffsets
+			{
+				std::size_t widthRatio;
+				std::size_t heightRatio;
+				std::size_t isActivated;
+			};
+
+			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
+			{
+				// Fallout4RE cs-rtm-dynamic-res-offsets.json @ a124812; RE-note-sourced OG offsets need live validation.
+				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8 };
+				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+			template <class T>
+			[[nodiscard]] T& GetRuntimeField(std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<T*>(reinterpret_cast<std::byte*>(this) + a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& GetRuntimeField(std::size_t a_offset) const noexcept
+			{
+				return *reinterpret_cast<const T*>(reinterpret_cast<const std::byte*>(this) + a_offset);
+			}
+
+		public:
 			// members
 			RenderTargetProperties        renderTargetData[100];       // 000
 			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
 			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];                            // DC4
-			std::uint32_t                 depthStencilTargetID[12];                       // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
+			std::uint32_t                 renderTargetID[100];       // DC4
+			std::uint32_t                 depthStencilTargetID[12];  // F54
+			std::uint32_t                 cubeMapRenderTargetID[1];  // F84
+			// OG layout; use the accessors above for runtime-independent dynamic-resolution fields.
 			float                         dynamicWidthRatio;                              // F88
 			float                         dynamicHeightRatio;                             // F8C
 			float                         lowestWidthRatio;                               // F90

@@ -40,7 +40,7 @@ class Main : public BSTEventSink<PositionPlayerEvent>
 
     [[nodiscard]] static SceneGraph *WorldRootNode()
     {
-        static REL::Relocation<NiPointer<SceneGraph> *> nodePtr{ID::Main::WorldRootCamera};
+        static REL::Relocation<NiPointer<SceneGraph> *> nodePtr{ID::Main::WorldRootNode};
         return nodePtr->get();
     }
 

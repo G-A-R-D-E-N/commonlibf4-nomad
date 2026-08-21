@@ -17,9 +17,7 @@ inline constexpr REL::VariantID EndInterruptPackage{575188, 2229892};
 inline constexpr REL::VariantID ExitCover{770035, 2231166};
 inline constexpr REL::VariantID GetAimVector{554863, 2230378};
 inline constexpr REL::VariantID GetClosestBone{1180004, 2230051};
-inline constexpr REL::VariantID GetCollisionFilter{
-    REL::Offset{0x1D80640},
-    2277949}; // OG: 1474995 this function calls the desired one inside itself, something like a Singleton.
+inline constexpr REL::VariantID GetCollisionFilter{1474995, 2229991};
 inline constexpr REL::VariantID GetCombatStyle{1270929, 2231053};
 inline constexpr REL::VariantID SetCurrentAmmoCount{725546, 2229952};
 inline constexpr REL::VariantID GetCurrentCollisionGroup{410500, 2229993};
@@ -296,7 +294,7 @@ inline constexpr REL::VariantID GetLooseMod{1359613, 2197514};
 inline constexpr REL::VariantID SetLooseMod{123132, 2197558};
 } // namespace Mod
 
-inline constexpr REL::VariantID GetAllLooseMods{1359613, 2661620}; // Check
+inline constexpr REL::VariantID GetAllLooseMods{1108112, 2661611};
 } // namespace Attachment
 
 namespace Container
@@ -466,11 +464,11 @@ inline constexpr REL::VariantID ctor{526783, 2230668};
 inline constexpr REL::VariantID SetStartEnd{747470, 2236622};
 inline constexpr REL::VariantID Reset{438299, 2277761};
 inline constexpr REL::VariantID HasHit{1181584, 2277770};
-inline constexpr REL::VariantID GetHitFraction{476687, 2277772};
+inline constexpr REL::VariantID GetHitFraction{476687, 2277771};
 inline constexpr REL::VariantID GetAllCollectorRayHitSize{1288513, 2277765};
 inline constexpr REL::VariantID GetAllCollectorRayHitAt{583997, 2277766};
 inline constexpr REL::VariantID SortAllCollectorHits{1274842, 2277767};
-inline constexpr REL::VariantID GetNiAVObject{863406, 2277764};
+inline constexpr REL::VariantID GetNiAVObject{863406, 2277763};
 inline constexpr REL::VariantID GetBody{1223055, 2277762};
 } // namespace bhkPickData
 
@@ -900,7 +898,7 @@ inline constexpr REL::VariantID GetWeaponDisplayDamage{1431014, 2209046};
 inline constexpr REL::VariantID GetWeaponDisplayRange{1324037, 2209047};
 inline constexpr REL::VariantID GetWeaponDisplayRateOfFire{1403591, 2209048};
 inline constexpr REL::VariantID CalcTargetedLimbDamage{1530751, 2209033};
-inline constexpr REL::VariantID CalcWeaponDamage{211411, 2209001};
+inline constexpr REL::VariantID CalcWeaponDamage{651643, 2209001};
 inline constexpr REL::VariantID CalcResistedPercentage{420470, 2209007};
 inline constexpr REL::VariantID GetNumCrippledAttackConditions{170270, 2209041};
 inline constexpr REL::VariantID CalcScopeSteadyActionPointDrain{380926, 2209045};
@@ -1049,6 +1047,11 @@ inline constexpr REL::VariantID HandleEvent{1049251, 2248740}; // Check
 inline constexpr REL::VariantID Call{1566377, 2248766};        // Check
 inline constexpr REL::VariantID ClearCurrentAmmoCount{541959, 2248745};
 } // namespace FavoritesManager
+
+namespace FavoritesMenu
+{
+inline constexpr REL::VariantID Call{1566377, 2248766};
+}
 
 namespace FlatScreenModel
 {
@@ -1375,7 +1378,7 @@ inline constexpr REL::VariantID PipboyConstraintHeight_PowerArmor{140195};
 
 namespace MenuTopicManager
 {
-inline constexpr REL::VariantID Singleton{520890, 2689089, 4796375};
+inline constexpr REL::VariantID Singleton{1391114, 2688800, 4796064};
 }
 
 namespace MessageBoxMenu
@@ -1663,7 +1666,7 @@ inline constexpr REL::VariantID ctor{1512872, 2233292};
 inline constexpr REL::VariantID dtor{542100, 2233293};
 } // namespace ScopedInventoryChangeMessageContext
 
-inline constexpr REL::VariantID Singleton{303410, 2690919, 4798212};
+inline constexpr REL::VariantID Singleton{412034, 2690919, 4798212};
 inline constexpr REL::VariantID GetPlayerHandle{522947, 2698072};
 inline constexpr REL::VariantID GetDifficultyLevel{922962, 2233056};
 inline constexpr REL::VariantID IsGodMode{1032309, 2232986};

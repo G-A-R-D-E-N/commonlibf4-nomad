@@ -7,9 +7,7 @@ class BSISoundOutputModel;
 class BSSoundHandle
 {
   public:
-    ~BSSoundHandle() noexcept
-    {
-    } // NOLINT(modernize-use-equals-default)
+    ~BSSoundHandle() noexcept = default; // NOLINT(modernize-use-equals-default)
 
     enum class ASSUMED_STATE : std::uint32_t
     {
@@ -77,9 +75,9 @@ class BSSoundHandle
     }
 
     // members
-    std::uint32_t soundID; // 0
-    bool assumeSuccess;    // 4
-    std::int8_t state;     // 5
+    std::uint32_t soundID{static_cast<std::uint32_t>(-1)}; // 0
+    bool assumeSuccess{false};                             // 4
+    std::uint8_t state{0};                                 // 5
 };
 static_assert(sizeof(BSSoundHandle) == 0x8);
 } // namespace RE

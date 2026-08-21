@@ -8,6 +8,7 @@
 build*/
 cmake-build*/
 out*/
+project-docs/
 vs*/
 
 # files

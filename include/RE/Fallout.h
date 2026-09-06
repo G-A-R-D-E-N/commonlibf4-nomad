@@ -1511,6 +1511,7 @@
 #include "RE/T/TextureUpdateStart.h"
 #include "RE/T/ThirdPersonState.h"
 #include "RE/T/ThumbstickEvent.h"
+#include "RE/T/ToggleComponentFavoriteCommand.h"
 #include "RE/T/TrapData.h"
 #include "RE/T/TravelMarkerStateChange.h"
 #include "RE/T/TrespassPackage.h"

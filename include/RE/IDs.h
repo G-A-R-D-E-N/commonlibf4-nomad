@@ -1260,6 +1260,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 198281, 2694399, 4801690 };
 		inline constexpr REL::VariantID IsComponentFavorite{ 352046, 2248752 };
+		inline constexpr REL::VariantID ToggleComponentFavorite{ 1084401, 2248750 };
 		inline constexpr REL::VariantID UseQuickkeyItem{ 303130, 2248744 };
 		inline constexpr REL::VariantID HandleEvent{ 1049251, 2248740 };
 		inline constexpr REL::VariantID ClearCurrentAmmoCount{ 541959, 2248745 };
@@ -2772,6 +2773,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID CheckAndSetItemForPlacement{ 1541862, 2224991 };
 		inline constexpr REL::VariantID UpdateButtonText{ 1089189, 2224992 };
+		inline constexpr REL::VariantID ShouldShowTagForSearch{ 215177, 2225009 };
 	}
 
 	inline constexpr REL::VariantID NiFree{ 242362, 2268539 };

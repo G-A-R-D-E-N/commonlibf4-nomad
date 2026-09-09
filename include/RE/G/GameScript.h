@@ -30,9 +30,6 @@
 
 namespace RE
 {
-	template <class F>
-	using BSTThreadScrapFunction = std::function<F>;
-
 	namespace BSScript
 	{
 		class IStore;
@@ -543,9 +540,14 @@ namespace RE
 			const BSTThreadScrapFunction<bool(const BSTSmartPointer<BSScript::Object>&)>& a_filter,
 			const BSTSmartPointer<BSScript::IStackCallbackFunctor>&                       a_callback)
 		{
-			using func_t = decltype(&GameVM::SendEventToObjectAndRelated);
+			using func_t = void (*)(GameVM*, std::size_t, const BSFixedString&, const void*, const void*, const BSTSmartPointer<BSScript::IStackCallbackFunctor>&);
 			static REL::Relocation<func_t> func{ ID::GameScript::GameVM::SendEventToObjectAndRelated };
-			return func(this, a_object, a_eventName, a_args, a_filter, a_callback);
+			const auto legacy = REX::FModule::IsRuntimeOG();
+			msvc::with_native_function(legacy, a_args, [&](const void* a_nativeArgs) {
+				msvc::with_native_function(legacy, a_filter, [&](const void* a_nativeFilter) {
+					func(this, a_object, a_eventName, a_nativeArgs, a_nativeFilter, a_callback);
+				});
+			});
 		}
 
 		// members

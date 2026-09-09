@@ -1253,8 +1253,8 @@ namespace RE::BSScript
 		return DispatchStaticCall(
 			a_objName,
 			a_funcName,
-			[&](BSScrapArray<Variable>& a_out) {
-				a_out = detail::PackVariables(a_args...);
+			[...args = std::move(a_args)](BSScrapArray<Variable>& a_out) {
+				a_out = detail::PackVariables(args...);
 				return true;
 			},
 			a_callback);
@@ -1272,8 +1272,8 @@ namespace RE::BSScript
 			a_objHandle,
 			a_objName,
 			a_funcName,
-			[&](BSScrapArray<Variable>& a_out) {
-				a_out = detail::PackVariables(a_args...);
+			[...args = std::move(a_args)](BSScrapArray<Variable>& a_out) {
+				a_out = detail::PackVariables(args...);
 				return true;
 			},
 			a_callback);

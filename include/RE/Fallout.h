@@ -1560,3 +1560,4 @@
 #include "RE/W/WorkshopMenu.h"
 #include "RE/W/Workshop_ItemScrappedEvent.h"
 #include "RE/X/XPChangeData.h"
+#include "RE/msvc/LegacyFunction.h"

@@ -1927,6 +1927,7 @@ namespace RE::ID
 	namespace PipboyMapData
 	{
 		inline constexpr REL::VariantID GetTravelLocationRefr{ 501825, 2225515 };
+		inline constexpr REL::VariantID UpdateQuestMarkers{ 1440569, 2225549 };
 	}
 
 	namespace PipboyMapMenu
@@ -2385,6 +2386,7 @@ namespace RE::ID
 	namespace TESFurniture
 	{
 		inline constexpr REL::VariantID GetContainer{ 1049933, 2198043 };
+		inline constexpr REL::VariantID Activate{ 37704, 2198054 };
 	}
 
 	namespace TESFurnitureEvent
@@ -2538,6 +2540,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMapMarkerData{ 253640, 2202644 };
 		inline constexpr REL::VariantID GetRelevantWaterHeight{ 6866, 2201189 };
 		inline constexpr REL::VariantID CanBeMoved{ 683719, 2200898 };
+		inline constexpr REL::VariantID HasLocationRefType{ 845267, 2202676 };
 	}
 
 	namespace TESObjectWEAP

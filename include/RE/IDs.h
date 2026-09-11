@@ -1718,7 +1718,7 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 695696, 2696546, 4803837 };
 		inline constexpr REL::VariantID CenterCursor{ 1107298, 2287473 };
-		inline constexpr REL::VariantID RegisterCursor{ 1318193, 2287475 };
+		inline constexpr REL::VariantID RegisterCursor{ 1318193, 2287485 };
 		inline constexpr REL::VariantID SetCursorConstraintsRaw{ 907092, 2287480 };
 		inline constexpr REL::VariantID UnregisterCursor{ 1225249, 2287486 };
 		inline constexpr REL::VariantID PipboyConstraintTLX{ 280077 };

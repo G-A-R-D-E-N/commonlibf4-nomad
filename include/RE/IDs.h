@@ -1659,7 +1659,7 @@ namespace RE::ID
 		inline constexpr REL::ID BaseAddItemCardInfoEntry{ 2225270 };
 		inline constexpr REL::ID InitializeItem{ 2225264 };
 		inline constexpr REL::ID PopulateItemCardInfo{ 2225266 };
-		inline constexpr REL::ID QueueItemCardRepopulate{ 2225311 };
+		inline constexpr REL::ID QueueItemCardRepopulate{ 2225281 };
 		inline constexpr REL::ID RepopulateItemCardOnSection{ 2225279 };
 	}
 

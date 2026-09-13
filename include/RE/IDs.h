@@ -2120,6 +2120,11 @@ namespace RE::ID
 		inline constexpr REL::ID GetEventSource{ 2201837 };
 	}
 
+	namespace TESEquipEvent
+	{
+		inline constexpr REL::ID GetEventSource{ 2201838 };
+	}
+
 	namespace TESFile
 	{
 		inline constexpr REL::ID CloseTES{ 2192491 };

@@ -1387,10 +1387,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID ReleaseTexture{ 651971, 2287493 };
 	}
 
-	namespace BSScaleformManager
+		namespace BSScaleformManager
 	{
 		inline constexpr REL::VariantID Singleton{ 106578, 2689600, 4796889 };
 		inline constexpr REL::VariantID LoadMovie{ 1526234, 2287422 };
+		inline constexpr REL::VariantID LoadMovieDef{ 1443474, 0, 2287429 };
 		inline constexpr REL::VariantID GetMovieFilename{ 1191277, 2287428 };
 		inline constexpr REL::VariantID InitMovieViewport{ 206895, 2287430, 4494254 };
 		inline constexpr REL::VariantID FileUncacheOnMenuOpen{ 454316, 2667999 };

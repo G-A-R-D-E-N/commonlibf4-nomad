@@ -50,6 +50,13 @@ namespace RE
 			return func(this, a_name);
 		}
 
+		bool LoadMovieDef(Scaleform::Ptr<Scaleform::GFx::MovieDef>& a_movieDef, const char* a_filePath)
+		{
+			using func_t = decltype(&BSScaleformManager::LoadMovieDef);
+			static REL::Relocation<func_t> func{ ID::BSScaleformManager::LoadMovieDef };
+			return func(this, a_movieDef, a_filePath);
+		}
+
 		bool LoadMovie(
 			IMenu&                                 a_menu,
 			Scaleform::Ptr<Scaleform::GFx::Movie>& a_movie,

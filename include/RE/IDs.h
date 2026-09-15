@@ -18,6 +18,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetClosestBone{ 2230051 };
 		inline constexpr REL::ID GetCollisionFilter{ 2277949 };
 		inline constexpr REL::ID GetCombatStyle{ 2231053 };
+		inline constexpr REL::ID GetCurrentAmmoCount{ 2229950 };
 		inline constexpr REL::ID SetCurrentAmmoCount{ 2229952 };
 		inline constexpr REL::ID GetCurrentCollisionGroup{ 2229993 };
 		inline constexpr REL::ID GetCurrentFireLocation{ 2231167 };

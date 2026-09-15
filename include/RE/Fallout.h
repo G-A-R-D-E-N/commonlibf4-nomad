@@ -23,6 +23,7 @@
 #include "RE/A/AITimeStamp.h"
 #include "RE/A/AITimer.h"
 #include "RE/A/AMMO_DATA.h"
+#include "RE/A/ATTACK_STATE_ENUM.h"
 #include "RE/A/ActionInput.h"
 #include "RE/A/ActionOutput.h"
 #include "RE/A/ActionPoints.h"

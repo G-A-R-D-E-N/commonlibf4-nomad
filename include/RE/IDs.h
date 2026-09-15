@@ -2298,6 +2298,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID UnregisterHandlers{ 1010957, 2249390 };
 	}
 
+	namespace BSUIScaleformData
+	{
+		inline constexpr REL::VariantID SendUIScaleformEvent{ 922159, 2290179, 2284983 };
+	}
+
 	namespace MenuCursor
 	{
 		inline constexpr REL::VariantID Singleton{ 695696, 2696546, 4803837 };

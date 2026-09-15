@@ -5,6 +5,7 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/G/GFxConvertHandler.h"
 #include "RE/S/ScreenshotHandler.h"
+#include "RE/G/GFxConvertHandler.h"
 
 namespace RE
 {

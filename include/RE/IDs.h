@@ -1402,6 +1402,13 @@ namespace RE::ID
 	namespace BSScaleformRenderer
 	{
 		inline constexpr REL::VariantID Initialize{ 1403529, 2284938 };
+		inline constexpr REL::VariantID BeginFrame{ 671681, 2284939 };
+		inline constexpr REL::VariantID EndFrame{ 1282872, 2284940 };
+		inline constexpr REL::VariantID BeginScene{ 1016804, 2284941 };
+		inline constexpr REL::VariantID EndScene{ 1362130, 2284942 };
+		inline constexpr REL::VariantID DisplayMovie{ 1096456, 2284943 };
+		inline constexpr REL::VariantID SetCurrentRenderTarget{ 1175949, 2284944 };
+		inline constexpr REL::VariantID ClearRenderTargets{ 989116, 2284945 };
 	}
 
 	namespace BSScaleformTranslator

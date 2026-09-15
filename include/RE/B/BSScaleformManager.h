@@ -50,6 +50,14 @@ namespace RE
 			return func(this, a_name);
 		}
 
+		BSEventNotifyControl ProcessEvent(const SFRendererInitializedEvent& a_event,
+			BSTEventSource<SFRendererInitializedEvent>* a_source) override
+		{
+			using func_t = decltype(&BSScaleformManager::ProcessEvent);
+			static REL::Relocation<func_t> func{ ID::BSScaleformManager::ProcessEvent };
+			return func(this, a_event, a_source);
+		}
+
 		bool LoadMovieDef(Scaleform::Ptr<Scaleform::GFx::MovieDef>& a_movieDef, const char* a_filePath)
 		{
 			using func_t = decltype(&BSScaleformManager::LoadMovieDef);

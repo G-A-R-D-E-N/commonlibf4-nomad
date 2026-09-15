@@ -1396,6 +1396,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID InitMovieViewport{ 206895, 2287430, 4494254 };
 		inline constexpr REL::VariantID FileUncacheOnMenuOpen{ 454316, 2667999 };
 		inline constexpr REL::VariantID IsNameValid{ 593721, 2287425 };
+		inline constexpr REL::VariantID ProcessEvent{ 1550623, 0, 2287426 };
 	}
 
 	namespace BSScaleformRenderer

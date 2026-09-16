@@ -171,6 +171,7 @@ namespace RE::ID
 
 	namespace BGSConstructibleObject
 	{
+		inline constexpr REL::ID FindRecipeForCreatedForm{ 2197324 };
 		inline constexpr REL::ID PlayerPassesConditions{ 2197318 };
 	}
 

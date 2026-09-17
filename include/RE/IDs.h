@@ -78,6 +78,7 @@ namespace RE::ID
 		inline constexpr REL::ID EquipObject{ 2231392 };
 		inline constexpr REL::ID UnequipObject{ 2231395 };
 		inline constexpr REL::ID UnequipItem{ 2231399 };
+		inline constexpr REL::ID CanEquip{ 2231405 };
 	}
 
 	namespace ActorUtils
@@ -1056,6 +1057,7 @@ namespace RE::ID
 		inline constexpr REL::ID ClearFavorite{ 2190191 };
 		inline constexpr REL::ID IsFavorite{ 2190189 };
 		inline constexpr REL::ID IsDamaged{ 2190224 };
+		inline constexpr REL::ID IsItemBroken{ 2190223 };
 		inline constexpr REL::ID CompareList{ 2190098 };
 		inline constexpr REL::ID SetFavorite{ 2190188 };
 		inline constexpr REL::ID GetPrimitive{ 2190427 };

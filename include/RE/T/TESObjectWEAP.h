@@ -140,6 +140,22 @@ namespace RE
 		};
 		static_assert(sizeof(Data) == 0x138);
 
+		// What this weapon fires, or null for one that fires nothing.
+		//
+		// The instance data's own override is preferred, then the base form's,
+		// and the ammunition's projectile stands in when neither names one. A
+		// muzzle or a barrel that swaps the projectile is therefore followed,
+		// and so is a change of ammunition.
+		//
+		// a_instanceData may be null, in which case only the base form and the
+		// ammunition are consulted.
+		[[nodiscard]] static BGSProjectile* GetProjectile(const TESObjectWEAP* a_weapon, const TESAmmo* a_ammo, const InstanceData* a_instanceData)
+		{
+			using func_t = decltype(&TESObjectWEAP::GetProjectile);
+			static REL::Relocation<func_t> func{ ID::TESObjectWEAP::GetProjectile };
+			return func(a_weapon, a_ammo, a_instanceData);
+		}
+
 		[[nodiscard]] MELEE_ATTACK_SPEED GetMeleeAttackSpeed()
 		{
 			using func_t = decltype(&TESObjectWEAP::GetMeleeAttackSpeed);

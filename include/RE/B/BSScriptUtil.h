@@ -47,7 +47,7 @@ namespace RE::BSScript
 			std::copy_n(a_lhs.data(), a_lhs.length(), buf);
 			buf[a_lhs.length()] = '#';
 			std::copy_n(a_rhs.data(), a_rhs.length(), buf + a_lhs.length() + 1);
-			return { static_cast<const char (&)[N1 + 1 + N2 + 1]>(buf) };
+			return { static_cast<const char(&)[N1 + 1 + N2 + 1]>(buf) };
 		}
 	}
 
@@ -564,9 +564,9 @@ namespace RE::BSScript
 
 			const auto& handles = vm->GetObjectHandlePolicy();
 			const auto  handle = handles.GetHandleForObject(
-				GetVMTypeID<T>(),
-				const_cast<const void*>(
-					static_cast<const volatile void*>(a_val)));
+                GetVMTypeID<T>(),
+                const_cast<const void*>(
+                    static_cast<const volatile void*>(a_val)));
 			if (handle == handles.EmptyHandle()) {
 				return false;
 			}
@@ -614,9 +614,9 @@ namespace RE::BSScript
 
 			const auto& handles = vm->GetObjectHandlePolicy();
 			const auto  handle = handles.GetHandleForObject(
-				GetVMTypeID<T>(),
-				const_cast<const void*>(
-					static_cast<const volatile void*>(a_val)));
+                GetVMTypeID<T>(),
+                const_cast<const void*>(
+                    static_cast<const volatile void*>(a_val)));
 			if (handle == handles.EmptyHandle()) {
 				return false;
 			}
@@ -664,9 +664,9 @@ namespace RE::BSScript
 
 			const auto& handles = vm->GetObjectHandlePolicy();
 			const auto  handle = handles.GetHandleForObject(
-				GetVMTypeID<T>(),
-				const_cast<const void*>(
-					static_cast<const volatile void*>(a_val)));
+                GetVMTypeID<T>(),
+                const_cast<const void*>(
+                    static_cast<const volatile void*>(a_val)));
 			if (handle == handles.EmptyHandle()) {
 				return false;
 			}

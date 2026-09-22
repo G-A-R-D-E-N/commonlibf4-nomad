@@ -461,8 +461,7 @@ namespace F4SE
 			assert(a_object);
 			auto game = RE::GameVM::GetSingleton();
 			auto vm = game->GetVM();
-			if (!vm)
-			{
+			if (!vm) {
 				REX::ERROR("Failed to get VM!"sv);
 				return;
 			}

@@ -5,12 +5,12 @@
 
 namespace RE
 {
-    Actor* ActiveEffect::GetTargetActor()
-    {
-        if (target && target->MagicTargetIsActor()) {
-            return static_cast<Actor*>(target);
-        } else {
-            return nullptr;
-        }
-    }
+	Actor* ActiveEffect::GetTargetActor()
+	{
+		if (target && target->MagicTargetIsActor()) {
+			return static_cast<Actor*>(target);
+		} else {
+			return nullptr;
+		}
+	}
 }

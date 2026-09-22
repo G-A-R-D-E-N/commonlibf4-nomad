@@ -49,6 +49,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESObjectWEAP };
 		static constexpr auto VTABLE{ VTABLE::TESObjectWEAP };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kWEAP };
+		static constexpr auto TYPE_ID{ BSScript::kWeapon };
 
 		class RangedData
 		{

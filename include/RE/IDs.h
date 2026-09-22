@@ -749,9 +749,9 @@ namespace RE::ID
 		inline constexpr REL::ID UnbindObject{ 2314372 };
 	}
 
-	namespace BSScriptUtil
+	namespace BSScript_ZeroFunctionArguments
 	{
-		inline constexpr REL::ID BaseObjectName{ 2702269 };
+		inline constexpr REL::ID ZeroFunctionArguments{ 2314598 };
 	}
 
 	namespace BSShaderProperty

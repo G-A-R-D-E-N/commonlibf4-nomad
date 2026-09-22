@@ -20,6 +20,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BGSConstructibleObject };
 		static constexpr auto VTABLE{ VTABLE::BGSConstructibleObject };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCOBJ };
+		static constexpr auto TYPE_ID{ BSScript::kConstructibleObject };
 
 		class ConstructibleObjectData
 		{

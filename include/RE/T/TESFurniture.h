@@ -17,6 +17,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESFurniture };
 		static constexpr auto VTABLE{ VTABLE::TESFurniture };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFURN };
+		static constexpr auto TYPE_ID{ BSScript::kFurniture };
 
 		class EntryPointData
 		{

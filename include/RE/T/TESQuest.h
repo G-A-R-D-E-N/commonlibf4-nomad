@@ -31,6 +31,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESQuest };
 		static constexpr auto VTABLE{ VTABLE::TESQuest };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kQUST };
+		static constexpr auto TYPE_ID{ BSScript::kQuest };
 
 		class AliasesAccess;
 		class ListObjectivesAccess;
@@ -43,11 +44,11 @@ namespace RE
 			return func(this, a_stage);
 		}
 
-		ObjectRefHandle* GetAliasedRef(ObjectRefHandle* a_result, std::uint32_t a_aiAliasID)
+		ObjectRefHandle GetAliasedRef(std::uint32_t a_aliasID) const
 		{
 			using func_t = decltype(&TESQuest::GetAliasedRef);
 			static REL::Relocation<func_t> func{ ID::TESQuest::GetAliasedRef };
-			return func(this, a_result, a_aiAliasID);
+			return func(this, a_aliasID);
 		}
 
 		bool GetActive()

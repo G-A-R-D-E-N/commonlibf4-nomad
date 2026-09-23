@@ -38,6 +38,13 @@ namespace RE
 			return func(a_command);
 		}
 
+		static void RunQueuedCommands()
+		{
+			using func_t = decltype(&Console::RunQueuedCommands);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2248538 } };
+			return func();
+		}
+
 		[[nodiscard]] static decltype(auto) GetCurrentPickIndex()
 		{
 			static REL::Relocation<std::int32_t*> currentPickIndex{ ID::Console::GetCurrentPickIndex };

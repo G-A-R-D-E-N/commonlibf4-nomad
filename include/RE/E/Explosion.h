@@ -102,6 +102,13 @@ namespace RE
 			return func(this);
 		}
 
+		void ProcessTargets()
+		{
+			using func_t = decltype(&Explosion::ProcessTargets);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2236664 } };
+			return func(this);
+		}
+
 		// members
 		hknpClosestUniqueBodyIdHitCollector collector;           // 110
 		void*                               explosionDBHandle;   // 520 - TODO

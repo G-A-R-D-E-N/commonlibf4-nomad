@@ -18,6 +18,7 @@ namespace RE::ID
 		inline constexpr REL::ID GetClosestBone{ 2230051 };
 		inline constexpr REL::ID GetCollisionFilter{ 2277949 };
 		inline constexpr REL::ID GetCombatStyle{ 2231053 };
+		inline constexpr REL::ID GetCurrentAmmoCount{ 2229950 };
 		inline constexpr REL::ID SetCurrentAmmoCount{ 2229952 };
 		inline constexpr REL::ID GetCurrentCollisionGroup{ 2229993 };
 		inline constexpr REL::ID GetCurrentFireLocation{ 2231167 };
@@ -77,6 +78,7 @@ namespace RE::ID
 		inline constexpr REL::ID EquipObject{ 2231392 };
 		inline constexpr REL::ID UnequipObject{ 2231395 };
 		inline constexpr REL::ID UnequipItem{ 2231399 };
+		inline constexpr REL::ID CanEquip{ 2231405 };
 	}
 
 	namespace ActorUtils
@@ -170,6 +172,7 @@ namespace RE::ID
 
 	namespace BGSConstructibleObject
 	{
+		inline constexpr REL::ID FindRecipeForCreatedForm{ 2197324 };
 		inline constexpr REL::ID PlayerPassesConditions{ 2197318 };
 	}
 
@@ -1033,6 +1036,12 @@ namespace RE::ID
 		inline constexpr REL::ID GetBuildConfirmQuestion{ 2223057 };
 	}
 
+	namespace Explosion
+	{
+		inline constexpr REL::ID GetActorOwner{ 2236659 };
+		inline constexpr REL::ID GetDamage{ 2236658 };
+	}
+
 	namespace ExteriorCellSingleton
 	{
 		inline constexpr REL::ID Singleton{ 4796370 };
@@ -1054,6 +1063,7 @@ namespace RE::ID
 		inline constexpr REL::ID ClearFavorite{ 2190191 };
 		inline constexpr REL::ID IsFavorite{ 2190189 };
 		inline constexpr REL::ID IsDamaged{ 2190224 };
+		inline constexpr REL::ID IsItemBroken{ 2190223 };
 		inline constexpr REL::ID CompareList{ 2190098 };
 		inline constexpr REL::ID SetFavorite{ 2190188 };
 		inline constexpr REL::ID GetPrimitive{ 2190427 };
@@ -2318,6 +2328,7 @@ namespace RE::ID
 
 	namespace TESObjectWEAP
 	{
+		inline constexpr REL::ID GetProjectile{ 2198934 };
 		inline constexpr REL::ID GetMeleeAttackSpeed{ 2198957 };
 		inline constexpr REL::ID GetMeleeAttackSpeedLabel{ 2198959 };
 		inline constexpr REL::ID Fire{ 2198960 };

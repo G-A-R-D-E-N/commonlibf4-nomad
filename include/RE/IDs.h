@@ -196,7 +196,7 @@ namespace RE::ID
 
 	namespace BGSDefaultObjectManager
 	{
-		inline constexpr REL::ID Singleton{ 2192850 };
+		inline constexpr REL::ID Singleton{ 4796209 };
 	}
 
 	namespace BGSDynamicPersistenceManager

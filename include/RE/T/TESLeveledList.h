@@ -77,7 +77,7 @@ namespace RE
 			return func(this, a_ref, a_outCont, a_legendary);
 		}
 
-		bool GetUseAll()
+		[[nodiscard]] bool GetUseAll() const
 		{
 			using func_t = decltype(&TESLeveledList::GetUseAll);
 			static REL::Relocation<func_t> func{ ID::TESLeveledList::GetUseAll };

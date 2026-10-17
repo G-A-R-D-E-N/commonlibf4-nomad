@@ -2683,6 +2683,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Objects{ 1161724, 2703471 };
 	}
 
+	namespace NiTransform
+	{
+		inline constexpr REL::VariantID InvertNonUniform{ 720044, 2270965 };
+	}
+
 	namespace NiTexture
 	{
 		inline constexpr REL::VariantID Create1{ 1071950, 2270134 };

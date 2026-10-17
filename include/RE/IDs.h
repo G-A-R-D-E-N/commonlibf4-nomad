@@ -2755,6 +2755,7 @@ namespace RE::ID
 
 	namespace SendHUDMessage
 	{
+		inline constexpr REL::VariantID ClearMessages{ 973227, 2222460 };
 		inline constexpr REL::VariantID PopHUDMode{ 1495042, 2222444 };
 		inline constexpr REL::VariantID PushHUDMode{ 1321764, 2222443 };
 		inline constexpr REL::VariantID SetPowerArmorMode{ 361745, 2222459 };

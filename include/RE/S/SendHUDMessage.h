@@ -27,6 +27,13 @@ namespace RE
 			return func(a_inPowerArmor);
 		}
 
+		inline void ClearMessages()
+		{
+			using func_t = decltype(&SendHUDMessage::ClearMessages);
+			static REL::Relocation<func_t> func{ ID::SendHUDMessage::ClearMessages };
+			return func();
+		}
+
 		inline void ShowHUDMessage(const char* a_message, const char* a_sound, bool a_throttle, bool a_warning)
 		{
 			using func_t = decltype(&SendHUDMessage::ShowHUDMessage);

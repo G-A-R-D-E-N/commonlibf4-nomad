@@ -3143,6 +3143,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateAllDecals{ 283071, 2200643 };
 		inline constexpr REL::VariantID DefaultWater{ 289864, 2691845, 4799138 };
 		inline constexpr REL::VariantID GetExteriorWaterHeight{ 1457825, 2200267 };
+		inline constexpr REL::VariantID GetWorldSpace{ 968674, 2199522 };
 	}
 
 	namespace TESObjectCONT

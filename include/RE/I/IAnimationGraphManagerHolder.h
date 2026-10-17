@@ -73,6 +73,13 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::IAnimationGraphManagerHolder::RevertAnimationGraphManager };
 			return func(this, a_performModifyInitialAnimationStateC);
 		}
+
+		void GetAnimationGraphProjectName(BSFixedString& a_nameOut)
+		{
+			using func_t = decltype(&IAnimationGraphManagerHolder::GetAnimationGraphProjectName);
+			static REL::Relocation<func_t> func{ ID::IAnimationGraphManagerHolder::GetAnimationGraphProjectName };
+			func(this, a_nameOut);
+		}
 	};
 	static_assert(sizeof(IAnimationGraphManagerHolder) == 0x8);
 }

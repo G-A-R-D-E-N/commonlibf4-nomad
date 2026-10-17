@@ -1990,6 +1990,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetGraphVariableFloat{ 27400, 2214545 };
 		inline constexpr REL::VariantID SetGraphVariableInt{ 732926, 2214544 };
 		inline constexpr REL::VariantID RevertAnimationGraphManager{ 41382, 2214541 };
+		inline constexpr REL::VariantID GetAnimationGraphProjectName{ 190119, 2214534 };
 	}
 
 	namespace IFormFactory

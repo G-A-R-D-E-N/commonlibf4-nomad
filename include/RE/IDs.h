@@ -3260,6 +3260,21 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetActive{ 690102, 2207733 };
 	}
 
+	namespace TESQuestStage
+	{
+		inline constexpr REL::VariantID Load{ 1011035, 2208058 };
+		inline constexpr REL::VariantID SetDone{ 1436008, 2208063 };
+	}
+
+	namespace TESQuestStageItem
+	{
+		inline constexpr REL::VariantID Load{ 12471, 2208065 };
+		inline constexpr REL::VariantID LoadLogEntry{ 1236075, 2208066 };
+		inline constexpr REL::VariantID InitItem{ 92450, 2208067 };
+		inline constexpr REL::VariantID SetConditions{ 1315310, 2208068 };
+		inline constexpr REL::VariantID Resolve{ 835423, 2208070 };
+	}
+
 	namespace TESQuestStageEvent
 	{
 		inline constexpr REL::VariantID GetEventSource{ 540905, 2201862 };

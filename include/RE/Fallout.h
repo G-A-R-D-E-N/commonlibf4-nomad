@@ -1529,6 +1529,8 @@
 #include "RE/T/TESQuest.h"
 #include "RE/T/TESQuestEvent.h"
 #include "RE/T/TESQuestStageEvent.h"
+#include "RE/T/TESQuestStage.h"
+#include "RE/T/TESQuestStageItem.h"
 #include "RE/T/TESQuestStageItemDoneEvent.h"
 #include "RE/T/TESQuestStartStopEvent.h"
 #include "RE/T/TESQuestTarget.h"

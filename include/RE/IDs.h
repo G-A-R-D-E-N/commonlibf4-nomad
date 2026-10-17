@@ -3398,6 +3398,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RefreshCursor{ 1436639, 2284772 };
 		inline constexpr REL::VariantID RegisterMenu{ 1519575, 2284766 };
 		inline constexpr REL::VariantID UpdateControllerType{ 175796, 2284768 };
+		inline constexpr REL::VariantID UpdateMenuMode{ 241336, 2284770 };
 	}
 
 	namespace UIAdvanceMenusFunctionCompleteEvent

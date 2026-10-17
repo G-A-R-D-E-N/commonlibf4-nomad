@@ -144,6 +144,13 @@ namespace RE
 			GetEventSource<T>()->UnregisterSink(a_sink);
 		}
 
+		void UpdateMenuMode(const BSFixedString& a_menuName, bool a_enterMenuMode)
+		{
+			using func_t = decltype(&UI::UpdateMenuMode);
+			static REL::Relocation<func_t> func{ ID::UI::UpdateMenuMode };
+			func(this, a_menuName, a_enterMenuMode);
+		}
+
 		// members
 		BSTArray<BSFixedString>                releasedMovies;              // 178
 		BSTArray<Scaleform::Ptr<IMenu>>        menuStack;                   // 190

@@ -3234,6 +3234,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetVisibleDistant{ 1425899, 2200806 };
 		inline constexpr REL::VariantID RemoveLight{ 162205, 2200909 };
 		inline constexpr REL::VariantID SetSequencePosition{ 854236, 2200766 };
+		inline constexpr REL::VariantID ModifyKeyword{ 1504561, 2200862 };
+		inline constexpr REL::VariantID SetNoCollision{ 660095, 2200734 };
+		inline constexpr REL::VariantID DisableInputForPlayer{ 53346, 2200872 };
+		inline constexpr REL::VariantID ReenableInputForPlayer{ 478350, 2200873 };
+		inline constexpr REL::VariantID GetScale{ 911188, 2200892 };
+		inline constexpr REL::VariantID IsFurniture{ 527147, 2202576 };
+		inline constexpr REL::VariantID FreeUpAllMarkers{ 1324833, 2202575 };
+		inline constexpr REL::VariantID GetBaseFullName{ 1502668, 2201130 };
 	}
 
 	namespace TESObjectWEAP

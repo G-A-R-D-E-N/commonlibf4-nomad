@@ -685,6 +685,62 @@ namespace RE
 			return reference ? reference->ctor() : nullptr;
 		}
 
+		void ModifyKeyword(const BGSKeyword* a_keyword, bool a_add)
+		{
+			using func_t = decltype(&TESObjectREFR::ModifyKeyword);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::ModifyKeyword };
+			func(this, a_keyword, a_add);
+		}
+
+		void SetNoCollision(bool a_noCollision)
+		{
+			using func_t = decltype(&TESObjectREFR::SetNoCollision);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::SetNoCollision };
+			func(this, a_noCollision);
+		}
+
+		void DisableInputForPlayer(const char* a_layerName, std::uint32_t a_inputToDisable)
+		{
+			using func_t = decltype(&TESObjectREFR::DisableInputForPlayer);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::DisableInputForPlayer };
+			func(this, a_layerName, a_inputToDisable);
+		}
+
+		void ReenableInputForPlayer()
+		{
+			using func_t = decltype(&TESObjectREFR::ReenableInputForPlayer);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::ReenableInputForPlayer };
+			func(this);
+		}
+
+		[[nodiscard]] float GetScale()
+		{
+			using func_t = decltype(&TESObjectREFR::GetScale);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetScale };
+			return func(this);
+		}
+
+		[[nodiscard]] bool IsFurniture()
+		{
+			using func_t = decltype(&TESObjectREFR::IsFurniture);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::IsFurniture };
+			return func(this);
+		}
+
+		void FreeUpAllMarkers()
+		{
+			using func_t = decltype(&TESObjectREFR::FreeUpAllMarkers);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::FreeUpAllMarkers };
+			func(this);
+		}
+
+		[[nodiscard]] const char* GetBaseFullName()
+		{
+			using func_t = decltype(&TESObjectREFR::GetBaseFullName);
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetBaseFullName };
+			return func(this);
+		}
+
 		// members
 		TESObjectCELL*                 parentCell;     // 0x0B8
 		OBJ_REFR                       data;           // 0x0C0

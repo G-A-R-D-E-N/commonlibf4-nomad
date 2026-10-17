@@ -2626,6 +2626,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID UpdateAnimation{ 740864, 2233005 };
 		inline constexpr REL::VariantID HandlePositionPlayerRequest{ 146861, 2232905 };
 		inline constexpr REL::VariantID SetTintingData{ 802946, 2233185 };
+		inline constexpr REL::VariantID UpdatePlayer3D{ 894747, 2232941 };
 	}
 
 	namespace PlayerControls

@@ -355,6 +355,13 @@ namespace RE
 			return func(this, a_uniqueID, a_tintingValue, a_color);
 		}
 
+		void UpdatePlayer3D()
+		{
+			using func_t = decltype(&PlayerCharacter::UpdatePlayer3D);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::UpdatePlayer3D };
+			func(this);
+		}
+
 		// members
 		BSSpinLock                                                     actorToDisplayOnHUDLock;              // 628
 		BSSpinLock                                                     questTargetLock;                      // 630

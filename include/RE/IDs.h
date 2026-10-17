@@ -2337,6 +2337,20 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
 	}
 
+	namespace NiQuaternion
+	{
+		inline constexpr REL::VariantID ToRotation{ 1379385, 2195654 };
+		inline constexpr REL::VariantID FromEulerAnglesXYZ{ 896501, 2270245 };
+		inline constexpr REL::VariantID FromRotation{ 616807, 2270246 };
+		inline constexpr REL::VariantID FromAngleAxis{ 965178, 2270239 };
+		inline constexpr REL::VariantID ToAngleAxis{ 1082915, 2270244 };
+		inline constexpr REL::VariantID Slerp{ 1338018, 2270238 };
+		inline constexpr REL::VariantID Intermediate{ 419306, 2270242 };
+		inline constexpr REL::VariantID UnitInverse{ 1310622, 2270240 };
+		inline constexpr REL::VariantID Exp{ 1223920, 2270818 };
+		inline constexpr REL::VariantID Log{ 1483822, 2270241 };
+	}
+
 	namespace NiRefObject
 	{
 		inline constexpr REL::VariantID Objects{ 1161724, 2703471 };

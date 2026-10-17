@@ -148,6 +148,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetActorLightLevel{ 898888, 2231981 };
 		inline constexpr REL::VariantID Set3DUpdateFlag{ 236542, 2232389 };
 		inline constexpr REL::VariantID Update3DModel{ 986782, 2231882 };
+		inline constexpr REL::VariantID ClearCurrentPackage{ 241540, 2231582 };
+		inline constexpr REL::VariantID ClearCurrentDataForProcess{ 577581, 2232435 };
 	}
 
 	namespace AITimer

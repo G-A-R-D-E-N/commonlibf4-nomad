@@ -193,6 +193,20 @@ namespace RE
 			return func(this);
 		}
 
+		void ClearCurrentPackage(Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::ClearCurrentPackage);
+			static REL::Relocation<func_t> func{ ID::AIProcess::ClearCurrentPackage };
+			func(this, a_actor);
+		}
+
+		void ClearCurrentDataForProcess(Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::ClearCurrentDataForProcess);
+			static REL::Relocation<func_t> func{ ID::AIProcess::ClearCurrentDataForProcess };
+			func(this, a_actor);
+		}
+
 		// members
 		MiddleLowProcessData*           middleLow;                   // 00
 		MiddleHighProcessData*          middleHigh;                  // 08

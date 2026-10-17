@@ -94,6 +94,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Actor };
 		static constexpr auto VTABLE{ VTABLE::Actor };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACHR };
+		static constexpr auto TYPE_ID{ BSScript::kActor };
 
 		enum class BOOL_FLAGS
 		{
@@ -771,6 +772,88 @@ namespace RE
 			using func_t = decltype(&Actor::ModifyMovementTypeBasedOnCurrentState);
 			static REL::Relocation<func_t> func{ ID::Actor::ModifyMovementTypeBasedOnCurrentState };
 			func(this, a_speeds);
+		[[nodiscard]] ActorHandle GetActorHandle()
+		{
+			using func_t = decltype(&Actor::GetActorHandle);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1145222, 2229894 } };
+			return func(this);
+		}
+
+		void EnableCollision()
+		{
+			using func_t = decltype(&Actor::EnableCollision);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1274117, 2229652 } };
+			func(this);
+		}
+
+		void DisableCollision()
+		{
+			using func_t = decltype(&Actor::DisableCollision);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 475952, 2229653 } };
+			func(this);
+		}
+
+		void StopAlarmOnActor()
+		{
+			using func_t = decltype(&Actor::StopAlarmOnActor);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1564830, 2229667 } };
+			func(this);
+		}
+
+		void SetRestrained(bool a_restrained)
+		{
+			using func_t = decltype(&Actor::SetRestrained);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 316742, 2229910 } };
+			func(this, a_restrained);
+		}
+
+		bool GetCanDoFavor(bool a_unk = false)
+		{
+			using func_t = decltype(&Actor::GetCanDoFavor);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 46113, 2230148 } };
+			return func(this, a_unk);
+		}
+
+		void SetCanDoFavor(bool a_canDoFavor)
+		{
+			using func_t = decltype(&Actor::SetCanDoFavor);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 391670, 2230149 } };
+			func(this, a_canDoFavor);
+		}
+
+		void TurnOffHeadtracking()
+		{
+			using func_t = decltype(&Actor::TurnOffHeadtracking);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 149104, 2230240 } };
+			func(this);
+		}
+
+		void StopMoving(float a_decelerationMult = 1.0F)
+		{
+			using func_t = decltype(&Actor::StopMoving);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 940952, 2230262 } };
+			func(this, a_decelerationMult);
+		}
+
+		void ClearLookAtTarget()
+		{
+			using func_t = decltype(&Actor::ClearLookAtTarget);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1345971, 2230291 } };
+			func(this);
+		}
+
+		void EvaluatePackage(bool a_queue, bool a_resetAI)
+		{
+			using func_t = decltype(&Actor::EvaluatePackage);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1395257, 2229805 } };
+			func(this, a_queue, a_resetAI);
+		}
+
+		void WarpTo(const NiPoint3& a_position, float a_zRotation, float a_xRotation, TESObjectCELL* a_cell, TESWorldSpace* a_worldSpace, bool a_resetAI, bool a_unk1 = false, bool a_unk2 = false)
+		{
+			using func_t = decltype(&Actor::WarpTo);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 728864, 2229712 } };
+			return func(this, a_position, a_zRotation, a_xRotation, a_cell, a_worldSpace, a_resetAI, a_unk1, a_unk2);
 		}
 
 		// members

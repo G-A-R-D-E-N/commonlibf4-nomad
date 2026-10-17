@@ -118,6 +118,13 @@ namespace RE
 			return func(this, a_state);
 		}
 
+		void Force3rdPerson() const
+		{
+			using func_t = decltype(&PlayerCamera::Force3rdPerson);
+			static REL::Relocation<func_t> func{ ID::PlayerCamera::Force3rdPerson };
+			func(this);
+		}
+
 		// members
 		ActorHandle                                                          cameraTarget;                        // 064
 		BSTSmallArray<BSTSmartPointer<TESCameraState>, CameraStates::kTotal> tempReturnStates;                    // 068

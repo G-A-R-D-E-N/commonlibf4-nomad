@@ -2589,6 +2589,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID StartPipboyMode{ 998069, 2248358 };
 		inline constexpr REL::VariantID StopPipboyMode{ 811954, 2248359 };
 		inline constexpr REL::VariantID QCameraEquals{ 839543, 2248421 };
+		inline constexpr REL::VariantID Force3rdPerson{ 162201, 2248348 };
 	}
 
 	namespace PlayerCharacter

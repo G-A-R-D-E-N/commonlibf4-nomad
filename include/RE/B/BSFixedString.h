@@ -147,6 +147,19 @@ namespace RE
 				}
 			}
 
+			template <class T>
+			[[nodiscard]] friend bool operator<(const T& a_lhs, const T& a_rhs) noexcept
+				requires(std::same_as<T, BSFixedString>)
+			{
+				if (a_lhs.empty() && a_rhs.empty()) {
+					return false;
+				} else if (const auto length = a_lhs.length(); length != a_rhs.length()) {
+					return length < a_rhs.length();
+				} else {
+					return strncmp(a_lhs.c_str(), a_rhs.c_str(), length) < 0;
+				}
+			}
+
 			[[nodiscard]] bool contains(std::basic_string_view<value_type> a_rhs) const
 			{
 				if (a_rhs.length() > length()) {

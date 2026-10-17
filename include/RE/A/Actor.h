@@ -93,6 +93,7 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::Actor };
 		static constexpr auto VTABLE{ VTABLE::Actor };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kACHR };
+		static constexpr auto TYPE_ID{ BSScript::kActor };
 
 		enum class BOOL_FLAGS
 		{
@@ -676,6 +677,90 @@ namespace RE
 			using func_t = decltype(&Actor::DoHitMe);
 			static REL::Relocation<func_t> func{ ID::Actor::DoHitMe };
 			return func(this, a_data);
+		}
+
+		[[nodiscard]] ActorHandle GetActorHandle()
+		{
+			using func_t = decltype(&Actor::GetActorHandle);
+			static REL::Relocation<func_t> func{ ID::Actor::GetActorHandle };
+			return func(this);
+		}
+
+		void EnableCollision()
+		{
+			using func_t = decltype(&Actor::EnableCollision);
+			static REL::Relocation<func_t> func{ ID::Actor::EnableCollision };
+			func(this);
+		}
+
+		void DisableCollision()
+		{
+			using func_t = decltype(&Actor::DisableCollision);
+			static REL::Relocation<func_t> func{ ID::Actor::DisableCollision };
+			func(this);
+		}
+
+		void StopAlarmOnActor()
+		{
+			using func_t = decltype(&Actor::StopAlarmOnActor);
+			static REL::Relocation<func_t> func{ ID::Actor::StopAlarmOnActor };
+			func(this);
+		}
+
+		void SetRestrained(bool a_restrained)
+		{
+			using func_t = decltype(&Actor::SetRestrained);
+			static REL::Relocation<func_t> func{ ID::Actor::SetRestrained };
+			func(this, a_restrained);
+		}
+
+		bool GetCanDoFavor(bool a_unk = false)
+		{
+			using func_t = decltype(&Actor::GetCanDoFavor);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCanDoFavor };
+			return func(this, a_unk);
+		}
+
+		void SetCanDoFavor(bool a_canDoFavor)
+		{
+			using func_t = decltype(&Actor::SetCanDoFavor);
+			static REL::Relocation<func_t> func{ ID::Actor::SetCanDoFavor };
+			func(this, a_canDoFavor);
+		}
+
+		void TurnOffHeadtracking()
+		{
+			using func_t = decltype(&Actor::TurnOffHeadtracking);
+			static REL::Relocation<func_t> func{ ID::Actor::TurnOffHeadtracking };
+			func(this);
+		}
+
+		void StopMoving(float a_decelerationMult = 1.0F)
+		{
+			using func_t = decltype(&Actor::StopMoving);
+			static REL::Relocation<func_t> func{ ID::Actor::StopMoving };
+			func(this, a_decelerationMult);
+		}
+
+		void ClearLookAtTarget()
+		{
+			using func_t = decltype(&Actor::ClearLookAtTarget);
+			static REL::Relocation<func_t> func{ ID::Actor::ClearLookAtTarget };
+			func(this);
+		}
+
+		void EvaluatePackage(bool a_queue, bool a_resetAI)
+		{
+			using func_t = decltype(&Actor::EvaluatePackage);
+			static REL::Relocation<func_t> func{ ID::Actor::EvaluatePackage };
+			func(this, a_queue, a_resetAI);
+		}
+
+		void WarpTo(const NiPoint3& a_position, float a_zRotation, float a_xRotation, TESObjectCELL* a_cell, TESWorldSpace* a_worldSpace, bool a_resetAI, bool a_unk1 = false, bool a_unk2 = false)
+		{
+			using func_t = decltype(&Actor::WarpTo);
+			static REL::Relocation<func_t> func{ ID::Actor::WarpTo };
+			return func(this, a_position, a_zRotation, a_xRotation, a_cell, a_worldSpace, a_resetAI, a_unk1, a_unk2);
 		}
 
 		// members

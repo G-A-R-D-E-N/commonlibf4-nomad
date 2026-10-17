@@ -10,6 +10,7 @@ namespace RE::ID
 
 	namespace Actor
 	{
+		inline constexpr REL::VariantID WarpTo{ 728864, 2229712 };
 		inline constexpr REL::VariantID AddPerk{ 187096, 2230121 };
 		inline constexpr REL::VariantID CanUseIdle{ 1223707, 2229592 };
 		inline constexpr REL::VariantID ClearAttackStates{ 1525555, 2229773 };
@@ -76,6 +77,17 @@ namespace RE::ID
 		inline constexpr REL::VariantID StopInteractingQuick{ 129904, 2231227 };
 		inline constexpr REL::VariantID CalculateDetectionFormula{ 589441, 2230213 };
 		inline constexpr REL::VariantID DoHitMe{ 881215, 2231148 };
+		inline constexpr REL::VariantID GetActorHandle{ 1145222, 2229894 };
+		inline constexpr REL::VariantID EnableCollision{ 1274117, 2229652 };
+		inline constexpr REL::VariantID DisableCollision{ 475952, 2229653 };
+		inline constexpr REL::VariantID StopAlarmOnActor{ 1564830, 2229667 };
+		inline constexpr REL::VariantID SetRestrained{ 316742, 2229910 };
+		inline constexpr REL::VariantID GetCanDoFavor{ 46113, 2230148 };
+		inline constexpr REL::VariantID SetCanDoFavor{ 391670, 2230149 };
+		inline constexpr REL::VariantID TurnOffHeadtracking{ 149104, 2230240 };
+		inline constexpr REL::VariantID StopMoving{ 940952, 2230262 };
+		inline constexpr REL::VariantID ClearLookAtTarget{ 1345971, 2230291 };
+		inline constexpr REL::VariantID EvaluatePackage{ 1395257, 2229805 };
 	}
 
 	namespace ActorEquipManager

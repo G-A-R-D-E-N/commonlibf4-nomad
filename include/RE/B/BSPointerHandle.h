@@ -67,6 +67,8 @@ namespace RE
 	class BSPointerHandle
 	{
 	public:
+		using native_handle_type = typename Handle::HandleType;
+
 		BSPointerHandle() noexcept = default;
 
 		template <class Y>
@@ -108,6 +110,11 @@ namespace RE
 			return BSPointerHandleManagerInterface<T>::GetSmartPointer(*this);
 		}
 
+		[[nodiscard]] Handle::HandleType native_handle() const noexcept
+		{
+			return _handle.value();
+		}
+
 		[[nodiscard]] Handle::HandleType get_handle() noexcept
 		{
 			return _handle.value();
@@ -135,6 +142,15 @@ namespace RE
 	private:
 		template <class, class>
 		friend class BSPointerHandle;
+
+		void get_handle(T* a_ptr)
+		{
+			if (a_ptr) {
+				*this = BSPointerHandleManagerInterface<T>::GetHandle(a_ptr);
+			} else {
+				reset();
+			}
+		}
 
 		Handle _handle;  // 00
 	};

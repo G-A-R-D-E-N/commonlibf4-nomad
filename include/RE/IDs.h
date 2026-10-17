@@ -3110,6 +3110,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetFacialBoneMorphIntensity{ 1256673, 2207415 };
 		inline constexpr REL::VariantID SetMorphSliderValue{ 1432151, 2207410 };
 		inline constexpr REL::VariantID SetFacialBoneRegionTransform{ 1125036, 2207413 };
+		inline constexpr REL::VariantID GetHeight{ 674794, 2207473 };
 	}
 
 	namespace TESObjectARMO

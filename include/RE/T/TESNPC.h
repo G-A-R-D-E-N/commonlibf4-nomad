@@ -232,6 +232,13 @@ namespace RE
 			return func(this, a_color, a_skinTone, a_force);
 		}
 
+		[[nodiscard]] float GetHeight(TESObjectREFR* a_refr, TESRace* a_race)
+		{
+			using func_t = decltype(&TESNPC::GetHeight);
+			static REL::Relocation<func_t> func{ ID::TESNPC::GetHeight };
+			return func(this, a_refr, a_race);
+		}
+
 		// members
 		BGSAttachParentArray attachParents;    // 220
 		NPC_DATA             data;             // 238

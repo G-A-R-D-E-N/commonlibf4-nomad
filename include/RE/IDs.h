@@ -335,6 +335,10 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID AddReference{ 10580, 2194272, 2194272 };
 	}
+	namespace BGSQuestPerkEntry
+	{
+		inline constexpr REL::VariantID ApplyPerkEntry{ 1096933, 2206524 };
+	}
 	namespace BarterMenu
 	{
 		inline constexpr REL::VariantID ClearTradingData{ 1112285, 2222700 };

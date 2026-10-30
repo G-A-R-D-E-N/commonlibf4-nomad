@@ -6,9 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
-  actions: write
+  contents: read
 
 concurrency:
   group: upstream-sync
@@ -17,6 +15,12 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    # UPSTREAM_SYNC_TOKEN must stay an environment secret limited to the default branch.
+    environment: upstream-sync
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     strategy:
       fail-fast: false
       matrix:
@@ -58,7 +62,7 @@ jobs:
             exit 0
           fi
           if ! git push --force origin "$upstream:refs/heads/$branch"; then
-            echo "::error::Push of $branch was refused. Upstream changes .github/workflows, which needs an UPSTREAM_SYNC_TOKEN secret with workflow permission."
+            echo "::error::Push of $branch was refused. Upstream changes .github/workflows, which needs the UPSTREAM_SYNC_TOKEN environment secret with workflow permission."
             exit 1
           fi
           count=$(git rev-list --count "origin/$BASE..$upstream")
@@ -71,5 +75,31 @@ jobs:
             gh pr edit "$number" --repo "$REPO" --body "$body"
           fi
           if [ "$HAS_PAT" != "true" ]; then
-            gh workflow run "$BUILD" --repo "$REPO" --ref "$branch" || echo "::warning::$BUILD has no workflow_dispatch on $branch; add an UPSTREAM_SYNC_TOKEN secret so the PR triggers CI itself"
+            gh workflow run "$BUILD" --repo "$REPO" --ref "$branch" || echo "::warning::$BUILD has no workflow_dispatch on $branch; add the UPSTREAM_SYNC_TOKEN environment secret so the PR triggers CI itself"
+          fi
+
+  fork-watch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: List active forks that upstream-sync does not track
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BASE: ${{ github.event.repository.default_branch }}
+          SOURCES: ${{ vars.UPSTREAM_SYNC_SOURCES }}
+          NETWORK_ROOT: ${{ vars.UPSTREAM_SYNC_NETWORK }}
+        run: |
+          set -euo pipefail
+          python .github/scripts/fork_watch.py
+          title="Upstream fork watch"
+          number=$(gh issue list --repo "$REPO" --state open --search "\"$title\" in:title" --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -z "$number" ]; then
+            gh issue create --repo "$REPO" --title "$title" --body-file fork-watch.md
+          else
+            gh issue edit "$number" --repo "$REPO" --body-file fork-watch.md
           fi

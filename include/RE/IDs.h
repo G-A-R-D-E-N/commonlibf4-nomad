@@ -2656,6 +2656,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID ClearPrison{ 920390, 2233196 };
 		inline constexpr REL::VariantID ReloadWeapon{ 458406, 2232907 };
 		inline constexpr REL::VariantID SetPerkCount{ 616372, 2233187 };
+		inline constexpr REL::VariantID SetTintingData{ 802946, 2233185 };
 		inline constexpr REL::VariantID HasLOSToTarget{ 449775, 2233004 };
 		inline constexpr REL::VariantID TryUnlockObject{ 1341574, 2233040 };
 		inline constexpr REL::VariantID EnableRadio{ 741937, 2233211 };
@@ -2935,11 +2936,14 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 711558, 2688883, 4796135 };
 		inline constexpr REL::VariantID AddFormToDataHandler{ 350112, 2192271 };
 		inline constexpr REL::VariantID CheckModsLoaded{ 1432894, 2192323 };
+		inline constexpr REL::VariantID CompileFiles{ 57137, 2192321 };
+		inline constexpr REL::VariantID ConstructObjectList{ 1043280, 2192326 };
 		inline constexpr REL::VariantID CreateReferenceAtLocation{ 500304, 2192301 };
 		// NOTE: CreateExplosionAtLocation is OG-only (only the 1.10.163 id is RE-verified; NG/AE
 		// unresolved). It is intentionally NOT a VariantID here — a {og,0} pair would imply multi-runtime
 		// coverage we do not have. The typed wrapper in TESDataHandler.h guards on the runtime and inlines
 		// the OG Address Library id, failing safe on NG/AE. See ReverseEng/Creation_Kit_Research:CreationKit/re-work-docs/rad-overhaul-natives-2026-08.md.
+		inline constexpr REL::VariantID InitAllForms{ 189223, 2192344 };
 		inline constexpr REL::VariantID IsFormIDInuse{ 1448838, 2192351 };
 	}
 
@@ -3059,6 +3063,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetSex{ 1257181, 2207107 };
 		inline constexpr REL::VariantID GetFacialBoneMorphIntensity{ 272217, 2207416 };
 		inline constexpr REL::VariantID SetHairColor{ 1201742, 2207426 };
+		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
 		inline constexpr REL::VariantID GetShortName{ 1221705, 2207405 };
 		inline constexpr REL::VariantID GetXPValue{ 1134136, 2207384 };
 	}
@@ -3638,13 +3643,13 @@ namespace Scaleform::ID
 		inline constexpr REL::VariantID IsInstanceOf{ 616029, 2286137 };
 		inline constexpr REL::VariantID GetParent{ 227189, 2285968 };
 		inline constexpr REL::VariantID HasMember{ 788691, 2286078 };
+		inline constexpr REL::VariantID DeleteMember{ 1397711, 2285595 };
 		inline constexpr REL::VariantID GetArraySize{ 254218, 2285791 };
 		inline constexpr REL::VariantID SetArraySize{ 1479924, 2286563 };
 		inline constexpr REL::VariantID GetMember{ 1517430, 2285936, 4494126 };
 		inline constexpr REL::VariantID GetElement{ 827659, 2285881 };
 		inline constexpr REL::VariantID SetElement{ 433707, 2286575 };
 		inline constexpr REL::VariantID SetMember{ 1360149, 2286589 };
-		inline constexpr REL::VariantID DeleteMember{ 1397711, 2285595 };
 		inline constexpr REL::VariantID Invoke{ 655847, 2286101 };
 		inline constexpr REL::VariantID PushBack{ 1330475, 2286424 };
 		inline constexpr REL::VariantID PopBack{ 13718, 2286392 };
@@ -3923,7 +3928,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetFacialBoneMorphIntensity{ 1256673, 2207415 };
 		inline constexpr REL::VariantID SetFacialBoneRegionTransform{ 1125036, 2207413 };
 		inline constexpr REL::VariantID SetMorphSliderValue{ 1432151, 2207410 };
-		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
 	}
 	namespace TESObjectCELL
 	{

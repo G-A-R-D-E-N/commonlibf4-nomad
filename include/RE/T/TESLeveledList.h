@@ -110,7 +110,7 @@ namespace RE
 		std::uint8_t                                                    baseListCount;     // 29
 		std::int8_t                                                     chanceNone;        // 2A
 		std::int8_t                                                     llFlags;           // 2B
-		std::int8_t                                                     maxUseAllCount;    // 2C
+		std::uint8_t                                                    maxUseAllCount;    // 2C
 	};
 	static_assert(sizeof(TESLeveledList) == 0x30);
 }

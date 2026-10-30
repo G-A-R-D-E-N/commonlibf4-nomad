@@ -1764,6 +1764,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetLegendaryMod{ 178075, 2190180 };
 		inline constexpr REL::VariantID SetBendableSplineInfo{ 894306, 2190623 };
 		inline constexpr REL::VariantID SetDisplayNameFromInstanceData{ 457340, 2190179 };
+		inline constexpr REL::VariantID SetExtraFlags{ 723287, 2190560 };
 		inline constexpr REL::VariantID SetOverrideName{ 222303, 2190167 };
 		inline constexpr REL::VariantID SetStartingWorldOrCell{ 603621, 2190506 };
 		inline constexpr REL::VariantID GetHealthPerc{ 196530, 2190226 };

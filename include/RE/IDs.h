@@ -3102,6 +3102,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetMusicType{ 445431, 2200270 };
 		inline constexpr REL::VariantID GetOwner{ 910422, 2200236 };
 		inline constexpr REL::VariantID GetRegionList{ 1565031, 2200265 };
+		inline constexpr REL::VariantID GetSkyRegion{ 166136, 2200272 };
 		inline constexpr REL::VariantID Pick{ 434717, 2200263 };
 		inline constexpr REL::VariantID SetCullCellMarkers{ 192259, 2192259 };
 		inline constexpr REL::VariantID UpdateAllRefsLoaded{ 374552, 2200415 };

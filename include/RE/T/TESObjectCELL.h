@@ -21,6 +21,7 @@ namespace RE
 	class NavMeshArray;
 	class NiAVObject;
 	class NiPoint3;
+	class TESRegion;
 	class TESRegionList;
 
 	namespace BGSWaterCollisionManager
@@ -191,6 +192,13 @@ namespace RE
 			using func_t = decltype(&TESObjectCELL::GetRegionList);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetRegionList };
 			return func(this, a_createIfMissing);
+		}
+
+		[[nodiscard]] TESRegion* GetSkyRegion() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetSkyRegion);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetSkyRegion };
+			return func(this);
 		}
 
 		[[nodiscard]] NiAVObject* Pick(bhkPickData& pd)

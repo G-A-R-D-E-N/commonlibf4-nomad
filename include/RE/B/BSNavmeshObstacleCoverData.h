@@ -13,6 +13,8 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::BSNavmeshObstacleCoverData };
 		static constexpr auto VTABLE{ VTABLE::BSNavmeshObstacleCoverData };
 
+		~BSNavmeshObstacleCoverData() override;  // 00
+
 		// members
 		BSTArray<BSNavmeshCoverEdge> coverEdgeArray;  // 10
 		std::uint32_t                flags;           // 28

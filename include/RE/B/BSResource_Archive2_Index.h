@@ -45,8 +45,8 @@ namespace RE::BSResource
 			{
 			public:
 				// members
-				Location*			location = nullptr;  // 00
-				BSFixedString		nameText;            // 08
+				Location*     location = nullptr;  // 00
+				BSFixedString nameText;            // 08
 			};
 			static_assert(sizeof(Loose) == 0x10);
 
@@ -57,10 +57,10 @@ namespace RE::BSResource
 				[[nodiscard]] bool IsLoose() const noexcept { return this->chunkOffsetOrType == 0; }
 
 				// members
-				ID					nameID;                 // 00
-				TId					dataFileIndex = 0;      // 0C
-				std::uint8_t		chunkCount = 0;         // 0E
-				std::uint16_t		chunkOffsetOrType = 0;  // 0F
+				ID            nameID;                 // 00
+				TId           dataFileIndex = 0;      // 0C
+				std::uint8_t  chunkCount = 0;         // 0E
+				std::uint16_t chunkOffsetOrType = 0;  // 0F
 			};
 
 			class Entry :
@@ -82,8 +82,8 @@ namespace RE::BSResource
 					Chunk     chunk;
 					Loose     loose;
 					std::byte buffer[std::max(sizeof(Chunk), sizeof(Loose))] = {};
-				};								// 10
-				BSFixedString stringName;		// 20
+				};  // 10
+				BSFixedString stringName;  // 20
 			};
 
 			class CursorWithEntry :
@@ -95,13 +95,13 @@ namespace RE::BSResource
 			};
 
 			// members
-			RE::BSTSmallIndexScatterTable<ID, NameIDAccess>									nameTable;                    // 0010
-			RE::BSTSmartPointer<Stream>														dataFiles[NumEntries];        // 0030
-			RE::BSTSmartPointer<AsyncStream>												asyncDataFiles[NumEntries];   // ....
-			ID																				dataFileNameIDs[NumEntries];  // ....
-			std::uint32_t																	dataFileCount;                // ....
-			BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16>			tr;                           // ....
-			BSReadWriteLock																	lock;                         // ....
+			RE::BSTSmallIndexScatterTable<ID, NameIDAccess>                       nameTable;                    // 0010
+			RE::BSTSmartPointer<Stream>                                           dataFiles[NumEntries];        // 0030
+			RE::BSTSmartPointer<AsyncStream>                                      asyncDataFiles[NumEntries];   // ....
+			ID                                                                    dataFileNameIDs[NumEntries];  // ....
+			std::uint32_t                                                         dataFileCount;                // ....
+			BSBTreeFile::BPTree<Pager, BSBTreeFile::PGFSEDL<Entry, ID, 4096>, 16> tr;                           // ....
+			BSReadWriteLock                                                       lock;                         // ....
 		};
 
 		using Index256 = TIndex<>;

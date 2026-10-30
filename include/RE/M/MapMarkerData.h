@@ -25,6 +25,10 @@ namespace RE
 			return func(this);
 		}
 
+		// Local accessors kept on top of the upstream TEnumSet layout; mirrors MapMarkerData::SetVisible / ResetFlags
+		void SetVisible(bool a_visible) noexcept { flags.set(a_visible, Flag::kVisible); }
+		void ResetFlags() noexcept { flags = originalFlags; }
+
 		[[nodiscard]] bool IsVisible() const noexcept { return flags.all(Flag::kVisible); }
 		[[nodiscard]] bool IsHidden() const noexcept { return flags.all(Flag::kHidden); }
 		[[nodiscard]] bool CanTravelTo() const noexcept { return flags.all(Flag::kCanTravelTo); }

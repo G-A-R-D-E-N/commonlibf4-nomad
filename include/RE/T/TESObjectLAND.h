@@ -21,6 +21,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESObjectLAND };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kLAND };
 
+		// constants decompile-verified on OG 1.10.163 (LoadVerticesIntoArrays, GetWorldCellX)
+		static constexpr std::int32_t  CELL_WIDTH{ 4096 };  // world units, cellX << 12
+		static constexpr std::int32_t  QUAD_WIDTH{ 128 };   // world units per vertex step
+		static constexpr std::uint32_t VERTS_PER_ROW{ 33 };
+		static constexpr std::uint32_t HEIGHT_SCALE_SHIFT{ 3 };   // accumulated height << 3
+		static constexpr std::size_t   VHGT_CHUNK_SIZE{ 0x448 };  // float offset + 33*33 signed byte deltas + 3 unused bytes
+
 		enum class COORD_DATA_FLAGS
 		{
 			kVertexCoord = 0x1,

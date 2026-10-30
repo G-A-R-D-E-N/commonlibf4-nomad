@@ -75,6 +75,13 @@ namespace RE
 			return *singleton;
 		}
 
+		void BufferSceneScreenShot()
+		{
+			using func_t = decltype(&BGSSaveLoadManager::BufferSceneScreenShot);
+			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::BufferSceneScreenShot };
+			return func(this);
+		}
+
 		void QueueSaveLoadTask(QUEUED_TASK a_task)
 		{
 			using func_t = decltype(&BGSSaveLoadManager::QueueSaveLoadTask);
@@ -94,20 +101,6 @@ namespace RE
 			using func_t = decltype(&BGSSaveLoadManager::GetSaveDirectoryPath);
 			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::GetSaveDirectoryPath };
 			return func(this, a_directoryPath);
-		}
-
-		void BufferSceneScreenShot()
-		{
-			using func_t = decltype(&BGSSaveLoadManager::BufferSceneScreenShot);
-			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::BufferSceneScreenShot };
-			return func(this);
-		}
-
-		void GetFullPath(const char* a_fileName, char* a_fullPath, bool a_tempFile = false) const
-		{
-			using func_t = decltype(&BGSSaveLoadManager::GetFullPath);
-			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::GetFullPath };
-			return func(this, a_fileName, a_fullPath, a_tempFile);
 		}
 
 		[[nodiscard]] bool IsLoadingAllowed() const
@@ -138,6 +131,20 @@ namespace RE
 			return func(this);
 		}
 
+		bool Autosave()
+		{
+			using func_t = decltype(&BGSSaveLoadManager::Autosave);
+			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::Autosave };
+			return func(this);
+		}
+
+		void GetFullPath(const char* a_fileName, char* a_fullPath, bool a_tempFile = false) const
+		{
+			using func_t = decltype(&BGSSaveLoadManager::GetFullPath);
+			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::GetFullPath };
+			return func(this, a_fileName, a_fullPath, a_tempFile);
+		}
+
 		void DeleteSaveFileImpl(const char* a_fileName, std::int32_t a_deviceID, bool a_checkHasSaveData)
 		{
 			using func_t = decltype(&BGSSaveLoadManager::DeleteSaveFileImpl);
@@ -164,6 +171,13 @@ namespace RE
 			using func_t = decltype(&BGSSaveLoadManager::SaveGameImpl);
 			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::SaveGameImpl };
 			return func(this, a_fileName, a_deviceID, a_outputStats, a_compress);
+		}
+
+		[[nodiscard]] static bool IsSaveFileNameCustom(std::string_view a_fileName) noexcept
+		{
+			using func_t = decltype(&BGSSaveLoadManager::IsSaveFileNameCustom);
+			static REL::Relocation<func_t> func{ ID::BGSSaveLoadManager::IsSaveFileNameCustom };
+			return func(a_fileName);
 		}
 
 		// members

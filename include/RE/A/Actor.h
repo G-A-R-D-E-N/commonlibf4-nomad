@@ -8,6 +8,7 @@
 #include "RE/B/BGSEquipIndex.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSPointerHandleSmartPointer.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
@@ -26,12 +27,9 @@ namespace RE
 	enum class ACTOR_CRITICAL_STAGE;
 	enum class ACTOR_LIFE_STATE;
 	enum class ACTOR_LOS_LOCATION;
-	enum class GUN_STATE;
+	enum class GUN_STATE : std::uint32_t;
 	enum class PACKAGE_OBJECT_TYPE;
 	enum class POWER_ATTACK_TYPE;
-
-	template <class>
-	class BSPointerHandleSmartPointer;
 
 	class ActorCPMEvent;
 	class ActorMagicCaster;
@@ -530,6 +528,20 @@ namespace RE
 			using func_t = decltype(&Actor::SetHeading);
 			static REL::Relocation<func_t> func{ ID::Actor::SetHeading };
 			return func(this, a_angle);
+		}
+
+		void SetProcessMe(bool a_processMe, bool a_updateEquipment)
+		{
+			using func_t = decltype(&Actor::SetProcessMe);
+			static REL::Relocation<func_t> func{ ID::Actor::SetProcessMe };
+			return func(this, a_processMe, a_updateEquipment);
+		}
+
+		void SetUnconscious(bool a_unconscious)
+		{
+			using func_t = decltype(&Actor::SetUnconscious);
+			static REL::Relocation<func_t> func{ ID::Actor::SetUnconscious };
+			return func(this, a_unconscious);
 		}
 
 		void TrespassAlarm(TESObjectREFR* a_refr, TESForm* a_owner, std::int32_t a_crime)

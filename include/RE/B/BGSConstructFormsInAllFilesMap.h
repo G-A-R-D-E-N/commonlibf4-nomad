@@ -1,87 +1,74 @@
 #pragma once
 
-#include "RE/B/BSTArray.h"
 #include "RE/B/BSTHashMap.h"
 #include "RE/T/TESFile.h"
 
 namespace RE
 {
-	class TESForm;
-
 	class ConstructFormData
 	{
 	public:
-		// members
-		TESForm*      pForm;   // 00
-		std::uint32_t iFlags;  // 08
+		TESForm*     pForm;
+		unsigned int iFlags;
 	};
 	static_assert(sizeof(ConstructFormData) == 0x10);
 
 	class BGSConstructedForms
 	{
 	public:
-		// members
-		BSTArray<ConstructFormData, BSTArrayHeapAllocator> FormsArray[3];  // 00
+		BSTArray<ConstructFormData, BSTArrayHeapAllocator> FormsArray[3];
 	};
 	static_assert(sizeof(BGSConstructedForms) == 0x48);
 
-	class BGSConstructFormsMap :
-		public BSTHashMap<std::uint32_t, ConstructFormData>  // 00
+	class BGSConstructFormsMap : public BSTHashMap<unsigned int, ConstructFormData>
 	{
 	public:
-		// members
-		std::uint32_t iFlags;  // 30
+		unsigned int iFlags;
 	};
 	static_assert(sizeof(BGSConstructFormsMap) == 0x38);
 
-	class BGSConstructCellsMap :
-		public BSTHashMap<std::uint32_t, BGSConstructFormsMap*>  // 00
-	{};
+	class BGSConstructCellsMap : public BSTHashMap<unsigned int, BGSConstructFormsMap*>
+	{
+	};
 	static_assert(sizeof(BGSConstructCellsMap) == 0x30);
 
-	class BGSConstructCellSubBlocksMap :
-		public BSTHashMap<std::uint32_t, BGSConstructCellsMap*>  // 00
+	class BGSConstructCellSubBlocksMap : public BSTHashMap<unsigned int, BGSConstructCellsMap*>
 	{};
 	static_assert(sizeof(BGSConstructCellSubBlocksMap) == 0x30);
 
-	class BGSConstructCellBlocksMap :
-		public BSTHashMap<std::uint32_t, BGSConstructCellSubBlocksMap*>  // 00
+	class BGSConstructCellBlocksMap : public BSTHashMap<unsigned int, BGSConstructCellSubBlocksMap*>
 	{
 	public:
-		// members
-		BGSConstructFormsMap* pPersistentCell;  // 30
-		bool                  bExteriors;       // 38
+		BGSConstructFormsMap* pPersistentCell;
+		bool                  bExteriors;
 	};
 	static_assert(sizeof(BGSConstructCellBlocksMap) == 0x40);
 
-	class BGSConstructWorldSpacesMap :
-		public BSTHashMap<std::uint32_t, BGSConstructCellBlocksMap*>  // 00
-	{};
+	class BGSConstructWorldSpacesMap : public BSTHashMap<unsigned int, BGSConstructCellBlocksMap*>
+	{
+	};
 	static_assert(sizeof(BGSConstructWorldSpacesMap) == 0x30);
 
-	class BGSConstructFormsInFileMap :
-		public BSTHashMap<std::uint32_t, BGSConstructFormsMap*>  // 00
+	class BGSConstructFormsInFileMap : public BSTHashMap<unsigned int, BGSConstructFormsMap*>
 	{
 	public:
-		// members
-		BGSConstructCellBlocksMap*  pInteriorCells;  // 30
-		BGSConstructWorldSpacesMap* pWorldSpaces;    // 38
-		std::uint32_t               iCount;          // 40
+		BGSConstructCellBlocksMap*  pInteriorCells;
+		BGSConstructWorldSpacesMap* pWorldSpaces;
+		unsigned int                iCount;
 	};
+
 	static_assert(sizeof(BGSConstructFormsInFileMap) == 0x48);
 
 	class BGSConstructFormsInAllFilesMap :
-		public BSTHashMap<TESFile*, BGSConstructFormsInFileMap*>  // 00
+		RE::BSTHashMap<TESFile*, BGSConstructFormsInFileMap*>
 	{
 	public:
-		// members
-		BGSConstructedForms ConstructedForms;  // 30
-		std::uint32_t       iCount;            // 78
+		BGSConstructedForms ConstructedForms;
+		unsigned int        iCount;
 	};
 	static_assert(sizeof(BGSConstructFormsInAllFilesMap) == 0x80);
 
-	class BGSReconstructFormsInAllFilesMap :
-		public BGSConstructFormsInAllFilesMap  // 00
+	class BGSReconstructFormsInAllFilesMap : BGSConstructFormsInAllFilesMap
 	{};
 	static_assert(sizeof(BGSReconstructFormsInAllFilesMap) == 0x80);
 }

@@ -274,4 +274,21 @@ namespace RE
 		std::byte* _begin{ nullptr };               // 30 - ptr to beginning of active lifetime elements
 		size_type  _size{ 0 };                      // 38
 	};
+
+	// Ghidra-confirmed (OG 1.10.163 / AE 1.11.221 / AE 1.11.240): every BSTObjectArena<T, BSTObjectArenaHeapAlloc, N>
+	// destructor deallocates its data pointer at relative +0x00 and destructs its BSTArrayBase-shaped tail at +0x30,
+	// giving a stable 0x38-byte footprint regardless of T/N (cross-checked against HUDMessagesModel::throttles,
+	// HUDMessagesModel::queuedMessages, HUDNotificationsModel::experienceUpdatesA, and
+	// CalculateCompassMarkersFunctor::hudMarkerDataArray, all of which sit exactly 0x38 bytes before their next member).
+	class BSTObjectArenaHeapAlloc
+	{
+	public:
+		[[nodiscard]] void* allocate_bytes(std::size_t a_bytes) { return calloc(1, a_bytes); }
+		void                deallocate_bytes(void* a_ptr) { free(a_ptr); }
+	};
+	static_assert(std::is_empty_v<BSTObjectArenaHeapAlloc>);
+	static_assert(sizeof(BSTObjectArena<std::uint32_t, BSTObjectArenaHeapAlloc, 32>) == 0x38);
+
+	template <class T, std::uint32_t N = 32>
+	using BSTHeapObjectArena = BSTObjectArena<T, BSTObjectArenaHeapAlloc, N>;
 }

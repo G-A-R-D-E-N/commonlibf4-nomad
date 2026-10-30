@@ -426,18 +426,18 @@ namespace Scaleform::GFx
 				return func(this, a_val, a_obj);
 			}
 
-			[[nodiscard]] bool IsInstanceOf(void* a_data, const char* a_className) const
+			bool IsInstanceOf(void* a_data, const char* a_className) const
 			{
 				using func_t = decltype(&ObjectInterface::IsInstanceOf);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::IsInstanceOf };
 				return func(this, a_data, a_className);
 			}
 
-			bool GetParent(void* a_data, Value* a_value) const
+			bool GetParent(void* a_data, Value* a_val) const
 			{
 				using func_t = decltype(&ObjectInterface::GetParent);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::GetParent };
-				return func(this, a_data, a_value);
+				return func(this, a_data, a_val);
 			}
 
 			bool HasMember(void* a_data, const char* a_name, bool a_isdobj) const
@@ -496,6 +496,13 @@ namespace Scaleform::GFx
 				return func(this, a_data, a_name, a_value, a_isdobj);
 			}
 
+			bool DeleteMember(void* a_data, const char* a_name, bool a_isdobj)
+			{
+				using func_t = decltype(&ObjectInterface::DeleteMember);
+				static REL::Relocation<func_t> func{ ID::GFx::Value::DeleteMember };
+				return func(this, a_data, a_name, a_isdobj);
+			}
+
 			bool Invoke(void* a_data, Value* a_result, const char* a_name, const Value* a_args, std::size_t a_numArgs, bool a_isdobj)
 			{
 				using func_t = decltype(&ObjectInterface::Invoke);
@@ -510,11 +517,11 @@ namespace Scaleform::GFx
 				return func(this, a_data, a_value);
 			}
 
-			bool PopBack(void* a_data, Value* a_value)
+			bool PopBack(void* a_data, Value* a_val)
 			{
 				using func_t = decltype(&ObjectInterface::PopBack);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::PopBack };
-				return func(this, a_data, a_value);
+				return func(this, a_data, a_val);
 			}
 
 			bool RemoveElements(void* a_data, std::uint32_t a_idx, std::int32_t a_count)
@@ -536,6 +543,13 @@ namespace Scaleform::GFx
 				using func_t = decltype(&ObjectInterface::VisitMembers);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::VisitMembers };
 				return func(this, a_data, a_visitor, a_isDObj);
+			}
+
+			void VisitElements(void* a_data, ArrVisitor* a_visitor, std::uint32_t a_startIdx, std::int32_t a_count) const
+			{
+				using func_t = decltype(&ObjectInterface::VisitElements);
+				static REL::Relocation<func_t> func{ ID::GFx::Value::VisitElements };
+				return func(this, a_data, a_visitor, a_startIdx, a_count);
 			}
 
 			bool GetDisplayInfo(void* a_data, DisplayInfo* a_info) const
@@ -594,16 +608,16 @@ namespace Scaleform::GFx
 				return func(this, a_data, a_movieClip, a_instanceName, a_depth);
 			}
 
-			bool GotoAndPlay(void* a_data, std::uint32_t a_frame, bool a_stop)
+			bool GotoAndPlay_Int(void* a_data, std::uint32_t a_frame, bool a_stop)
 			{
-				using func_t = bool (ObjectInterface::*)(void*, std::int32_t, bool);
+				using func_t = decltype(&ObjectInterface::GotoAndPlay_Int);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::GotoAndPlay_Int };
-				return func(this, a_data, static_cast<std::int32_t>(a_frame), a_stop);
+				return func(this, a_data, a_frame, a_stop);
 			}
 
-			bool GotoAndPlay(void* a_data, const char* a_frame, bool a_stop)
+			bool GotoAndPlay_String(void* a_data, const char* a_frame, bool a_stop)
 			{
-				using func_t = decltype(static_cast<bool (ObjectInterface::*)(void*, const char*, bool)>(&ObjectInterface::GotoAndPlay));
+				using func_t = decltype(&ObjectInterface::GotoAndPlay_String);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::GotoAndPlay_String };
 				return func(this, a_data, a_frame, a_stop);
 			}

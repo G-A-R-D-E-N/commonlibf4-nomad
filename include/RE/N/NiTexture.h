@@ -18,6 +18,8 @@ namespace RE
 		class Texture;
 	}
 
+	class BSResourceNiBinaryStream;
+
 	class __declspec(novtable) NiTexture :
 		public NiObject  // 00
 	{
@@ -29,25 +31,25 @@ namespace RE
 		// add
 		virtual BSTextureArray::Texture* IsBSTextureArray() { return nullptr; }  // 28
 
-		static NiTexture* Create(BSFixedString& a_texturePath, bool a_isSRGB, bool a_allowDegrade)
+		static NiTexture* Create1(const BSFixedString& a_path, bool a_unk1, bool a_unk2)
 		{
-			using func_t = NiTexture* (*)(BSFixedString&, bool, bool);
+			using func_t = decltype(&NiTexture::Create1);
 			static REL::Relocation<func_t> func{ ID::NiTexture::Create1 };
-			return func(a_texturePath, a_isSRGB, a_allowDegrade);
+			return func(a_path, a_unk1, a_unk2);
 		}
 
-		static NiTexture* Create(BSResourceNiBinaryStream* a_stream, const char* a_texturePath, bool a_isDDX, bool a_isSRGB, bool a_allowDegrade)
+		static NiTexture* Create2(BSResourceNiBinaryStream* a_stream, const char* a_path, bool a_unk1, bool a_unk2, bool a_unk3)
 		{
-			using func_t = NiTexture* (*)(BSResourceNiBinaryStream*, const char*, bool, bool, bool);
+			using func_t = decltype(&NiTexture::Create2);
 			static REL::Relocation<func_t> func{ ID::NiTexture::Create2 };
-			return func(a_stream, a_texturePath, a_isDDX, a_isSRGB, a_allowDegrade);
+			return func(a_stream, a_path, a_unk1, a_unk2, a_unk3);
 		}
 
-		static NiTexture* Create(BSTSmartPointer<BSResource::Stream>& a_stream, const char* a_texturePath, bool a_isDDX, bool a_isSRGB, bool a_allowDegrade)
+		static NiTexture* Create3(const BSTSmartPointer<BSResource::Stream>& a_stream, const char* a_path, bool a_unk1, bool a_unk2, bool a_unk3)
 		{
-			using func_t = NiTexture* (*)(BSTSmartPointer<BSResource::Stream>&, const char*, bool, bool, bool);
+			using func_t = decltype(&NiTexture::Create3);
 			static REL::Relocation<func_t> func{ ID::NiTexture::Create3 };
-			return func(a_stream, a_texturePath, a_isDDX, a_isSRGB, a_allowDegrade);
+			return func(a_stream, a_path, a_unk1, a_unk2, a_unk3);
 		}
 
 		static void SetAllowDegrade(bool a_allow)

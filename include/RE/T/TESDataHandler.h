@@ -6,6 +6,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/E/ENUM_FORM_ID.h"
+#include "RE/N/NiPoint3.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTList.h"
 #include "RE/T/TESFileCollection.h"
@@ -15,10 +16,13 @@ namespace RE
 {
 	class BGSHotloadCompletedEvent;
 	class NEW_REFR_DATA;
+	class TESBoundObject;
 	class TESFile;
+	class TESObjectCELL;
 	class TESObjectList;
 	class TESRegionDataManager;
 	class TESRegionList;
+	class TESWorldSpace;
 
 	class TESDataHandler :
 		public BSTEventSource<BGSHotloadCompletedEvent>,  // 0000
@@ -52,25 +56,26 @@ namespace RE
 			return func(this, a_data);
 		}
 
-		[[nodiscard]] bool CompileFiles(bool a_load)
+		// Detonates an explosion (a_base = EXPL) at a world position and returns a handle to the spawned
+		// explosion — unlike CreateReferenceAtLocation, which merely PLACES a reference (an EXPL placed
+		// that way never actually fires). Pass a_worldSpace and leave a_cell null: the engine derives the
+		// cell from the position and returns a NULL handle (instead of crashing) when that cell is not
+		// loaded — that built-in gate is why this is the safe entry point.
+		//
+		// OG-ONLY, guarded. Only the 1.10.163 Address Library id (1105815 -> RVA 0x114FE0) is RE-verified;
+		// the NG (1.10.984) and AE (1.11.x) ids are UNRESOLVED. Rather than encode a VariantID{og,0} and
+		// rely on a zero trapping, we fail safe: on any non-OG runtime we return an invalid handle and
+		// never resolve a relocation. See ReverseEng/Creation_Kit_Research:CreationKit/re-work-docs/rad-overhaul-natives-2026-08.md.
+		[[nodiscard]] ObjectRefHandle CreateExplosionAtLocation(
+			TESBoundObject* a_base, const NiPoint3& a_position, const NiPoint3& a_rotation,
+			TESObjectCELL* a_cell, TESWorldSpace* a_worldSpace)
 		{
-			using func_t = decltype(&TESDataHandler::CompileFiles);
-			static REL::Relocation<func_t> func{ ID::TESDataHandler::CompileFiles };
-			return func(this, a_load);
-		}
-
-		[[nodiscard]] bool ConstructObjectList(TESFile* a_file, bool a_isFirst)
-		{
-			using func_t = decltype(&TESDataHandler::ConstructObjectList);
-			static REL::Relocation<func_t> func{ ID::TESDataHandler::ConstructObjectList };
-			return func(this, a_file, a_isFirst);
-		}
-
-		void InitAllForms()
-		{
-			using func_t = decltype(&TESDataHandler::InitAllForms);
-			static REL::Relocation<func_t> func{ ID::TESDataHandler::InitAllForms };
-			return func(this);
+			if (!REX::FModule::IsRuntimeOG()) {
+				return {};  // NG/AE id unresolved — do not resolve a wrong-runtime relocation
+			}
+			using func_t = decltype(&TESDataHandler::CreateExplosionAtLocation);
+			static REL::Relocation<func_t> func{ REL::ID(1105815) };  // OG (1.10.163) Address Library id
+			return func(this, a_base, a_position, a_rotation, a_cell, a_worldSpace);
 		}
 
 		template <class T>

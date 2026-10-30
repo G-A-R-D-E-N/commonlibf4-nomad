@@ -29,6 +29,7 @@
 #include "RE/S/SayOnceTimeStampStruct.h"
 #include "RE/S/StolenItemValueStruct.h"
 #include "RE/S/SubgraphHandle.h"
+#include "RE/T/TESQuestStageItem.h"
 #include "RE/T/TeleportPath.h"
 #include "RE/X/XPChangeData.h"
 
@@ -58,7 +59,6 @@ namespace RE
 	class PositionPlayerEvent;
 	class QuestTargetArray;
 	class TESHitEvent;
-	class TESQuestStageItem;
 	class UserEventEnabledEvent;
 
 	namespace PerkValueEvents

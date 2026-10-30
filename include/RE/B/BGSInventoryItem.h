@@ -40,14 +40,14 @@ namespace RE
 			{
 				using func_t = decltype(&Stack::SaveGame);
 				static REL::Relocation<func_t> func{ ID::BGSInventoryItem::Stack::SaveGame };
-				return func(this, a_buffer);
+				func(this, a_buffer);
 			}
 
 			void InitLoadGame(BGSLoadFormBuffer* a_buffer)
 			{
 				using func_t = decltype(&Stack::InitLoadGame);
 				static REL::Relocation<func_t> func{ ID::BGSInventoryItem::Stack::InitLoadGame };
-				return func(this, a_buffer);
+				func(this, a_buffer);
 			}
 
 			// members
@@ -268,28 +268,28 @@ namespace RE
 		{
 			using func_t = decltype(&BGSInventoryItem::SaveGame);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::SaveGame };
-			return func(this, a_buffer);
+			func(this, a_buffer);
 		}
 
 		void LoadGame(BGSLoadFormBuffer* a_buffer)
 		{
 			using func_t = decltype(&BGSInventoryItem::LoadGame);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::LoadGame };
-			return func(this, a_buffer);
+			func(this, a_buffer);
 		}
 
 		void InitLoadGame(BGSLoadFormBuffer* a_buffer)
 		{
 			using func_t = decltype(&BGSInventoryItem::InitLoadGame);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::InitLoadGame };
-			return func(this, a_buffer);
+			func(this, a_buffer);
 		}
 
 		void FinishLoadGame(BGSLoadFormBuffer* a_buffer)
 		{
 			using func_t = decltype(&BGSInventoryItem::FinishLoadGame);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::FinishLoadGame };
-			return func(this, a_buffer);
+			func(this, a_buffer);
 		}
 
 		// members

@@ -96,6 +96,8 @@ namespace RE
 			return Scaleform::Ptr{ static_cast<T*>(ptr.get()) };
 		}
 
+		[[nodiscard]] bool GameIsPaused() const noexcept { return menuMode != 0; }
+
 		[[nodiscard]] bool GetMenuOpen(const BSFixedString& a_name) const
 		{
 			const auto menu = GetMenu(a_name);
@@ -158,9 +160,9 @@ namespace RE
 		std::uint32_t                          movementToDirectionalCount;  // 200
 		BSTimer                                uiTimer;                     // 208
 		// AE-only tail; use GetRuntimeData across runtimes.
-		bool                                   menuSystemVisible;           // 258
-		bool                                   closingAllMenus;             // 259
-		bool                                   freezeFrameScreenshotReady;  // 25A
+		bool menuSystemVisible;           // 258
+		bool closingAllMenus;             // 259
+		bool freezeFrameScreenshotReady;  // 25A
 	};
 	static_assert(offsetof(UI, uiTimer) == 0x208);
 	static_assert(sizeof(UI) == 0x260);

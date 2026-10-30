@@ -6,7 +6,7 @@ namespace RE
 {
 	class BGSLocation;
 
-	class BGSAssualtActorEvent  // "assualt" (facepalm), sic per symbol export
+	class BGSAssualtActorEvent  // "assualt" (facepalm), sic per SYMBOLS
 	{
 	public:
 		[[nodiscard]] static std::uint32_t EVENT_INDEX()

@@ -8,9 +8,8 @@ namespace RE
 	class BGSFormChanges
 	{
 	public:
-		// members
-		BGSChangeFlags        iChangeFlags;        // 00
-		BGSUnloadedFormBuffer UnloadedFormBuffer;  // 08
+		BGSChangeFlags        iChangeFlags;
+		BGSUnloadedFormBuffer UnloadedFormBuffer;
 	};
 	static_assert(sizeof(BGSFormChanges) == 0x10);
 }

@@ -3880,7 +3880,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSAIWorldLocationPrimitive_IAIWorldLocation_{ REL::ID(4824141) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSAIWorldLocationRefRadius_IAIWorldLocation_{ REL::ID(4824138) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSAutoWeaponSoundDef_BGSSoundDescriptor_{ REL::ID(1422162) };
-		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSCompoundSoundDef_BGSSoundDescriptor_{ REL::ID(994137) };
+		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSCompoundSoundDef_BGSSoundDescriptor_{ REL::ID(1339628) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSConveyorBelt__ConveyorBelt_InitActionI_{ REL::ID(4824040) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSMotorAction__FanMotor_InitActionI_{ REL::ID(4824041) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_BGSMusicPaletteTrack_BSIMusicTrack_{ REL::ID(678800) };
@@ -6806,7 +6806,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 4>  GameScript__InventoryEventHandler{ REL::ID(30855), REL::ID(4826613), REL::ID(4826614), REL::ID(4826615) };
 		inline constexpr std::array<REL::ID, 1>  GameScript__LOSEventHandler{ REL::ID(634565) };
 		inline constexpr std::array<REL::ID, 1>  GameScript__Logger{ REL::ID(1317532) };
-		inline constexpr std::array<REL::ID, 3>  GameScript__MenuEventHandler{ REL::ID(1270386), REL::ID(4826618), REL::ID(4826619) };
+		inline constexpr std::array<REL::ID, 3>  GameScript__MenuEventHandler{ REL::ID(1270386), REL::ID({ 346059, 346059, 4826618 }), REL::ID({ 1004128, 1004128, 4826619 }) };
 		inline constexpr std::array<REL::ID, 1>  GameScript__ObjectBindPolicy{ REL::ID(846882) };
 		inline constexpr std::array<REL::ID, 1>  GameScript__PathingCallbackMgr{ REL::ID(5444) };
 		inline constexpr std::array<REL::ID, 1>  GameScript__Profiler{ REL::ID(1056252) };
@@ -7835,7 +7835,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 24> PlayerCharacter{ REL::ID(1400465), REL::ID(226716), REL::ID(884677), REL::ID(1542933), REL::ID(618796), REL::ID(1276847), REL::ID(870759), REL::ID(385483), REL::ID(1435647), REL::ID(1342378), REL::ID(624217), REL::ID(1282138), REL::ID(357885), REL::ID(1016105), REL::ID(92071), REL::ID(750458), REL::ID(1408054), REL::ID(484126), REL::ID(1142245), REL::ID(218262), REL::ID(876165), REL::ID(1534607), REL::ID(610436), REL::ID(1488087) };
 		inline constexpr std::array<REL::ID, 1>  PlayerControllerXSmoothedChannel_Actor_float_{ REL::ID(542894) };
 		inline constexpr std::array<REL::ID, 1>  PlayerControllerYSmoothedChannel_Actor_float_{ REL::ID(1466918) };
-		inline constexpr std::array<REL::ID, 7>  PlayerControls{ REL::ID(1410640), REL::ID{ 267421, 267421, 4826539 }, REL::ID{ 925390, 925390, 4826540 }, REL::ID{ 752, 752, 4826541 }, REL::ID{ 659755, 659755, 4826542 }, REL::ID(1317482), REL::ID{ 393346, 393346, 4826543 } };
+		inline constexpr std::array<REL::ID, 7>  PlayerControls{ REL::ID(1410640), REL::ID(4826539), REL::ID(4826540), REL::ID(4826541), REL::ID(4826542), REL::ID(1317482), REL::ID(4826543) };
 		inline constexpr std::array<REL::ID, 1>  PlayerFastEquipSoundHandler{ REL::ID(177573) };
 		inline constexpr std::array<REL::ID, 1>  PlayerFirstSpeedSmoothedChannel_Actor_float_{ REL::ID(1074631) };
 		inline constexpr std::array<REL::ID, 1>  PlayerFurnitureExitHandler{ REL::ID(1099241) };
@@ -10309,5 +10309,21 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  stl__unique_function_impl__detail__TypeErasedFuncImpl__lambda_fad81f0f8f3e1bbc4511e296982f7793__void_{ REL::ID(4826917) };
 		inline constexpr std::array<REL::ID, 1>  stl__unique_function_impl__detail__TypeErasedFuncImpl_stl__optional_ClientBIMetrics__HeartBeat__Metrics____void__stl__optional_ClientBIMetrics__HeartBeat__Metrics__{ REL::ID(4824035) };
 		inline constexpr std::array<REL::ID, 1>  type_info{ REL::ID(862522) };
+	}
+
+	// Named vtable slot indices for hooking (parallel to the RE::VTABLE addresses above). Each value is
+	// the developer-read trailing hex comment on the corresponding virtual declaration in the class
+	// header, promoted to a symbol so consumers don't hand-write magic slot numbers in write_vfunc().
+	namespace VTABLE_INDEX
+	{
+		namespace Actor
+		{
+			inline constexpr std::size_t DrinkPotion = 0x119;
+			inline constexpr std::size_t Update = 0xCF;  // RE::Actor::Update(float) — see Actor.h vfunc // 0CF
+		}
+		namespace TESObjectREFR
+		{
+			inline constexpr std::size_t RemoveItem = 0x6D;
+		}
 	}
 }

@@ -447,13 +447,6 @@ namespace Scaleform::GFx
 				return func(this, a_data, a_name, a_isdobj);
 			}
 
-			bool DeleteMember(void* a_data, const char* a_name, bool a_isdobj)
-			{
-				using func_t = decltype(&ObjectInterface::DeleteMember);
-				static REL::Relocation<func_t> func{ ID::GFx::Value::DeleteMember };
-				return func(this, a_data, a_name, a_isdobj);
-			}
-
 			std::uint32_t GetArraySize(void* a_data) const
 			{
 				using func_t = decltype(&ObjectInterface::GetArraySize);
@@ -529,13 +522,6 @@ namespace Scaleform::GFx
 				using func_t = decltype(&ObjectInterface::RemoveElements);
 				static REL::Relocation<func_t> func{ ID::GFx::Value::RemoveElements };
 				return func(this, a_data, a_idx, a_count);
-			}
-
-			void VisitElements(void* a_data, ArrVisitor* a_visitor, std::uint32_t a_startIndex, std::int32_t a_count) const
-			{
-				using func_t = decltype(&ObjectInterface::VisitElements);
-				static REL::Relocation<func_t> func{ ID::GFx::Value::VisitElements };
-				return func(this, a_data, a_visitor, a_startIndex, a_count);
 			}
 
 			void VisitMembers(void* a_data, ObjVisitor* a_visitor, bool a_isDObj) const

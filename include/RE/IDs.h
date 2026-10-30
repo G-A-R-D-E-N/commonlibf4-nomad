@@ -1571,6 +1571,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SendUIStringUIntMessage{ 99795, 2284979 };
 	}
 
+	namespace BSUIScaleformData
+	{
+		inline constexpr REL::VariantID SendUIScaleformEvent{ 922159, 2284983, 2284983 };
+	}
+
 	namespace BSUtilities
 	{
 		inline constexpr REL::VariantID ConvertFloatToHalf{ 10414, 2212098 };
@@ -2287,8 +2292,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID ForcePauseGame{ 1307560, 2249384 };
 		inline constexpr REL::VariantID ForceResumeGame{ 668856, 2249385 };
 		inline constexpr REL::VariantID RegisterHandler{ 827678, 2249387 };
+		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
 		inline constexpr REL::VariantID UnregisterHandler{ 734727, 2249388 };
+		inline constexpr REL::VariantID UnregisterHandlers{ 1010957, 2249390 };
 	}
 
 	namespace MenuCursor

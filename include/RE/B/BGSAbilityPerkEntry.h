@@ -16,8 +16,8 @@ namespace RE
 
 		void ApplyPerkEntry(Actor* a_actor);
 
-		// offset map: docs/RE/evidence/2026-10-30-quest-perk-entry.txt (verify before use)
-		SpellItem* spell;  // offset 10
+		// offset map + guard: docs/RE/evidence/2026-10-30-quest-perk-entry.txt (verify before use)
+		SpellItem* spell;  // offset 10; applied only for spell types Disease, Ability or Addiction
 	};
 	static_assert(sizeof(BGSAbilityPerkEntry) == 0x18);
 }

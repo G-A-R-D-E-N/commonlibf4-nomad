@@ -315,6 +315,7 @@
 #include "RE/B/BIPOBJECT.h"
 #include "RE/B/BSActorPathingMessage.h"
 #include "RE/B/BSActorPathingMessageQueue.h"
+#include "RE/B/BSAnimationGraphChannel.h"
 #include "RE/B/BSAnimationGraphEvent.h"
 #include "RE/B/BSAnimationGraphManager.h"
 #include "RE/B/BSAnimationGraphVariableCache.h"

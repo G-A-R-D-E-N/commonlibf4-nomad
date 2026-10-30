@@ -10,6 +10,7 @@ on:
       - "xmake.lua"
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   xmake:

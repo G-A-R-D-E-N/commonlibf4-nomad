@@ -2272,7 +2272,15 @@ namespace RE::ID
 
 	namespace MapMarkerData
 	{
+		inline constexpr REL::VariantID GetHidden{ 569457, 2191797 };
 		inline constexpr REL::VariantID GetLocationName{ 50980, 2191791 };
+		inline constexpr REL::VariantID GetMarkerType{ 303206, 2191799 };
+		inline constexpr REL::VariantID GetTravelLoc{ 835349, 2191795 };
+		inline constexpr REL::VariantID GetVisible{ 1101404, 2191793 };
+		inline constexpr REL::VariantID SetHidden{ 1007923, 2191798 };
+		inline constexpr REL::VariantID SetMarkerType{ REL::Offset{ 0xDEAE0 }, REL::Offset{ 0x26CD60 }, REL::Offset{ 0x2C1370 } };
+		inline constexpr REL::VariantID SetTravelLoc{ 1274131, 2191796 };
+		inline constexpr REL::VariantID SetVisible{ 1540190, 2191794 };
 	}
 
 	namespace MemoryManager

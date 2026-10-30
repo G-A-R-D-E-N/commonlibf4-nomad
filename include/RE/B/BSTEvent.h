@@ -116,6 +116,14 @@ namespace RE
 			}
 		}
 
+		// Number of sinks currently registered. Sinks queued in _pendingRegisters
+		// during an in-progress Notify() are not counted until they're merged in.
+		[[nodiscard]] std::uint32_t GetNumSinks()
+		{
+			const BSAutoLock locker(_lock);
+			return static_cast<std::uint32_t>(_sinks.size());
+		}
+
 	private:
 		// members
 		BSSpinLock                          _lock;                // 00

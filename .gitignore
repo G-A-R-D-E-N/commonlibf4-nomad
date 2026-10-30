@@ -15,3 +15,9 @@ vs*/
 CMakeUserPresets.json
 compile_commands.json
 .clangd
+
+# F4SE Address Library binaries (version-X.bin per-game-version REL::ID maps) --
+# 165 MB, publicly redistributed by the Address Library for F4SE project,
+# regeneratable by download. Same rationale as ReverseEngineering/Symbols in
+# the root .gitignore.
+AddressBins/

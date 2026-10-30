@@ -23,6 +23,29 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESFaction };
 		static constexpr auto VTABLE{ VTABLE::TESFaction };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kFACT };
+		static constexpr auto TYPE_ID{ BSScript::kFaction };
+
+		struct ChangeFlag
+		{
+			enum ChangeFlags : std::uint32_t
+			{
+				kFlags = 1 << 1,
+				kReactions = 1 << 2,
+				kVendorData = 1 << 30,
+				kCrimeCounts = 1ui32 << 31
+			};
+		};
+		using ChangeFlags = ChangeFlag::ChangeFlags;
+
+		struct RecordFlag
+		{
+			enum RecordFlags : std::uint32_t
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+		using RecordFlags = RecordFlag::RecordFlags;
 
 		// members
 		BSTHashMap<const TESNPC*, std::uint32_t>* crimeGoldMap;           // 50

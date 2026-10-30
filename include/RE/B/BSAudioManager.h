@@ -67,11 +67,11 @@ namespace RE
 			func(this, a_handle, a_soundName, a_distance, a_usageFlags, a_data);
 		}
 
-		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority)
+		void GetSoundHandleByFile(BSSoundHandle& a_handle, const BSResource::ID& a_file, std::uint32_t a_usageFlags, std::uint8_t a_priority, const char* a_fileName = nullptr)
 		{
 			using func_t = decltype(&BSAudioManager::GetSoundHandleByFile);
 			static REL::Relocation<func_t> func{ ID::BSAudioManager::GetSoundHandleByFile };
-			func(this, a_handle, a_file, a_usageFlags, a_priority);
+			func(this, a_handle, a_file, a_usageFlags, a_priority, a_fileName);
 		}
 
 		// members

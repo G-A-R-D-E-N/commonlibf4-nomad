@@ -20,10 +20,11 @@ namespace RE
 			return func(this);
 		}
 
-		std::uint16_t                                                         unk20;
-		BSTSmartPointer<BSInputEnableLayer, BSTSmartPointerIntrusiveRefCount> inputEnableLayer;
-		std::uint32_t                                                         unk30;
-		bool                                                                  unk34;
+		// members
+		std::uint16_t                                                         unk20;             // 20 - zeroed by the constructor, not read by any code path decompiled
+		BSTSmartPointer<BSInputEnableLayer, BSTSmartPointerIntrusiveRefCount> inputEnableLayer;  // 28
+		std::uint32_t                                                         unk30;             // 30
+		bool                                                                  unk34;             // 34
 	};
 	static_assert(sizeof(ActivateHandler) == 0x38);
 }

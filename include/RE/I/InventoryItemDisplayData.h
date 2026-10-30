@@ -10,6 +10,13 @@ namespace RE
 	class InventoryItemDisplayData
 	{
 	public:
+		// QuickContainerStateData holds these in a BSTSmallArray<..., 5>. MSVC
+		// instantiates that inline storage eagerly and so requires a default
+		// constructor, which the user-provided one below otherwise suppresses.
+		// clang-cl instantiates lazily and never asks, which is why this only
+		// surfaces on a real MSVC build.
+		InventoryItemDisplayData() = default;
+
 		InventoryItemDisplayData(
 			const ObjectRefHandle&               a_inventoryRef,
 			const InventoryUserUIInterfaceEntry& a_entry)

@@ -392,6 +392,13 @@ namespace RE
 				func(this, a_ui, a_renderArea);
 			}
 
+			void RenderPrepassesAndMenus()
+			{
+				using func_t = decltype(&Renderer::RenderPrepassesAndMenus);
+				static REL::Relocation<func_t> func{ ID::Interface3D::RenderPrepassesAndMenus };
+				func(this);
+			}
+
 			// members
 			BSTAlignedArray<UIShaderFXInfo>                     colorFXInfos;                 // 000
 			BSTAlignedArray<UIShaderFXInfo>                     backgroundFXInfos;            // 018
@@ -451,5 +458,14 @@ namespace RE
 			NiPointer<ShadowSceneNode>                          offscreenSSN;                 // 240
 		};
 		static_assert(sizeof(Renderer) == 0x248);
+
+		[[nodiscard]] inline BSTArray<Renderer*>* GetRenderers()
+		{
+			if (REX::FModule::IsRuntimeNG()) {
+				return nullptr;
+			}
+			static REL::Relocation<BSTArray<Renderer*>*> renderers{ ID::Interface3D::Renderers };
+			return renderers.get();
+		}
 	}
 }

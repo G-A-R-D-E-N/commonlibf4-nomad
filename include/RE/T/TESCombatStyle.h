@@ -18,6 +18,18 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESCombatStyle };
 		static constexpr auto VTABLE{ VTABLE::TESCombatStyle };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kCSTY };
+		static constexpr auto TYPE_ID{ BSScript::kCombatStyle };
+
+		struct RecordFlag
+		{
+			enum RecordFlags : std::uint32_t
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12,
+				kAllowDualWielding = 1 << 19
+			};
+		};
+		using RecordFlags = RecordFlag::RecordFlags;
 
 		enum class FLAG : std::uint32_t
 		{

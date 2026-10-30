@@ -8,8 +8,9 @@ namespace Scaleform::GFx
 	class MemberValue
 	{
 	public:
-		String name;
-		Value  value;
+		// members
+		String name;   // 00
+		Value  value;  // 08
 	};
 	static_assert(sizeof(MemberValue) == 0x28);
 }

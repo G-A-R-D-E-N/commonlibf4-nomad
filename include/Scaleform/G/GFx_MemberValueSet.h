@@ -9,6 +9,7 @@ namespace Scaleform::GFx
 	class MemberValueSet :
 		public Array<MemberValue>
 	{
+	public:
 	};
 	static_assert(sizeof(MemberValueSet) == 0x18);
 }

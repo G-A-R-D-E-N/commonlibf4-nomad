@@ -11,6 +11,8 @@
 namespace Scaleform::GFx
 {
 	class DrawTextManager;
+	class FunctionHandler;
+	class Value;
 }
 
 namespace RE
@@ -67,6 +69,24 @@ namespace RE
 			std::string_view a_menuObjPath = ""sv,
 			ScaleModeType    a_scaleMode = ScaleModeType::kShowAll,
 			float            a_backgroundAlpha = 0.0F);
+
+		// The file path has to be relative to "Data/Interface", with the file extension.
+		static bool LoadAsset(
+			const IMenu&                     a_menu,
+			const char*                      a_filePath,
+			const char*                      a_rootVarPath,
+			Scaleform::GFx::FunctionHandler* a_onComplete = nullptr,
+			Scaleform::GFx::FunctionHandler* a_onError = nullptr);
+
+		static bool UnloadAsset(
+			const IMenu&                     a_menu,
+			const char*                      a_assetVarPath,
+			Scaleform::GFx::FunctionHandler* a_onUnload = nullptr);
+
+		static bool UnloadAsset(
+			const IMenu&                     a_menu,
+			const Scaleform::GFx::Value&     a_assetValue,
+			Scaleform::GFx::FunctionHandler* a_onUnload = nullptr);
 
 		// members
 		Scaleform::GFx::Loader*                         loader;          // 10

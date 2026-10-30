@@ -16,6 +16,8 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NavMesh };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNAVM };
 
+		~NavMesh() override;  // 00
+
 		// add
 		virtual void Save() { return; }                                                 // 4A
 		virtual bool SavesBefore([[maybe_unused]] FORM* a_groupFORM) { return false; }  // 4B

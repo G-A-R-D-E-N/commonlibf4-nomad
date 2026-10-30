@@ -14,7 +14,9 @@ namespace RE
 	enum class COMMAND_TYPE;
 	enum class DIALOGUE_SUBTYPE;
 	enum class DIALOGUE_TYPE;
+	enum class RESET_3D_FLAGS : std::int32_t;
 	enum class WEAPON_CULL_TYPE;
+	class Actor;
 	class CachedValues;
 	class HighProcessData;
 	class MiddleHighProcessData;
@@ -53,6 +55,20 @@ namespace RE
 			return func(this, a_equipIndex);
 		}
 
+		void Set3DUpdateFlag(RESET_3D_FLAGS a_flags)
+		{
+			using func_t = decltype(&AIProcess::Set3DUpdateFlag);
+			static REL::Relocation<func_t> func{ ID::AIProcess::Set3DUpdateFlag };
+			return func(this, a_flags);
+		}
+
+		void Update3DModel(Actor* a_actor, bool a_queue)
+		{
+			using func_t = decltype(&AIProcess::Update3DModel);
+			static REL::Relocation<func_t> func{ ID::AIProcess::Update3DModel };
+			return func(this, a_actor, a_queue);
+		}
+
 		COMMAND_TYPE GetCommandType()
 		{
 			using func_t = decltype(&AIProcess::GetCommandType);
@@ -64,6 +80,13 @@ namespace RE
 		{
 			using func_t = decltype(&AIProcess::GetOccupiedFurniture);
 			static REL::Relocation<func_t> func{ ID::AIProcess::GetOccupiedFurniture };
+			return func(this);
+		}
+
+		[[nodiscard]] TESPackage* GetPackageThatIsRunning() const
+		{
+			using func_t = decltype(&AIProcess::GetPackageThatIsRunning);
+			static REL::Relocation<func_t> func{ ID::AIProcess::GetPackageThatIsRunning };
 			return func(this);
 		}
 

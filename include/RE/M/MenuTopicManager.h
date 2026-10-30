@@ -5,6 +5,8 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/N/NiPoint3.h"
+#include "RE/S/SCENE_ACTION_PLAYER_RESPONSE_TYPE.h"
+#include "REX/FModule.h"
 
 namespace RE
 {
@@ -30,6 +32,20 @@ namespace RE
 		bool IsCurrentSpeaker(const ObjectRefHandle& a_handle) const
 		{
 			return menuOpen && speaker == a_handle;
+		}
+
+		// AE-only until the OG selector prototype is independently verified.
+		// Expanded dialogue options require a separate engine path.
+		[[nodiscard]] bool TrySelectResponse(SCENE_ACTION_PLAYER_RESPONSE_TYPE a_responseType)
+		{
+			if (!REX::FModule::IsRuntimeAE()) {
+				return false;
+			}
+
+			using func_t = decltype(&MenuTopicManager::TrySelectResponse);
+			static REL::Relocation<func_t> func{ ID::MenuTopicManager::SelectResponse };
+			func(this, a_responseType);
+			return true;
 		}
 
 		// members

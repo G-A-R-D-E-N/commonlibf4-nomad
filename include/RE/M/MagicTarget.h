@@ -1,5 +1,8 @@
 #pragma once
 
+#include "RE/A/ActiveEffect.h"  // complete type required: GetActiveEffectByID builds BSTSmartPointer<ActiveEffect>
+#include "RE/B/BSTSmartPointer.h"
+
 namespace RE
 {
 	class ActiveEffectList;
@@ -9,6 +12,25 @@ namespace RE
 	public:
 		static constexpr auto RTTI{ RTTI::MagicTarget };
 		static constexpr auto VTABLE{ VTABLE::MagicTarget };
+
+		enum class Flags : std::uint8_t
+		{
+			kNone = 0,
+			kUpdating = 1 << 0,
+			kInvisible = 1 << 1
+		};
+
+		class __declspec(novtable) IPostCreationModification
+		{
+		public:
+			virtual ~IPostCreationModification();  // 00
+
+			// add
+			virtual void ModifyActiveEffect(ActiveEffect* a_effect);  // 01
+
+			F4_HEAP_REDEFINE_NEW(IPostCreationModification);
+		};
+		static_assert(sizeof(IPostCreationModification) == 0x08);
 
 		class AddTargetData;
 		class SpellDispelData;
@@ -44,9 +66,16 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] BSTSmartPointer<ActiveEffect> GetActiveEffectByID(std::uint16_t a_id) const
+		{
+			using func_t = ActiveEffect* (*)(const MagicTarget*, std::uint16_t);
+			static REL::Relocation<func_t> func{ ID::MagicTarget::FindActiveEffectByID };
+			return BSTSmartPointer<ActiveEffect>(func(this, a_id));
+		}
+
 		// members
-		SpellDispelData* postUpdateDispelList;  // 08
-		std::int8_t      flags;                 // 10
+		SpellDispelData*                   postUpdateDispelList;  // 08
+		REX::TEnumSet<Flags, std::uint8_t> flags;                 // 10
 	};
 	static_assert(sizeof(MagicTarget) == 0x18);
 }

@@ -12,6 +12,25 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BGSRelationship };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kRELA };
 
+		struct ChangeFlag
+		{
+			enum ChangeFlags : std::uint32_t
+			{
+				kData = 1 << 1
+			};
+		};
+		using ChangeFlags = ChangeFlag::ChangeFlags;
+
+		struct RecordFlag
+		{
+			enum RecordFlags : std::uint32_t
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+		using RecordFlags = RecordFlag::RecordFlags;
+
 		enum class RELATIONSHIP_LEVEL
 		{
 			kLover = 0x0,

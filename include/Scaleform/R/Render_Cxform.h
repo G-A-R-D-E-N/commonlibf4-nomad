@@ -23,7 +23,8 @@ namespace Scaleform::Render
 			kTotal = 2
 		};
 
-		float data[2][4];
+		// members
+		float data[2][4];  // 00
 	};
 	static_assert(sizeof(Cxform) == 0x20);
 }

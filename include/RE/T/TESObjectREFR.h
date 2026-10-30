@@ -29,7 +29,6 @@ namespace RE
 	class BGSAnimationSequencer;
 	class BGSBehaviorRootData;
 	class BGSDecalGroup;
-	class BGSLocationRefType;
 	class BipedAnim;
 	class BSActiveGraphIfInactiveEvent;
 	class BSAnimationGraphEvent;
@@ -241,6 +240,10 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::ActivateRef };
 			return func(this, a_actionRef, a_objectToGet, a_count, a_defaultProcessingOnly, a_fromScript, a_looping);
 		}
+
+		[[nodiscard]] bool IsActivationBlocked() const;
+
+		[[nodiscard]] bool WornHasKeyword(BGSKeyword* a_keyword) const;
 
 		void AddInventoryItem(TESBoundObject* a_object, BSTSmartPointer<ExtraDataList> a_extra, std::uint32_t a_count, TESObjectREFR* a_oldContainer, const INSTANCE_FILTER* a_filter, TESObjectREFR* a_overrideRef)
 		{
@@ -591,13 +594,6 @@ namespace RE
 			using func_t = decltype(&TESObjectREFR::CanBeMoved);
 			static REL::Relocation<func_t> func{ ID::TESObjectREFR::CanBeMoved };
 			return func(this);
-		}
-
-		bool HasLocationRefType(BGSLocationRefType* a_type)
-		{
-			using func_t = decltype(&TESObjectREFR::HasLocationRefType);
-			static REL::Relocation<func_t> func{ ID::TESObjectREFR::HasLocationRefType };
-			return func(this, a_type);
 		}
 
 		// members

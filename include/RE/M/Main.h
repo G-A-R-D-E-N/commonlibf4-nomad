@@ -64,16 +64,19 @@ namespace RE
 			return func(this, a_fov);
 		}
 
-		inline static NiNode* GetLandLODRoot()
+		void OnIdle();
+
+		[[nodiscard]] static NiNode* GetLandLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::LandLODRoot };
-			return value.get();
+			static REL::Relocation<NiPointer<NiNode>*> nodePtr{ ID::Main::LandLODRoot };
+			return nodePtr->get();
 		}
 
-		inline static NiNode* GetObjectLODRoot()
+		// Holds loaded near-cell objects; distant object LOD (BTO) lives under GetLandLODRoot().
+		[[nodiscard]] static NiNode* GetObjectLODRoot()
 		{
-			static REL::Relocation<NiNode*> value{ ID::Main::ObjectLODRoot };
-			return value.get();
+			static REL::Relocation<NiPointer<NiNode>*> nodePtr{ ID::Main::ObjectLODRoot };
+			return nodePtr->get();
 		}
 
 		// members

@@ -11,7 +11,8 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::SprintHandler };
 		static constexpr auto VTABLE{ VTABLE::SprintHandler };
 
-		std::uint16_t unk20;
+		// members
+		std::uint16_t unk20;  // 20 - zeroed by the constructor, not read by any code path decompiled
 	};
 	static_assert(sizeof(SprintHandler) == 0x28);
 }

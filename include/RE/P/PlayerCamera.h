@@ -151,4 +151,25 @@ namespace RE
 		bool                                                                 savedFadeOutCloseActors;             // 1AC
 	};
 	static_assert(sizeof(PlayerCamera) == 0x1B0);
+
+	// Global camera-shake native (the function behind the Papyrus Game.ShakeCamera binding). Shakes the
+	// camera at a_position with a_strength for a_duration seconds. a_strength is NOT clamped by the native
+	// (only the Papyrus binding clamped it) — keep it <= 1.0. a_distanceMult of 1.0 is "no distance
+	// scaling" (the normal shake); the RE shows 0.0 disables the shake by zeroing both falloff radii so
+	// the `dist < outer + inner` test can never pass. Other positive values scale the falloff but were not
+	// separately characterized, so prefer 1.0. Pass the player's own position for a source-less shake.
+	//
+	// OG-ONLY, guarded. Only the 1.10.163 id (758209 -> RVA 0x82DBE0) is RE-verified; NG (1.10.984) and
+	// AE (1.11.x) ids are UNRESOLVED, so this no-ops on those runtimes rather than resolving a
+	// wrong-runtime relocation. See ReverseEng/Creation_Kit_Research:CreationKit/re-work-docs/rad-overhaul-natives-2026-08.md.
+	inline void ShakeCamera(float a_strength, const NiPoint3& a_position, float a_duration,
+		float a_distanceMult = 1.0f)
+	{
+		if (!REX::FModule::IsRuntimeOG()) {
+			return;  // NG/AE id unresolved — do not resolve a wrong-runtime relocation
+		}
+		using func_t = decltype(&ShakeCamera);
+		static REL::Relocation<func_t> func{ REL::ID(758209) };  // OG (1.10.163) Address Library id
+		func(a_strength, a_position, a_duration, a_distanceMult);
+	}
 }

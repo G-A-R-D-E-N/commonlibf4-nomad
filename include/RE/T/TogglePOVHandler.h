@@ -13,10 +13,17 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TogglePOVHandler };
 		static constexpr auto VTABLE{ VTABLE::TogglePOVHandler };
 
-		std::uint16_t                                                         unk20;
-		BSTSmartPointer<BSInputEnableLayer, BSTSmartPointerIntrusiveRefCount> inputEnableLayer;
-		bool                                                                  povButtonHeld;
-		bool                                                                  nearWorkshop;
+		void DebounceTogglePOV()
+		{
+			povButtonHeld = false;
+			nearWorkshop = false;
+		}
+
+		// members
+		std::uint16_t                                                         unk20;             // 20 - zeroed by the constructor, not read by any code path decompiled
+		BSTSmartPointer<BSInputEnableLayer, BSTSmartPointerIntrusiveRefCount> inputEnableLayer;  // 28
+		bool                                                                  povButtonHeld;     // 30
+		bool                                                                  nearWorkshop;      // 31 - cached workshop-proximity check
 	};
 	static_assert(sizeof(TogglePOVHandler) == 0x38);
 }

@@ -5,7 +5,7 @@
 namespace RE
 {
 	class Actor;
-	class TESForm;
+	class SpellItem;
 
 	class BGSAbilityPerkEntry :
 		public BGSPerkEntry
@@ -16,8 +16,8 @@ namespace RE
 
 		void ApplyPerkEntry(Actor* a_actor);
 
-		// offset map: docs/RE/evidence/2026-10-30-quest-perk-entry.txt; pointee type: verify before use
-		TESForm* unk10;  // offset 10
+		// offset map: docs/RE/evidence/2026-10-30-quest-perk-entry.txt (verify before use)
+		SpellItem* spell;  // offset 10
 	};
 	static_assert(sizeof(BGSAbilityPerkEntry) == 0x18);
 }

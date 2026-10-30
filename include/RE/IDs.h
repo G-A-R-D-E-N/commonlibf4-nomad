@@ -1571,6 +1571,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SendUIStringUIntMessage{ 99795, 2284979 };
 	}
 
+	namespace BSUIScaleformData
+	{
+		inline constexpr REL::VariantID SendUIScaleformEvent{ 922159, 2284983, 2284983 };
+	}
+
 	namespace BSUtilities
 	{
 		inline constexpr REL::VariantID ConvertFloatToHalf{ 10414, 2212098 };
@@ -2287,8 +2292,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID ForcePauseGame{ 1307560, 2249384 };
 		inline constexpr REL::VariantID ForceResumeGame{ 668856, 2249385 };
 		inline constexpr REL::VariantID RegisterHandler{ 827678, 2249387 };
+		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
 		inline constexpr REL::VariantID UnregisterHandler{ 734727, 2249388 };
+		inline constexpr REL::VariantID UnregisterHandlers{ 1010957, 2249390 };
 	}
 
 	namespace MenuCursor
@@ -3157,7 +3164,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetShotsPerSecond{ 752116, 2198956 };
 		inline constexpr REL::VariantID GetMeleeAttackSpeed{ 817670, 2198957 };
 		inline constexpr REL::VariantID GetMeleeAttackSpeedLabel{ 178784, 2198959 };
-		inline constexpr REL::VariantID GetShotsPerSecond{ 752116, 2198956 };
 		inline constexpr REL::VariantID Fire{ 1056037, 2198960 };
 	}
 
@@ -3644,7 +3650,6 @@ namespace Scaleform::ID
 		inline constexpr REL::VariantID GetElement{ 827659, 2285881 };
 		inline constexpr REL::VariantID SetElement{ 433707, 2286575 };
 		inline constexpr REL::VariantID SetMember{ 1360149, 2286589 };
-		inline constexpr REL::VariantID DeleteMember{ 1397711, 2285595 };
 		inline constexpr REL::VariantID Invoke{ 655847, 2286101 };
 		inline constexpr REL::VariantID PushBack{ 1330475, 2286424 };
 		inline constexpr REL::VariantID PopBack{ 13718, 2286392 };
@@ -3923,7 +3928,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetFacialBoneMorphIntensity{ 1256673, 2207415 };
 		inline constexpr REL::VariantID SetFacialBoneRegionTransform{ 1125036, 2207413 };
 		inline constexpr REL::VariantID SetMorphSliderValue{ 1432151, 2207410 };
-		inline constexpr REL::VariantID SetTintingData{ 452734, 2207493 };
 	}
 	namespace TESObjectCELL
 	{

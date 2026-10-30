@@ -25,10 +25,12 @@ jobs:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          token: ${{ secrets.UPSTREAM_SYNC_TOKEN || github.token }}
 
       - name: Mirror upstream into a sync branch and open or refresh its PR
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.UPSTREAM_SYNC_TOKEN || github.token }}
+          HAS_PAT: ${{ secrets.UPSTREAM_SYNC_TOKEN != '' }}
           REPO: ${{ github.repository }}
           BASE: ${{ github.event.repository.default_branch }}
           NAME: ${{ matrix.name }}
@@ -40,26 +42,34 @@ jobs:
           if [ "$URL" = "parent" ]; then
             URL=$(gh api "repos/$REPO" --jq .parent.clone_url)
           fi
+          branch="upstream-sync/$NAME"
           git fetch --no-tags "$URL" "$REF"
           upstream=$(git rev-parse FETCH_HEAD)
+          number=$(gh pr list --repo "$REPO" --head "$branch" --base "$BASE" --state open --json number --jq '.[0].number // empty')
           if git merge-base --is-ancestor "$upstream" "origin/$BASE"; then
             echo "$NAME $REF (${upstream:0:8}) is already in $BASE"
+            if [ -n "$number" ]; then
+              gh pr close "$number" --repo "$REPO" --delete-branch --comment "Upstream ${upstream:0:8} is already in $BASE."
+            fi
             exit 0
           fi
-          branch="upstream-sync/$NAME"
           if [ "$(git ls-remote origin "refs/heads/$branch" | cut -f1)" = "$upstream" ]; then
             echo "$branch already at ${upstream:0:8}"
             exit 0
           fi
-          git push --force origin "$upstream:refs/heads/$branch"
+          if ! git push --force origin "$upstream:refs/heads/$branch"; then
+            echo "::error::Push of $branch was refused. Upstream changes .github/workflows, which needs an UPSTREAM_SYNC_TOKEN secret with workflow permission."
+            exit 1
+          fi
           count=$(git rev-list --count "origin/$BASE..$upstream")
           body="Automated: \`$branch\` mirrors \`$URL\` \`$REF\` at \`${upstream:0:8}\`, $count commits not yet in \`$BASE\`.
 
           This branch is force-updated on every upstream change, so do not push to it. To resolve conflicts, branch from it, merge \`$BASE\` in, and open a separate PR."
-          number=$(gh pr list --repo "$REPO" --head "$branch" --base "$BASE" --state open --json number --jq '.[0].number // empty')
           if [ -z "$number" ]; then
             gh pr create --repo "$REPO" --base "$BASE" --head "$branch" --title "chore: sync upstream $NAME" --body "$body"
           else
             gh pr edit "$number" --repo "$REPO" --body "$body"
           fi
-          gh workflow run "$BUILD" --repo "$REPO" --ref "$branch" || echo "could not dispatch $BUILD"
+          if [ "$HAS_PAT" != "true" ]; then
+            gh workflow run "$BUILD" --repo "$REPO" --ref "$branch" || echo "::warning::$BUILD has no workflow_dispatch on $branch; add an UPSTREAM_SYNC_TOKEN secret so the PR triggers CI itself"
+          fi

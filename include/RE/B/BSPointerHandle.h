@@ -161,6 +161,8 @@ namespace RE
 	class BSPointerHandleManagerInterface
 	{
 	public:
+		using value_type = T;
+
 		static BSPointerHandle<T> CreateHandle(T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::CreateHandle);

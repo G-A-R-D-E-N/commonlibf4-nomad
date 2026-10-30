@@ -96,6 +96,8 @@ namespace RE
 			return func(this, a_actor, a_LOSCount);
 		}
 
+		void RunActorUpdates(float a_delta, bool a_onlyPackages);
+
 		// members
 		BSSemaphore                             movementSyncSema;               // 010
 		float                                   crimeUpdateTimer;               // 018

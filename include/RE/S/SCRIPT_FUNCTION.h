@@ -19,7 +19,7 @@ namespace RE
 		[[nodiscard]] static auto GetConsoleFunctions()
 		{
 			static REL::Relocation<SCRIPT_FUNCTION*> functions{ ID::SCRIPT_FUNCTION::ConsoleFunctions };
-			const std::size_t size = (REX::FModule::IsRuntimeOG() ? 521 : (REX::FModule::IsRuntimeNG() ? 525 : 523));
+			const std::size_t                        size = (REX::FModule::IsRuntimeOG() ? 521 : (REX::FModule::IsRuntimeNG() ? 525 : 523));
 			return std::span<SCRIPT_FUNCTION>{ functions.get(), size };
 		}
 

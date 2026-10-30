@@ -14,6 +14,11 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NiCamera };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiCamera };
 
+		NiCamera()
+		{
+			ctor();
+		}
+
 		virtual ~NiCamera();  // 00
 
 		// override
@@ -68,6 +73,14 @@ namespace RE
 			return func(this, a_vx, a_vy, a_origin, a_dir);
 		}
 
+		// Clamps near to minNearPlaneDist and far/near to maxFarNearRatio.
+		void SetViewFrustum(const NiFrustum& a_frustum)
+		{
+			using func_t = decltype(&NiCamera::SetViewFrustum);
+			static REL::Relocation<func_t> func{ ID::NiCamera::SetViewFrustum };
+			return func(this, a_frustum);
+		}
+
 		// members
 		float         worldToCam[4][4];  // 120
 		NiFrustum     viewFrustum;       // 160
@@ -75,6 +88,14 @@ namespace RE
 		float         maxFarNearRatio;   // 180
 		NiRect<float> port;              // 184
 		float         lodAdjust;         // 194
+
+	private:
+		NiCamera* ctor()
+		{
+			using func_t = decltype(&NiCamera::ctor);
+			static REL::Relocation<func_t> func{ ID::NiCamera::ctor };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(NiCamera) == 0x1A0);
 }

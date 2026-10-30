@@ -14,6 +14,7 @@
 #include "RE/Q/QuestFlag.h"
 #include "RE/T/TESCondition.h"
 #include "RE/T/TESFullName.h"
+#include "RE/T/TESQuestStage.h"
 
 namespace RE
 {
@@ -22,7 +23,6 @@ namespace RE
 	class BGSQuestObjective;
 	class BGSStoryEvent;
 	class QueuedPromoteQuestTask;
-	class TESQuestStage;
 
 	class __declspec(novtable) TESQuest :
 		public BGSStoryManagerTreeForm,  // 000

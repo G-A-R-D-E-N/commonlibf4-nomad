@@ -2,11 +2,13 @@
 
 #include "RE/B/BGSEquipIndex.h"
 #include "RE/D/DEFAULT_OBJECT.h"
+#include "RE/NativeControllerRuntime.h"
 
 namespace RE
 {
 	class BSPackedTask;
 	class BSPackedTaskQueue;
+	class BGSMaterialSwap;
 	class NiAVObject;
 
 	class TaskQueueInterface
@@ -24,6 +26,8 @@ namespace RE
 			static REL::Relocation<func_t> func{ ID::TaskQueueInterface::QueueClosePipboy };
 			return func(this);
 		}
+
+		void QueueApplyMaterialSwap(NiAVObject* a_object, BGSMaterialSwap* a_materialSwap, float a_colorRemappingIndex, bool a_queueForUpdate, bool a_force);
 
 		void QueueRebuildBendableSpline(TESObjectREFR& a_ref, bool a_createPhysics, NiAVObject* a_childNode)
 		{
@@ -60,17 +64,26 @@ namespace RE
 			return func(this, a_weapon, a_refObject, a_equipIndex, a_ammo);
 		}
 
-		void TaskUnpackFunc(const BSPackedTask* a_task)
+		bool ProcessQueues(float a_timeBudget, std::uint32_t a_maxPasses)
 		{
-			using func_t = decltype(&TaskQueueInterface::TaskUnpackFunc);
-			static REL::Relocation<func_t> func{ ID::TaskQueueInterface::TaskUnpackFunc };
-			return func(this, a_task);
+			if (!detail::IsSupportedNativeControllerRuntime()) {
+				return false;
+			}
+
+			using func_t = decltype(&TaskQueueInterface::ProcessQueues);
+			static REL::Relocation<func_t> func{ ID::TaskQueueInterface::ProcessQueues };
+			return func(this, a_timeBudget, a_maxPasses);
 		}
+
+		static void TaskUnpackFunc(const BSPackedTask* a_task);
 
 		// members
 		BSPackedTaskQueue* queue;           // 00
 		BSPackedTaskQueue* secondaryQueue;  // 08
-		BSPackedTaskQueue* activeQueue;     // 18
+		BSPackedTaskQueue* activeQueue;     // 10
 	};
+	static_assert(offsetof(TaskQueueInterface, queue) == 0x00);
+	static_assert(offsetof(TaskQueueInterface, secondaryQueue) == 0x08);
+	static_assert(offsetof(TaskQueueInterface, activeQueue) == 0x10);
 	static_assert(sizeof(TaskQueueInterface) == 0x18);
 }

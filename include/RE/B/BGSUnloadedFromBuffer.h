@@ -7,8 +7,7 @@ namespace RE
 	class BGSUnloadedFormBuffer
 	{
 	public:
-		// members
-		BGSSaveLoadBuffer Buffer;  // 00
+		BGSSaveLoadBuffer Buffer;
 	};
 	static_assert(sizeof(BGSUnloadedFormBuffer) == 0x8);
 }

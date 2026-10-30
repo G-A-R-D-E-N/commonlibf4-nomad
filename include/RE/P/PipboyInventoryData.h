@@ -194,6 +194,17 @@ namespace RE
 		virtual void DoClearData();          // 0D
 		virtual void DoClearSink();          // 0E
 
+		[[nodiscard]] static ITEM_ICON_ID GetItemIconID(TESForm* a_form, const BGSInventoryItem::Stack* a_stack)
+		{
+			if (REX::FModule::IsRuntimeNG()) {
+				return ITEM_ICON_ID::kNone;
+			}
+
+			using func_t = decltype(&PipboyInventoryData::GetItemIconID);
+			static REL::Relocation<func_t> func{ ID::PipboyInventoryData::GetItemIconID };
+			return func(a_form, a_stack);
+		}
+
 		void AddItemCardInfoEntry(const BSFixedStringCS* a_string, float a_value, PipboyArray* a_itemCardSection)
 		{
 			using func_t = decltype(&PipboyInventoryData::AddItemCardInfoEntry);

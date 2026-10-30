@@ -18,6 +18,8 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::IMovementState };
 		static constexpr auto VTABLE{ VTABLE::IMovementState };
 
+		~IMovementState() override;  // 00
+
 		enum class CHARACTER_STATE
 		{
 			kOnGround = 0x0,

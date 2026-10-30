@@ -7,6 +7,9 @@
 
 namespace RE
 {
+	class BGSLoadFormBuffer;
+	class BGSSaveFormBuffer;
+
 	class BGSInventoryItem
 	{
 	public:
@@ -32,6 +35,20 @@ namespace RE
 
 			[[nodiscard]] std::uint32_t GetCount() const noexcept { return count; }
 			[[nodiscard]] bool          IsEquipped() const noexcept { return flags.any(Flag::kSlotMask); }
+
+			void SaveGame(BGSSaveFormBuffer* a_buffer) const
+			{
+				using func_t = decltype(&Stack::SaveGame);
+				static REL::Relocation<func_t> func{ ID::BGSInventoryItem::Stack::SaveGame };
+				func(this, a_buffer);
+			}
+
+			void InitLoadGame(BGSLoadFormBuffer* a_buffer)
+			{
+				using func_t = decltype(&Stack::InitLoadGame);
+				static REL::Relocation<func_t> func{ ID::BGSInventoryItem::Stack::InitLoadGame };
+				func(this, a_buffer);
+			}
 
 			// members
 			BSTSmartPointer<Stack>             nextStack;  // 10
@@ -84,7 +101,7 @@ namespace RE
 			{}
 
 			// override (StackDataCompareFunctor)
-			bool CompareData(const BGSInventoryItem::Stack& a_stack) override { return a_stack.extra.get() == extra; }
+			bool CompareData(const BGSInventoryItem::Stack&) override { return true; }  // this->extra == extra; ??
 
 			// members
 			const ExtraDataList* extra;  // 08
@@ -159,7 +176,7 @@ namespace RE
 		};
 		static_assert(sizeof(SetHealthFunctor) == 0x18);
 
-		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, const ObjectRefHandle& a_owner)
+		bool FindAndWriteStackData(StackDataCompareFunctor& a_compareFunc, StackDataWriteFunctor& a_writeFunc, bool a_manualMerge, ObjectRefHandle a_owner)
 		{
 			using func_t = decltype(&BGSInventoryItem::FindAndWriteStackData);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::FindAndWriteStackData };
@@ -245,6 +262,34 @@ namespace RE
 			using func_t = decltype(&BGSInventoryItem::GetTotalWeight);
 			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::GetTotalWeight };
 			return func(this);
+		}
+
+		void SaveGame(BGSSaveFormBuffer* a_buffer) const
+		{
+			using func_t = decltype(&BGSInventoryItem::SaveGame);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::SaveGame };
+			func(this, a_buffer);
+		}
+
+		void LoadGame(BGSLoadFormBuffer* a_buffer)
+		{
+			using func_t = decltype(&BGSInventoryItem::LoadGame);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::LoadGame };
+			func(this, a_buffer);
+		}
+
+		void InitLoadGame(BGSLoadFormBuffer* a_buffer)
+		{
+			using func_t = decltype(&BGSInventoryItem::InitLoadGame);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::InitLoadGame };
+			func(this, a_buffer);
+		}
+
+		void FinishLoadGame(BGSLoadFormBuffer* a_buffer)
+		{
+			using func_t = decltype(&BGSInventoryItem::FinishLoadGame);
+			static REL::Relocation<func_t> func{ ID::BGSInventoryItem::FinishLoadGame };
+			func(this, a_buffer);
 		}
 
 		// members

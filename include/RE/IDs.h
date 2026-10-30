@@ -335,6 +335,10 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID AddReference{ 10580, 2194272, 2194272 };
 	}
+	namespace BGSAbilityPerkEntry
+	{
+		inline constexpr REL::VariantID ApplyPerkEntry{ 1069276, 2206528 };
+	}
 	namespace BGSQuestPerkEntry
 	{
 		inline constexpr REL::VariantID ApplyPerkEntry{ 1096933, 2206524 };

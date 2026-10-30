@@ -66,6 +66,7 @@
 #include "RE/A/AutoMoveHandler.h"
 #include "RE/A/AutoVanityState.h"
 #include "RE/A/AvoidAreaStruct.h"
+#include "RE/B/BGSAbilityPerkEntry.h"
 #include "RE/B/BGSAcousticSpace.h"
 #include "RE/B/BGSAction.h"
 #include "RE/B/BGSActorCellEvent.h"

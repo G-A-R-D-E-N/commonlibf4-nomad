@@ -2298,18 +2298,16 @@ namespace RE::ID
 
 	namespace MenuControls
 	{
+		inline constexpr REL::VariantID IsScreenshotQueued{ 257450, 0, 2249381 };
+		inline constexpr REL::VariantID IsMultiScreenshotQueued{ 1134805, 0, 2249382 };
 		inline constexpr REL::VariantID ForcePauseGame{ 1307560, 2249384 };
 		inline constexpr REL::VariantID ForceResumeGame{ 668856, 2249385 };
+		inline constexpr REL::VariantID PerformInputProcessing{ 1280156, 0, 2249386 };
 		inline constexpr REL::VariantID RegisterHandler{ 827678, 2249387 };
 		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
 		inline constexpr REL::VariantID UnregisterHandler{ 734727, 2249388 };
 		inline constexpr REL::VariantID UnregisterHandlers{ 1010957, 2249390 };
-	}
-
-	namespace BSUIScaleformData
-	{
-		inline constexpr REL::VariantID SendUIScaleformEvent{ 922159, 2290179, 2284983 };
 	}
 
 	namespace MenuCursor

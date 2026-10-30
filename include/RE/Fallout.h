@@ -1193,7 +1193,6 @@
 #include "RE/M/MeleeThrowHandler.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/M/MenuControls.h"
-#include "RE/M/ScaleformMenuEvent.h"
 #include "RE/M/MenuCursor.h"
 #include "RE/M/MenuModeChangeEvent.h"
 #include "RE/M/MenuModeCounterChangedEvent.h"

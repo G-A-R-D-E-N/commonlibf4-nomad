@@ -13,6 +13,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/C/CFilter.h"
+#include "RE/F/FIGHT_REACTION.h"
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicTarget.h"
 #include "RE/M/Modifiers.h"
@@ -633,6 +634,34 @@ namespace RE
 			using func_t = decltype(&Actor::DoHitMe);
 			static REL::Relocation<func_t> func{ ID::Actor::DoHitMe };
 			return func(this, a_data);
+		}
+
+		void SetFactionRank(TESFaction* a_faction, std::int8_t a_rank)
+		{
+			using func_t = decltype(&Actor::SetFactionRank);
+			static REL::Relocation<func_t> func{ ID::Actor::SetFactionRank };
+			return func(this, a_faction, a_rank);
+		}
+
+		void RemoveFromFaction(TESFaction* a_faction)
+		{
+			using func_t = decltype(&Actor::RemoveFromFaction);
+			static REL::Relocation<func_t> func{ ID::Actor::RemoveFromFaction };
+			return func(this, a_faction);
+		}
+
+		void ClearCachedFactionFightReaction(bool a_includePlayer)
+		{
+			using func_t = decltype(&Actor::ClearCachedFactionFightReaction);
+			static REL::Relocation<func_t> func{ ID::Actor::ClearCachedFactionFightReaction };
+			return func(this, a_includePlayer);
+		}
+
+		FIGHT_REACTION GetFactionFightReaction(Actor* a_target)
+		{
+			using func_t = decltype(&Actor::GetFactionFightReaction);
+			static REL::Relocation<func_t> func{ ID::Actor::GetFactionFightReaction };
+			return func(this, a_target);
 		}
 
 		// members

@@ -78,6 +78,10 @@ namespace RE::ID
 		inline constexpr REL::VariantID StopInteractingQuick{ 129904, 2231227 };
 		inline constexpr REL::VariantID CalculateDetectionFormula{ 589441, 2230213 };
 		inline constexpr REL::VariantID DoHitMe{ 881215, 2231148 };
+		inline constexpr REL::VariantID SetFactionRank{ 1545897, 2230101 };
+		inline constexpr REL::VariantID RemoveFromFaction{ 862355, 2230115 };
+		inline constexpr REL::VariantID ClearCachedFactionFightReaction{ 377751, 2230092 };
+		inline constexpr REL::VariantID GetFactionFightReaction{ 1417088, 2230089 };
 	}
 
 	namespace ActorEquipManager

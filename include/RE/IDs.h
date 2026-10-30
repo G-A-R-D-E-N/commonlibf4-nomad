@@ -161,6 +161,7 @@ namespace RE::ID
 	namespace BSSoundCategoryHandle
 	{
 		inline constexpr REL::VariantID SetFrequency{ 1437963, 2267421, 2267421 };
+		inline constexpr REL::VariantID SetVolume{ 826593, 2267420, 2267420 };
 	}
 	namespace BSShadowParabolicLight
 	{
@@ -2687,6 +2688,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetEventSource{ 1231665, 2694517, 4801808 };
 	}
 
+	namespace PlayerRegionState
+	{
+		inline constexpr REL::VariantID Singleton{ 777304, 2689135, 4796421 };
+	}
+
 	namespace PowerArmor
 	{
 		inline constexpr REL::VariantID ActorInPowerArmor{ 1176757, 2219437 };
@@ -3093,6 +3099,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetDataY{ 1322816, 2200214 };
 		inline constexpr REL::VariantID GetEncounterZone{ 1414637, 2200242 };
 		inline constexpr REL::VariantID GetLocation{ 868663, 2200179 };
+		inline constexpr REL::VariantID GetMusicType{ 445431, 2200270 };
 		inline constexpr REL::VariantID GetOwner{ 910422, 2200236 };
 		inline constexpr REL::VariantID GetRegionList{ 1565031, 2200265 };
 		inline constexpr REL::VariantID Pick{ 434717, 2200263 };

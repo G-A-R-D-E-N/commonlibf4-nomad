@@ -1410,6 +1410,7 @@
 #include "RE/P/PlayerInputHandler.h"
 #include "RE/P/PlayerLifeStateChanged.h"
 #include "RE/P/PlayerRadiationDamageData.h"
+#include "RE/P/PlayerRegionState.h"
 #include "RE/P/PlayerUpdateEvent.h"
 #include "RE/P/PlayerWeaponReloadEvent.h"
 #include "RE/P/PositionPlayerEvent.h"

@@ -11,6 +11,7 @@
 
 namespace RE
 {
+	class BGSMusicType;
 	class bhkPickData;
 	class bhkWorldM;
 	class EXTERIOR_DATA;
@@ -168,6 +169,13 @@ namespace RE
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetLocation };
+			return func(this);
+		}
+
+		[[nodiscard]] BGSMusicType* GetMusicType()
+		{
+			using func_t = decltype(&TESObjectCELL::GetMusicType);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetMusicType };
 			return func(this);
 		}
 

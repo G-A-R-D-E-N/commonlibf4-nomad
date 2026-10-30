@@ -21,6 +21,8 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::NavMeshInfoMap };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kNAVI };
 
+		~NavMeshInfoMap() override;  // 00
+
 		// members
 		bool                                               updateAll;          // 078
 		BSTArray<BSNavmeshInfo*>                           staleNavmeshInfos;  // 080

@@ -12,7 +12,6 @@ add_rules("mode.debug", "mode.releasedbg")
 
 -- include subprojects
 includes("lib/commonlib-shared")
-includes("lib/dearmoddingui-api")
 
 -- override runtime count
 add_defines("COMMONLIB_RUNTIMECOUNT=3", { public = true })
@@ -27,7 +26,6 @@ target("commonlibf4", function()
 
     -- add dependencies
     add_deps("commonlib-shared", { public = true })
-    add_deps("dearmoddingui-api", { public = true })
 
     -- add source files
     add_files("src/**.cpp")
@@ -65,8 +63,9 @@ rule("commonlibf4.plugin", function()
             plugin_file = custom_plugin_file
         end
 
+        local generated_plugin_file = path.filename(plugin_file):gsub("%.in$", "")
         target:add("configfiles", plugin_file)
-        target:add("files", path.join(target:configdir(), "commonlibf4-plugin.cpp"))
+        target:add("files", path.join(target:configdir(), generated_plugin_file))
 
         if os.getenv("XSE_FO4_MODS_PATH") then
             target:set("installdir", path.join(os.getenv("XSE_FO4_MODS_PATH"), target:name()))

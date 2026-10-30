@@ -24,7 +24,8 @@ namespace RE
 		hkFreeListArray<hknpShapeInstance, hknpShapeInstanceId, 8, hknpShapeInstance> instances;              // 0x60
 		hkAabb                                                                        aabb;                   // 0x80
 		hkBool                                                                        isMutable;              // 0xA0
-		std::byte                                                                     mutationSignals[0x10];  // 0xA1 - hknpShapeSignals
+		std::byte                                                                     pad0xA1[0x7];           // 0xA1
+		std::byte                                                                     mutationSignals[0x10];  // 0xA8 - hknpShapeSignals (two pointers: shapeMutated@0, shapeDestroyed@8)
 	};
 	static_assert(sizeof(hknpCompoundShape) == 0xC0);
 }

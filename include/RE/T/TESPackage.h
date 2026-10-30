@@ -21,6 +21,27 @@ namespace RE
 		static constexpr auto RTTI{ RTTI::TESPackage };
 		static constexpr auto VTABLE{ VTABLE::TESPackage };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPACK };
+		static constexpr auto TYPE_ID{ BSScript::kPackage };
+
+		struct ChangeFlag
+		{
+			enum ChangeFlags : std::uint32_t
+			{
+				kWaiting = 1 << 30,
+				kNeverRun = 1ui32 << 31
+			};
+		};
+		using ChangeFlags = ChangeFlag::ChangeFlags;
+
+		struct RecordFlag
+		{
+			enum RecordFlags : std::uint32_t
+			{
+				kDeleted = 1 << 5,
+				kIgnored = 1 << 12
+			};
+		};
+		using RecordFlags = RecordFlag::RecordFlags;
 
 		// add
 		virtual bool IsActorAtLocation(Actor* a_ctor, bool a_ignoredistance, float a_extraRadius, bool a_infurniture);                                      // 4A

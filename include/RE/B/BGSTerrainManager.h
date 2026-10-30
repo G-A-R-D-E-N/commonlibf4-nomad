@@ -24,8 +24,9 @@ namespace RE
 			bool cullObjects;    // 03
 			bool cullInstanced;  // 04
 		};
+		static_assert(sizeof(CullState) == 0x5);
 
-		class QuickCullDAta
+		class QuickCullData
 		{
 		public:
 			NiPoint2 frustNearLeft;   // 000
@@ -33,6 +34,34 @@ namespace RE
 			NiPoint2 frustNearRight;  // 010
 			NiPoint2 frustFarRight;   // 018
 		};
+		static_assert(sizeof(QuickCullData) == 0x20);
+
+		using QuickCullDAta = QuickCullData;
+
+		[[nodiscard]] static NiNode* GetWaterNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::WaterNode };
+			return *node;
+		}
+
+		// Static LOD scene roots built by the constructor; null without a terrain manager.
+		[[nodiscard]] static NiNode* GetLandNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::LandNode };
+			return *node;
+		}
+
+		[[nodiscard]] static NiNode* GetObjectsNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::ObjectsNode };
+			return *node;
+		}
+
+		[[nodiscard]] static NiNode* GetTreesNode()
+		{
+			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::TreesNode };
+			return *node;
+		}
 
 		[[nodiscard]] static NiNode* GetWaterNode()
 		{
@@ -83,7 +112,7 @@ namespace RE
 		bool                      needsImmediateUpdate;    // 03B
 		bool                      initialUpdateDone;       // 03C
 		bool                      hasLOD;                  // 03D
-		QuickCullDAta             cullData;                // 040
+		QuickCullData             cullData;                // 040
 		bool                      staticDataLoaded;        // 060
 		BSTArray<BGSTerrainNode*> updateUpdates;           // 068
 		std::uint32_t             nextUpdateNode;          // 080
@@ -101,5 +130,8 @@ namespace RE
 		NiPoint3                  interiorAdjustedOffset;  // 0D8
 		BSTArray<BGSTerrainNode*> fadeNodeA;               // 0E8
 	};
+	static_assert(offsetof(BGSTerrainManager, savedCullState) == 0x30);
+	static_assert(offsetof(BGSTerrainManager, activeCullState) == 0x35);
+	static_assert(offsetof(BGSTerrainManager, cullData) == 0x40);
 	static_assert(sizeof(BGSTerrainManager) == 0x100);
 }

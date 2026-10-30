@@ -206,6 +206,20 @@ namespace RE
 
 		bool IsLockedOutOfTerminal(ObjectRefHandle a_handle);
 
+		void HideShield()
+		{
+			using func_t = decltype(&PlayerCharacter::HideShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HideShield };
+			return func(this);
+		}
+
+		void ShowShield()
+		{
+			using func_t = decltype(&PlayerCharacter::ShowShield);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::ShowShield };
+			return func(this);
+		}
+
 		bool IsPipboyLightOn()
 		{
 			using func_t = decltype(&PlayerCharacter::IsPipboyLightOn);
@@ -339,6 +353,13 @@ namespace RE
 			using func_t = decltype(&PlayerCharacter::HandlePositionPlayerRequest);
 			static REL::Relocation<func_t> func{ ID::PlayerCharacter::HandlePositionPlayerRequest };
 			return func(this);
+		}
+
+		void SetTintingData(std::int16_t a_uniqueID, float a_tintingValue, std::uint32_t a_color)
+		{
+			using func_t = decltype(&PlayerCharacter::SetTintingData);
+			static REL::Relocation<func_t> func{ ID::PlayerCharacter::SetTintingData };
+			return func(this, a_uniqueID, a_tintingValue, a_color);
 		}
 
 		// members

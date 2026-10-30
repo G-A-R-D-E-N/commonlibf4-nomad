@@ -6,6 +6,7 @@
 #include "RE/A/ActorState.h"
 #include "RE/A/ActorValueStorage.h"
 #include "RE/B/BGSEquipIndex.h"
+#include "RE/B/BGSObjectInstance.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSPointerHandleSmartPointer.h"
@@ -41,6 +42,7 @@ namespace RE
 	class bhkCharacterStateChangeEvent;
 	class bhkNonSupportContactEvent;
 	class BSMovementDataChangedEvent;
+	class BSPathingAvoidNodeArray;
 	class BSSoundHandle;
 	class BSSubGraphActivationUpdate;
 	class BSTransformDeltaEvent;
@@ -55,6 +57,8 @@ namespace RE
 	class MovementMessageUpdateRequestImmediate;
 	class PackageLocation;
 	class PerkEntryVisitor;
+	class PerkEntryVisitor;
+	class PerkRankVisitor;
 	class Perks;
 
 	namespace MagicSystem
@@ -293,6 +297,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] bool GetBlocking()
+		{
+			using func_t = decltype(&Actor::GetBlocking);
+			static REL::Relocation<func_t> func{ ID::Actor::GetBlocking };
+			return func(this);
+		}
+
 		TESCombatStyle* GetCombatStyle()
 		{
 			using func_t = decltype(&Actor::GetCombatStyle);
@@ -303,6 +314,20 @@ namespace RE
 		[[nodiscard]] TESAmmo* GetCurrentAmmo(BGSEquipIndex a_equipIndex) const
 		{
 			return currentProcess ? currentProcess->GetCurrentAmmo(a_equipIndex) : nullptr;
+		}
+
+		[[nodiscard]] std::uint32_t GetCurrentAmmoCount(BGSEquipIndex a_equipIndex) const
+		{
+			using func_t = decltype(&Actor::GetCurrentAmmoCount);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentAmmoCount };
+			return func(this, a_equipIndex);
+		}
+
+		[[nodiscard]] BGSObjectInstance GetCurrentShield()
+		{
+			using func_t = decltype(&Actor::GetCurrentShield);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentShield };
+			return func(this);
 		}
 
 		std::uint32_t GetCurrentCollisionGroup()
@@ -361,6 +386,37 @@ namespace RE
 			using func_t = decltype(&Actor::GetPerkRank);
 			static REL::Relocation<func_t> func{ ID::Actor::GetPerkRank };
 			return func(this, a_perk);
+		}
+
+		class __declspec(novtable) ForEachSpellVisitor
+		{
+		public:
+			static constexpr auto RTTI{ RTTI::Actor__ForEachSpellVisitor };
+			static constexpr auto VTABLE{ VTABLE::Actor__ForEachSpellVisitor };
+
+			virtual ~ForEachSpellVisitor() = default;            // 00
+			virtual std::int32_t Visit(SpellItem* a_spell) = 0;  // 01
+		};
+
+		[[nodiscard]] float GetMaxCarryWeight()
+		{
+			using func_t = decltype(&Actor::GetMaxCarryWeight);
+			static REL::Relocation<func_t> func{ ID::Actor::GetMaxCarryWeight };
+			return func(this);
+		}
+
+		void ForEachSpell(ForEachSpellVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachSpell);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachSpell };
+			return func(this, a_visitor);
+		}
+
+		void ForEachPerk(PerkRankVisitor& a_visitor) const
+		{
+			using func_t = decltype(&Actor::ForEachPerk);
+			static REL::Relocation<func_t> func{ ID::Actor::ForEachPerk };
+			return func(this, a_visitor);
 		}
 
 		SEX GetSex()
@@ -542,6 +598,30 @@ namespace RE
 			using func_t = decltype(&Actor::SetUnconscious);
 			static REL::Relocation<func_t> func{ ID::Actor::SetUnconscious };
 			return func(this, a_unconscious);
+		}
+
+		// Requires an initialized actor mover and movement controller.
+		void SetPathfindingGoal(TESObjectREFR* a_target, float a_speed, BSPathingAvoidNodeArray* a_avoidNodes = nullptr)
+		{
+			using func_t = void(Actor*, TESObjectREFR*, float, BSPathingAvoidNodeArray*);
+			static REL::Relocation<func_t> func{ ID::Actor::SetPathfindingGoal_REFR };
+			func(this, a_target, a_speed, a_avoidNodes);
+		}
+
+		// Requires an initialized actor mover.
+		void ClearPath()
+		{
+			using func_t = void(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::ClearPath };
+			func(this);
+		}
+
+		// May return null; resolves interaction targets without creating a mover.
+		[[nodiscard]] ActorMover* GetCurrentActorMover()
+		{
+			using func_t = ActorMover*(Actor*);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCurrentActorMover };
+			return func(this);
 		}
 
 		void TrespassAlarm(TESObjectREFR* a_refr, TESForm* a_owner, std::int32_t a_crime)

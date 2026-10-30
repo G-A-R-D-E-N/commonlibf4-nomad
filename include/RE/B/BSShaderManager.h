@@ -9,6 +9,7 @@
 
 namespace RE
 {
+	class BSShaderAccumulator;
 	class ShadowSceneNode;
 
 	class BSShaderManager
@@ -63,6 +64,20 @@ namespace RE
 			using func_t = decltype(&BSShaderManager::SetExternalEmittanceRecurse);
 			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetExternalEmittanceRecurse };
 			func(a_object, a_color);
+		}
+
+		[[nodiscard]] static BSShaderAccumulator* GetCurrentAccumulator()
+		{
+			using func_t = decltype(&BSShaderManager::GetCurrentAccumulator);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::GetCurrentAccumulator };
+			return func();
+		}
+
+		static void SetCurrentAccumulator(BSShaderAccumulator* a_accumulator)
+		{
+			using func_t = decltype(&BSShaderManager::SetCurrentAccumulator);
+			static REL::Relocation<func_t> func{ ID::BSShaderManager::SetCurrentAccumulator };
+			func(a_accumulator);
 		}
 
 		enum class BSShaderTimerMode : std::uint32_t
@@ -202,6 +217,11 @@ namespace RE
 			{
 				return static_cast<eSceneGraphEnum>(sceneGraph);
 			}
+
+			// DeferredComposite reads the SSS flag; DFLight reads the character light pair.
+			[[nodiscard]] bool& GetCharacterLightEnabled() noexcept { return characterLightEnabled; }
+			[[nodiscard]] bool& GetScreenSpaceSubsurfaceScatteringEnabled() noexcept { return screenSpaceSubsurfaceScatteringEnabled; }
+			[[nodiscard]] NiColorA& GetCharacterLightParams() noexcept { return characterLightParams; }
 
 		private:
 			// members

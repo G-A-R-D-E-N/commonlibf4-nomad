@@ -87,7 +87,10 @@ namespace RE
 		{
 			kInterior = 1u << 0,
 			kHasWater = 1u << 1,
+			// Interior sun shadows need both of these.
+			kInteriorSunShadowsA = 1u << 8,
 			kWarnToLeave = 1u << 9,
+			kInteriorSunShadowsB = 1u << 11,
 		};
 
 		enum class QUAD_HIDE_STATE
@@ -232,6 +235,14 @@ namespace RE
 			using func_t = decltype(&TESObjectCELL::FindLandDataInFile);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::FindLandDataInFile };
 			return func(a_file);
+		}
+
+		// The local map camera's Z rotation is its negation.
+		[[nodiscard]] float GetNorthRotation() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetNorthRotation);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetNorthRotation };
+			return func(this);
 		}
 
 		EXTERIOR_DATA*              GetCoordinates() const;

@@ -7,6 +7,7 @@
 #include "RE/N/NiAlphaProperty.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiPoint2.h"
+#include "RE/B/BSShaderTextureSet.h"
 #include "RE/N/NiPointer.h"
 
 namespace RE
@@ -27,7 +28,7 @@ namespace RE
 	}
 
 	class BSShaderData :
-		public BSIntrusiveRefCounted  // 000
+	    public BSIntrusiveRefCounted  // 000
 	{
 	public:
 		static void LoadAndApplyMaterialData(BSGeometry* a_geometry)

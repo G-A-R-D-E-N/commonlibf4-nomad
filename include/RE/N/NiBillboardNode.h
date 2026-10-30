@@ -6,7 +6,7 @@
 namespace RE
 {
 	class __declspec(novtable) alignas(0x10) NiBillboardNode :
-		public NiNode  // 00
+	    public NiNode  // 00
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::NiBillboardNode };

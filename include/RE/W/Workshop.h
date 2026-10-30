@@ -1388,6 +1388,13 @@ namespace RE
 			return func();
 		}
 
+		[[nodiscard]] inline bool IsWorkshopItem(TESObjectREFR& a_ref)
+		{
+			using func_t = decltype(&Workshop::IsWorkshopItem);
+			static REL::Relocation<func_t> func{ ID::Workshop::IsWorkshopItem };
+			return func(a_ref);
+		}
+
 		inline bool PlaceCurrentReference(const ContextData& a_context)
 		{
 			using func_t = decltype(&Workshop::PlaceCurrentReference);

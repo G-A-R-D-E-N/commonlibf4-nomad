@@ -19,6 +19,7 @@ namespace RE
 		using func_t = void (*)(BSResourceNiBinaryStream*);
 		static REL::Relocation<func_t> func{ ID::BSResourceNiBinaryStream::Dtor };
 		func(this);
+		new (std::addressof(stream)) BSTSmartPointer<BSResource::Stream>{ nullptr };  // game Dtor releases +0x10 without nulling it
 	}
 
 	void BSResourceNiBinaryStream::Seek(std::ptrdiff_t a_numBytes)

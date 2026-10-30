@@ -1387,19 +1387,28 @@ namespace RE::ID
 		inline constexpr REL::VariantID ReleaseTexture{ 651971, 2287493 };
 	}
 
-	namespace BSScaleformManager
+		namespace BSScaleformManager
 	{
 		inline constexpr REL::VariantID Singleton{ 106578, 2689600, 4796889 };
 		inline constexpr REL::VariantID LoadMovie{ 1526234, 2287422 };
+		inline constexpr REL::VariantID LoadMovieDef{ 1443474, 0, 2287429 };
 		inline constexpr REL::VariantID GetMovieFilename{ 1191277, 2287428 };
 		inline constexpr REL::VariantID InitMovieViewport{ 206895, 2287430, 4494254 };
 		inline constexpr REL::VariantID FileUncacheOnMenuOpen{ 454316, 2667999 };
 		inline constexpr REL::VariantID IsNameValid{ 593721, 2287425 };
+		inline constexpr REL::VariantID ProcessEvent{ 1550623, 0, 2287426 };
 	}
 
 	namespace BSScaleformRenderer
 	{
 		inline constexpr REL::VariantID Initialize{ 1403529, 2284938 };
+		inline constexpr REL::VariantID BeginFrame{ 671681, 2284939 };
+		inline constexpr REL::VariantID EndFrame{ 1282872, 2284940 };
+		inline constexpr REL::VariantID BeginScene{ 1016804, 2284941 };
+		inline constexpr REL::VariantID EndScene{ 1362130, 2284942 };
+		inline constexpr REL::VariantID DisplayMovie{ 1096456, 2284943 };
+		inline constexpr REL::VariantID SetCurrentRenderTarget{ 1175949, 2284944 };
+		inline constexpr REL::VariantID ClearRenderTargets{ 989116, 2284945 };
 	}
 
 	namespace BSScaleformTranslator
@@ -2289,8 +2298,11 @@ namespace RE::ID
 
 	namespace MenuControls
 	{
+		inline constexpr REL::VariantID IsScreenshotQueued{ 257450, 0, 2249381 };
+		inline constexpr REL::VariantID IsMultiScreenshotQueued{ 1134805, 0, 2249382 };
 		inline constexpr REL::VariantID ForcePauseGame{ 1307560, 2249384 };
 		inline constexpr REL::VariantID ForceResumeGame{ 668856, 2249385 };
+		inline constexpr REL::VariantID PerformInputProcessing{ 1280156, 0, 2249386 };
 		inline constexpr REL::VariantID RegisterHandler{ 827678, 2249387 };
 		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };

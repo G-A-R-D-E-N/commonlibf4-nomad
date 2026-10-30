@@ -63,31 +63,6 @@ namespace RE
 			return *node;
 		}
 
-		[[nodiscard]] static NiNode* GetWaterNode()
-		{
-			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::WaterNode };
-			return *node;
-		}
-
-		// Static LOD scene roots built by the constructor; null without a terrain manager.
-		[[nodiscard]] static NiNode* GetLandNode()
-		{
-			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::LandNode };
-			return *node;
-		}
-
-		[[nodiscard]] static NiNode* GetObjectsNode()
-		{
-			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::ObjectsNode };
-			return *node;
-		}
-
-		[[nodiscard]] static NiNode* GetTreesNode()
-		{
-			static REL::Relocation<NiNode**> node{ ID::BGSTerrainManager::TreesNode };
-			return *node;
-		}
-
 		void RecomputeQuickCullData(const NiCamera* a_camera)
 		{
 			using func_t = decltype(&BGSTerrainManager::RecomputeQuickCullData);

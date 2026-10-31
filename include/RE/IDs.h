@@ -1626,6 +1626,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
 	}
 
+	namespace BSXAudio2Audio
+	{
+		inline constexpr REL::VariantID Singleton{ 1345596, 2703146 };
+	}
+
 	namespace BSXAudio2Graph
 	{
 		inline constexpr REL::VariantID Singleton{ 1219921, 2703127 };
@@ -3643,7 +3648,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID StartNearbyWorkshop{ 937340, 2194880 };
 		inline constexpr REL::VariantID StartWorkshop{ 171771, 2195134 };
 		inline constexpr REL::VariantID ToggleDropMode{ 740420, 2195126 };
-		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195138 };  // old AE id wrong: 2195130 takes no args
+		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195138 };
 		inline constexpr REL::VariantID ToggleWorkshopMode{ 1331715, 2194903 };
 		inline constexpr REL::VariantID UnregisterForBuildableAreaEvent{ 23079, 2194941 };
 		inline constexpr REL::VariantID UnregisterForItemDestroyed{ 1101379, 2194931 };

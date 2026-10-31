@@ -2,17 +2,15 @@
 
 Addresses are RVAs read from the OG 1.10.163, NG 1.10.984 and AE 1.11.240 executables. All of this is static reading; nothing was run in game.
 
-## `include/RE/B/BSXAudio2Audio.h:BSXAudio2Audio::GetSingleton`
+## `include/RE/IDs.h:BSXAudio2Audio::Singleton`
 
 Read from the unpacked executables, source:E:/RE-work/Tools/steamless-work (applies to every note here).
 
-For `BSXAudio2Audio::GetSingleton`, the slot 1 function of the `BSXAudio2Audio` vtable (function at OG `0x1af14d0`, NG `0x152c7b0`, AE `0x1646df0`, source:E:/RE-work/Tools/steamless-work) stores the instance in id 1345596 on OG and 2703146 on NG and AE. The neighbouring slot holds the inner object's +0x48 pointer, which is OG id 1565436. NG and AE id 2703127 is a different global written elsewhere in that function.
-
-The ids live in the header because this was the only user of the old `ID::BSXAudio2Audio::Singleton` row, and `IDs.h` is over the source line limit, so an edit there has to shrink the file. Removing the wrong row does that.
+For `BSXAudio2Audio::Singleton`, the slot 1 function of the `BSXAudio2Audio` vtable (function at OG `0x1af14d0`, NG `0x152c7b0`, AE `0x1646df0`, source:E:/RE-work/Tools/steamless-work) stores the instance in id 1345596 on OG and 2703146 on NG and AE. The neighbouring slot holds the inner object's +0x48 pointer, which is OG id 1565436. NG and AE id 2703127 is a different global written elsewhere in that function.
 
 ## `include/RE/IDs.h:Workshop::ToggleEditMode`
 
-OG has 9 direct call sites and 2195138 has 9 on both NG and AE. 2195130 has none, which is why it was rejected. It does read its first argument, so the "takes no args" comment on this row is wrong; the id itself is right. The comment stays for now because the line limit blocks same-length edits to `IDs.h`.
+OG has 9 direct call sites and 2195138 has 9 on both NG and AE. 2195130 has none, which is why it was rejected. It does read its first argument, so "takes no args" was the wrong reason to give.
 
 ## `include/RE/M/MessageBoxData.h:MessageBoxData`
 

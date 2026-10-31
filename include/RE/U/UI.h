@@ -117,7 +117,7 @@ namespace RE
 			return GetMenuOpen(T::MENU_NAME);
 		}
 
-		// Teardown only: must not be called mid-game; it destroys the menu map.
+		// Teardown only: must not be called mid-game.
 		void PreShutdown_ForceCloseAllMenus();
 
 		void ProcessMessages();

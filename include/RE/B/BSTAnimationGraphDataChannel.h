@@ -20,7 +20,7 @@ namespace RE
 		public BSAnimationGraphChannel  // 00
 	{
 	public:
-		static constexpr auto VTABLE{ VTABLE::BSTAnimationGraphDataChannel_Actor_float_ActorWardHealthChannel };
+		static constexpr auto VTABLE{ VTABLE::BSTAnimationGraphDataChannel_Actor_float_ActorWardHealthChannel_ };
 
 		~BSTAnimationGraphDataChannel() override;  // 00
 

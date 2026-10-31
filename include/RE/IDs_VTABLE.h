@@ -3780,6 +3780,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorTimeDeltaChannel_{ REL::ID(588159) };
 		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorTurnDeltaChannel_{ REL::ID(69797) };
 		inline constexpr std::array<REL::ID, 2>  BSTAnimationGraphDataChannel_Actor_float_ActorTurnDeltaSmoothedChannel_{ REL::ID(1106151), REL::ID(401254) };
+		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorWardHealthChannel_{ REL::ID(128206) };
 		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorWeaponSpeedChannel_{ REL::ID(681639) };
 		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_PlayerControllerXRawChannel_{ REL::ID(599057) };
 		inline constexpr std::array<REL::ID, 2>  BSTAnimationGraphDataChannel_Actor_float_PlayerControllerXSmoothedChannel_{ REL::ID(1569872), REL::ID(864717) };
@@ -4481,8 +4482,6 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator___MovementHandlerAgentTranslationControllerLoadScrapper_MovementAgent_{ REL::ID(929769) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator___MovementPlannerAgentHorseControlsLoadScrapper_MovementAgent_{ REL::ID(1534030) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator___MovementPlannerAgentKeepOffsetLoadScrapper_MovementAgent_{ REL::ID(296935) };
-		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorWardHealthChannel{ REL::ID(128206) };
-		inline constexpr std::array<REL::ID, 1>  BSTAnimationGraphDataChannel_Actor_float_ActorWardHealthChannel_{ REL::ID(128206) };
 		inline constexpr std::array<REL::ID, 1>  BSTEventSink_ActorCPMEvent_{ REL::ID(180709) };
 		inline constexpr std::array<REL::ID, 1>  BSTEventSink_ActorEquipManagerEvent__Event_{ REL::ID(755888) };
 		inline constexpr std::array<REL::ID, 1>  BSTEventSink_ActorInventoryEvent_{ REL::ID(1389215) };

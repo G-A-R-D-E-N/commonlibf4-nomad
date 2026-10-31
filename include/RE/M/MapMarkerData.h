@@ -97,12 +97,7 @@ namespace RE
 			return func(this);
 		}
 
-		void SetMarkerType(MARKER_TYPE a_type)
-		{
-			using func_t = decltype(&MapMarkerData::SetMarkerType);
-			static REL::Relocation<func_t> func{ ID::MapMarkerData::SetMarkerType };
-			return func(this, a_type);
-		}
+		void SetMarkerType(MARKER_TYPE a_type) noexcept { type = a_type; }
 
 		void ResetFlags() noexcept { flags = originalFlags; }
 

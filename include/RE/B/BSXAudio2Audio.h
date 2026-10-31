@@ -17,7 +17,7 @@ namespace RE
 
 		[[nodiscard]] static BSXAudio2Audio* GetSingleton() noexcept
 		{
-			static REL::Relocation<BSXAudio2Audio**> singleton{ ID::BSXAudio2Audio::Singleton };
+			static REL::Relocation<BSXAudio2Audio**> singleton{ REL::VariantID{ 1345596, 2703146 } };
 			return *singleton;
 		}
 

@@ -2,6 +2,7 @@
 
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GameMenuBase.h"
+#include "RE/R/RelocateMember.h"
 
 namespace RE
 {
@@ -29,8 +30,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] MessageBoxData* GetCurrentMessage() const noexcept
+		{
+			return REL::RelocateMember<MessageBoxData*>(this, REL::Offset{ 0xE8, 0xE8, 0xF0 });
+		}
+
 		// members
-		MessageBoxData* currentMessage;  // E8
+		std::byte pad[0x18];  // E8
 	};
-	static_assert(sizeof(MessageBoxMenu) == 0xF0);
+	static_assert(sizeof(MessageBoxMenu) == 0x100);
 }

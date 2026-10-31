@@ -1626,11 +1626,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetFlattenedBoneTree{ 1539401, 2274858 };
 	}
 
-	namespace BSXAudio2Audio
-	{
-		inline constexpr REL::VariantID Singleton{ 1565436, 2703127 };
-	}
-
 	namespace BSXAudio2Graph
 	{
 		inline constexpr REL::VariantID Singleton{ 1219921, 2703127 };

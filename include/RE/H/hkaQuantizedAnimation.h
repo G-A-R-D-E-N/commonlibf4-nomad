@@ -18,14 +18,13 @@ namespace RE
 		public hkaAnimation  // 0x38
 	{
 	public:
-		static constexpr auto RTTI{ RTTI::hkaQuantizedAnimation };
-
 		virtual ~hkaQuantizedAnimation();  // 00
 
 		// members
-		hkArray<std::uint8_t> data;      // 0x38
-		std::uint32_t         endian;     // 0x48
-		void*                 skeleton;   // 0x50
+		hkArray<std::uint8_t> data;    // 0x38
+		std::uint32_t         endian;   // 0x48
+		std::uint32_t         pad4C;    // 0x4C
+		void*                 skeleton; // 0x50
 	};
 	static_assert(sizeof(hkaQuantizedAnimation) == 0x58);
 }

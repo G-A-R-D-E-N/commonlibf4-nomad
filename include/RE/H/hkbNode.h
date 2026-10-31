@@ -4,8 +4,6 @@
 
 namespace RE
 {
-	enum class hkbNodeType : std::uint8_t;
-
 	class hkbNodeInfo;
 
 	class __declspec(novtable) hkbNode :
@@ -19,7 +17,7 @@ namespace RE
 		const char*    name;        // 0x38
 		std::uint16_t  id;          // 0x40
 		std::int8_t    cloneState;  // 0x42
-		hkbNodeType    type;        // 0x43
+		std::uint8_t   type;        // 0x43
 		std::uint8_t   pad44[4];    // 0x44
 		hkbNodeInfo*   nodeInfo;    // 0x48
 	};

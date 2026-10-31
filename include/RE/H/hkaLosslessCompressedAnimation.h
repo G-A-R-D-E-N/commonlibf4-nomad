@@ -9,6 +9,9 @@ namespace RE
 	{
 	public:
 		virtual ~hkaLosslessCompressedAnimation();  // 00
+
+		// members
+		std::uint8_t pad38[0xA8];  // 0x38
 	};
 	static_assert(sizeof(hkaLosslessCompressedAnimation) == 0xE0);
 }

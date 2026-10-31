@@ -13,9 +13,11 @@ namespace RE
 		virtual ~hkaDefaultAnimatedReferenceFrame();  // 00
 
 		// members
+		std::uint8_t            pad10[0x10];  // 0x10
 		hkVector4f              up;       // 0x20
 		hkVector4f              forward;  // 0x30
 		float                   duration; // 0x40
+		std::uint8_t            pad44[4]; // 0x44
 		hkArray<hkVector4f>     samples;  // 0x48
 	};
 	static_assert(sizeof(hkaDefaultAnimatedReferenceFrame) == 0x58);

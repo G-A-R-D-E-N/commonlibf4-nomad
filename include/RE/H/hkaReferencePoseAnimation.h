@@ -9,6 +9,9 @@ namespace RE
 	{
 	public:
 		virtual ~hkaReferencePoseAnimation();  // 00
+
+		// members
+		std::uint8_t pad38[0x08];  // 0x38
 	};
 	static_assert(sizeof(hkaReferencePoseAnimation) == 0x40);
 }

@@ -223,7 +223,10 @@ namespace RE
 		virtual bool                 ShouldDoCharacterUpdate() const { return true; }                                                                                                                                    // 122
 		virtual bool                 GetAnimationCanBeInterpolated() const;                                                                                                                                              // 123
 		virtual const BSFixedString& GetResponseString() const;                                                                                                                                                          // 124
-		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);                                                                                                   // 125
+		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);
+		void                         ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds);
+		void                         ModifyMovementTypeBasedOnCurrentState(Movement::MaxSpeeds& a_speeds);
+		void                         GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const;                                                                                                   // 125
 		virtual void                 UpdateCombatControllerSettings();                                                                                                                                                   // 126
 		virtual void                 UpdateFadeSettings(bhkCharacterController* a_charController);                                                                                                                       // 127
 		virtual bool                 ComputeMotionFeedbackSpeedAndDirection(const ActorMotionFeedbackData& a_data, float a_delta, ActorMotionFeedbackOutput& a_retData);                                                 // 128

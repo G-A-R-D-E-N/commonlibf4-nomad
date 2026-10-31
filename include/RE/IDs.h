@@ -4119,4 +4119,64 @@ namespace RE::ID
 		inline constexpr REL::VariantID TestPair{ 147831, 2278061 };
 		inline constexpr REL::VariantID FilterBodyPairs{ 559187, 2278063 };
 	}
+	namespace Actor
+	{
+		inline constexpr REL::VariantID DoGetCurrentMaxSpeeds{ 130331, 2230508 };
+		inline constexpr REL::VariantID ComputeCurrentMaxSpeeds{ 30004, 2230398 };
+		inline constexpr REL::VariantID ModifyMovementTypeBasedOnCurrentState{ 1149924, 2230530 };
+		inline constexpr REL::VariantID GetCachedMovementSpeeds{ 64207, 2232020 };
+		inline constexpr REL::VariantID GetMovementType{ 310109, 2230396 };
+		inline constexpr REL::VariantID AttachWeapon{ 1555834, 2201111 };
+	}
+	namespace TESRace
+	{
+		inline constexpr REL::VariantID GetMovementTypeDataForMovementType{ 442785, 2208122 };
+	}
+	namespace PathBuilderFlight
+	{
+		inline constexpr REL::VariantID GetMaxSpeeds{ 1352336, 2213343 };
+	}
+	namespace IMovementState
+	{
+		inline constexpr REL::VariantID GetMaxSpeed{ 1188794, 2301275 };
+		inline constexpr REL::VariantID GetMaxSpeedSibling{ 577341, 2301274 };
+		inline constexpr REL::VariantID DenormalizeSpeed{ 1421100, 2301621 };
+	}
+	namespace MountInteraction
+	{
+		inline constexpr REL::VariantID SyncImpl{ 258039, 2232752 };
+		inline constexpr REL::VariantID QueuedSync{ 482716, 2232755 };
+		inline constexpr REL::VariantID SyncWithMount{ 1332553, 2232757 };
+	}
+	namespace TESObjectREFRSync
+	{
+		inline constexpr REL::VariantID Add{ 816663, 2202729 };
+	}
+	namespace REFRSyncController
+	{
+		inline constexpr REL::VariantID Add{ 1331617, 2202736 };
+		inline constexpr REL::VariantID ctor{ 558400, 2202739 };
+		inline constexpr REL::VariantID Update{ 947997, 2202735 };
+	}
+	namespace BSAnimationGraphManager
+	{
+		inline constexpr REL::VariantID arenaCtor{ 20163, 2256655 };
+		inline constexpr REL::VariantID graphArrayFill{ 803637, 2256686 };
+		inline constexpr REL::VariantID Load{ 477689, 2256672 };
+		inline constexpr REL::VariantID SetActiveGraph{ 121579, 2256665 };
+		inline constexpr REL::VariantID PushBoundChannels{ 12398, 2256861 };
+	}
+	namespace BipedAnim
+	{
+		inline constexpr REL::VariantID AttachBipedWeapon{ 788361, 2194353 };
+		inline constexpr REL::VariantID RemovePart{ 575576, 2194342 };
+	}
+	namespace Projectile
+	{
+		inline constexpr REL::VariantID AimProjectile{ 1010750, 2237051 };
+	}
+	namespace PlayerCharacter
+	{
+		inline constexpr REL::VariantID ApplyAutoAimActor{ 1225651, 2233944 };
+	}
 }

@@ -14,6 +14,8 @@ namespace RE
 
 		virtual ~MountInteraction();  // 00
 
+		void SyncImpl();
+		void QueuedSync();
 		void SyncWithMount(Actor* a_mount);
 	};
 }

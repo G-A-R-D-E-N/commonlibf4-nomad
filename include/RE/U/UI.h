@@ -96,6 +96,12 @@ namespace RE
 			return Scaleform::Ptr{ static_cast<T*>(ptr.get()) };
 		}
 
+		void AdvanceMenus();
+
+		void CloseAllMenus();
+
+		void EndRender();
+
 		[[nodiscard]] bool GameIsPaused() const noexcept { return menuMode != 0; }
 
 		[[nodiscard]] bool GetMenuOpen(const BSFixedString& a_name) const
@@ -110,6 +116,11 @@ namespace RE
 		{
 			return GetMenuOpen(T::MENU_NAME);
 		}
+
+		// Teardown only: must not be called mid-game.
+		void PreShutdown_ForceCloseAllMenus();
+
+		void ProcessMessages();
 
 		void RefreshCursor()
 		{

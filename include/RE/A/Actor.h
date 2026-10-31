@@ -17,6 +17,7 @@
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicTarget.h"
 #include "RE/M/Modifiers.h"
+#include "RE/M/Movement.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiTFlags.h"
 #include "RE/O/ObjectEquipParams.h"
@@ -223,10 +224,10 @@ namespace RE
 		virtual bool                 ShouldDoCharacterUpdate() const { return true; }                                                                                                                                    // 122
 		virtual bool                 GetAnimationCanBeInterpolated() const;                                                                                                                                              // 123
 		virtual const BSFixedString& GetResponseString() const;                                                                                                                                                          // 124
-		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);
+		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);                                                                                                 // 125
 		void                         ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds);
 		void                         ModifyMovementTypeBasedOnCurrentState(Movement::MaxSpeeds& a_speeds);
-		void                         GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const;                                                                                                   // 125
+		void                         GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const;
 		virtual void                 UpdateCombatControllerSettings();                                                                                                                                                   // 126
 		virtual void                 UpdateFadeSettings(bhkCharacterController* a_charController);                                                                                                                       // 127
 		virtual bool                 ComputeMotionFeedbackSpeedAndDirection(const ActorMotionFeedbackData& a_data, float a_delta, ActorMotionFeedbackOutput& a_retData);                                                 // 128

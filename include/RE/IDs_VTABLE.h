@@ -4,7 +4,7 @@ namespace RE
 {
 	namespace VTABLE
 	{
-		// kNoID: no Address Library id for this vtable on that runtime, and used only where that runtime has no id for the vtable, ids checked against source:E:/RE-work/Tools/steamless-work
+		// kNoID: sentinel for a vtable that has no id on that runtime; IDDB::offset must fail on it. source:runtime address data
 		inline constexpr std::uint64_t kNoID = ~std::uint64_t{ 0 };
 
 		inline constexpr std::array<REL::ID, 1>  AIProcess__PendingActorHeadData{ REL::ID(65996) };
@@ -8497,7 +8497,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  __LogWriteThread{ REL::ID(932991) };
 		inline constexpr std::array<REL::ID, 1>  __LooseAudioRegistrar{ REL::ID(550584) };
 		inline constexpr std::array<REL::ID, 1>  __MainCullingCamera{ REL::ID(519680) };
-		inline constexpr std::array<REL::ID, 1>  __MainStatusHandler{ REL::ID(1277435) };
+		inline constexpr std::array<REL::ID, 1>  __MainStatusHandler{ REL::ID{ 93037, 1277435, 1277435 } };
 		inline constexpr std::array<REL::ID, 1>  __MemoryManagerFileFactory{ REL::ID(581810) };
 		inline constexpr std::array<REL::ID, 1>  __MenuModeHandler__MenuModeCounterListener{ REL::ID(1514722) };
 		inline constexpr std::array<REL::ID, 1>  __MessageMenuCallback{ REL::ID(1028666) };

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/H/hkArray.h"
 #include "RE/H/hkReferencedObject.h"
 
 namespace RE
@@ -11,8 +12,7 @@ namespace RE
 		virtual ~hkbCharacter();  // 00
 
 		// members
-		void*         nearbyCharacters;          // 0x10
-		std::uint8_t  pad18[8];                  // 0x18
+		hkArray<hkbCharacter*> nearbyCharacters; // 0x10
 		void*         userData;                  // 0x20
 		std::int16_t  currentLod;                // 0x28
 		std::int16_t  numTracksInLod;            // 0x2A
@@ -27,8 +27,7 @@ namespace RE
 		void*         animationBindingSet;       // 0x90
 		void*         spatialQueryInterface;     // 0x98
 		void*         world;                     // 0xA0
-		void*         boneAttachments;           // 0xA8
-		std::uint8_t  padB0[8];                  // 0xB0
+		hkArray<void*> boneAttachments;          // 0xA8
 		void*         eventQueue;                // 0xB8
 		void*         characterLuaState;         // 0xC0
 		void*         assetManager;              // 0xC8

@@ -18,7 +18,7 @@ OG has 9 direct call sites and 2195138 has 9 on both NG and AE. 2195130 has none
 
 The real size is 0x68 on NG (sized free at `0xff38c5`) and 0x70 on AE (sized free at `0x107ad15`). OG frees it unsized, so its size was not read directly, but its message box code has no read of the AE fields.
 
-AE's constructor (around `0x107ab59`) stores the cancel index at +0x68 and `index != -1` at +0x6C. The struct uses the larger size so that memory allocated from `sizeof` is large enough on every runtime. `cancelButtonIndex` and `hasCancelButton` must not be read from a game-allocated object on OG or NG.
+AE's constructor (around `0x107ab59`) stores the cancel index at +0x68 and `index != -1` at +0x6C. The struct uses AE's larger size. `cancelButtonIndex` and `hasCancelButton` must not be read from a game-allocated object on OG or NG. Plugins should not allocate this type themselves: NG frees it with a size of 0x68, which does not match a `sizeof` allocation there. Use `MessageMenuManager::Create`.
 
 ## `include/RE/M/MessageBoxMenu.h:MessageBoxMenu`
 

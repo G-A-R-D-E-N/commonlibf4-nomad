@@ -1,0 +1,22 @@
+#pragma once
+
+#include "RE/H/hkArray.h"
+#include "RE/H/hkVector4.h"
+#include "RE/H/hkaAnimatedReferenceFrame.h"
+
+namespace RE
+{
+	class __declspec(novtable) hkaDefaultAnimatedReferenceFrame :
+		public hkaAnimatedReferenceFrame  // 0x10
+	{
+	public:
+		virtual ~hkaDefaultAnimatedReferenceFrame();  // 00
+
+		// members
+		hkVector4f              up;       // 0x20
+		hkVector4f              forward;  // 0x30
+		float                   duration; // 0x40
+		hkArray<hkVector4f>     samples;  // 0x48
+	};
+	static_assert(sizeof(hkaDefaultAnimatedReferenceFrame) == 0x58);
+}

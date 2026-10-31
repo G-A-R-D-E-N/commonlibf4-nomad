@@ -85,7 +85,6 @@ namespace RE::ID
 		inline constexpr REL::VariantID AttachWeapon{ 597248, 2229708 };
 		inline constexpr REL::VariantID ComputeCurrentMaxSpeeds{ 30004, 2230398 };
 		inline constexpr REL::VariantID DoGetCurrentMaxSpeeds{ 130331, 2230508 };
-		inline constexpr REL::VariantID GetCachedMovementSpeeds{ 64207, 2232020 };
 		inline constexpr REL::VariantID GetMovementType{ 310109, 2230396 };
 		inline constexpr REL::VariantID ModifyMovementTypeBasedOnCurrentState{ 1149924, 2230530 };
 	}
@@ -127,6 +126,7 @@ namespace RE::ID
 
 	namespace AIProcess
 	{
+		inline constexpr REL::VariantID GetCachedMovementSpeeds{ 64207, 2232020 };
 		inline constexpr REL::VariantID GetCurrentAmmo{ 1154936, 2232300 };
 		inline constexpr REL::VariantID GetCommandType{ 678523, 2231825 };
 		inline constexpr REL::VariantID GetOccupiedFurniture{ 1162965, 2232401 };
@@ -146,6 +146,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
 		inline constexpr REL::VariantID GetActorLightLevel{ 898888, 2231981 };
+		inline constexpr REL::VariantID Set3DUpdateFlag{ 236542, 2232389 };
+		inline constexpr REL::VariantID Update3DModel{ 986782, 2231882 };
 	}
 
 	namespace AITimer
@@ -4041,11 +4043,6 @@ namespace RE::ID
 // did not define yet. Each value was checked against the OG/NG/AE address-library bins.
 namespace RE::ID
 {
-	namespace AIProcess
-	{
-		inline constexpr REL::VariantID Set3DUpdateFlag{ 236542, 2232389 };
-		inline constexpr REL::VariantID Update3DModel{ 986782, 2231882 };
-	}
 	namespace BGSCharacterTint::Entries
 	{
 		inline constexpr REL::VariantID Clear{ 1146439, 2196606 };

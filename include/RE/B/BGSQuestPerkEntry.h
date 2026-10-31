@@ -16,7 +16,7 @@ namespace RE
 
 		void ApplyPerkEntry(Actor* a_actor);
 
-		// offset map: docs/RE/evidence/2026-10-30-quest-perk-entry.txt (verify before use)
+		// members
 		TESQuest*     quest;  // offset 10
 		std::uint16_t stage;  // offset 18
 	};

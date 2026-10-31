@@ -26,4 +26,5 @@ namespace RE
 		std::uint32_t         pad54;    // 0x54
 		void*                 skeleton; // 0x58
 	};
+	static_assert(sizeof(hkaQuantizedAnimation) == 0x60);
 }

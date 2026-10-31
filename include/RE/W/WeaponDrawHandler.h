@@ -1,12 +1,14 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/I/IHandlerFunctor.h"
 
 namespace RE
 {
 	class Actor;
 
-	class __declspec(novtable) WeaponDrawHandler
+	class __declspec(novtable) WeaponDrawHandler :
+		public IHandlerFunctor<Actor, BSFixedString>
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::WeaponDrawHandler };
@@ -14,6 +16,6 @@ namespace RE
 
 		virtual ~WeaponDrawHandler();  // 00
 
-		virtual bool executeHandler(Actor& a_actor, BSFixedString& a_payload);  // 01
+		bool executeHandler(Actor& a_actor, BSFixedString& a_payload) override;  // 01
 	};
 }

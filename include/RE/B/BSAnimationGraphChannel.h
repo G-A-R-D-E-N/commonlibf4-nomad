@@ -18,13 +18,7 @@ namespace RE
 		virtual void PollChannelUpdate(bool a_allowEventQueuesC) = 0;  // 01
 		virtual void Reset() = 0;                                     // 02
 
-		template <class T>
-		void SetValue(const T& a_value);
-
-		template <class T>
-		[[nodiscard]] T GetValue() const;
-
-		[[nodiscard]] BSFixedString& QChannelName();
+		[[nodiscard]] BSFixedString& QChannelName() noexcept { return channelName; }
 
 		BSFixedString channelName;  // 10
 		std::uint32_t value;        // 18

@@ -40,4 +40,5 @@ namespace RE
 		void*                  skeleton;        // 0xB8
 		std::int32_t           maxCompressedBytesPerFrame;  // 0xC0
 	};
+	static_assert(sizeof(hkaPredictiveCompressedAnimation) == 0xC8);
 }

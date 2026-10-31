@@ -2,11 +2,10 @@
 
 #include "RE/H/hkArray.h"
 #include "RE/H/hkReferencedObject.h"
+#include "RE/H/hkaAnnotationTrack.h"
 
 namespace RE
 {
-	struct hkaAnnotationTrack;
-
 	class __declspec(novtable) hkaAnimation :
 		public hkReferencedObject  // 0x00
 	{

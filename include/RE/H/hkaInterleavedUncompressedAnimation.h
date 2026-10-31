@@ -15,4 +15,5 @@ namespace RE
 		hkArray<hkQsTransformf> transforms;  // 0x40
 		hkArray<float>          floats;      // 0x50
 	};
+	static_assert(sizeof(hkaInterleavedUncompressedAnimation) == 0x60);
 }

@@ -27,4 +27,5 @@ namespace RE
 		hkArray<std::uint8_t>  data;              // 0xA0
 		std::uint8_t           endian;            // 0xB0
 	};
+	static_assert(sizeof(hkaSplineCompressedAnimation) == 0xB8);
 }

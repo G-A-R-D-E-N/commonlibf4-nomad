@@ -4,7 +4,7 @@
 
 namespace RE
 {
-	class bhkCollisionFilter
+	class __declspec(novtable) bhkCollisionFilter
 	{
 	public:
 		static constexpr auto VTABLE{ VTABLE::bhkCollisionFilter };
@@ -18,23 +18,61 @@ namespace RE
 			kSubsystemMask = 0xFFFF0000
 		};
 
-		bhkCollisionFilter();
+		bhkCollisionFilter() { ctor(); }
 		virtual ~bhkCollisionFilter();  // 00
 
-		void InitFlags();
-		void SetLayerCollision(std::uint32_t a_layer, std::uint64_t a_flags);
-		void SetPartCollision(std::uint32_t a_part, std::uint32_t a_flags);
-		bool TestPair(std::uint32_t a_filterA, std::uint32_t a_filterB) const;
-		bool FilterBodyPairs(std::uint32_t a_filterA, std::uint32_t a_filterB) const;
+		void InitFlags()
+		{
+			using func_t = decltype(&bhkCollisionFilter::InitFlags);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::InitFlags };
+			func(this);
+		}
+
+		void SetLayerCollision(std::uint32_t a_layer, std::uint64_t a_flags)
+		{
+			using func_t = decltype(&bhkCollisionFilter::SetLayerCollision);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::SetLayerCollision };
+			func(this, a_layer, a_flags);
+		}
+
+		void SetPartCollision(std::uint32_t a_part, std::uint32_t a_flags)
+		{
+			using func_t = decltype(&bhkCollisionFilter::SetPartCollision);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::SetPartCollision };
+			func(this, a_part, a_flags);
+		}
+
+		[[nodiscard]] bool TestPair(std::uint32_t a_filterA, std::uint32_t a_filterB) const
+		{
+			using func_t = decltype(&bhkCollisionFilter::TestPair);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::TestPair };
+			return func(this, a_filterA, a_filterB);
+		}
+
+		[[nodiscard]] bool FilterBodyPairs(std::uint32_t a_filterA, std::uint32_t a_filterB) const
+		{
+			using func_t = decltype(&bhkCollisionFilter::FilterBodyPairs);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::FilterBodyPairs };
+			return func(this, a_filterA, a_filterB);
+		}
 
 		// members
-		std::uint8_t  pad08[0x18];         // 0x08
+		std::uint8_t  pad08[0x18];           // 0x08
 		std::uint32_t systemGroupTable[32];  // 0x20
-		std::uint8_t  padA0[0x100];        // 0xA0
-		std::uint64_t layerTable[64];      // 0x1A0
-		std::uint64_t layerMask;           // 0x3A0
-		std::uint64_t unk3A8;              // 0x3A8
-		std::uint8_t  layerNames[0x300];   // 0x3B0
-		std::uint8_t  partNames[0x100];    // 0x6B0
+		std::uint8_t  padA0[0x100];          // 0xA0
+		std::uint64_t layerTable[64];        // 0x1A0
+		std::uint64_t layerMask;             // 0x3A0
+		std::uint64_t unk3A8;                // 0x3A8
+		std::uint8_t  layerNames[0x300];     // 0x3B0
+		std::uint8_t  partNames[0x100];      // 0x6B0
+
+	private:
+		bhkCollisionFilter* ctor()
+		{
+			using func_t = decltype(&bhkCollisionFilter::ctor);
+			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::ctor };
+			return func(this);
+		}
 	};
+	static_assert(sizeof(bhkCollisionFilter) == 0x7B0);
 }

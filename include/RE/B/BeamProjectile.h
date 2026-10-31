@@ -20,7 +20,7 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::BeamProjectile };
 		static constexpr auto FORM_ID{ ENUM_FORM_ID::kPBEA };
 
-		bool RunTargetPick();  // 2C
+		virtual bool RunTargetPick() override;  // DB
 
 		// members
 		ProjectileLaunchData           launchData;       // 2D0

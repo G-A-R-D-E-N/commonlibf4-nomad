@@ -18,7 +18,6 @@ namespace RE
 		public BSTSingletonSDM<PlayerRegionState>
 	{
 	public:
-		// member offset and size: source RE-Work/subsystems/commonwealth-online-re/co407-region-state/README.md
 		struct Data
 		{
 			BSTArray<TESRegionSound*>  regionSounds;                // 00

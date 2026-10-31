@@ -2,8 +2,6 @@
 
 namespace RE
 {
-	class BGSActionData;
-
 	class __declspec(novtable) ActorMediator
 	{
 	public:
@@ -11,7 +9,5 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::ActorMediator };
 
 		virtual ~ActorMediator();  // 00
-
-		bool DoAction(BGSActionData& a_actionData);
 	};
 }

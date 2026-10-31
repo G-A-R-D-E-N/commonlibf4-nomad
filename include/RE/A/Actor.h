@@ -224,10 +224,7 @@ namespace RE
 		virtual bool                 ShouldDoCharacterUpdate() const { return true; }                                                                                                                                    // 122
 		virtual bool                 GetAnimationCanBeInterpolated() const;                                                                                                                                              // 123
 		virtual const BSFixedString& GetResponseString() const;                                                                                                                                                          // 124
-		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);                                                                                                 // 125
-		void                         ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds);
-		void                         ModifyMovementTypeBasedOnCurrentState(Movement::MaxSpeeds& a_speeds);
-		void                         GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const;
+		virtual void                 ModifyMovementData(float a_delta, NiPoint3& a_moveDelta, NiPoint3& a_angleDelta);                                                                                                   // 125
 		virtual void                 UpdateCombatControllerSettings();                                                                                                                                                   // 126
 		virtual void                 UpdateFadeSettings(bhkCharacterController* a_charController);                                                                                                                       // 127
 		virtual bool                 ComputeMotionFeedbackSpeedAndDirection(const ActorMotionFeedbackData& a_data, float a_delta, ActorMotionFeedbackOutput& a_retData);                                                 // 128
@@ -666,6 +663,27 @@ namespace RE
 			using func_t = decltype(&Actor::GetFactionFightReaction);
 			static REL::Relocation<func_t> func{ ID::Actor::GetFactionFightReaction };
 			return func(this, a_target);
+		}
+
+		void ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds)
+		{
+			using func_t = decltype(&Actor::ComputeCurrentMaxSpeeds);
+			static REL::Relocation<func_t> func{ ID::Actor::ComputeCurrentMaxSpeeds };
+			func(this, a_speeds);
+		}
+
+		void ModifyMovementTypeBasedOnCurrentState(Movement::MaxSpeeds& a_speeds)
+		{
+			using func_t = decltype(&Actor::ModifyMovementTypeBasedOnCurrentState);
+			static REL::Relocation<func_t> func{ ID::Actor::ModifyMovementTypeBasedOnCurrentState };
+			func(this, a_speeds);
+		}
+
+		void GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const
+		{
+			using func_t = decltype(&Actor::GetCachedMovementSpeeds);
+			static REL::Relocation<func_t> func{ ID::Actor::GetCachedMovementSpeeds };
+			func(this, a_speeds);
 		}
 
 		// members

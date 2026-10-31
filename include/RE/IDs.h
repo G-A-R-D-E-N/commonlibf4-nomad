@@ -3385,8 +3385,13 @@ namespace RE::ID
 	namespace UI
 	{
 		inline constexpr REL::VariantID Singleton{ 548587, 2689028, 4796314 };
+		inline constexpr REL::VariantID AdvanceMenus{ 910928, 2284755 };
+		inline constexpr REL::VariantID CloseAllMenus{ 1492152, 2284769 };
 		inline constexpr REL::VariantID CustomRendererHasQuads{ 1401451, 2284757 };
+		inline constexpr REL::VariantID EndRender{ 137303, 2284763 };
 		inline constexpr REL::VariantID GetMenuMapRWLock{ 578487, 2707105 };
+		inline constexpr REL::VariantID PreShutdown_ForceCloseAllMenus{ 1465874, 2284743 };
+		inline constexpr REL::VariantID ProcessMessages{ 239710, 2284754 };
 		inline constexpr REL::VariantID RefreshCursor{ 1436639, 2284772 };
 		inline constexpr REL::VariantID RegisterMenu{ 1519575, 2284766 };
 		inline constexpr REL::VariantID UpdateControllerType{ 175796, 2284768 };

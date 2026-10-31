@@ -28,31 +28,24 @@ namespace RE
 			func(this);
 		}
 
-		void SetLayerCollision(std::uint32_t a_layer, std::uint64_t a_flags)
+		void SetLayerCollision(std::uint32_t a_layer, std::uint32_t a_otherLayer, bool a_set)
 		{
 			using func_t = decltype(&bhkCollisionFilter::SetLayerCollision);
 			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::SetLayerCollision };
-			func(this, a_layer, a_flags);
+			func(this, a_layer, a_otherLayer, a_set);
 		}
 
-		void SetPartCollision(std::uint32_t a_part, std::uint32_t a_flags)
+		void SetPartCollision(std::uint32_t a_part, std::uint32_t a_otherPart, bool a_set)
 		{
 			using func_t = decltype(&bhkCollisionFilter::SetPartCollision);
 			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::SetPartCollision };
-			func(this, a_part, a_flags);
+			func(this, a_part, a_otherPart, a_set);
 		}
 
 		[[nodiscard]] bool TestPair(std::uint32_t a_filterA, std::uint32_t a_filterB) const
 		{
 			using func_t = decltype(&bhkCollisionFilter::TestPair);
 			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::TestPair };
-			return func(this, a_filterA, a_filterB);
-		}
-
-		[[nodiscard]] bool FilterBodyPairs(std::uint32_t a_filterA, std::uint32_t a_filterB) const
-		{
-			using func_t = decltype(&bhkCollisionFilter::FilterBodyPairs);
-			static REL::Relocation<func_t> func{ ID::bhkCollisionFilter::FilterBodyPairs };
 			return func(this, a_filterA, a_filterB);
 		}
 

@@ -679,13 +679,6 @@ namespace RE
 			func(this, a_speeds);
 		}
 
-		void GetCachedMovementSpeeds(Movement::MaxSpeeds& a_speeds) const
-		{
-			using func_t = decltype(&Actor::GetCachedMovementSpeeds);
-			static REL::Relocation<func_t> func{ ID::Actor::GetCachedMovementSpeeds };
-			func(this, a_speeds);
-		}
-
 		// members
 		NiTFlags<std::uint32_t, Actor>                    niFlags;                      // 2D0
 		float                                             updateTargetTimer;            // 2D4

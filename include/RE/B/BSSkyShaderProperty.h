@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSFixedString.h"
 #include "RE/B/BSShaderProperty.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiPointer.h"
@@ -32,15 +33,15 @@ namespace RE
 		virtual ~BSSkyShaderProperty();  // 00
 
 		// members
-		NiColorA      kBlendColor;        // 0x70
-		NiPointer<NiTexture> textures[3]; // 0x80
-		std::uint64_t pad98;              // 0x98
-		float         fBlendValue;        // 0xA0
-		std::uint16_t usCloudLayer;       // 0xA4
-		bool          bFadeSecondTexture; // 0xA6
-		std::uint8_t  padA7;              // 0xA7
-		SkyObject     skyObjectType;      // 0xA8
-		std::uint8_t  padAC[4];           // 0xAC
+		NiColorA             kBlendColor;         // 0x70
+		NiPointer<NiTexture> textures[3];         // 0x80
+		BSFixedString        textureFilename;     // 0x98
+		float                fBlendValue;         // 0xA0
+		std::uint16_t        usCloudLayer;        // 0xA4
+		bool                 bFadeSecondTexture;  // 0xA6
+		std::uint8_t         padA7;               // 0xA7
+		SkyObject            skyObjectType;       // 0xA8
+		std::uint8_t         padAC[4];            // 0xAC
 	};
 	static_assert(sizeof(BSSkyShaderProperty) == 0xB0);
 }

@@ -19,5 +19,7 @@ namespace RE
 
 		// members
 		hkaReferenceFrameTypeEnum frameType;  // 0x10
+		std::uint8_t              pad11[7];   // 0x11
 	};
+	static_assert(sizeof(hkaAnimatedReferenceFrame) == 0x18);
 }

@@ -4179,4 +4179,27 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID ApplyAutoAimActor{ 1225651, 2233944 };
 	}
+	namespace TESObjectWEAP
+	{
+		inline constexpr REL::VariantID Load{ 1534655, 2198922 };
+		inline constexpr REL::VariantID ParseDNAM{ 1094104, 2198910 };
+		inline constexpr REL::VariantID ParseFNAM{ 1289692, 2198885 };
+		inline constexpr REL::VariantID SetRangedData{ 471649, 2198892 };
+		inline constexpr REL::VariantID ParseCRDT{ 1049786, 2198958 };
+	}
+	namespace Console
+	{
+		inline constexpr REL::VariantID pVMBridge{ 749385, 2701385 };
+	}
+	namespace GFX
+	{
+		inline constexpr REL::VariantID Loader1000{ 1096811, 2722716 };
+		inline constexpr REL::VariantID Loader1002{ 1148637, 2287984 };
+		inline constexpr REL::VariantID Loader1003{ 917870, 2287985 };
+		inline constexpr REL::VariantID Loader1004{ 1422196, 2287986 };
+		inline constexpr REL::VariantID Loader1005{ 629093, 2287961 };
+		inline constexpr REL::VariantID Loader1008{ 278905, 2287987 };
+		inline constexpr REL::VariantID Loader1009{ 1535642, 2287983 };
+		inline constexpr REL::VariantID TagTable0{ 859722, 2668034 };
+	}
 }

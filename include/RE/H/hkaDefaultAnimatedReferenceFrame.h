@@ -20,5 +20,6 @@ namespace RE
 		std::uint8_t            pad44[4]; // 0x44
 		hkArray<hkVector4f>     samples;  // 0x48
 	};
-	static_assert(sizeof(hkaDefaultAnimatedReferenceFrame) == 0x58);
+	// the inline hkVector4f members force 16-byte alignment, so the class rounds to 0x60
+	static_assert(sizeof(hkaDefaultAnimatedReferenceFrame) == 0x60);
 }

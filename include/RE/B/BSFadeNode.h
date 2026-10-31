@@ -11,7 +11,7 @@ namespace RE
 	class FlattenedGeometryData;
 
 	class __declspec(novtable) BSFadeNode :
-		public NiNode  // 000
+	    public NiNode  // 000
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::BSFadeNode };

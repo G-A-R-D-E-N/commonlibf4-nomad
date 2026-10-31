@@ -18,6 +18,13 @@ namespace RE
 			return func(this);
 		}
 
+		static void AttachWater(bool a_attach)
+		{
+			using func_t = decltype(&BGSTerrainChunk::AttachWater);
+			static REL::Relocation<func_t> func{ ID::BGSTerrainChunk::AttachWater };
+			return func(a_attach);
+		}
+
 		void Detach()
 		{
 			using func_t = decltype(&BGSTerrainChunk::Detach);
@@ -50,4 +57,5 @@ namespace RE
 	static_assert(offsetof(BGSTerrainChunk, attached) == 0x21);
 	static_assert(offsetof(BGSTerrainChunk, waterAttached) == 0x22);
 	static_assert(offsetof(BGSTerrainChunk, prepared) == 0x23);
+	static_assert(sizeof(BGSTerrainChunk) == 0x28);
 }

@@ -1,17 +1,14 @@
 #pragma once
 
+#include "RE/B/BSAudioMonitor.h"
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSStringT.h"
 
 namespace RE
 {
 	class BSAudioListener;
 	class BSGameSound;
 	class BSIReverbType;
-
-	namespace BSAudioMonitor
-	{
-		class Receiver;
-	}
 
 	namespace BSResource
 	{
@@ -32,13 +29,13 @@ namespace RE
 		[[nodiscard]] virtual BSGameSound*                    GetGameSound(const BSResource::ID& a_resourceID) = 0;
 		virtual void                                          ReleaseGameSound(BSGameSound* a_gameSound) = 0;
 		[[nodiscard]] virtual const BSFixedString&            GetSystemName() = 0;
-		virtual void                                          ApplyReverbType(const std::uint8_t a_unk, const BSIReverbType* a_reverbType, std::uint32_t a_tickLength) = 0;
-		virtual void                                          Initialize3D() = 0;
+		virtual void                                          ApplyReverbType(const std::uint8_t a_unk, const BSIReverbType* a_reverbType, std::uint64_t a_tickLength) = 0;
+		virtual void                                          Initialize3D(float a_speedOfSound) = 0;
 		virtual void                                          nullfunc_40() = 0;
 		[[nodiscard]] virtual std::uint32_t                   CreateMonitor(float a_amplitude) = 0;
 		virtual void                                          ReleaseMonitor(std::uint32_t a_monitor) = 0;
-		[[nodiscard]] virtual const BSAudioMonitor::Receiver* GetReceiver(std::uint32_t a_monitor) = 0;
-		virtual void                                          GetDeviceInfo() = 0;
+		[[nodiscard]] virtual BSAudioMonitor::Receiver       GetReceiver(std::uint32_t a_monitor) = 0;
+		virtual void                                          GetDeviceInfo(BSString& a_info) = 0;
 
 		// members
 		BSAudioListener* m_listener;        // 0x08

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstring>
+
 #include "RE/B/BSCriticalSection.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTAtomicValue.h"
@@ -10,23 +12,78 @@
 #include "RE/N/NiRect.h"
 #include "RE/N/NiTexture.h"
 
+#include "REX/LOG.h"
 #include "REX/W32/D3D11.h"
 
 namespace RE
 {
+	class BSGeometrySegmentData;
+	class NiParticles;
+	class NiTransform;
 	class BSD3DResourceCreator;
 	class BSEventFlag;
 	class NiCamera;
 
 	namespace BSGraphics
 	{
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS_INDEX = 8;
+		inline constexpr std::int32_t SHADOW_RASTER_DEPTH_BIAS = 12;
+		inline constexpr float        SHADOW_RASTER_SLOPE_SCALED_DEPTH_BIAS = 6.0F;
+		inline constexpr float        SHADOW_RASTER_DEPTH_BIAS_CLAMP = -100.0F;
+
+		class DynamicTriShape;
+		class DynamicTriShapeDrawData;
+		class StructuredBuffer;
 		enum class Format;
 		class Texture;
+		class TriShape;
 
-		enum class AlphaBlendAlphaToCoverage : std::int32_t;
-		enum class AlphaBlendMode : std::int32_t;
-		enum class AlphaBlendWriteMode : std::int32_t;
-		enum class DepthStencilDepthMode : std::int32_t;
+		enum class AlphaBlendAlphaToCoverage : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
+
+		enum class AlphaBlendMode : std::int32_t
+		{
+			kDisabled,
+			kAlpha,               // SRC_ALPHA, INV_SRC_ALPHA
+			kAdditiveAlpha,       // SRC_ALPHA, ONE
+			kMultiply,            // DEST_COLOR, ZERO; alpha ONE, ZERO
+			kPremultipliedAlpha,  // ONE, INV_SRC_ALPHA
+			kAdditive,            // ONE, ONE
+			kMultiplyIndependent  // independent: RT0 kMultiply, RT1-7 kAlpha
+		};
+
+		// Masks apply to RT0-3; non-independent states extend RT0's to RT4-7.
+		enum class AlphaBlendWriteMode : std::int32_t
+		{
+			kNone,
+			kRGB,
+			kRGBA,
+			kRG,
+			kBA,
+			kR,
+			kG,
+			kB,
+			kA,
+			kAlphaOnlyRT0,  // independent: RT0 A, RT1-3 RGB, RT4-7 none
+			kAlphaOnlyRT1,
+			kAlphaOnlyRT2,
+			kAlphaOnlyRT3
+		};
+
+		enum class DepthStencilDepthMode : std::int32_t
+		{
+			kDisabled,
+			kTest,              // LESS_EQUAL, no write
+			kWrite,             // ALWAYS, write
+			kTestWrite,         // LESS_EQUAL, write
+			kTestEqual,         // EQUAL, no write
+			kTestGreaterEqual,  // GREATER_EQUAL, no write
+			kTestGreater        // GREATER, no write
+		};
+
 		enum class DepthStencilExtraMode : std::int32_t;
 		enum class DepthStencilStencilMode : std::int32_t;
 		enum class RasterStateCullMode : std::int32_t;
@@ -51,6 +108,67 @@ namespace RE
 			kRestore = 0x3,
 			kForceCopyRestore = 0x4,
 			kInit = 0x5
+		};
+
+		// Logical IDs; pooled targets must be acquired before platform lookup.
+		enum class RenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kFrameBuffer = 0,
+			kMain = 1,
+			kMainCopy = 2,
+			kSSRPrepass = 4,
+			kSSR = 5,
+			kSSRBlurred0 = 6,
+			kSSRBlurred1 = 7,
+			kSSRDepth = 8,
+			kRefractionNormals = 14,
+			kMenuBackground = 15,
+			kHUDGlass = 24,
+			kHUDGlassSwap = 25,
+			kGBufferAlbedoSpecular = 26,
+			kGBufferNormal = 27,
+			kGBufferEnvironment = 29,
+			kGBufferAmbient = 30,
+			kGBufferEmissive = 31,
+			kGBufferMotionVectors = 32,
+			kDiffuseLight = 33,
+			kDiffuseSpecular = 34,
+			kDiffuseLightTiled = 35,
+			kDiffuseSpecularTiled = 36,
+			kAmbientOcclusion = 37,
+			kAmbientOcclusionHalf = 39,
+			kSAOCameraZ = 40,
+			kPipboy = 60,
+			kPipboySwap = 61,
+			kHDRBlurSwap = 68,
+			kHDRDownsample0 = 70,
+			kRainOcclusion = 86,
+			kCount = 100
+		};
+
+		enum class DepthStencilTargetID : std::int32_t
+		{
+			kUnbound = -1,
+			kNone = 0,
+			kMain = 1,
+			kCubemapReflections = 7,
+			kRainOcclusion = 8,
+			kCount = 12
+		};
+
+		enum class CubeMapRenderTargetID : std::int32_t
+		{
+			kNone = -1,
+			kReflections = 0,
+			kCount = 1
+		};
+
+		enum class RenderTargetCreationMode : std::uint8_t
+		{
+			kPooled = 0,
+			kPersistent = 1,
+			kOnDemand = 2
 		};
 
 		enum class TAA_STATE : std::int32_t
@@ -89,6 +207,16 @@ namespace RE
 			kWrap_S_Wrap_T = 0x3,
 		};
 
+		using SamplerStateTable = REX::W32::ID3D11SamplerState* [4][5][16];
+		static_assert(sizeof(SamplerStateTable) == 0xA00);
+
+		// Indexed by address mode, filter mode, then integral MinLOD (0..15).
+		[[nodiscard]] inline SamplerStateTable& GetSamplerStateTable()
+		{
+			static REL::Relocation<SamplerStateTable*> table{ ID::BSGraphics::SamplerStateTable };
+			return *table;
+		}
+
 		enum class Usage : std::int32_t
 		{
 			kDefault = 0x0,
@@ -121,14 +249,14 @@ namespace RE
 		static_assert(sizeof(Buffer) == 0x50);
 
 		class VertexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
 		static_assert(sizeof(VertexBuffer) == 0x50);
 
 		class IndexBuffer :
-			public Buffer
+		    public Buffer
 		{
 		public:
 		};
@@ -140,12 +268,26 @@ namespace RE
 			// members
 			std::uint16_t height = 0;    // 0
 			std::uint16_t width = 0;     // 2
-			std::uint8_t  mipCount = 0;  // 3
+			std::uint8_t  mipCount = 0;  // 4
 			std::uint8_t  format = 0;    // 5
 			std::uint8_t  flags = 0;     // 6
 			std::uint8_t  tilemode = 0;  // 7
 		};
 		static_assert(sizeof(TextureHeader) == 0x8);
+
+		class Texture
+		{
+		public:
+			// members
+			REX::W32::ID3D11ShaderResourceView*  srView;       // 00
+			REX::W32::ID3D11Texture2D*           texture;      // 08
+			REX::W32::ID3D11UnorderedAccessView* uaView;       // 10
+			std::byte                            pad18[0x10];  // 18
+			TextureHeader                        header;       // 28 - format is the created DXGI format
+			std::byte                            pad30[0x10];  // 30
+		};
+		static_assert(sizeof(Texture) == 0x40);
+		static_assert(offsetof(Texture, header) == 0x28);
 
 		class ConstantGroup
 		{
@@ -428,6 +570,19 @@ namespace RE
 		public:
 			using ResetRenderTargets_t = void (*)();
 
+			[[nodiscard]] static Renderer* GetSingleton()
+			{
+				static REL::Relocation<Renderer*> singleton{ ID::BSGraphics::Renderer::Singleton };
+				return singleton.get();
+			}
+
+			[[nodiscard]] TriShape* CreateTriShape(std::uint32_t& a_dataSize, const void* a_data, std::uint64_t a_vertexDesc, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::CreateTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::CreateTriShape };
+				return func(this, a_dataSize, a_data, a_vertexDesc, a_indexBuffer);
+			}
+
 			void IncRef(Buffer* a_vertexBuffer)
 			{
 				using func_t = decltype(&BSGraphics::Renderer::IncRef);
@@ -470,12 +625,166 @@ namespace RE
 				return func(this);
 			}
 
+			// Saves one previous color for RestorePreviousClearColor; calls do not nest.
+			void SetClearColor(float a_red, float a_green, float a_blue, float a_alpha)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetClearColor };
+				return func(this, a_red, a_green, a_blue, a_alpha);
+			}
+
+			void RestorePreviousClearColor()
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RestorePreviousClearColor);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RestorePreviousClearColor };
+				return func(this);
+			}
+
+			void FlushConstantGroup(ConstantGroup* a_vertex, ConstantGroup* a_pixel)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::FlushConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::FlushConstantGroup };
+				return func(this, a_vertex, a_pixel);
+			}
+
+			[[nodiscard]] ConstantGroup* GetShaderConstantGroup(PixelShader* a_shader, std::uint32_t a_level)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::GetShaderConstantGroup);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::GetShaderConstantGroupPS };
+				return func(this, a_shader, a_level);
+			}
+
+			void ResetWindow(std::uint32_t a_windowID)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ResetWindow);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ResetWindow };
+				return func(this, a_windowID);
+			}
+
+			void SetShaders(VertexShader* a_vertexShader, HullShader* a_hullShader, DomainShader* a_domainShader, PixelShader* a_pixelShader)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::SetShaders);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::SetShaders };
+				return func(this, a_vertexShader, a_hullShader, a_domainShader, a_pixelShader);
+			}
+
+			void DrawTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A null index buffer draws with the shape's own.
+			void DrawTriShapeIndexed(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeIndexed);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeIndexed };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			void DrawTriShapeLargeIndices(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawTriShapeLargeIndices);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawTriShapeLargeIndices };
+				return func(this, a_shape, a_startIndex, a_numTriangles);
+			}
+
+			// A non-null instance buffer binds as the second vertex stream.
+			void DrawInstancedTriShape(TriShape* a_shape, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, std::uint32_t a_instanceCount, std::uint64_t a_vertexDesc, VertexBuffer* a_instanceBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawInstancedTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawInstancedTriShape };
+				return func(this, a_shape, a_startIndex, a_numTriangles, a_instanceCount, a_vertexDesc, a_instanceBuffer);
+			}
+
+			void DrawDynamicTriShape(DynamicTriShape* a_shape, DynamicTriShapeDrawData& a_drawData, std::uint32_t a_startIndex, std::uint32_t a_numTriangles, IndexBuffer* a_indexBuffer)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawDynamicTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawDynamicTriShape };
+				return func(this, a_shape, a_drawData, a_startIndex, a_numTriangles, a_indexBuffer);
+			}
+
+			// Draws quads of four 48-byte vertices.
+			void DrawParticleShaderTriShape(const void* a_vertices, std::uint32_t a_vertexCount)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::DrawParticleShaderTriShape);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::DrawParticleShaderTriShape };
+				return func(this, a_vertices, a_vertexCount);
+			}
+
+			// Replays a null-terminated array of command-buffer records.
+			void ProcessCommandBuffer(char** a_records)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::ProcessCommandBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::ProcessCommandBuffer };
+				return func(this, a_records);
+			}
+
+			void RunComputeShader(ComputeShader* a_computeShader, std::uint32_t a_groupCountX, std::uint32_t a_groupCountY, std::uint32_t a_groupCountZ)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::RunComputeShader);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::RunComputeShader };
+				return func(this, a_computeShader, a_groupCountX, a_groupCountY, a_groupCountZ);
+			}
+
+			// A zero count uploads the buffer's full capacity.
+			void UpdateStructuredBuffer(StructuredBuffer* a_buffer, const void* a_source,
+				std::uint32_t a_stride, std::uint32_t a_count)
+			{
+				using func_t = decltype(&Renderer::UpdateStructuredBuffer);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UpdateStructuredBuffer };
+				func(this, a_buffer, a_source, a_stride, a_count);
+			}
+
+			bool MapTexture(Texture* a_texture, REX::W32::D3D11_MAP a_mapType, REX::W32::D3D11_MAPPED_SUBRESOURCE* a_mapped)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::MapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::MapTexture };
+				return func(this, a_texture, a_mapType, a_mapped);
+			}
+
+			void UnmapTexture(Texture* a_texture)
+			{
+				using func_t = decltype(&BSGraphics::Renderer::UnmapTexture);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Renderer::UnmapTexture };
+				return func(this, a_texture);
+			}
+
 			// members
 			bool                 skipNextPresent;     // 00
 			ResetRenderTargets_t resetRenderTargets;  // 08
 			RendererData         data;                // 10
 		};
 		static_assert(sizeof(Renderer) == 0x25D0);
+
+		// Submits pending state; output-only skips IA and shader-stage slots.
+		inline void SetDirtyStates(bool a_outputStateOnly, bool a_compute)
+		{
+			using func_t = decltype(&SetDirtyStates);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::SetDirtyStates };
+			func(a_outputStateOnly, a_compute);
+		}
+
+		// One queued opaque Z-prepass draw; world points into its geometry.
+		struct ZPrePassDrawData
+		{
+			TriShape*              shape;          // 00
+			const NiTransform*     world;          // 08
+			BSGeometrySegmentData* segments;       // 10
+			std::uint32_t          indexCount;     // 18
+			std::uint16_t          cullMode;       // 1C
+			std::uint16_t          depthBiasMode;  // 1E
+		};
+		static_assert(sizeof(ZPrePassDrawData) == 0x20);
+
+		// The trailing references cache the last bound layout and raster state.
+		inline void RenderZPrePass(RendererShadowState& a_state, ZPrePassDrawData& a_data, std::uint64_t& a_vertexDesc, std::uint16_t& a_cullMode, std::uint16_t& a_depthBiasMode)
+		{
+			using func_t = decltype(&RenderZPrePass);
+			static REL::Relocation<func_t> func{ ID::BSGraphics::RenderZPrePass };
+			func(a_state, a_data, a_vertexDesc, a_cullMode, a_depthBiasMode);
+		}
 
 		[[nodiscard]] inline RendererData* GetRendererData()
 		{
@@ -487,13 +796,6 @@ namespace RE
 		{
 			static REL::Relocation<RendererWindow**> ptr{ ID::BSGraphics::GetCurrentRendererWindow };
 			return *ptr;
-		}
-
-		inline void LoadTextureData(Texture* a_texture, char* a_data, std::uint32_t a_dataSize, std::uint32_t a_mipLevel)
-		{
-			using func_t = decltype(&LoadTextureData);
-			static REL::Relocation<func_t> func{ ID::BSGraphics::LoadTextureData };
-			func(a_texture, a_data, a_dataSize, a_mipLevel);
 		}
 
 		class Context
@@ -541,6 +843,13 @@ namespace RE
 		};
 		static_assert(sizeof(Context) == 0x2FF0);
 
+		// Fallback the engine uses when the thread has no installed context.
+		[[nodiscard]] inline Context* GetGlobalContext()
+		{
+			static REL::Relocation<Context**> ptr{ ID::BSGraphics::GlobalContext };
+			return *ptr;
+		}
+
 		class Vertex
 		{
 		public:
@@ -584,6 +893,7 @@ namespace RE
 				DESC_MASK_FLAGS = ~(DESC_MASK_OFFSET)
 			};
 		};
+		static_assert(sizeof(Vertex) == 0x1);
 
 		class VertexDesc
 		{
@@ -683,6 +993,21 @@ namespace RE
 		};
 		static_assert(sizeof(CameraStateData) == 0x250);
 
+		namespace detail
+		{
+			template <class T>
+			[[nodiscard]] T& RuntimeField(void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<T*>(static_cast<std::byte*>(a_object) + a_offset);
+			}
+
+			template <class T>
+			[[nodiscard]] const T& RuntimeField(const void* a_object, std::size_t a_offset) noexcept
+			{
+				return *reinterpret_cast<const T*>(static_cast<const std::byte*>(a_object) + a_offset);
+			}
+		}
+
 		class State
 		{
 		public:
@@ -692,7 +1017,39 @@ namespace RE
 				return singleton.get();
 			}
 
-			// members
+			[[nodiscard]] TAA_STATE GetTAAState() const noexcept
+			{
+				return detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState);
+			}
+
+			void SetTAAState(TAA_STATE a_state) noexcept
+			{
+				detail::RuntimeField<TAA_STATE>(this, GetTAAOffsets().taaState) = a_state;
+			}
+
+			[[nodiscard]] std::uint32_t GetTAADisableCounter() const noexcept
+			{
+				return detail::RuntimeField<std::uint32_t>(this, GetTAAOffsets().taaDisableCounter);
+			}
+
+		private:
+			struct TAAOffsets
+			{
+				std::size_t taaState;
+				std::size_t taaDisableCounter;
+			};
+			static_assert(sizeof(TAAOffsets) == 0x10);
+
+			[[nodiscard]] static TAAOffsets GetTAAOffsets() noexcept
+			{
+				// UpdateTemporalData reads OG [this+A8]/[AC], NG/AE [this+AC]/[B0].
+				constexpr TAAOffsets og{ 0xA8, 0xAC };
+				constexpr TAAOffsets ngae{ 0xAC, 0xB0 };
+				return REX::FModule::IsRuntimeOG() ? og : ngae;
+			}
+
+		public:
+			// members; TAA fields use OG offsets (NG/AE 0AC/0B0), use the accessors
 			std::uint32_t             currentFrame;                      // 000
 			float                     offsetX;                           // 004
 			float                     offsetY;                           // 008
@@ -740,17 +1097,7 @@ namespace RE
 		};
 		static_assert(sizeof(State) == 0x3C0);
 
-		// Named values not confirmed via any decompiled string/enum table - RE evidence only:
-		// kTransient (0) takes the immediate-release branch in RenderTargetManager::CreateRenderTarget;
-		// kUnk1/kUnk2 are the raw defaults InitializeTargets assigns to standard vs. cube-map render
-		// targets respectively. There may be additional values not yet observed.
-		enum class TARGET_PERSISTENCE : std::int8_t
-		{
-			kTransient = 0x0,
-			kUnk1 = 0x1,
-			kUnk2 = 0x2,
-		};
-
+		// Value-initialize creation properties; pool matching reads unnamed bytes.
 		class RenderTargetProperties
 		{
 		public:
@@ -758,16 +1105,24 @@ namespace RE
 			std::uint32_t width;                   // 00
 			std::uint32_t height;                  // 04
 			Format        format;                  // 08
-			std::uint32_t multiSample;             // 0C
+			std::byte     pad0C[4];                // 0C
 			bool          copyable;                // 10
 			bool          supportUnorderedAccess;  // 11
 			bool          allowMipGeneration;      // 12
-			bool          forceLinear;             // 13
+			std::byte     pad13;                   // 13
 			std::int32_t  mipLevel;                // 14
 			std::uint32_t textureTarget;           // 18
-			bool          enableFastClear;         // 1C
+			std::byte     pad1C[4];                // 1C
 		};
 		static_assert(sizeof(RenderTargetProperties) == 0x20);
+		static_assert(offsetof(RenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(RenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(RenderTargetProperties, format) == 0x08);
+		static_assert(offsetof(RenderTargetProperties, copyable) == 0x10);
+		static_assert(offsetof(RenderTargetProperties, supportUnorderedAccess) == 0x11);
+		static_assert(offsetof(RenderTargetProperties, allowMipGeneration) == 0x12);
+		static_assert(offsetof(RenderTargetProperties, mipLevel) == 0x14);
+		static_assert(offsetof(RenderTargetProperties, textureTarget) == 0x18);
 
 		class DepthStencilTargetProperties
 		{
@@ -776,30 +1131,42 @@ namespace RE
 			std::uint32_t width;           // 00
 			std::uint32_t height;          // 04
 			std::uint32_t arraySize;       // 08
-			std::uint32_t multiSample;     // 0C
-			std::int32_t  alias;           // 10
-			bool          sampleable;      // 14
-			bool          htile;           // 15
+			std::byte     pad0C[0xA];      // 0C
 			bool          stencil;         // 16
 			bool          use16BitsDepth;  // 17
 		};
+		// Common prefix and OG stride; NG/AE append four bytes.
 		static_assert(sizeof(DepthStencilTargetProperties) == 0x18);
+		static_assert(offsetof(DepthStencilTargetProperties, width) == 0x00);
+		static_assert(offsetof(DepthStencilTargetProperties, height) == 0x04);
+		static_assert(offsetof(DepthStencilTargetProperties, arraySize) == 0x08);
+		static_assert(offsetof(DepthStencilTargetProperties, stencil) == 0x16);
+		static_assert(offsetof(DepthStencilTargetProperties, use16BitsDepth) == 0x17);
+
+		// Creation storage covers both runtime strides without extending OG views.
+		class DepthStencilTargetCreationProperties
+		{
+		public:
+			DepthStencilTargetProperties properties;  // 00
+			std::byte                    pad18[4];    // 18 - NG/AE only
+		};
+		static_assert(sizeof(DepthStencilTargetCreationProperties) == 0x1C);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, properties) == 0x00);
+		static_assert(offsetof(DepthStencilTargetCreationProperties, pad18) == 0x18);
 
 		class CubeMapRenderTargetProperties
 		{
 		public:
 			// members
-			std::uint32_t width;           // 00
-			std::uint32_t height;          // 04
-			Format        format;          // 08
-			std::uint32_t multiSample;     // 0C
-			bool          sampleable;      // 10
-			std::int32_t  alias;           // 14
-			std::int32_t  _360Alias;       // 18
-			std::int32_t  _360Group;       // 1C
-			std::int32_t  _360TileHeight;  // 20
+			std::uint32_t width;        // 00
+			std::uint32_t height;       // 04
+			Format        format;       // 08
+			std::byte     pad0C[0x18];  // 0C
 		};
 		static_assert(sizeof(CubeMapRenderTargetProperties) == 0x24);
+		static_assert(offsetof(CubeMapRenderTargetProperties, width) == 0x00);
+		static_assert(offsetof(CubeMapRenderTargetProperties, height) == 0x04);
+		static_assert(offsetof(CubeMapRenderTargetProperties, format) == 0x08);
 
 		class DynamicTriShapeData
 		{
@@ -830,6 +1197,36 @@ namespace RE
 				return singleton.get();
 			}
 
+			void CreateRenderTarget(RenderTargetID a_logicalID, const RenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateDepthStencilTarget(DepthStencilTargetID a_logicalID, const DepthStencilTargetCreationProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateDepthStencilTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateDepthStencilTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			void CreateCubeMapRenderTarget(CubeMapRenderTargetID a_logicalID, const CubeMapRenderTargetProperties* a_properties, RenderTargetCreationMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::CreateCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateCubeMapRenderTarget };
+				return func(this, a_logicalID, a_properties, a_mode);
+			}
+
+			// Preserve the NG/AE tail when recreating an existing depth target.
+			[[nodiscard]] DepthStencilTargetCreationProperties GetDepthStencilTargetCreationProperties(std::size_t a_logicalID) const noexcept
+			{
+				const auto                           offsets = GetRenderTargetOffsets();
+				DepthStencilTargetCreationProperties properties{};
+				std::memcpy(&properties, &GetDepthStencilTargetProperties(a_logicalID), offsets.depthStencilTargetStride);
+				return properties;
+			}
+
 			void SetEnableDynamicResolution(bool a_enableDynamicResolution)
 			{
 				using func_t = decltype(&RenderTargetManager::SetEnableDynamicResolution);
@@ -837,37 +1234,180 @@ namespace RE
 				return func(this, a_enableDynamicResolution);
 			}
 
-			// Registers a logical slot (0-99) with the given properties; only 72 of 100 slots are
-			// claimed by vanilla systems as of this fork's audit - see RE-notes for the free list.
-			void CreateRenderTarget(std::int32_t a_slot, const RenderTargetProperties& a_properties, TARGET_PERSISTENCE a_persistence)
+			[[nodiscard]] static std::uint32_t QShadowMapArrayDepthStencil()
 			{
-				using func_t = decltype(&RenderTargetManager::CreateRenderTarget);
-				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::CreateRenderTarget };
-				return func(this, a_slot, a_properties, a_persistence);
+				using func_t = decltype(&RenderTargetManager::QShadowMapArrayDepthStencil);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::QShadowMapArrayDepthStencil };
+				return func();
 			}
 
-			// Refcounted acquire for a pooled (non-persistent) slot; pair with ReleaseRenderTarget.
-			void AcquireRenderTarget(std::int32_t a_slot)
+			[[nodiscard]] bool IsUsingDynamicResolutionViewportAsDefaultViewport() const noexcept
+			{
+				return GetRuntimeField<bool>(GetDynamicResolutionOffsets().viewportAsDefault);
+			}
+
+			void SetUseDynamicResolutionViewportAsDefaultViewport(bool a_useDynamicResolutionViewport)
+			{
+				using func_t = decltype(&RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetUseDynamicResolutionViewportAsDefaultViewport };
+				return func(this, a_useDynamicResolutionViewport);
+			}
+
+			// Writes shadow state for the active Context; a_logicalID -1 unbinds the slot.
+			void SetCurrentRenderTarget(std::int32_t a_slot, std::int32_t a_logicalID, SetRenderTargetMode a_mode)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode);
+			}
+
+			// Binds a pooled logical target as a PS texture; a_useDepth selects its depth view.
+			void SetTextureRenderTarget(std::uint32_t a_slot, std::int32_t a_logicalID, TextureAddressMode a_mode, bool a_useDepth)
+			{
+				using func_t = decltype(&RenderTargetManager::SetTextureRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetTextureRenderTarget };
+				return func(this, a_slot, a_logicalID, a_mode, a_useDepth);
+			}
+
+			// While set, only this face RTV and the depth target are bound; a_logicalID -1,
+			// or a 2D bind that changes a slot or uses a mode other than 3, leaves cube mode.
+			void SetCurrentCubeMapRenderTarget(std::int32_t a_logicalID, SetRenderTargetMode a_mode, std::int32_t a_face)
+			{
+				using func_t = decltype(&RenderTargetManager::SetCurrentCubeMapRenderTarget);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentCubeMapRenderTarget };
+				return func(this, a_logicalID, a_mode, a_face);
+			}
+			// Maps a pooled logical target to a platform slot until ReleaseRenderTarget.
+			void AcquireRenderTarget(std::int32_t a_logicalID)
 			{
 				using func_t = decltype(&RenderTargetManager::AcquireRenderTarget);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::AcquireRenderTarget };
-				return func(this, a_slot);
+				return func(this, a_logicalID);
 			}
 
-			// Releases a refcount taken by AcquireRenderTarget.
-			void ReleaseRenderTarget(std::int32_t a_slot)
+			void ReleaseRenderTarget(std::int32_t a_logicalID)
 			{
 				using func_t = decltype(&RenderTargetManager::ReleaseRenderTarget);
 				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::ReleaseRenderTarget };
-				return func(this, a_slot);
+				return func(this, a_logicalID);
 			}
 
-			// Flips a slot between refcounted-pooled and persistent-until-explicitly-released.
-			void SetRenderTargetPersistency(std::int32_t a_slot, bool a_persistent)
+			// Dereferences the active Context; call only after the renderer is initialized.
+			static void SetCurrentViewportForceToRenderTargetDimensions()
 			{
-				using func_t = decltype(&RenderTargetManager::SetRenderTargetPersistency);
-				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetRenderTargetPersistency };
-				return func(this, a_slot, a_persistent);
+				using func_t = decltype(&RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::RenderTargetManager::SetCurrentViewportForceToRenderTargetDimensions };
+				return func();
+			}
+
+			[[nodiscard]] DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] const DepthStencilTargetProperties& GetDepthStencilTargetProperties(std::size_t a_index) const noexcept
+			{
+				assert(a_index < 12);
+				const auto offsets = GetRenderTargetOffsets();
+				return GetRuntimeField<DepthStencilTargetProperties>(offsets.depthStencilTargetData + (offsets.depthStencilTargetStride * a_index));
+			}
+
+			[[nodiscard]] CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] const CubeMapRenderTargetProperties& GetCubeMapRenderTargetProperties(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<CubeMapRenderTargetProperties>(GetRenderTargetOffsets().cubeMapRenderTargetData + (sizeof(CubeMapRenderTargetProperties) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 100);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().renderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetDepthStencilTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 12);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().depthStencilTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] const std::uint32_t& GetCubeMapRenderTargetPlatformID(std::size_t a_logicalID) const noexcept
+			{
+				assert(a_logicalID < 1);
+				return GetRuntimeField<std::uint32_t>(GetRenderTargetOffsets().cubeMapRenderTargetID + (sizeof(std::uint32_t) * a_logicalID));
+			}
+
+			[[nodiscard]] RenderTarget& GetRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] const RenderTarget& GetRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->renderTargets));
+				return rendererData->renderTargets[platformID];
+			}
+
+			[[nodiscard]] DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
+			}
+
+			[[nodiscard]] const DepthStencilTarget& GetDepthStencilTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetDepthStencilTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->depthStencilTargets));
+				return rendererData->depthStencilTargets[platformID];
+			}
+
+			[[nodiscard]] CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) noexcept
+			{
+				auto*      rendererData = GetRendererData();
+				const auto platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
+			}
+
+			[[nodiscard]] const CubeMapRenderTarget& GetCubeMapRenderTarget(std::size_t a_logicalID) const noexcept
+			{
+				const auto* rendererData = GetRendererData();
+				const auto  platformID = GetCubeMapRenderTargetPlatformID(a_logicalID);
+				assert(platformID < std::size(rendererData->cubeMapRenderTargets));
+				return rendererData->cubeMapRenderTargets[platformID];
 			}
 
 			[[nodiscard]] float GetDynamicWidthRatio() const noexcept
@@ -894,43 +1434,76 @@ namespace RE
 			}
 
 		private:
+			struct RenderTargetOffsets
+			{
+				std::size_t depthStencilTargetData;
+				std::size_t depthStencilTargetStride;
+				std::size_t cubeMapRenderTargetData;
+				std::size_t renderTargetID;
+				std::size_t depthStencilTargetID;
+				std::size_t cubeMapRenderTargetID;
+			};
+			static_assert(sizeof(RenderTargetOffsets) == 0x30);
+
 			struct DynamicResolutionOffsets
 			{
 				std::size_t widthRatio;
 				std::size_t heightRatio;
 				std::size_t isActivated;
+				std::size_t viewportAsDefault;
 			};
+			static_assert(sizeof(DynamicResolutionOffsets) == 0x20);
+
+			[[nodiscard]] static RenderTargetOffsets GetRenderTargetOffsets() noexcept
+			{
+				constexpr RenderTargetOffsets og{ 0xC80, 0x18, 0xDA0, 0xDC4, 0xF54, 0xF84 };
+				constexpr RenderTargetOffsets ngae{ 0xC80, 0x1C, 0xDD0, 0xDF4, 0xF84, 0xFB4 };
+				if (REX::FModule::IsRuntimeOG()) {
+					return og;
+				}
+				if (REX::FModule::IsRuntimeAE()) {
+					return ngae;
+				}
+
+				constexpr REL::Version supportedNGVersion{ 1, 10, 984, 0 };
+				static const auto      version = REX::FModule::GetExecutingModule().GetFileVersion();
+				if (version == supportedNGVersion) {
+					return ngae;
+				}
+
+				REX::FAIL("Unverified RenderTargetManager layout for Fallout 4 {}.", version);
+				std::terminate();
+			}
 
 			[[nodiscard]] static DynamicResolutionOffsets GetDynamicResolutionOffsets() noexcept
 			{
-				// Fallout4RE cs-rtm-dynamic-res-offsets.json @ a124812; RE-note-sourced OG offsets need live validation.
-				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8 };
-				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5 };
+				constexpr DynamicResolutionOffsets og{ 0xF88, 0xF8C, 0xFA8, 0xFA7 };
+				constexpr DynamicResolutionOffsets ngae{ 0xFB8, 0xFBC, 0xFE5, 0xFE4 };
 				return REX::FModule::IsRuntimeOG() ? og : ngae;
 			}
 
 			template <class T>
 			[[nodiscard]] T& GetRuntimeField(std::size_t a_offset) noexcept
 			{
-				return *reinterpret_cast<T*>(reinterpret_cast<std::byte*>(this) + a_offset);
+				return detail::RuntimeField<T>(this, a_offset);
 			}
 
 			template <class T>
 			[[nodiscard]] const T& GetRuntimeField(std::size_t a_offset) const noexcept
 			{
-				return *reinterpret_cast<const T*>(reinterpret_cast<const std::byte*>(this) + a_offset);
+				return detail::RuntimeField<T>(this, a_offset);
 			}
 
 		public:
 			// members
-			RenderTargetProperties        renderTargetData[100];       // 000
+			RenderTargetProperties renderTargetData[100];  // 000
+			// OG-only layout from this point; use matching accessors across runtimes.
 			DepthStencilTargetProperties  depthStencilTargetData[12];  // C80
 			CubeMapRenderTargetProperties cubeMapRenderTargetData[1];  // DA0
-			std::byte                     padDC4[0x30];
-			std::uint32_t                 renderTargetID[100];       // DC4
-			std::uint32_t                 depthStencilTargetID[12];  // F54
-			std::uint32_t                 cubeMapRenderTargetID[1];  // F84
-			// OG layout; use the accessors above for runtime-independent dynamic-resolution fields.
+			// ID member offsets are OG-only; use the accessors.
+			std::uint32_t                 renderTargetID[100];                            // DC4
+			std::uint32_t                 depthStencilTargetID[12];                       // F54
+			std::uint32_t                 cubeMapRenderTargetID[1];                       // F84
 			float                         dynamicWidthRatio;                              // F88
 			float                         dynamicHeightRatio;                             // F8C
 			float                         lowestWidthRatio;                               // F90
@@ -948,7 +1521,13 @@ namespace RE
 			BSTAtomicValue<std::uint32_t> dynamicResolutionDisabled;                      // FB4
 			Create_T                      create;                                         // FB8
 		};
-		static_assert(sizeof(RenderTargetManager) == 0xFF0);
+		static_assert(sizeof(RenderTargetManager) == 0xFC0);
+		static_assert(offsetof(RenderTargetManager, renderTargetData) == 0x000);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetData) == 0xC80);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetData) == 0xDA0);
+		static_assert(offsetof(RenderTargetManager, renderTargetID) == 0xDC4);
+		static_assert(offsetof(RenderTargetManager, depthStencilTargetID) == 0xF54);
+		static_assert(offsetof(RenderTargetManager, cubeMapRenderTargetID) == 0xF84);
 
 		class OcclusionQuery
 		{
@@ -961,6 +1540,13 @@ namespace RE
 
 		namespace Utility
 		{
+			inline void PackDynamicParticleData(std::uint32_t a_count, NiParticles* a_particles, void* a_mappedVertices)
+			{
+				using func_t = decltype(&PackDynamicParticleData);
+				static REL::Relocation<func_t> func{ ID::BSGraphics::Utility::PackDynamicParticleData };
+				func(a_count, a_particles, a_mappedVertices);
+			}
+
 			inline void ConvertHALFToNiPoint3Stream(const std::uint16_t* a_src, NiPoint3* a_dst, std::uint32_t a_count, std::uint32_t a_stride)
 			{
 				using func_t = decltype(&ConvertHALFToNiPoint3Stream);

@@ -10,12 +10,22 @@
 namespace RE
 {
 	class __declspec(novtable) NiLight :
-		public NiAVObject  // 000
+	    public NiAVObject  // 000
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::NiLight };
 		static constexpr auto VTABLE{ VTABLE::NiLight };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::NiLight };
+
+		[[nodiscard]] float GetRadius() const noexcept
+		{
+			return spec.r;
+		}
+
+		void SetRadius(float a_radius) noexcept
+		{
+			spec = { a_radius, a_radius, a_radius };
+		}
 
 		// members
 		NiColor amb;   // 120

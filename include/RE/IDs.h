@@ -4223,4 +4223,17 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID GetScale{ 911188, 2200892 };
 	}
+	namespace GFX
+	{
+		inline constexpr REL::VariantID TagTable1{ 472850, 2764187 };
+	}
+	namespace BSAnimationGraphManager
+	{
+		inline constexpr REL::VariantID dtorSlot{ 854030, 2256709 };
+		inline constexpr REL::VariantID dtorBody{ 179805, 2256656 };
+	}
+	namespace BSScript
+	{
+		inline constexpr REL::VariantID Executor{ 614585, 2315660 };
+	}
 }

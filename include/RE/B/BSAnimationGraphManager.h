@@ -20,6 +20,9 @@ namespace RE
 		public BSIntrusiveRefCounted                 //08
 	{
 	public:
+		static constexpr auto RTTI{ RTTI::BSAnimationGraphManager };
+		static constexpr auto VTABLE{ VTABLE::BSAnimationGraphManager };
+
 		class DependentManagerSmartPtr
 		{
 		public:

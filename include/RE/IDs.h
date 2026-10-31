@@ -4236,4 +4236,31 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Executor{ 614585, 2315660 };
 	}
+	namespace BSAnimationGraphManager
+	{
+		inline constexpr REL::VariantID RegisterChannels{ 1479426, 2256662 };
+		inline constexpr REL::VariantID RegisterChannelsHelper{ 1159738, 2256689 };
+	}
+	namespace IAnimationGraphManagerHolder
+	{
+		inline constexpr REL::VariantID InitializeGraphManager{ 984575, 2214552 };
+	}
+	namespace TESObjectREFR
+	{
+		inline constexpr REL::VariantID SetAngleOnReferenceZ{ 144721, 2201137 };
+		inline constexpr REL::VariantID GetOrientation{ 1005080, 2201085 };
+	}
+	namespace BeamProjectile
+	{
+		inline constexpr REL::VariantID RunTargetPick{ 1481128, 2236557 };
+	}
+	namespace TESObjectCELL { inline constexpr REL::VariantID Load{ 165674, 2200163 }; }
+	namespace TESObjectREFR { inline constexpr REL::VariantID Load{ 962336, 2200726 }; }
+	namespace TESNPC { inline constexpr REL::VariantID Load{ 588473, 2207355 }; }
+	namespace TESPackage { inline constexpr REL::VariantID Load{ 1431910, 2211702 }; }
+	namespace AlchemyItem { inline constexpr REL::VariantID Load{ 683280, 2189827 }; }
+	namespace BGSTerminal { inline constexpr REL::VariantID Load{ 488041, 2197773 }; }
+	namespace TESObjectLIGH { inline constexpr REL::VariantID Load{ 700928, 2198249 }; }
+	namespace TESObjectLAND { inline constexpr REL::VariantID Load{ 1058815, 2200018 }; }
+	namespace TESObjectACTI { inline constexpr REL::VariantID Load{ 780636, 2198374 }; }
 }

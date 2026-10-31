@@ -15,8 +15,8 @@ namespace RE
 
 		virtual ~BSAnimationGraphChannel();  // 00
 
-		virtual void Unk_01() = 0;  // 01
-		virtual void Unk_02() = 0;  // 02
+		virtual void PollChannelUpdate(bool a_allowEventQueuesC) = 0;  // 01
+		virtual void Reset() = 0;                                     // 02
 
 		template <class T>
 		void SetValue(const T& a_value);
@@ -25,8 +25,6 @@ namespace RE
 		[[nodiscard]] T GetValue() const;
 
 		[[nodiscard]] BSFixedString& QChannelName();
-		void                         PollChannelUpdate(const bool a_allowEventQueuesC);
-		void                         Reset();
 
 		BSFixedString channelName;  // 10
 		std::uint32_t value;        // 18

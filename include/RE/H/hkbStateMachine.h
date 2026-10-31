@@ -69,7 +69,8 @@ namespace RE
 		bool         echoNextUpdate;                           // 0x141
 		bool         hasEventlessWildcardTransitions;          // 0x142
 		std::uint8_t pad143;                                   // 0x143
-		std::uint16_t unk144;                                  // 0x144
+		std::uint16_t currentStateEntered : 1;                 // 0x144:00
+		std::uint16_t currentStateIndex : 15;                  // 0x144:01
 		std::uint8_t pad146[2];                                // 0x146
 	};
 	static_assert(sizeof(hkbStateMachine) == 0x148);

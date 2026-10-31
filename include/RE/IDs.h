@@ -4202,4 +4202,25 @@ namespace RE::ID
 		inline constexpr REL::VariantID Loader1009{ 1535642, 2287983 };
 		inline constexpr REL::VariantID TagTable0{ 859722, 2668034 };
 	}
+	namespace Projectile
+	{
+		inline constexpr REL::VariantID ComputeCastInfo{ 1128726, 2237077 };
+		inline constexpr REL::VariantID InitializeFromLaunch{ 1166882, 2237056 };
+	}
+	namespace bhkWorld
+	{
+		inline constexpr REL::VariantID GetGravity{ 386279, 2277707 };
+	}
+	namespace BShkbAnimationGraph
+	{
+		inline constexpr REL::VariantID ReceiveChannelsImpl{ 12398, 2256861 };
+	}
+	namespace BSAnimationGraphManager
+	{
+		inline constexpr REL::VariantID Update{ 1534254, 2256660 };
+	}
+	namespace TESObjectREFR
+	{
+		inline constexpr REL::VariantID GetScale{ 911188, 2200892 };
+	}
 }

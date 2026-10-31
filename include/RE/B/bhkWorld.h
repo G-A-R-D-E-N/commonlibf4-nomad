@@ -118,6 +118,8 @@ namespace RE
 			return func(a_object, a_type, a_recurse, a_force, a_allowActivate);
 		}
 
+		[[nodiscard]] hkVector4f* GetGravity();
+
 		// members
 		hkRefPtr<hkTaskQueue>            m_taskQueue;                 // 0x010
 		BSTArray<bhkIWorldStepListener*> m_stepListenerA;             // 0x018

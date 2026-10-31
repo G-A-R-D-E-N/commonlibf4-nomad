@@ -11,6 +11,7 @@
 
 namespace RE
 {
+	class BGSMusicType;
 	class bhkPickData;
 	class bhkWorldM;
 	class EXTERIOR_DATA;
@@ -20,6 +21,7 @@ namespace RE
 	class NavMeshArray;
 	class NiAVObject;
 	class NiPoint3;
+	class TESRegion;
 	class TESRegionList;
 
 	namespace BGSWaterCollisionManager
@@ -171,6 +173,13 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] BGSMusicType* GetMusicType()
+		{
+			using func_t = decltype(&TESObjectCELL::GetMusicType);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetMusicType };
+			return func(this);
+		}
+
 		[[nodiscard]] TESForm* GetOwner()
 		{
 			using func_t = decltype(&TESObjectCELL::GetOwner);
@@ -183,6 +192,13 @@ namespace RE
 			using func_t = decltype(&TESObjectCELL::GetRegionList);
 			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetRegionList };
 			return func(this, a_createIfMissing);
+		}
+
+		[[nodiscard]] TESRegion* GetSkyRegion() const
+		{
+			using func_t = decltype(&TESObjectCELL::GetSkyRegion);
+			static REL::Relocation<func_t> func{ ID::TESObjectCELL::GetSkyRegion };
+			return func(this);
 		}
 
 		[[nodiscard]] NiAVObject* Pick(bhkPickData& pd)
@@ -258,8 +274,8 @@ namespace RE
 		float                                                              waterHeight;      // 0x60
 		NavMeshArray*                                                      navMeshes;        // 0x68
 		BSTArray<NiPointer<TESObjectREFR>>                                 references;       // 0x70
-		BSTSmartPointer<BGSWaterCollisionManager::AutoWater>               autoWater;        // 0x77
-		BSTSet<BSTSmartPointer<BGSWaterCollisionManager::BGSWaterUpdateI>> waterSet;         // 0x80
+		BSTSmartPointer<BGSWaterCollisionManager::AutoWater>               autoWater;        // 0x88
+		BSTSet<BSTSmartPointer<BGSWaterCollisionManager::BGSWaterUpdateI>> waterSet;         // 0x90
 		BSSpinLock                                                         spinLock;         // 0xC0
 		union
 		{
@@ -271,7 +287,20 @@ namespace RE
 		void*                visibilityData;        // 0xE0 - TODO
 		std::uint32_t        rootVisibilityCellID;  // 0xE8
 		std::uint16_t        visCalcDate;           // 0xEC
-		std::uint16_t        preCombineDate;        // 0xF0
+		std::uint16_t        preCombineDate;        // 0xEE
 	};
+
+	static_assert(offsetof(TESObjectCELL, references) == 0x70);
+	static_assert(offsetof(TESObjectCELL, autoWater) == 0x88);
+	static_assert(offsetof(TESObjectCELL, waterSet) == 0x90);
+	static_assert(offsetof(TESObjectCELL, spinLock) == 0xC0);
+	static_assert(offsetof(TESObjectCELL, worldSpace) == 0xC8);
+	static_assert(offsetof(TESObjectCELL, tempDataOffset) == 0xC8);
+	static_assert(offsetof(TESObjectCELL, loadedData) == 0xD0);
+	static_assert(offsetof(TESObjectCELL, lightingTemplate) == 0xD8);
+	static_assert(offsetof(TESObjectCELL, visibilityData) == 0xE0);
+	static_assert(offsetof(TESObjectCELL, rootVisibilityCellID) == 0xE8);
+	static_assert(offsetof(TESObjectCELL, visCalcDate) == 0xEC);
+	static_assert(offsetof(TESObjectCELL, preCombineDate) == 0xEE);
 	static_assert(sizeof(TESObjectCELL) == 0xF0);
 }

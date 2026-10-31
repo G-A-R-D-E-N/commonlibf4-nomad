@@ -20,6 +20,13 @@ namespace RE
 			return func(this, a_frequency);
 		}
 
+		void SetVolume(float a_volume)
+		{
+			using func_t = decltype(&BSSoundCategoryHandle::SetVolume);
+			static REL::Relocation<func_t> func{ ID::BSSoundCategoryHandle::SetVolume };
+			return func(this, a_volume);
+		}
+
 		// members
 		BSISoundCategory* category{ nullptr };  // 0
 	};

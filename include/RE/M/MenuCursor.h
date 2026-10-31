@@ -59,8 +59,8 @@ namespace RE
 		}
 
 		// members
-		float         cursorPosX;                  // 24
-		float         cursorPosY;                  // 28
+		std::int32_t  cursorPosX;                  // 24
+		std::int32_t  cursorPosY;                  // 28
 		std::int32_t  minCursorX;                  // 2C
 		std::int32_t  minCursorY;                  // 30
 		std::int32_t  maxCursorX;                  // 34

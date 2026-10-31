@@ -14,6 +14,13 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::ExtraMapMarker };
 		static constexpr auto TYPE{ EXTRA_DATA_TYPE::kMapMarker };
 
+		virtual bool CompareImpl(const BSExtraData& a_compare) const override  // 01
+		{
+			using func_t = decltype(&ExtraMapMarker::CompareImpl);
+			static REL::Relocation<func_t> func{ ID::ExtraMapMarker::CompareImpl };
+			return func(this, a_compare);
+		}
+
 		// members
 		MapMarkerData* mapMarkerData;  // 18
 	};

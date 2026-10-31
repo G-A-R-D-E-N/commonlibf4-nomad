@@ -108,6 +108,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Singleton{ 405390, 2189587 };
 	}
 
+	namespace ActorValueOwner
+	{
+		inline constexpr REL::VariantID GetActorValue{ 169599, 2201401, 2201401 };
+	}
+
 	namespace AIFormulas
 	{
 		inline constexpr REL::VariantID GetBarterValue{ 984344, 2208969 };
@@ -1551,6 +1556,12 @@ namespace RE::ID
 		inline constexpr REL::VariantID UncacheAll{ 40925, 2268797 };
 	}
 
+	namespace BSTAnimationGraphDataChannel
+	{
+		inline constexpr REL::VariantID ActorWardHealthPoll{ 501745, 2235199, 2235199 };
+		inline constexpr REL::VariantID ActorWardHealthPollChannelUpdate{ 209779, 2226115, 2226115 };
+	}
+
 	namespace BSTempEffectDebris
 	{
 		inline constexpr REL::VariantID ctor{ 1075623, 2212059 };
@@ -1786,6 +1797,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID Ctor{ 1329859, 2190088 };
 		inline constexpr REL::VariantID CopyList{ 561304, 2190094 };
 		inline constexpr REL::VariantID SetCount{ 1460465, 2190125 };
+	}
+
+	namespace ExtraMapMarker
+	{
+		inline constexpr REL::VariantID CompareImpl{ 8649, 2191034 };
 	}
 
 	namespace ExtraTextDisplayData
@@ -2285,6 +2301,9 @@ namespace RE::ID
 
 	namespace MapMarkerData
 	{
+		inline constexpr REL::VariantID Compare{ 1021685, 2191790 };
+		inline constexpr REL::VariantID Copy{ 849034, 2191789 };
+		inline constexpr REL::VariantID Load{ 597042, 2191788 };
 		inline constexpr REL::VariantID GetHidden{ 569457, 2191797 };
 		inline constexpr REL::VariantID GetLocationName{ 50980, 2191791 };
 		inline constexpr REL::VariantID GetMarkerType{ 303206, 2191799 };
@@ -3114,6 +3133,7 @@ namespace RE::ID
 
 	namespace TESObjectCELL
 	{
+		inline constexpr REL::VariantID Dtor{ 33733, 2200160, 4478242 };
 		inline constexpr REL::VariantID GetbhkWorld{ 1326073, 2200260 };
 		inline constexpr REL::VariantID GetCantWaitHere{ 376940, 2200287 };
 		inline constexpr REL::VariantID GetDataX{ 445210, 2200213 };
@@ -3159,6 +3179,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID ApplyEffectShader{ 652173, 2205201 };
 		inline constexpr REL::VariantID Enable{ 1396707, 2201150 };
 		inline constexpr REL::VariantID FindReferenceFor3D{ 766937, 2201082 };
+		inline constexpr REL::VariantID GetActorValue{ 220647, 2201003, 2201003 };
 		inline constexpr REL::VariantID GetCurrentLocation{ 1135470, 2201163 };
 		inline constexpr REL::VariantID GetDisplayFullName{ 1212056, 2201126 };
 		inline constexpr REL::VariantID GetDistanceFromPoint{ 1332593, 2201172 };

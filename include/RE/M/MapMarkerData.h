@@ -5,6 +5,8 @@
 
 namespace RE
 {
+	class TESFile;
+
 	class __declspec(novtable) MapMarkerData :
 		public TESFullName  // 00
 	{
@@ -17,6 +19,27 @@ namespace RE
 			kHidden = 1 << 2,
 			kUseLocationName = 1 << 3
 		};
+
+		bool Load(TESFile* a_file)
+		{
+			using func_t = decltype(&MapMarkerData::Load);
+			static REL::Relocation<func_t> func{ ID::MapMarkerData::Load };
+			return func(this, a_file);
+		}
+
+		void Copy(MapMarkerData* a_copy)
+		{
+			using func_t = decltype(&MapMarkerData::Copy);
+			static REL::Relocation<func_t> func{ ID::MapMarkerData::Copy };
+			return func(this, a_copy);
+		}
+
+		[[nodiscard]] bool Compare(MapMarkerData* a_compare)
+		{
+			using func_t = decltype(&MapMarkerData::Compare);
+			static REL::Relocation<func_t> func{ ID::MapMarkerData::Compare };
+			return func(this, a_compare);
+		}
 
 		const char* GetLocationName()
 		{

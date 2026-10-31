@@ -588,6 +588,7 @@
 #include "RE/B/BSStringT.h"
 #include "RE/B/BSSystemFile.h"
 #include "RE/B/BSSystemFileStreamer.h"
+#include "RE/B/BSTAnimationGraphDataChannel.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTArrayRefCounted.h"
 #include "RE/B/BSTAtomicValue.h"

@@ -15,16 +15,15 @@ namespace RE
 	static_assert(sizeof(hkaQuantizedAnimationTrackCompressionParams) == 0x10);
 
 	class __declspec(novtable) hkaQuantizedAnimation :
-		public hkaAnimation  // 0x38
+		public hkaAnimation  // 0x40
 	{
 	public:
 		virtual ~hkaQuantizedAnimation();  // 00
 
 		// members
-		hkArray<std::uint8_t> data;    // 0x38
-		std::uint32_t         endian;   // 0x48
-		std::uint32_t         pad4C;    // 0x4C
-		void*                 skeleton; // 0x50
+		hkArray<std::uint8_t> data;     // 0x40
+		std::uint32_t         endian;   // 0x50
+		std::uint32_t         pad54;    // 0x54
+		void*                 skeleton; // 0x58
 	};
-	static_assert(sizeof(hkaQuantizedAnimation) == 0x58);
 }

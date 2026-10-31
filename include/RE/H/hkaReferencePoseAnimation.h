@@ -5,13 +5,10 @@
 namespace RE
 {
 	class __declspec(novtable) hkaReferencePoseAnimation :
-		public hkaAnimation  // 0x38
+		public hkaAnimation  // 0x40
 	{
 	public:
 		virtual ~hkaReferencePoseAnimation();  // 00
-
-		// members
-		std::uint8_t pad38[0x08];  // 0x38
 	};
 	static_assert(sizeof(hkaReferencePoseAnimation) == 0x40);
 }

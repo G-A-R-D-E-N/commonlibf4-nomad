@@ -4110,4 +4110,13 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Activate{ 37704, 2198054 };
 	}
+	namespace bhkCollisionFilter
+	{
+		inline constexpr REL::VariantID ctor{ 427367, 2278060 };
+		inline constexpr REL::VariantID InitFlags{ 279245, 2278068 };
+		inline constexpr REL::VariantID SetLayerCollision{ 717051, 2278070 };
+		inline constexpr REL::VariantID SetPartCollision{ 810053, 2278069 };
+		inline constexpr REL::VariantID TestPair{ 147831, 2278061 };
+		inline constexpr REL::VariantID FilterBodyPairs{ 559187, 2278063 };
+	}
 }

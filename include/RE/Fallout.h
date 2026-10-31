@@ -1,5 +1,7 @@
 #pragma once
+
 #include "F4SE/Impl/PCH.h"
+
 #include "RE/A/ACQUIRE_TYPE.h"
 #include "RE/A/ACTION_OBJECT.h"
 #include "RE/A/ACTOR_AGGRESSION.h"
@@ -663,6 +665,7 @@
 #include "RE/B/bhkCharProxyManager.h"
 #include "RE/B/bhkCharRigidBodyManager.h"
 #include "RE/B/bhkCharacterController.h"
+#include "RE/B/bhkCollisionFilter.h"
 #include "RE/B/bhkCollisionQueryResultHandle.h"
 #include "RE/B/bhkIWorldStepListener.h"
 #include "RE/B/bhkNPCollisionObject.h"
@@ -1799,4 +1802,3 @@
 #include "RE/W/Workshop_PlacementReference.h"
 #include "RE/X/XPChangeData.h"
 #include "RE/msvc/LegacyFunction.h"
-#include "RE/B/bhkCollisionFilter.h"

@@ -4263,4 +4263,55 @@ namespace RE::ID
 	namespace TESObjectLIGH { inline constexpr REL::VariantID Load{ 700928, 2198249 }; }
 	namespace TESObjectLAND { inline constexpr REL::VariantID Load{ 1058815, 2200018 }; }
 	namespace TESObjectACTI { inline constexpr REL::VariantID Load{ 780636, 2198374 }; }
+	// TESForm::Load overrides (fu5-order loader table; per-runtime ids resolved from the F4SE bins)
+	namespace BGSAction { inline constexpr REL::VariantID Load{ 955885, 2206417 }; }
+	namespace BGSAddonNode { inline constexpr REL::VariantID Load{ 1548637, 2197206 }; }
+	namespace BGSBodyPartData { inline constexpr REL::VariantID Load{ 1403109, 2206212 }; }
+	namespace BGSConstructibleObject { inline constexpr REL::VariantID Load{ 1001420, 2197313 }; }
+	namespace BGSDebris { inline constexpr REL::VariantID Load{ 1336343, 2197360 }; }
+	namespace BGSExplosion { inline constexpr REL::VariantID Load{ 498847, 2197389 }; }
+	namespace BGSLocation { inline constexpr REL::VariantID Load{ 1511512, 2199622 }; }
+	namespace BGSMaterialObject { inline constexpr REL::VariantID Load{ 1245557, 2203281 }; }
+	namespace BGSPerk { inline constexpr REL::VariantID Load{ 797524, 2206548 }; }
+	namespace BGSProjectile { inline constexpr REL::VariantID Load{ 282500, 2197612 }; }
+	namespace BGSScene { inline constexpr REL::VariantID Load{ 531393, 2206816 }; }
+	namespace BGSTextureSet { inline constexpr REL::VariantID Load{ 812354, 2203681 }; }
+	namespace BGSVoiceType { inline constexpr REL::VariantID Load{ 161124, 2207089 }; }
+	namespace SpellItem { inline constexpr REL::VariantID Load{ 683280, 2189827 }; }
+	namespace TESAmmo { inline constexpr REL::VariantID Load{ 427112, 2197859 }; }
+	namespace TESClass { inline constexpr REL::VariantID Load{ 1357815, 2207133 }; }
+	namespace TESClimate { inline constexpr REL::VariantID Load{ 737994, 2199952 }; }
+	namespace TESEyes { inline constexpr REL::VariantID Load{ 90807, 2207155 }; }
+	namespace TESFaction { inline constexpr REL::VariantID Load{ 485207, 2207173 }; }
+	namespace TESFlora { inline constexpr REL::VariantID Load{ 1552986, 2197991 }; }
+	namespace TESFurniture { inline constexpr REL::VariantID Load{ 589984, 2198034 }; }
+	namespace TESGlobal { inline constexpr REL::VariantID Load{ 350375, 2204219 }; }
+	namespace TESGrass { inline constexpr REL::VariantID Load{ 682253, 2198117 }; }
+	namespace TESIdleForm { inline constexpr REL::VariantID Load{ 1269730, 2207227 }; }
+	namespace TESImageSpace { inline constexpr REL::VariantID Load{ 133823, 2199967 }; }
+	namespace TESLevCharacter { inline constexpr REL::VariantID Load{ 316478, 2198176 }; }
+	namespace TESLevItem { inline constexpr REL::VariantID Load{ 656235, 2198201 }; }
+	namespace TESLevSpell { inline constexpr REL::VariantID Load{ 512301, 2198223 }; }
+	namespace TESObjectANIO { inline constexpr REL::VariantID Load{ 971654, 2198435 }; }
+	namespace TESObjectARMO { inline constexpr REL::VariantID Load{ 371157, 2198524 }; }
+	namespace TESObjectBOOK { inline constexpr REL::VariantID Load{ 223323, 2198598 }; }
+	namespace TESObjectCONT { inline constexpr REL::VariantID Load{ 191551, 2198649 }; }
+	namespace TESObjectDOOR { inline constexpr REL::VariantID Load{ 1440216, 2198687 }; }
+	namespace TESObjectMISC { inline constexpr REL::VariantID Load{ 329463, 2198788 }; }
+	namespace TESObjectSTAT { inline constexpr REL::VariantID Load{ 928764, 2198825 }; }
+	namespace TESObjectTREE { inline constexpr REL::VariantID Load{ 1468712, 2198847 }; }
+	namespace TESQuest { inline constexpr REL::VariantID Load{ 1247901, 2207708 }; }
+	namespace TESRace { inline constexpr REL::VariantID Load{ 760978, 2208116 }; }
+	namespace TESRegion { inline constexpr REL::VariantID Load{ 1007054, 2196172 }; }
+	namespace TESShout { inline constexpr REL::VariantID Load{ 170976, 2206093 }; }
+	namespace TESSound { inline constexpr REL::VariantID Load{ 1225797, 2206122 }; }
+	namespace TESTopic { inline constexpr REL::VariantID Load{ 58905, 2208340 }; }
+	namespace TESTopicInfo { inline constexpr REL::VariantID Load{ 918452, 2208420 }; }
+	namespace TESWaterForm { inline constexpr REL::VariantID Load{ 1171375, 2202758 }; }
+	namespace TESWeather { inline constexpr REL::VariantID Load{ 731579, 2202792 }; }
+	namespace TESWorldSpace { inline constexpr REL::VariantID Load{ 701354, 2202844 }; }
+	namespace BSResource_Archive2_Index
+	{
+		inline constexpr REL::VariantID ProcessEvent{ 1309589, 2269414 };
+	}
 }

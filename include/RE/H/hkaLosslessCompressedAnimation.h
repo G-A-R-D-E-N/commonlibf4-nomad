@@ -5,13 +5,13 @@
 namespace RE
 {
 	class __declspec(novtable) hkaLosslessCompressedAnimation :
-		public hkaAnimation  // 0x40
+		public hkaAnimation  // 0x38
 	{
 	public:
 		virtual ~hkaLosslessCompressedAnimation();  // 00
 
 		// members
-		std::uint8_t pad40[0xA0];  // 0x40
+		std::uint8_t pad38[0xA8];  // 0x38
 	};
 	static_assert(sizeof(hkaLosslessCompressedAnimation) == 0xE0);
 }

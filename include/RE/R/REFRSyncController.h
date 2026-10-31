@@ -13,11 +13,11 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::TESObjectREFRSync__REFRSyncController };
 		static constexpr auto Ni_RTTI{ Ni_RTTI::REFRSyncController };
 
-		void Update(float a_delta)
+		void Update()
 		{
 			using func_t = decltype(&REFRSyncController::Update);
 			static REL::Relocation<func_t> func{ ID::REFRSyncController::Update };
-			func(this, a_delta);
+			func(this);
 		}
 	};
 }

@@ -6,14 +6,14 @@
 namespace RE
 {
 	class __declspec(novtable) hkaInterleavedUncompressedAnimation :
-		public hkaAnimation  // 0x40
+		public hkaAnimation  // 0x38
 	{
 	public:
 		virtual ~hkaInterleavedUncompressedAnimation();  // 00
 
 		// members
-		hkArray<hkQsTransformf> transforms;  // 0x40
-		hkArray<float>          floats;      // 0x50
+		hkArray<hkQsTransformf> transforms;  // 0x38
+		hkArray<float>          floats;      // 0x48
 	};
-	static_assert(sizeof(hkaInterleavedUncompressedAnimation) == 0x60);
+	static_assert(sizeof(hkaInterleavedUncompressedAnimation) == 0x58);
 }

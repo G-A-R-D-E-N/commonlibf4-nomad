@@ -14,8 +14,7 @@ namespace RE
 		void*         nearbyCharacters;          // 0x10
 		std::uint8_t  pad18[8];                  // 0x18
 		void*         userData;                  // 0x20
-		std::int8_t   currentLod;                // 0x28
-		std::uint8_t  pad29;                     // 0x29
+		std::int16_t  currentLod;                // 0x28
 		std::int16_t  numTracksInLod;            // 0x2A
 		std::uint8_t  pad2C[4];                  // 0x2C
 		void*         generatorOutput;           // 0x30

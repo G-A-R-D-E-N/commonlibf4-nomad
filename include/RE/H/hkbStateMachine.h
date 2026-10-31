@@ -38,17 +38,25 @@ namespace RE
 		virtual ~hkbStateMachine();  // 00
 
 		// members
-		std::uint8_t pad88[0x38];        // 0x88
-		std::uint32_t currentStateId;    // 0xC0
-		std::uint8_t padC4[4];           // 0xC4
-		std::uint8_t padC8[8];           // 0xC8
-		void*        data;               // 0xD0
-		void*        transitions;        // 0xD8
-		std::uint8_t padE0[8];           // 0xE0
-		void*        stateIdToStateMap;  // 0xE8
-		void*        activeTransitions;  // 0xF0
-		bool         isInTransition;     // 0xF8
-		std::uint8_t padF9[0x4F];        // 0xF9
+		std::uint8_t pad88[0x38];                        // 0x88
+		std::uint32_t currentStateId;                    // 0xC0
+		std::uint8_t padC4[4];                           // 0xC4
+		std::uint8_t padC8[8];                           // 0xC8
+		hkArray<StateInfo*> states;                      // 0xD0
+		void* wildcardTransitions;                       // 0xE0
+		void* stateIdToIndexMap;                         // 0xE8
+		hkArray<ActiveTransitionInfo> activeTransitions; // 0xF0
+		hkArray<std::uint8_t> transitionFlags;           // 0x100
+		hkArray<std::uint8_t> wildcardTransitionFlags;   // 0x110
+		hkArray<void*> delayedTransitions;               // 0x120
+		float timeInState;                               // 0x130
+		float lastLocalTime;                             // 0x134
+		std::int32_t previousStateId;                    // 0x138
+		std::int32_t nextStartStateIndexOverride;        // 0x13C
+		bool stateOrTransitionChanged;                   // 0x140
+		bool echoNextUpdate;                             // 0x141
+		bool hasEventlessWildcardTransitions;            // 0x142
+		std::uint8_t pad143[5];                          // 0x143
 	};
 	static_assert(sizeof(hkbStateMachine) == 0x148);
 }

@@ -44,7 +44,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID IsCrippled{ 1238666, 2230998 };
 		inline constexpr REL::VariantID IsFollowing{ 629579, 2230013 };
 		inline constexpr REL::VariantID IsJumping{ 1041558, 2229640 };
-		inline constexpr REL::VariantID IsPathValid{ 1522194, 2230279 };
+		inline constexpr REL::VariantID IsPathValid{ 1522194, 2230273 };
 		inline constexpr REL::VariantID IsPathing{ 989661, 2230276 };
 		inline constexpr REL::VariantID IsPathingComplete{ 817283, 2230274 };
 		inline constexpr REL::VariantID IsQuadruped{ 1552322, 2229614 };
@@ -137,9 +137,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetCurrentAmmo{ 795983, 2232302 };
 		inline constexpr REL::VariantID SetCommandType{ 1555789, 2231826 };
 		inline constexpr REL::VariantID SetEquippedItem{ 1200276, 2231627 };
-		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231705 };
+		inline constexpr REL::VariantID SetupSpecialIdle{ 1446774, 2231704 };
 		inline constexpr REL::VariantID SetWeaponBonesCulled{ 397172, 2232535 };
-		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231706 };
+		inline constexpr REL::VariantID StopCurrentIdle{ 434460, 2231705 };
 		inline constexpr REL::VariantID SetRunOncePackage{ 155445, 2232344 };
 		inline constexpr REL::VariantID AddToProcedureIndexRunning{ 134486, 2718412 };
 		inline constexpr REL::VariantID ComputeLastTimeProcessed{ 941571, 2231541 };
@@ -3773,7 +3773,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID StartNearbyWorkshop{ 937340, 2194880 };
 		inline constexpr REL::VariantID StartWorkshop{ 171771, 2195134 };
 		inline constexpr REL::VariantID ToggleDropMode{ 740420, 2195126 };
-		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195130 };  // old AE id wrong: 2195130 takes no args
+		inline constexpr REL::VariantID ToggleEditMode{ 1243386, 2195138 };
 		inline constexpr REL::VariantID ToggleWorkshopMode{ 1331715, 2194903 };
 		inline constexpr REL::VariantID UnregisterForBuildableAreaEvent{ 23079, 2194941 };
 		inline constexpr REL::VariantID UnregisterForItemDestroyed{ 1101379, 2194931 };
@@ -3789,7 +3789,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID UnregisterForWorkshopModeEvent{ 9236, 2194947 };
 		inline constexpr REL::VariantID UnstackItem{ 1488335, 2194921 };
 		inline constexpr REL::VariantID Update{ 679561, 2194908 };
-		inline constexpr REL::VariantID UpdateActiveEdit{ 69261, 2195210 };  // old AE id wrong: 2195210 is a workshop-exit path
+		inline constexpr REL::VariantID UpdateActiveEdit{ 69261, 2195152 };  // old AE id wrong: 2195210 is a workshop-exit path
 		inline constexpr REL::VariantID UpdateAttachedSplines{ 43126, 2195157 };
 		inline constexpr REL::VariantID UpdateAttachRefChildrenTransform{ 1187338, 2195053 };
 		inline constexpr REL::VariantID UpdateForegroundReferenceJob{ 882546, 2194909 };

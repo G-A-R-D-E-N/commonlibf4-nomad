@@ -4061,7 +4061,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterInvisibility__CombatObjectBase_{ REL::ID(1246394) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterLight__CombatObjectBase_{ REL::ID(59966) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterOffensive__CombatObjectBase_{ REL::ID(1375808) };
-		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterParalyze__CombatObjectBase_{ REL::ID(1527547) };
+		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterParalyze__CombatObjectBase_{ REL::ID(1544513) };  // source:AE type name read from the executable
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterReanimate__CombatObjectBase_{ REL::ID(176379) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterRestore__CombatObjectBase_{ REL::ID(948002) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatInventoryItemMagicT_CombatInventoryItemScroll_CombatMagicCasterScript__CombatObjectBase_{ REL::ID(1330200) };
@@ -4293,7 +4293,7 @@ namespace RE
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatThreatProjectile_CombatObjectBase_{ REL::ID(521213) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatTrackTargetAimController_CombatObjectBase_{ REL::ID(1430651) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatTunnelPathController_CombatObjectBase_{ REL::ID(1037628) };
-		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatViewControllerGlance_CombatObjectBase_{ REL::ID(179586) };
+		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatViewControllerGlance_CombatObjectBase_{ REL::ID(198692) };  // source:AE type name read from the executable
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatViewControllerPath_CombatObjectBase_{ REL::ID(544245) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CombatViewControllerStandard_CombatObjectBase_{ REL::ID(1435059) };
 		inline constexpr std::array<REL::ID, 1>  BSTDerivedCreator_CullFurnitureBoneHandler_IHandlerFunctor_Actor_BSFixedString__{ REL::ID(1099448) };

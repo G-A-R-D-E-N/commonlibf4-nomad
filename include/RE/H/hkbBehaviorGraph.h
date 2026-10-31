@@ -14,8 +14,10 @@ namespace RE
 		std::uint32_t variableMode;                 // 0x88
 		std::uint8_t  pad8C[4];                     // 0x8C
 		void*         uniqueIdPool;                 // 0x90
+		std::uint8_t  pad98[8];                     // 0x98
 		void*         idToStateMachineTemplateMap;  // 0xA0
 		void*         mirroredExternalIdMap;        // 0xA8
+		std::uint8_t  padB0[8];                     // 0xB0
 		void*         pseudoRandomGenerator;        // 0xB8
 		void*         rootGenerator;                // 0xC0
 		void*         data;                         // 0xC8

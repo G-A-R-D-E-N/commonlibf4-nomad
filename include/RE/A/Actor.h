@@ -665,11 +665,11 @@ namespace RE
 			return func(this, a_target);
 		}
 
-		void ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds)
+		bool ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_speeds)
 		{
 			using func_t = decltype(&Actor::ComputeCurrentMaxSpeeds);
 			static REL::Relocation<func_t> func{ ID::Actor::ComputeCurrentMaxSpeeds };
-			func(this, a_speeds);
+			return func(this, a_speeds);
 		}
 
 		void ModifyMovementTypeBasedOnCurrentState(Movement::MaxSpeeds& a_speeds)

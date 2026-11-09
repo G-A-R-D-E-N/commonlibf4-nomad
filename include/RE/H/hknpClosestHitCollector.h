@@ -14,11 +14,11 @@ namespace RE
 		static constexpr auto VTABLE{ VTABLE::hknpClosestHitCollector };
 
 		// override (hknpCollisionQueryCollector)
-		void                       Reset() override;                             // 0x08 [01]
-		void                       AddHit(const hknpCollisionResult&) override;  // 0x10 [02]
-		bool                       HasHit() const override;                      // 0x18 [03]
-		std::int32_t               GetNumHits() const override;                  // 0x20 [04]
-		const hknpCollisionResult* GetHits() const override;                     // 0x28 [05]
+		void                       Reset() override;                             // 0x10 [02]
+		void                       AddHit(const hknpCollisionResult&) override;  // 0x18 [03]
+		bool                       HasHit() const override;                      // 0x20 [04]
+		std::int32_t               GetNumHits() const override;                  // 0x28 [05]
+		const hknpCollisionResult* GetHits() const override;                     // 0x30 [06]
 
 		// members
 		hknpCollisionResult m_result;  // 0x20

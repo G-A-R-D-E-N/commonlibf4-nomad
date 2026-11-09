@@ -6,7 +6,7 @@
 namespace RE
 {
 	class __declspec(novtable) NiAlphaProperty :
-		public NiProperty  // 00
+	    public NiProperty  // 00
 	{
 	public:
 		static constexpr auto RTTI{ RTTI::NiAlphaProperty };

@@ -46,7 +46,7 @@ namespace RE
 		constexpr float    GetSquaredDistance(const NiPoint3& a_point) const noexcept;
 		constexpr float    SqrLength() const noexcept;
 
-		inline void Normalize() noexcept;
+		inline void        Normalize() noexcept;
 
 		float    GetDistance(const NiPoint3& a_point) const noexcept;
 		float    GetZAngleFromVector() const;
@@ -247,11 +247,14 @@ namespace RE
 	{
 		float length = SqrLength();
 
-		if (length <= 0.000001f) {
+		if (length <= 0.000001f) 
+		{
 			x = 0.0f;
 			y = 0.0f;
 			z = 0.0f;
-		} else {
+		} 
+		else 
+		{
 			__m128 temp = _mm_set_ss(length);
 			temp = _mm_rsqrt_ss(temp);
 			auto mag = _mm_cvtss_f32(temp);

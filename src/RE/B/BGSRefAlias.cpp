@@ -10,8 +10,7 @@ namespace RE
 		TESObjectREFR* ref = nullptr;
 		const auto     owner = owningQuest;
 		if (owner) {
-			ObjectRefHandle handle;
-			owner->GetAliasedRef(std::addressof(handle), aliasID);
+			auto       handle = owner->GetAliasedRef(aliasID);
 			const auto refPtr = handle.get();
 			ref = refPtr.get();
 		}

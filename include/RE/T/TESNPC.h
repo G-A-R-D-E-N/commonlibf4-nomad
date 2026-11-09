@@ -24,6 +24,7 @@ namespace RE
 	class BGSRelationship;
 	class CreatureSounds;
 	class MenuOpenCloseEvent;
+	class TESObjectREFR;
 
 	class __declspec(novtable) TESNPC :
 		public TESActorBase,                     // 000

@@ -129,6 +129,13 @@ namespace RE
 			func(this, a_instExtra, a_object, a_data);
 		}
 
+		inline void SetExtraFlags(std::uint32_t a_flags, bool a_set)
+		{
+			using func_t = decltype(&ExtraDataList::SetExtraFlags);
+			static REL::Relocation<func_t> func{ ID::ExtraDataList::SetExtraFlags };
+			func(this, a_flags, a_set);
+		}
+
 		inline void SetOverrideName(const char* a_name)
 		{
 			using func_t = decltype(&ExtraDataList::SetOverrideName);

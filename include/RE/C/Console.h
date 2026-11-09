@@ -10,6 +10,23 @@ namespace RE
 		public GameMenuBase  // 00
 	{
 	public:
+		class VMBridge
+		{
+		public:
+			virtual ~VMBridge();       // 00
+			virtual bool Unk_01() = 0;  // 01
+			virtual bool Unk_02() = 0;  // 02
+			virtual bool Unk_03() = 0;  // 03
+			virtual bool Unk_04() = 0;  // 04
+		};
+
+		[[nodiscard]] static VMBridge* GetVMBridge()
+		{
+			static REL::Relocation<VMBridge**> bridge{ ID::Console::pVMBridge };
+			return *bridge;
+		}
+
+	public:
 		static constexpr auto RTTI{ RTTI::Console };
 		static constexpr auto VTABLE{ VTABLE::Console };
 		static constexpr auto MENU_NAME{ "Console"sv };

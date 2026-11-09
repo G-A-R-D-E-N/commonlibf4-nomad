@@ -41,6 +41,11 @@ namespace RE
 			return func(this);
 		}
 
+		[[nodiscard]] MessageBoxData* GetCurrentMessage() const noexcept
+		{
+			return REL::RelocateMember<MessageBoxData*>(this, REL::Offset{ 0xE8, 0xE8, 0xF0 });
+		}
+
 		// members
 		// AE layout; use GetCurrentMessage across runtimes.
 		// canCancel and cancelButtonIndex exist on AE only; do not read them on OG/NG.

@@ -45,8 +45,8 @@ def main():
         else:
             print(f'id {a.id} absent')
     else:
-        k = bisect.bisect_left(rvs, a.rva)
-        hits = [ids[i] for i in range(k, len(ids)) if rvs[i] == a.rva]
+        # rva column is unsorted; source: E:/RE-work/data/corpus.sqlite address_library
+        hits = [i for i, r in zip(ids, rvs) if r == a.rva]
         if hits:
             print(f'RVA 0x{a.rva:X} -> ids {hits}')
         else:

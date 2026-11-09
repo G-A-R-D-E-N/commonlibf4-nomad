@@ -5,6 +5,7 @@
 #include "RE/B/BSTSingleton.h"
 #include "RE/G/GFxConvertHandler.h"
 #include "RE/S/ScreenshotHandler.h"
+#include "RE/G/GFxConvertHandler.h"
 
 namespace RE
 {
@@ -34,6 +35,20 @@ namespace RE
 			func(this);
 		}
 
+		[[nodiscard]] bool IsScreenshotQueued() const
+		{
+			using func_t = decltype(&MenuControls::IsScreenshotQueued);
+			static REL::Relocation<func_t> func{ ID::MenuControls::IsScreenshotQueued };
+			return func(this);
+		}
+
+		[[nodiscard]] bool IsMultiScreenshotQueued() const
+		{
+			using func_t = decltype(&MenuControls::IsMultiScreenshotQueued);
+			static REL::Relocation<func_t> func{ ID::MenuControls::IsMultiScreenshotQueued };
+			return func(this);
+		}
+
 		void ForceResumeGame() const
 		{
 			using func_t = decltype(&MenuControls::ForceResumeGame);
@@ -57,6 +72,13 @@ namespace RE
 			using func_t = decltype(&MenuControls::RegisterHandler);
 			static REL::Relocation<func_t> func{ ID::MenuControls::RegisterHandler };
 			func(this, a_handler);
+		}
+
+		void PerformInputProcessing(const InputEvent* a_event)
+		{
+			using func_t = decltype(&MenuControls::PerformInputProcessing);
+			static REL::Relocation<func_t> func{ ID::MenuControls::PerformInputProcessing };
+			func(this, a_event);
 		}
 
 		void RegisterHandlers()

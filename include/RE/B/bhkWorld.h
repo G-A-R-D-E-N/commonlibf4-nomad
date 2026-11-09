@@ -118,6 +118,13 @@ namespace RE
 			return func(a_object, a_type, a_recurse, a_force, a_allowActivate);
 		}
 
+		[[nodiscard]] hkVector4f* GetGravity()
+		{
+			using func_t = decltype(&bhkWorld::GetGravity);
+			static REL::Relocation<func_t> func{ ID::bhkWorld::GetGravity };
+			return func(this);
+		}
+
 		// members
 		hkRefPtr<hkTaskQueue>            m_taskQueue;                 // 0x010
 		BSTArray<bhkIWorldStepListener*> m_stepListenerA;             // 0x018

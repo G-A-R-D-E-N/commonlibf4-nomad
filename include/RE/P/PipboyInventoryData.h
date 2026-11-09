@@ -240,6 +240,13 @@ namespace RE
 			return func(this, a_itemTypeID);
 		}
 
+		void SortItems(SORT_ON_FIELD a_sortType)
+		{
+			using func_t = decltype(&PipboyInventoryData::SortItems);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2225244 } };
+			return func(this, a_sortType);
+		}
+
 		// members
 		PipboyObject*                                             inventoryObject;             // E8
 		BSTHashMap<std::uint32_t, PipboyInventoryData::ItemEntry> itemEntries;                 // F0

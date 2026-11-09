@@ -48,6 +48,13 @@ namespace RE
 			AddItem2(a_object, a_count, new ExtraDataList(), a_flags);
 		}
 
+		void AddStack(TESBoundObject* a_object, BGSInventoryItem::Stack* a_stack, std::uint32_t* a_oldCount = nullptr, std::uint32_t* a_newCount = nullptr)
+		{
+			using func_t = decltype(&BGSInventoryList::AddStack);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2194191 } };
+			return func(this, a_object, a_stack, a_oldCount, a_newCount);
+		}
+
 		inline void BuildFromContainer(const TESContainer* a_container)
 		{
 			using func_t = decltype(&BGSInventoryList::BuildFromContainer);

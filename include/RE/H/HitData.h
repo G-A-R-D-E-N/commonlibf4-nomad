@@ -45,6 +45,13 @@ namespace RE
 			kExplosion = 1 << 20
 		};
 
+		void ApplyDamageTypes(const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, float a_mult)
+		{
+			using func_t = decltype(&HitData::ApplyDamageTypes);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2236861 } };
+			return func(this, a_weapon, a_mult);
+		}
+
 		// members
 		DamageImpactData                                                impactData;              // 00
 		ActorHandle                                                     aggressor;               // 40

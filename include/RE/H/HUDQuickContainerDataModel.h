@@ -20,6 +20,7 @@ namespace RE
 	class ClearQuickContainerEvent;
 	class HUDModeEvent;
 	class OpenContainerMenuEventData;
+	class QuickContainerStateData;
 
 	class __declspec(novtable) HUDQuickContainerDataModel :
 		public BSInputEventUser,                          // 000
@@ -63,6 +64,13 @@ namespace RE
 			using func_t = decltype(&HUDQuickContainerDataModel::TakeSelectedItem);
 			static REL::Relocation<func_t> func{ ID::HUDQuickContainerDataModel::TakeSelectedItem };
 			return func(this);
+		}
+
+		void AddItemRows(QuickContainerStateData& a_state)
+		{
+			using func_t = decltype(&HUDQuickContainerDataModel::AddItemRows);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 0, 2221647 } };
+			return func(this, a_state);
 		}
 
 		// members

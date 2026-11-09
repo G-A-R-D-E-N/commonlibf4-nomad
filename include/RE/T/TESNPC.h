@@ -24,6 +24,7 @@ namespace RE
 	class BGSRelationship;
 	class CreatureSounds;
 	class MenuOpenCloseEvent;
+	class TESObjectREFR;
 
 	class __declspec(novtable) TESNPC :
 		public TESActorBase,                     // 000
@@ -230,6 +231,13 @@ namespace RE
 			using func_t = decltype(&TESNPC::CalculateBodyTintColor);
 			static REL::Relocation<func_t> func{ ID::TESNPC::CalculateBodyTintColor };
 			return func(this, a_color, a_skinTone, a_force);
+		}
+
+		[[nodiscard]] float GetHeight(TESObjectREFR* a_refr, TESRace* a_race)
+		{
+			using func_t = decltype(&TESNPC::GetHeight);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 674794, 2207473 } };
+			return func(this, a_refr, a_race);
 		}
 
 		// members

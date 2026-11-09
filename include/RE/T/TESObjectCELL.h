@@ -271,6 +271,13 @@ namespace RE
 		void ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback);
 		void ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback);
 
+		[[nodiscard]] TESWorldSpace* GetWorldSpace()
+		{
+			using func_t = decltype(&TESObjectCELL::GetWorldSpace);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 968674, 2199522 } };
+			return func(this);
+		}
+
 		// members
 		BSSpinLock                                                         grassCreateLock;  // 0x30
 		BSSpinLock                                                         grassTaskLock;    // 0x38

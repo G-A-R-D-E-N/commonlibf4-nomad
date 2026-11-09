@@ -161,6 +161,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetActorLightLevel{ 898888, 2231981 };
 		inline constexpr REL::VariantID Set3DUpdateFlag{ 236542, 2232389 };
 		inline constexpr REL::VariantID Update3DModel{ 986782, 2231882 };
+		inline constexpr REL::VariantID ClearCurrentPackage{ 241540, 2231582 };
+		inline constexpr REL::VariantID ClearCurrentDataForProcess{ 577581, 2232435 };
 	}
 
 	namespace AITimer
@@ -2664,9 +2666,28 @@ namespace RE::ID
 		inline constexpr REL::VariantID GetZAngleFromVector{ 1450064, 2269788 };
 	}
 
+	namespace NiQuaternion
+	{
+		inline constexpr REL::VariantID ToRotation{ 1379385, 2195654 };
+		inline constexpr REL::VariantID FromEulerAnglesXYZ{ 896501, 2270245 };
+		inline constexpr REL::VariantID FromRotation{ 616807, 2270246 };
+		inline constexpr REL::VariantID FromAngleAxis{ 965178, 2270239 };
+		inline constexpr REL::VariantID ToAngleAxis{ 1082915, 2270244 };
+		inline constexpr REL::VariantID Slerp{ 1338018, 2270238 };
+		inline constexpr REL::VariantID Intermediate{ 419306, 2270242 };
+		inline constexpr REL::VariantID UnitInverse{ 1310622, 2270240 };
+		inline constexpr REL::VariantID Exp{ 1223920, 2270818 };
+		inline constexpr REL::VariantID Log{ 1483822, 2270241 };
+	}
+
 	namespace NiRefObject
 	{
 		inline constexpr REL::VariantID Objects{ 1161724, 2703471 };
+	}
+
+	namespace NiTransform
+	{
+		inline constexpr REL::VariantID InvertNonUniform{ 720044, 2270965 };
 	}
 
 	namespace NiTexture
@@ -2891,6 +2912,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID StartPipboyMode{ 998069, 2248358 };
 		inline constexpr REL::VariantID StopPipboyMode{ 811954, 2248359 };
 		inline constexpr REL::VariantID QCameraEquals{ 839543, 2248421 };
+		inline constexpr REL::VariantID Force3rdPerson{ 162201, 2248348 };
 	}
 
 	namespace PlayerCharacter
@@ -3060,6 +3082,7 @@ namespace RE::ID
 
 	namespace SendHUDMessage
 	{
+		inline constexpr REL::VariantID ClearMessages{ 973227, 2222460 };
 		inline constexpr REL::VariantID PopHUDMode{ 1495042, 2222444 };
 		inline constexpr REL::VariantID PushHUDMode{ 1321764, 2222443 };
 		inline constexpr REL::VariantID SetPowerArmorMode{ 361745, 2222459 };
@@ -3639,6 +3662,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RefreshCursor{ 1436639, 2284772 };
 		inline constexpr REL::VariantID RegisterMenu{ 1519575, 2284766 };
 		inline constexpr REL::VariantID UpdateControllerType{ 175796, 2284768 };
+		inline constexpr REL::VariantID UpdateMenuMode{ 241336, 2284770 };
 	}
 
 	namespace UIAdvanceMenusFunctionCompleteEvent

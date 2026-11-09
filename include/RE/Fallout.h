@@ -1801,6 +1801,7 @@
 #include "RE/W/WorkbenchMenuBase.h"
 #include "RE/W/Workshop.h"
 #include "RE/W/WorkshopMenu.h"
+#include "RE/W/Workshop_CheckBuildRadiusCollector.h"
 #include "RE/W/Workshop_ItemScrappedEvent.h"
 #include "RE/W/Workshop_PlacementReference.h"
 #include "RE/X/XPChangeData.h"

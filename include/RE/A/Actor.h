@@ -772,6 +772,8 @@ namespace RE
 			using func_t = decltype(&Actor::ModifyMovementTypeBasedOnCurrentState);
 			static REL::Relocation<func_t> func{ ID::Actor::ModifyMovementTypeBasedOnCurrentState };
 			func(this, a_speeds);
+		}
+
 		[[nodiscard]] ActorHandle GetActorHandle()
 		{
 			using func_t = decltype(&Actor::GetActorHandle);

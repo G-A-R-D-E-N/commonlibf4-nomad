@@ -6,6 +6,8 @@
 
 namespace RE
 {
+	class TESFile;
+	class TESForm;
 	class TESQuest;
 	class TESQuestStage;
 
@@ -17,6 +19,41 @@ namespace RE
 	{
 	public:
 		F4_HEAP_REDEFINE_NEW(TESQuestStageItem);
+
+		bool Load(TESFile* a_file)
+		{
+			using func_t = decltype(&TESQuestStageItem::Load);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 12471, 2208065 } };
+			return func(this, a_file);
+		}
+
+		bool LoadLogEntry(TESFile& a_file)
+		{
+			using func_t = decltype(&TESQuestStageItem::LoadLogEntry);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1236075, 2208066 } };
+			return func(this, a_file);
+		}
+
+		void InitItem(TESForm* a_owner, TESQuestStage* a_stage)
+		{
+			using func_t = decltype(&TESQuestStageItem::InitItem);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 92450, 2208067 } };
+			return func(this, a_owner, a_stage);
+		}
+
+		void SetConditions(const TESCondition* a_conditions)
+		{
+			using func_t = decltype(&TESQuestStageItem::SetConditions);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1315310, 2208068 } };
+			return func(this, a_conditions);
+		}
+
+		void Resolve(bool a_ignoreConditions)
+		{
+			using func_t = decltype(&TESQuestStageItem::Resolve);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 835423, 2208070 } };
+			return func(this, a_ignoreConditions);
+		}
 
 		// members
 		TESCondition         conditions;   // 00

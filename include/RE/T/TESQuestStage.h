@@ -6,12 +6,28 @@
 
 namespace RE
 {
+	class TESFile;
+	class TESQuest;
 	class TESQuestStageItem;
 
 	class TESQuestStage
 	{
 	public:
 		F4_HEAP_REDEFINE_NEW(TESQuestStage);
+
+		void Load(TESFile* a_file)
+		{
+			using func_t = decltype(&TESQuestStage::Load);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1011035, 2208058 } };
+			return func(this, a_file);
+		}
+
+		bool SetDone(TESQuest* a_quest, bool a_ignoreConditions)
+		{
+			using func_t = decltype(&TESQuestStage::SetDone);
+			static REL::Relocation<func_t> func{ REL::VariantID{ 1436008, 2208063 } };
+			return func(this, a_quest, a_ignoreConditions);
+		}
 
 		// members
 		BSTArray<TESQuestStageItem*> stageItems;  // 00

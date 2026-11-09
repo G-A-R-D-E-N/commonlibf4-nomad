@@ -13,7 +13,7 @@ namespace RE
 			w(a_w), x(a_x), y(a_y), z(a_z)
 		{}
 
-		NiQuaternion(const NiMatrix3& a_rotation) { FromRotation(a_rotation); }
+		explicit NiQuaternion(const NiMatrix3& a_rotation) { FromRotation(a_rotation); }
 
 		constexpr NiQuaternion operator*(const NiQuaternion& a_rhs) const noexcept
 		{

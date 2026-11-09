@@ -719,7 +719,7 @@ namespace RE
 		[[nodiscard]] float GetScale()
 		{
 			using func_t = decltype(&TESObjectREFR::GetScale);
-			static REL::Relocation<func_t> func{ REL::VariantID{ 911188, 2200892 } };
+			static REL::Relocation<func_t> func{ ID::TESObjectREFR::GetScale };
 			return func(this);
 		}
 

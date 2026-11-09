@@ -23,7 +23,7 @@ namespace RE
 		constexpr NiTransform& MakeIdentity() noexcept;
 		constexpr NiTransform& MakeInvert() noexcept;
 
-		void                   InvertNonUniform(NiTransform& a_result) const;
+		void                       InvertNonUniform(NiTransform& a_result) const;
 		[[nodiscard]] NiTransform WorldToLocal(const NiTransform& a_parentWorld) const;
 
 		// members

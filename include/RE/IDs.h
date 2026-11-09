@@ -797,6 +797,8 @@ namespace RE::ID
 		inline constexpr REL::VariantID BufferSceneScreenShot{ 1234898, 2228079 };
 		inline constexpr REL::VariantID BuildSaveGameList{ 1342984, 2228053 };
 		inline constexpr REL::VariantID DeleteSaveFileImpl{ 809711, 2228033 };
+		inline constexpr REL::VariantID EndLoadGame{ 1014572, 2228097 };
+		inline constexpr REL::VariantID EndSaveGame{ 1321787, 2228095 };
 		inline constexpr REL::VariantID GenerateSaveFileNameImpl{ 434834, 2228059 };
 		inline constexpr REL::VariantID GetFullPath{ 505311, 2228030 };
 		inline constexpr REL::VariantID GetSaveDirectoryPath{ 1569549, 2228028 };
@@ -814,6 +816,14 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID Singleton{ 177947, 2697789, 2697789 };
 		inline constexpr REL::VariantID GetChange{ 688165, 2227898, 2227898 };
+		inline constexpr REL::VariantID InitForms{ 1370961, 2227888 };
+		inline constexpr REL::VariantID LoadGame{ 1328347, 2227920 };
+		inline constexpr REL::VariantID PrepareReferenceLoad{ 244754, 2227923 };
+	}
+
+	namespace BGSSaveLoadGlobalData
+	{
+		inline constexpr REL::VariantID LoadGlobalData{ 52259, 2227955 };
 	}
 
 	namespace BGSScene
@@ -1122,6 +1132,9 @@ namespace RE::ID
 	namespace DrawWorld
 	{
 		inline constexpr REL::VariantID Render_PreUI{ 984743, 2318321, 2318321 };
+		inline constexpr REL::VariantID Render_UI{ 587723, 2318322 };
+		// OG callers go through this jmp thunk; NG/AE call Render_UI directly.
+		inline constexpr REL::VariantID Render_UICallee{ 1130087, 2318322 };
 	}
 	namespace DrawWorld
 	{
@@ -1137,7 +1150,6 @@ namespace RE::ID
 	}
 	namespace DrawWorld
 	{
-		inline constexpr REL::VariantID Imagespace{ 587723, 2318322, 2318322 };
 	}
 	namespace DrawWorld
 	{
@@ -1326,6 +1338,7 @@ namespace RE::ID
 			inline constexpr REL::VariantID SetShaders{ 894905, 2276942 };
 			inline constexpr REL::VariantID UpdateStructuredBuffer{ 402301, 2276904 };
 			inline constexpr REL::VariantID ResetWindow{ 796949, 2276825 };
+			inline constexpr REL::VariantID WindowSizeChanged{ 212827, 2276824 };
 			inline constexpr REL::VariantID ResetState{ 405603, 2276966 };
 			inline constexpr REL::VariantID DoZPrePass{ 1491502, 2276973 };
 			inline constexpr REL::VariantID MapTexture{ 1366848, 2276920 };
@@ -1387,6 +1400,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID GlobalContext{ 33539, 2704428 };
 		inline constexpr REL::VariantID SetDirtyStates{ 1557284, 2277017 };
 		inline constexpr REL::VariantID RenderZPrePass{ 901559, 2277052 };
+		inline constexpr REL::VariantID RenderAlphaTestZPrePass{ 767228, 2277053 };
 		inline constexpr REL::VariantID CreateStreamingDDSTexture{ 823682, 2277293 };
 		inline constexpr REL::VariantID CreateD3DAndSwapChain{ 224250, 2277018, 4492363 };
 	}
@@ -1551,6 +1565,11 @@ namespace RE::ID
 	namespace BSScript_ArrayWrapper
 	{
 		inline constexpr REL::VariantID ReplaceArray{ 445184, 2250435 };
+	}
+
+	namespace BSScript_Internal_CodeTasklet
+	{
+		inline constexpr REL::VariantID Process{ 614585, 2315660 };
 	}
 
 	namespace BSScript_Internal_NativeFunctionBase
@@ -1970,18 +1989,25 @@ namespace RE::ID
 			inline constexpr REL::VariantID DropSaveLoadRemapData{ 647657, 2249995 };
 			inline constexpr REL::VariantID GetInventoryObjFromHandle{ 66597, 2249989 };
 			inline constexpr REL::VariantID UpdatePersistence{ 11020, 2249991 };
+			inline constexpr REL::VariantID ShouldAttemptToCleanHandle{ 75715, 2249973 };
 		}
 
 		namespace ObjectBindPolicy
 		{
 			inline constexpr REL::VariantID EndSaveLoad{ 1558837, 2250482 };
+			inline constexpr REL::VariantID ObjectNoLongerNeeded{ 1569618, 2250488 };
 		}
 
 		namespace GameVM
 		{
 			inline constexpr REL::VariantID Singleton{ 996227, 2689134, 4796420 };
+			inline constexpr REL::VariantID DumpPersistenceInformationToLog{ 1238017, 2251336 };
+			inline constexpr REL::VariantID DumpRunningStacksToLog{ 308336, 2251333 };
+			inline constexpr REL::VariantID HandleOverflows{ 857394, 2251364 };
+			inline constexpr REL::VariantID LoadGame{ 428960, 2251331 };
 			inline constexpr REL::VariantID QueuePostRenderCall{ 34412, 2251314 };
 			inline constexpr REL::VariantID RegisterForAllGameEvents{ 680454, 2251353 };
+			inline constexpr REL::VariantID ReloadScripts{ 371005, 2251339 };
 			inline constexpr REL::VariantID SendEventToObjectAndRelated{ 367992, 2251344 };
 		}
 
@@ -2234,7 +2260,7 @@ namespace RE::ID
 
 	namespace ImageSpaceEffectRadialBlur
 	{
-		inline constexpr REL::VariantID Disable{ 1500590, 2713225 };
+		inline constexpr REL::VariantID Disable{ 1500590, 2713240 };
 	}
 
 	namespace ImageSpaceEffectTemporalAA
@@ -2248,6 +2274,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RenderEffectRange{ 459505, 2316593 };
 		inline constexpr REL::VariantID InitEffects{ 889489, 2316625 };
 		inline constexpr REL::VariantID RenderEffect{ 1309722, 2316595 };
+		inline constexpr REL::VariantID Copy{ 1386071, 2316602 };
 	}
 
 	namespace ImageSpaceModifierInstance
@@ -2399,6 +2426,8 @@ namespace RE::ID
 	namespace Main
 	{
 		inline constexpr REL::VariantID Singleton{ 756304, 2698043 };
+		inline constexpr REL::VariantID InitGameData{ 407290, 2229085 };
+		inline constexpr REL::VariantID InitGameDataThreadProc{ 1085735, 2229111 };
 		inline constexpr REL::VariantID WorldRootCamera{ 384264, 2228956 };
 		inline constexpr REL::VariantID WorldRootNode{ 569647, 2698065 };
 		inline constexpr REL::VariantID QGameSystemsShouldUpdate{ 779552, 2698031 };
@@ -2414,6 +2443,9 @@ namespace RE::ID
 		inline constexpr REL::VariantID PerformGameReset{ 124452, 2228945 };
 		inline constexpr REL::VariantID StartUp{ 665510, 2228907 };
 		inline constexpr REL::VariantID GetCanLoad{ 1130242, 2228953 };
+		inline constexpr REL::VariantID DrawWorld_And_UI{ 408683, 2228969 };
+		inline constexpr REL::VariantID DrawGamePause{ 572620, 2228977 };
+		inline constexpr REL::VariantID RunCameraPath{ 635170, 2228936 };
 	}
 
 	namespace MapMarkerData
@@ -2456,6 +2488,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID RegisterHandlers{ 548136, 2249389 };
 		inline constexpr REL::VariantID Singleton{ 520890, 2689089, 4796375 };
 		inline constexpr REL::VariantID UnregisterHandler{ 734727, 2249388 };
+		inline constexpr REL::VariantID IsScreenshotQueued{ 257450, 2249381 };
 		inline constexpr REL::VariantID UnregisterHandlers{ 1010957, 2249390 };
 	}
 
@@ -2536,6 +2569,11 @@ namespace RE::ID
 	namespace NiCullingProcess
 	{
 		inline constexpr REL::VariantID SetFrustum{ 1142496, 2270782 };
+	}
+
+	namespace NiFrustumPlanes
+	{
+		inline constexpr REL::VariantID Set{ 656803, 2270323 };
 	}
 
 	namespace NiMatrix3
@@ -2926,6 +2964,11 @@ namespace RE::ID
 		inline constexpr REL::VariantID SetKeepPages{ 1255203, 2267988 };
 	}
 
+	namespace ScreenShot
+	{
+		inline constexpr REL::VariantID TakeScreenShot{ 919230, 2229158 };
+	}
+
 	namespace ScreenSplatter
 	{
 		inline constexpr REL::VariantID Clear{ 1478405, 2194783 };
@@ -3151,6 +3194,7 @@ namespace RE::ID
 		inline constexpr REL::VariantID NextForm{ 644374, 2192527 };
 		inline constexpr REL::VariantID NextGroup{ 339855, 2192522 };
 		inline constexpr REL::VariantID OpenTES{ 728465, 2192490 };
+		inline constexpr REL::VariantID SetOffset{ 71020, 2192532 };
 	}
 
 	namespace TESForm
@@ -4413,6 +4457,8 @@ namespace RE::ID
 	{
 		inline constexpr REL::VariantID EndAccumulation{ 485563, 2318474 };
 		inline constexpr REL::VariantID RegisterObjects{ 883019, 2318478 };
+		inline constexpr REL::VariantID RegisterObjectTasks{ 377203, 2712969 };
+		inline constexpr REL::VariantID ShaderAccumulator{ 1301235, 2712963 };
 	}
 	namespace BSScaleformSysMemMapper
 	{

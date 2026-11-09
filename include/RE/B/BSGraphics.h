@@ -86,10 +86,30 @@ namespace RE
 
 		enum class DepthStencilExtraMode : std::int32_t;
 		enum class DepthStencilStencilMode : std::int32_t;
-		enum class RasterStateCullMode : std::int32_t;
-		enum class RasterStateDepthBiasMode : std::int32_t;
-		enum class RasterStateFillMode : std::int32_t;
-		enum class RasterStateScissorMode : std::int32_t;
+		enum class RasterStateCullMode : std::int32_t
+		{
+			kNone,
+			kBack,
+			kFront
+		};
+
+		enum class RasterStateDepthBiasMode : std::int32_t
+		{
+			kNone = 0,
+			kShadowDepth = 8  // DepthBias 12, slope 6.0, clamp -100
+		};
+
+		enum class RasterStateFillMode : std::int32_t
+		{
+			kSolid,
+			kWireframe
+		};
+
+		enum class RasterStateScissorMode : std::int32_t
+		{
+			kDisabled,
+			kEnabled
+		};
 
 		enum class MultiSampleLevel : std::int32_t
 		{
@@ -124,8 +144,8 @@ namespace RE
 			kSSRDepth = 8,
 			kRefractionNormals = 14,
 			kMenuBackground = 15,
-			kHUDGlass = 24,
-			kHUDGlassSwap = 25,
+			kMenuBlur = 24,
+			kMenuBlurSwap = 25,
 			kGBufferAlbedoSpecular = 26,
 			kGBufferNormal = 27,
 			kGBufferEnvironment = 29,
@@ -139,8 +159,10 @@ namespace RE
 			kAmbientOcclusion = 37,
 			kAmbientOcclusionHalf = 39,
 			kSAOCameraZ = 40,
+			kPauseFreezeFrame = 54,
 			kPipboy = 60,
 			kPipboySwap = 61,
+			kScreenshot = 63,
 			kHDRBlurSwap = 68,
 			kHDRDownsample0 = 70,
 			kRainOcclusion = 86,
@@ -261,6 +283,31 @@ namespace RE
 		public:
 		};
 		static_assert(sizeof(IndexBuffer) == 0x50);
+
+		class ByteBuffer :
+		    public Buffer
+		{
+		public:
+		};
+		static_assert(sizeof(ByteBuffer) == 0x50);
+
+		class StructuredBuffer
+		{
+		public:
+			// members
+			REX::W32::ID3D11Buffer*              buffer;              // 00
+			REX::W32::ID3D11ShaderResourceView*  shaderResource;      // 08
+			REX::W32::ID3D11UnorderedAccessView* unorderedAccess;     // 10
+			REX::W32::ID3D11Buffer*              staging;             // 18
+			std::byte                            pad20[0x8];          // 20
+			BSEventFlag*                         requestEventToWait;  // 28
+			BSTAtomicValue<std::uint32_t>        pendingRequests;     // 30
+			std::uint32_t                        elementCount;        // 34
+			std::uint32_t                        refCount;            // 38
+			std::uint32_t                        pad3C;               // 3C
+		};
+		static_assert(sizeof(StructuredBuffer) == 0x40);
+		static_assert(offsetof(StructuredBuffer, pendingRequests) == 0x30);
 
 		class TextureHeader
 		{
